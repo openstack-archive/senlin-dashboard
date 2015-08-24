@@ -1,0 +1,13 @@
+from senlin_dashboard import exceptions
+
+DASHBOARD = 'cluster'
+ADD_INSTALLED_APPS = [
+    'senlin_dashboard.senlin'
+]
+DEFAULT = True
+
+ADD_EXCEPTIONS = {
+    'recoverable': exceptions.RECOVERABLE,
+    'not_found': exceptions.NOT_FOUND,
+    'unauthorized': exceptions.UNAUTHORIZED,
+}

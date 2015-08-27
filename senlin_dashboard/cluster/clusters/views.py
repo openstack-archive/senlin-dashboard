@@ -10,16 +10,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.utils.translation import ugettext_lazy as _
+from horizon import tables
 
-import horizon
-
-from senlin_dashboard.cluster import dashboard
-
-
-class Clusters(horizon.Panel):
-    name = _("Clusters")
-    slug = 'clusters'
+from senlin_dashboard.api import senlin
+from senlin_dashboard.cluster.clusters.tables import ClustersTable
 
 
-dashboard.Cluster.register(Clusters)
+class IndexView(tables.DataTableView):
+    table_class = ClustersTable
+    template_name = 'cluster/clusters/index.html'
+
+    def get_data(self):
+        return senlin.cluster_list(self.request)

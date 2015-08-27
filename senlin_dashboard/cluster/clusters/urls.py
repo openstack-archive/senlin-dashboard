@@ -10,16 +10,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.utils.translation import ugettext_lazy as _
+from django.conf.urls import patterns  # noqa
+from django.conf.urls import url  # noqa
 
-import horizon
-
-from senlin_dashboard.cluster import dashboard
-
-
-class Clusters(horizon.Panel):
-    name = _("Clusters")
-    slug = 'clusters'
+from senlin_dashboard.cluster.clusters import views
 
 
-dashboard.Cluster.register(Clusters)
+urlpatterns = patterns(
+    '',
+    url(r'^$', views.IndexView.as_view(), name='index'),
+)

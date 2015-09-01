@@ -26,6 +26,11 @@ class Cluster(base.APIResourceWrapper):
               'profile_name', 'status_reason']
 
 
+class Profile(base.APIResourceWrapper):
+    _attrs = ['id', 'name', 'type', 'created_time', 'updated_time',
+              'permission']
+
+
 @memoized.memoized
 def senlinclient(request):
     api_version = "1"
@@ -45,3 +50,10 @@ def cluster_list(request):
 
     clusters = senlinclient(request).list(models.Cluster)
     return [Cluster(c) for c in clusters]
+
+
+def profile_list(request):
+    """Returns all profiles."""
+
+    profiles = senlinclient(request).list(models.Profile)
+    return [Profile(p) for p in profiles]

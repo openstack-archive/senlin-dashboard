@@ -57,3 +57,8 @@ def profile_list(request):
 
     profiles = senlinclient(request).list(models.Profile)
     return [Profile(p) for p in profiles]
+
+
+def profile_delete(request, profile_id):
+    """Delete profile."""
+    senlinclient(request).delete(models.Profile, {"id": profile_id})

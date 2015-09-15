@@ -11,9 +11,34 @@
 # limitations under the License.
 
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ungettext_lazy
 
 from horizon import tables
 from horizon.utils import filters
+
+from senlin_dashboard import api
+
+
+class DeleteProfile(tables.DeleteAction):
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Delete Profile",
+            u"Delete Profiles",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Deleted Profile",
+            u"Deleted Profiles",
+            count
+        )
+
+    def delete(self, request, obj_id):
+        api.senlin.profile_delete(request, obj_id)
 
 
 class ProfilesTable(tables.DataTable):
@@ -41,3 +66,5 @@ class ProfilesTable(tables.DataTable):
     class Meta(object):
         name = "profiles"
         verbose_name = _("Profiles")
+        table_actions = (DeleteProfile,)
+        row_actions = (DeleteProfile,)

@@ -66,5 +66,6 @@ class ProfilesTable(tables.DataTable):
     class Meta(object):
         name = "profiles"
         verbose_name = _("Profiles")
-        table_actions = (DeleteProfile,)
+        table_actions = (DeleteProfile,
+                         tables.FilterAction)
         row_actions = (DeleteProfile,)

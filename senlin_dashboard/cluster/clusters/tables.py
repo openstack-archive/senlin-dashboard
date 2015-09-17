@@ -43,3 +43,4 @@ class ClustersTable(tables.DataTable):
     class Meta(object):
         name = "clusters"
         verbose_name = _("Clusters")
+        table_actions = (tables.FilterAction,)

@@ -17,6 +17,15 @@ from horizon import tables
 from horizon.utils import filters
 
 from senlin_dashboard import api
+from senlin_dashboard.cluster.profiles import forms as profiles_forms
+
+
+class CreateProfile(tables.LinkAction):
+    name = "create"
+    verbose_name = _("Create Profile")
+    url = profiles_forms.CREATE_URL
+    classes = ("ajax-modal",)
+    icon = "plus"
 
 
 class DeleteProfile(tables.DeleteAction):
@@ -66,6 +75,7 @@ class ProfilesTable(tables.DataTable):
     class Meta(object):
         name = "profiles"
         verbose_name = _("Profiles")
-        table_actions = (DeleteProfile,
-                         tables.FilterAction)
+        table_actions = (tables.FilterAction,
+                         CreateProfile,
+                         DeleteProfile)
         row_actions = (DeleteProfile,)

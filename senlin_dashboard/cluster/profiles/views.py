@@ -10,9 +10,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.core.urlresolvers import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
+
+from horizon import forms
 from horizon import tables
 
 from senlin_dashboard.api import senlin
+from senlin_dashboard.cluster.profiles import forms as profiles_forms
 from senlin_dashboard.cluster.profiles.tables import ProfilesTable
 
 
@@ -22,3 +27,11 @@ class IndexView(tables.DataTableView):
 
     def get_data(self):
         return senlin.profile_list(self.request)
+
+
+class CreateView(forms.ModalFormView):
+    template_name = 'cluster/profiles/create.html'
+    page_title = _("Create Profile")
+    form_class = profiles_forms.CreateProfileForm
+    submit_url = reverse_lazy(profiles_forms.CREATE_URL)
+    success_url = reverse_lazy(profiles_forms.INDEX_URL)

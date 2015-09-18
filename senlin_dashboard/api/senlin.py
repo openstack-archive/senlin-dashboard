@@ -50,7 +50,7 @@ def senlinclient(request):
     kwargs = {
         'auth_url': getattr(settings, 'OPENSTACK_KEYSTONE_URL'),
         'token': request.user.token.id,
-        'project_id': request.user.tenant_id
+        'project_id': request.user.tenant_id,
     }
     return senlin_client.Client(api_version, {}, USER_AGENT, **kwargs)
 
@@ -73,9 +73,22 @@ def profile_type_list(request):
     return [ProfileType(t) for t in prof_types]
 
 
+def profile_get(request, profile_id):
+    """Returns profile."""
+    profile = senlinclient(request).get(models.Profile, {"id": profile_id})
+    return profile
+
+
 def profile_create(request, opts):
     """Create profile."""
     profile = senlinclient(request).create(models.Profile, opts)
+    return profile
+
+
+def profile_update(request, opts):
+    """Update profile."""
+
+    profile = senlinclient(request).update(models.Profile, opts)
     return profile
 
 

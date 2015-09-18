@@ -28,6 +28,14 @@ class CreateProfile(tables.LinkAction):
     icon = "plus"
 
 
+class UpdateProfile(tables.LinkAction):
+    name = "update"
+    verbose_name = _("Update Profile")
+    url = "horizon:cluster:profiles:update"
+    classes = ("ajax-modal",)
+    icon = "pencil"
+
+
 class DeleteProfile(tables.DeleteAction):
 
     @staticmethod
@@ -78,4 +86,4 @@ class ProfilesTable(tables.DataTable):
         table_actions = (tables.FilterAction,
                          CreateProfile,
                          DeleteProfile)
-        row_actions = (DeleteProfile,)
+        row_actions = (UpdateProfile, DeleteProfile,)

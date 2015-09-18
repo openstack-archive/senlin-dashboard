@@ -31,6 +31,40 @@ from senlin_dashboard.api import senlin
 
 INDEX_URL = "horizon:cluster:profiles:index"
 CREATE_URL = "horizon:cluster:profiles:create"
+UPDATE_URL = "horizon:cluster:profiles:update"
+
+
+def _populate_profile_params(name, spec, permission, metadata, id=None):
+
+    if spec is None:
+        spec_dict = None
+    else:
+        try:
+            spec_dict = yaml.load(spec)
+        except Exception as ex:
+            raise ValidationError(_('The specified file is not a valid '
+                                    'YAML file: %s') % six.text_type(ex))
+        type_name = spec_dict['type']
+        if type_name == 'os.heat.stack':
+            spec_dict['properties'] = utils.process_stack_spec(
+                spec['properties'])
+    if not metadata:
+        metadata_dict = {}
+    else:
+        try:
+            metadata_dict = yaml.load(metadata)
+        except Exception as ex:
+            raise ValidationError(_('The specified file is not a valid '
+                                    'YAML file: %s') % six.text_type(ex))
+    params = {"name": name,
+              "spec": spec_dict,
+              "permission": permission,
+              "metadata": metadata_dict}
+
+    if id is not None:
+        params["id"] = id
+
+    return params
 
 
 class CreateProfileForm(forms.SelfHandlingForm):
@@ -65,36 +99,13 @@ class CreateProfileForm(forms.SelfHandlingForm):
                                required=False,
                                widget=forms.Textarea(attrs={'rows': 4}))
 
-    def _to_yaml(self, spec):
-        try:
-            data = yaml.load(spec)
-        except Exception as ex:
-            raise ValidationError(_('The specified file is not a valid '
-                                    'YAML file: %s') % six.text_type(ex))
-        return data
-
-    def _populate_profile_params(self, name, spec, permission, metadata):
-
-        spec_dict = self._to_yaml(spec)
-        type_name = spec_dict['type']
-        if type_name == 'os.heat.stack':
-            spec_dict['properties'] = utils.process_stack_spec(
-                spec['properties'])
-        if not metadata:
-            metadata = {}
-
-        return {"name": name,
-                "spec": spec_dict,
-                "permission": permission,
-                "metadata": metadata}
-
     def handle(self, request, data):
         source_type = data.get('source_type')
         if source_type == "yaml":
             spec = data.get("spec_yaml")
         else:
             spec = self.files['spec_file'].read()
-        opts = self._populate_profile_params(
+        opts = _populate_profile_params(
             name=data.get('name'),
             spec=spec,
             permission=data.get('permission'),
@@ -113,5 +124,48 @@ class CreateProfileForm(forms.SelfHandlingForm):
         except Exception:
             redirect = reverse(INDEX_URL)
             msg = _('Unable to create new profile')
+            exceptions.handle(request, msg, redirect=redirect)
+            return False
+
+
+class UpdateProfileForm(forms.SelfHandlingForm):
+    profile_id = forms.CharField(widget=forms.HiddenInput())
+    name = forms.CharField(max_length=255, label=_("Name"))
+    type = forms.CharField(
+        label=_('Type'),
+        widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+    spec = forms.CharField(max_length=255,
+                           label=_("Spec"),
+                           widget=forms.Textarea(attrs={'rows': 6,
+                                                 'readonly': 'readonly'}))
+    permission = forms.CharField(max_length=255,
+                                 label=_("Permission"),
+                                 required=False)
+    metadata = forms.CharField(max_length=255,
+                               label=_("Metadata"),
+                               required=False,
+                               widget=forms.Textarea(attrs={'rows': 4}))
+
+    def handle(self, request, data):
+        opts = _populate_profile_params(
+            id=data.get('profile_id'),
+            name=data.get('name'),
+            spec=None,
+            permission=data.get('permission', ''),
+            metadata=data.get('metadata', {})
+        )
+
+        try:
+            senlin.profile_update(request, opts)
+            messages.success(request,
+                             _('Your profile %s has been updated.') %
+                             opts['name'])
+            return True
+        except ValidationError as e:
+            self.api_error(e.messages[0])
+            return False
+        except Exception:
+            redirect = reverse(INDEX_URL)
+            msg = _('Unable to update profile')
             exceptions.handle(request, msg, redirect=redirect)
             return False

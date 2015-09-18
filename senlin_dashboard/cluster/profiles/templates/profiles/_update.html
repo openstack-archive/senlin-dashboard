@@ -1,0 +1,14 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+
+{% block modal-header %}{% trans "Update Profile" %}{% endblock %}
+
+{% block modal-body-right %}
+  <h3>{% trans "Description:" %}</h3>
+  <p>{% trans "A profile encodes the information needed for node creation." %}</p>
+{% endblock %}
+
+{% block modal-footer %}
+  <a href="{% url 'horizon:cluster:profiles:index' %}" class="btn btn-default cancel">{% trans "Cancel" %}</a>
+  <input class="btn btn-primary" type="submit" value="{% trans "Update Profile" %}" />
+{% endblock %}

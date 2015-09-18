@@ -16,10 +16,13 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import exceptions
 from horizon import forms
 from horizon import tables
+from horizon.utils import memoized
 
 from senlin_dashboard.api import senlin
 from senlin_dashboard.cluster.profiles import forms as profiles_forms
 from senlin_dashboard.cluster.profiles.tables import ProfilesTable
+
+import yaml
 
 
 class IndexView(tables.DataTableView):
@@ -31,8 +34,9 @@ class IndexView(tables.DataTableView):
             profiles = senlin.profile_list(self.request)
         except Exception:
             profiles = []
-            exceptions.handle(self.request,
-                              _('Unable to retrieve profiles.'))
+            msg = _('Unable to retrieve profiles.')
+            exceptions.handle(self.request, msg)
+
         return profiles
 
 
@@ -42,3 +46,45 @@ class CreateView(forms.ModalFormView):
     form_class = profiles_forms.CreateProfileForm
     submit_url = reverse_lazy(profiles_forms.CREATE_URL)
     success_url = reverse_lazy(profiles_forms.INDEX_URL)
+
+
+class UpdateView(forms.ModalFormView):
+    template_name = 'cluster/profiles/update.html'
+    page_title = _("Update Profile")
+    form_class = profiles_forms.UpdateProfileForm
+    submit_url = reverse_lazy(profiles_forms.UPDATE_URL)
+    success_url = reverse_lazy(profiles_forms.INDEX_URL)
+
+    @memoized.memoized_method
+    def get_object(self):
+        try:
+            # Get initial profile information
+            profile_id = self.kwargs["profile_id"]
+            profile = senlin.profile_get(self.request, profile_id)
+            profile_dict = {"profile_id": profile_id,
+                            "name": profile.name,
+                            "type": profile.type,
+                            "spec": yaml.safe_dump(
+                                profile.spec,
+                                default_flow_style=False),
+                            "permission": profile.permission,
+                            "metadata": yaml.safe_dump(
+                                profile.metadata,
+                                default_flow_style=False),
+                            }
+        except Exception:
+            msg = _("Unable to retrieve profile.")
+            url = reverse_lazy(profiles_forms.INDEX_URL)
+            exceptions.handle(self.request, msg, redirect=url)
+        return profile_dict
+
+    def get_context_data(self, **kwargs):
+        args = (self.kwargs["profile_id"],)
+        context = super(UpdateView, self).get_context_data(**kwargs)
+        context["profile"] = self.get_object()
+        context["submit_url"] = reverse_lazy(profiles_forms.UPDATE_URL,
+                                             args=args)
+        return context
+
+    def get_initial(self):
+        return self.get_object()

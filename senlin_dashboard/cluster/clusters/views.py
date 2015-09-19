@@ -15,10 +15,18 @@ from horizon import tables
 from senlin_dashboard.api import senlin
 from senlin_dashboard.cluster.clusters.tables import ClustersTable
 
+from horizon import exceptions
+
 
 class IndexView(tables.DataTableView):
     table_class = ClustersTable
     template_name = 'cluster/clusters/index.html'
 
     def get_data(self):
-        return senlin.cluster_list(self.request)
+        try:
+            clusters = senlin.cluster_list(self.request)
+        except Exception:
+            clusters = []
+            exceptions.handle(self.request,
+                              _('Unable to retrieve clusters.'))
+        return clusters

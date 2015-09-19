@@ -13,6 +13,7 @@
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
+from horizon import exceptions
 from horizon import forms
 from horizon import tables
 
@@ -26,7 +27,13 @@ class IndexView(tables.DataTableView):
     template_name = 'cluster/profiles/index.html'
 
     def get_data(self):
-        return senlin.profile_list(self.request)
+        try:
+            profiles = senlin.profile_list(self.request)
+        except Exception:
+            profiles = []
+            exceptions.handle(self.request,
+                              _('Unable to retrieve profiles.'))
+        return profiles
 
 
 class CreateView(forms.ModalFormView):

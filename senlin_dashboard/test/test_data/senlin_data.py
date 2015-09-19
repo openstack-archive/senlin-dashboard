@@ -24,3 +24,10 @@ def data(TEST):
     profile_1.name = "test-profile"
 
     TEST.profiles.add(profile_1)
+
+    # Clusters
+    TEST.clusters = test_data_utils.TestDataContainer()
+    cluster_1 = mock.Mock()
+    cluster_1.name = "test-cluster"
+
+    TEST.clusters.add(cluster_1)

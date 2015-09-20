@@ -10,12 +10,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from horizon import tables
+from django.utils.translation import ugettext_lazy as _
 
 from senlin_dashboard.api import senlin
 from senlin_dashboard.cluster.policies.tables import PoliciesTable
 
 from horizon import exceptions
+from horizon import tables
 
 
 class IndexView(tables.DataTableView):

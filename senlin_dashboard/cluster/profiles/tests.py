@@ -12,6 +12,8 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import json
+
 from django.core.urlresolvers import reverse
 from django import http
 
@@ -56,3 +58,43 @@ class ProfilesTest(test.TestCase):
         self.assertTemplateUsed(res, 'cluster/profiles/index.html')
         self.assertContains(res, 'No items to display')
         self.assertEqual(len(res.context['profiles_table'].data), 0)
+
+    @test.create_stubs({api.senlin: ('profile_list',
+                                     'profile_create',
+                                     'profile_type_list')})
+    def test_create_profile(self):
+        profiles = self.policies.list()
+        profile = profiles[0]
+        profile_type = self.profile_types.list()[0]
+
+        spec = {'properties':
+                {'name': 'nova_instance',
+                 'flavor': 2,
+                 'image': 'cirros-0.3.4-x86_64-uec',
+                 'key_name': 'test_key'},
+                'type': 'os.nova.server',
+                'version': 1.0}
+        post_data = {"name": "Profile1",
+                     "prof_type": profile_type.name,
+                     "spec": json.dumps(spec)}
+        formData = api.senlin._profile_dict(
+            name=post_data['name'],
+            prof_type=post_data['prof_type'],
+            spec=post_data['spec'],
+            permission='',
+            metadata=None)
+
+        api.senlin.profile_list(
+            IsA(http.HttpRequest)).AndReturn(profiles)
+        api.senlin.profile_type_list(IsA(http.HttpRequest)).\
+            AndReturn(self.profile_types.list())
+        api.senlin.profile_create(IsA(http.HttpRequest), formData).\
+            AndReturn(profile)
+        self.mox.ReplayAll()
+
+        url = reverse('horizon:cluster:profiles:create')
+        res = self.client.post(url, post_data)
+        self.assertNoFormErrors(res)
+
+        redirect_url = reverse('horizon:cluster:profiles:index')
+        self.assertRedirectsNoFollow(res, redirect_url)

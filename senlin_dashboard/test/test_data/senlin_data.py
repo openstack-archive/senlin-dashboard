@@ -25,6 +25,13 @@ def data(TEST):
 
     TEST.profiles.add(profile_1)
 
+    # Profile types
+    TEST.profile_types = test_data_utils.TestDataContainer()
+    profile_type_1 = mock.Mock()
+    profile_type_1.name = "test-profile-type"
+
+    TEST.profile_types.add(profile_type_1)
+
     # Clusters
     TEST.clusters = test_data_utils.TestDataContainer()
     cluster_1 = mock.Mock()

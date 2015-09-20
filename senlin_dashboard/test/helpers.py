@@ -14,6 +14,9 @@
 
 from openstack_dashboard.test import helpers
 
+from senlinclient import client as senlin_client
+
+from senlin_dashboard import api
 from senlin_dashboard.test.test_data import utils
 
 
@@ -32,4 +35,21 @@ class TestCase(SenlinTestsMixin, helpers.TestCase):
 
 
 class APITestCase(SenlinTestsMixin, helpers.APITestCase):
-    pass
+    def setUp(self):
+        super(APITestCase, self).setUp()
+
+        # Store the original senlin client
+        self._original_senlinclient = api.senlin.senlinclient
+
+        # Replace the clients with our stubs.
+        api.senlin.senlinclient = lambda request: self.stub_senlinclient()
+
+    def tearDown(self):
+        super(APITestCase, self).tearDown()
+        api.senlin.senlinclient = self._original_senlinclient
+
+    def stub_senlinclient(self):
+        if not hasattr(self, "senlinclient"):
+            self.mox.StubOutWithMock(senlin_client, 'Client')
+            self.senlinclient = self.mox.CreateMock(senlin_client.Client)
+        return self.senlinclient

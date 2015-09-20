@@ -35,3 +35,14 @@ class ClustersTest(test.TestCase):
         res = self.client.get(INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
         self.assertEqual(len(clusters), 1)
+
+    @test.create_stubs({api.senlin: ('cluster_list',)})
+    def test_index_cluster_list_exception(self):
+        api.senlin.cluster_list(
+            IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
+        self.mox.ReplayAll()
+
+        res = self.client.get(INDEX_URL)
+        self.assertTemplateUsed(res, 'cluster/clusters/index.html')
+        self.assertEqual(len(res.context['clusters_table'].data), 0)
+        self.assertMessageCount(res, error=1)

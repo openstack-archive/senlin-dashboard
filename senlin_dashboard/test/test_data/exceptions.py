@@ -1,4 +1,4 @@
-# Copyright 2015 Huawei Technologies Co., Ltd.
+# Copyright 2015 99Cloud Technologies Co., Ltd.
 #
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
 #    not use this file except in compliance with the License. You may obtain
@@ -12,21 +12,15 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+from senlinclient.common import exc as senlin_exceptions
+
+from openstack_dashboard.test.test_data.exceptions \
+    import create_stubbed_exception
 from openstack_dashboard.test.test_data import utils
 
 
-def load_test_data(load_onto=None):
-    from senlin_dashboard.test.test_data import exceptions
-    from senlin_dashboard.test.test_data import senlin_data
+def data(TEST):
+    TEST.exceptions = utils.TestDataContainer()
 
-    # The order of these loaders matters, some depend on others.
-    loaders = (
-        exceptions.data,
-        senlin_data.data,
-    )
-    if load_onto:
-        for data_func in loaders:
-            data_func(load_onto)
-        return load_onto
-    else:
-        return utils.TestData(*loaders)
+    senlin_exception = senlin_exceptions.HTTPException
+    TEST.exceptions.senlin = create_stubbed_exception(senlin_exception)

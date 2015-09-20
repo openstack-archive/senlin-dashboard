@@ -38,6 +38,11 @@ class ProfileType(base.APIResourceWrapper):
     _attrs = ['id', 'name']
 
 
+class Policy(base.APIResourceWrapper):
+    _attrs = ['id', 'name', 'type', 'spec', 'level', 'cooldown',
+              'created_time', 'updated_time']
+
+
 @memoized.memoized
 def senlinclient(request):
     api_version = "1"
@@ -107,3 +112,9 @@ def profile_create(request, opts):
 def profile_delete(request, profile_id):
     """Delete profile."""
     senlinclient(request).delete(models.Profile, {"id": profile_id})
+
+
+def policy_list(request):
+    """Returns all profiles."""
+    policies = senlinclient(request).list(models.Policy)
+    return [Policy(p) for p in policies]

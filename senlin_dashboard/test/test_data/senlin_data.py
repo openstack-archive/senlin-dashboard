@@ -31,3 +31,10 @@ def data(TEST):
     cluster_1.name = "test-cluster"
 
     TEST.clusters.add(cluster_1)
+
+    # Policies
+    TEST.policies = test_data_utils.TestDataContainer()
+    policy_1 = mock.Mock()
+    policy_1.name = "test-policy"
+
+    TEST.policies.add(policy_1)

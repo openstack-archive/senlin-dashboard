@@ -18,7 +18,9 @@ import horizon
 class Cluster(horizon.Dashboard):
     name = _("Cluster")
     slug = "cluster"
-    panels = ('clusters', 'profiles')
+    panels = ('clusters',
+              'profiles',
+              'policies')
     default_panel = 'clusters'
 
 

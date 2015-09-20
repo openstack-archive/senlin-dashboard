@@ -46,3 +46,14 @@ class ClustersTest(test.TestCase):
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
         self.assertEqual(len(res.context['clusters_table'].data), 0)
         self.assertMessageCount(res, error=1)
+
+    @test.create_stubs({api.senlin: ('cluster_list',)})
+    def test_index_no_cluster(self):
+        api.senlin.cluster_list(
+            IsA(http.HttpRequest)).AndReturn([])
+        self.mox.ReplayAll()
+
+        res = self.client.get(INDEX_URL)
+        self.assertTemplateUsed(res, 'cluster/clusters/index.html')
+        self.assertContains(res, 'No items to display')
+        self.assertEqual(len(res.context['clusters_table'].data), 0)

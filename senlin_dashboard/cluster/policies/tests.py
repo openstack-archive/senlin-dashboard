@@ -46,3 +46,14 @@ class PoliciesTest(test.TestCase):
         self.assertTemplateUsed(res, 'cluster/policies/index.html')
         self.assertEqual(len(res.context['policies_table'].data), 0)
         self.assertMessageCount(res, error=1)
+
+    @test.create_stubs({api.senlin: ('policy_list',)})
+    def test_index_no_policy(self):
+        api.senlin.policy_list(
+            IsA(http.HttpRequest)).AndReturn([])
+        self.mox.ReplayAll()
+
+        res = self.client.get(INDEX_URL)
+        self.assertTemplateUsed(res, 'cluster/policies/index.html')
+        self.assertContains(res, 'No items to display')
+        self.assertEqual(len(res.context['policies_table'].data), 0)

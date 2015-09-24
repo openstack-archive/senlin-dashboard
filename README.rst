@@ -14,7 +14,6 @@ Installation instructions
 Begin by cloning the Horizon and Senlin Dashboard repositories::
 
     git clone https://git.openstack.org/openstack/horizon
-    git clone https://git.openstack.org/openstack/python-senlinclient.git
     git clone https://git.openstack.org/openstack/senlin-dashboard
 
 Create a virtual environment and install Horizon dependencies::
@@ -38,7 +37,6 @@ editor. You will want to customize several settings:
 
 Install Senlin Dashboard with all dependencies in your virtual environment::
 
-    tools/with_venv.sh pip install -e ../python-senlinclient/
     tools/with_venv.sh pip install -e ../senlin-dashboard/
 
 And enable it in Horizon::

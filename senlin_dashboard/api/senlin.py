@@ -18,7 +18,6 @@ from django.utils.translation import ugettext_lazy as _
 from horizon.utils import memoized
 from openstack_dashboard.api import base
 from senlinclient import client as senlin_client
-from senlinclient.common import sdk
 from senlinclient.v1 import models
 
 USER_AGENT = 'python-senlinclient'
@@ -51,10 +50,7 @@ def senlinclient(request):
         'token': request.user.token.id,
         'project_id': request.user.tenant_id
     }
-    conn = sdk.create_connection({},
-                                 USER_AGENT, **kwargs)
-
-    return senlin_client.Client(api_version, conn.session)
+    return senlin_client.Client(api_version, {}, USER_AGENT, **kwargs)
 
 
 def cluster_list(request):

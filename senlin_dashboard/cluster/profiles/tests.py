@@ -20,6 +20,7 @@ from django import http
 from mox3.mox import IsA  # noqa
 
 from senlin_dashboard import api
+from senlin_dashboard.cluster.profiles import forms
 from senlin_dashboard.test import helpers as test
 
 INDEX_URL = reverse('horizon:cluster:profiles:index')
@@ -77,7 +78,7 @@ class ProfilesTest(test.TestCase):
         post_data = {"name": "Profile1",
                      "prof_type": profile_type.name,
                      "spec": json.dumps(spec)}
-        formData = api.senlin._profile_dict(
+        formData = forms._profile_dict(
             name=post_data['name'],
             prof_type=post_data['prof_type'],
             spec=post_data['spec'],

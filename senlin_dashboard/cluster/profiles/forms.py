@@ -14,6 +14,8 @@
 Views for managing profiles.
 """
 
+import ast
+
 from django.core.urlresolvers import reverse
 from django.forms import ValidationError
 from django.utils.translation import ugettext_lazy as _
@@ -49,6 +51,35 @@ def _get_profile_list(request):
         raise
 
     return profiles
+
+
+def _parse_dict(name, src):
+
+    dict = None
+    if src != '' and src is not None:
+        try:
+            dict = ast.literal_eval(src)
+        except Exception:
+            msg = _('Unable to parse %s.') % name
+            raise ValidationError(msg)
+    return dict
+
+
+def _profile_dict(name, prof_type, spec,
+                  permission, metadata):
+
+    spec_dict = _parse_dict("spec", spec)
+
+    metadata_dict = _parse_dict("metadata", metadata)
+    if metadata_dict is None:
+        metadata_dict = {}
+
+    return {"name": name,
+            "type": prof_type,
+            "spec": spec_dict,
+            "permission": permission,
+            "metadata": metadata_dict,
+            }
 
 
 class CreateProfileForm(forms.SelfHandlingForm):
@@ -90,24 +121,24 @@ class CreateProfileForm(forms.SelfHandlingForm):
                     break
 
         try:
-            senlin._parse_dict('spec', data.get('spec'))
+            _parse_dict('spec', data.get('spec'))
         except ValidationError as e:
             self.errors["spec"] = self.error_class([e.messages[0]])
 
         try:
-            senlin._parse_dict('metadata', data.get('metadata'))
+            _parse_dict('metadata', data.get('metadata'))
         except Exception as e:
             self.errors["metadata"] = self.error_class([e.messages[0]])
 
         return data
 
     def handle(self, request, data):
-        opts = senlin._profile_dict(name=data.get('name'),
-                                    prof_type=data.get('prof_type'),
-                                    spec=data.get('spec'),
-                                    permission=data.get('permission', ''),
-                                    metadata=data.get('metadata', {})
-                                    )
+        opts = _profile_dict(name=data.get('name'),
+                             prof_type=data.get('prof_type'),
+                             spec=data.get('spec'),
+                             permission=data.get('permission', ''),
+                             metadata=data.get('metadata', {})
+                             )
 
         try:
             profile = senlin.profile_create(request, opts)

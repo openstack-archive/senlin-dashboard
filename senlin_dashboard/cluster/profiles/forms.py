@@ -14,7 +14,10 @@
 Views for managing profiles.
 """
 
-import ast
+import six
+import yaml
+
+from senlinclient.common import utils
 
 from django.core.urlresolvers import reverse
 from django.forms import ValidationError
@@ -30,67 +33,30 @@ INDEX_URL = "horizon:cluster:profiles:index"
 CREATE_URL = "horizon:cluster:profiles:create"
 
 
-def _get_profile_type_list(request):
-    try:
-        prof_types = senlin.profile_type_list(request)
-    except Exception:
-        msg = _('Unable to get profile type list')
-        exceptions.check_message(["Connection", "refused"], msg)
-        raise
-
-    return prof_types
-
-
-def _get_profile_list(request):
-    profiles = []
-    try:
-        profiles = senlin.profile_list(request)
-    except Exception:
-        msg = _('Unable to get profile list')
-        exceptions.check_message(["Connection", "refused"], msg)
-        raise
-
-    return profiles
-
-
-def _parse_dict(name, src):
-
-    dict = None
-    if src != '' and src is not None:
-        try:
-            dict = ast.literal_eval(src)
-        except Exception:
-            msg = _('Unable to parse %s.') % name
-            raise ValidationError(msg)
-    return dict
-
-
-def _profile_dict(name, prof_type, spec,
-                  permission, metadata):
-
-    spec_dict = _parse_dict("spec", spec)
-
-    metadata_dict = _parse_dict("metadata", metadata)
-    if metadata_dict is None:
-        metadata_dict = {}
-
-    return {"name": name,
-            "type": prof_type,
-            "spec": spec_dict,
-            "permission": permission,
-            "metadata": metadata_dict,
-            }
-
-
 class CreateProfileForm(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Name"))
-    prof_type = forms.ChoiceField(
-        label=_('Type'),
-        widget=forms.SelectWidget(
-            transform=lambda x: "%s" % (x.name)))
-    spec = forms.CharField(max_length=255,
-                           label=_("Spec"),
-                           widget=forms.Textarea(attrs={'rows': 6}))
+    source_type = forms.ChoiceField(
+        label=_('Spec Source'),
+        required=False,
+        choices=[('file', _('File')),
+                 ('yaml', _('YAML'))],
+        widget=forms.Select(attrs={
+            'class': 'switchable',
+            'data-slug': 'source'}))
+    spec_file = forms.FileField(label=_("Spec File"),
+                                widget=forms.FileInput(attrs={
+                                    'class': 'switched',
+                                    'data-switch-on': 'source',
+                                    'data-source-file': _('Spec File')}),
+                                required=False)
+    spec_yaml = forms.CharField(max_length=255,
+                                label=_("Spec YAML"),
+                                widget=forms.Textarea(attrs={
+                                    'rows': 6,
+                                    'class': 'switched',
+                                    'data-switch-on': 'source',
+                                    'data-source-yaml': _('Spec YAML')}),
+                                required=False)
     permission = forms.CharField(max_length=255,
                                  label=_("Permission"),
                                  required=False)
@@ -99,46 +65,41 @@ class CreateProfileForm(forms.SelfHandlingForm):
                                required=False,
                                widget=forms.Textarea(attrs={'rows': 4}))
 
-    def __init__(self, request, *args, **kwargs):
-        super(CreateProfileForm, self).__init__(request, *args, **kwargs)
-
-        prof_types = _get_profile_type_list(self.request)
-        self.fields['prof_type'].choices = [(prof_type.name,
-                                             prof_type.name)
-                                            for prof_type
-                                            in prof_types]
-
-    def clean(self):
-        data = super(CreateProfileForm, self).clean()
-
-        profiles = _get_profile_list(self.request)
-
-        if profiles is not None and data.get('name') is not None:
-            for profile in profiles:
-                if profile.name == data.get('name'):
-                    msg = _("The name is already used by another profile.")
-                    self.errors["name"] = self.error_class([msg])
-                    break
-
+    def _to_yaml(self, spec):
         try:
-            _parse_dict('spec', data.get('spec'))
-        except ValidationError as e:
-            self.errors["spec"] = self.error_class([e.messages[0]])
-
-        try:
-            _parse_dict('metadata', data.get('metadata'))
-        except Exception as e:
-            self.errors["metadata"] = self.error_class([e.messages[0]])
-
+            data = yaml.load(spec)
+        except Exception as ex:
+            raise ValidationError(_('The specified file is not a valid '
+                                    'YAML file: %s') % six.text_type(ex))
         return data
 
+    def _populate_profile_params(self, name, spec, permission, metadata):
+
+        spec_dict = self._to_yaml(spec)
+        type_name = spec_dict['type']
+        if type_name == 'os.heat.stack':
+            spec_dict['properties'] = utils.process_stack_spec(
+                spec['properties'])
+        if not metadata:
+            metadata = {}
+
+        return {"name": name,
+                "spec": spec_dict,
+                "permission": permission,
+                "metadata": metadata}
+
     def handle(self, request, data):
-        opts = _profile_dict(name=data.get('name'),
-                             prof_type=data.get('prof_type'),
-                             spec=data.get('spec'),
-                             permission=data.get('permission', ''),
-                             metadata=data.get('metadata', {})
-                             )
+        source_type = data.get('source_type')
+        if source_type == "yaml":
+            spec = data.get("spec_yaml")
+        else:
+            spec = self.files['spec_file'].read()
+        opts = self._populate_profile_params(
+            name=data.get('name'),
+            spec=spec,
+            permission=data.get('permission'),
+            metadata=data.get('metadata')
+        )
 
         try:
             profile = senlin.profile_create(request, opts)

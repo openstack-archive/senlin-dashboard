@@ -45,3 +45,10 @@ def data(TEST):
     policy_1.name = "test-policy"
 
     TEST.policies.add(policy_1)
+
+    # Nodes
+    TEST.nodes = test_data_utils.TestDataContainer()
+    node_1 = mock.Mock()
+    node_1.name = "test-policy"
+
+    TEST.nodes.add(node_1)

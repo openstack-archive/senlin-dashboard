@@ -111,6 +111,6 @@ def profile_delete(request, profile_id):
 
 
 def policy_list(request):
-    """Returns all profiles."""
+    """Returns all policies."""
     policies = senlinclient(request).list(models.Policy)
     return [Policy(p) for p in policies]

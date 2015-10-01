@@ -32,6 +32,7 @@ from senlin_dashboard.api import senlin
 INDEX_URL = "horizon:cluster:profiles:index"
 CREATE_URL = "horizon:cluster:profiles:create"
 UPDATE_URL = "horizon:cluster:profiles:update"
+DETAIL_URL = "horizon:cluster:profiles:detail"
 
 
 def _populate_profile_params(name, spec, permission, metadata, id=None):

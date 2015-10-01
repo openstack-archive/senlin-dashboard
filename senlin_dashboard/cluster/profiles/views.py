@@ -16,11 +16,13 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import exceptions
 from horizon import forms
 from horizon import tables
+from horizon import tabs
 from horizon.utils import memoized
 
 from senlin_dashboard.api import senlin
 from senlin_dashboard.cluster.profiles import forms as profiles_forms
 from senlin_dashboard.cluster.profiles.tables import ProfilesTable
+from senlin_dashboard.cluster.profiles import tabs as profiles_tabs
 
 import yaml
 
@@ -88,3 +90,39 @@ class UpdateView(forms.ModalFormView):
 
     def get_initial(self):
         return self.get_object()
+
+
+class DetailView(tabs.TabView):
+    tab_group_class = profiles_tabs.ProfileDetailTabs
+    template_name = 'cluster/profiles/detail.html'
+    page_title = _("Profile Details: {{ profile.name }}")
+
+    @memoized.memoized_method
+    def get_object(self):
+        try:
+            # Get initial profile information
+            profile_id = self.kwargs["profile_id"]
+            profile = senlin.profile_get(self.request, profile_id)
+            profile["profile_id"] = profile_id
+            profile["spec"] = yaml.safe_dump(profile.spec,
+                                             default_flow_style=False)
+            profile["metadata"] = yaml.safe_dump(profile.metadata,
+                                                 default_flow_style=False)
+        except Exception:
+            msg = _("Unable to retrieve profile.")
+            url = reverse_lazy(profiles_forms.INDEX_URL)
+            exceptions.handle(self.request, msg, redirect=url)
+        return profile
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        table = ProfilesTable(self.request)
+        profile = self.get_object()
+        context["actions"] = table.render_row_actions(profile)
+        context["profile"] = profile
+        context["url"] = reverse_lazy(profiles_forms.INDEX_URL)
+        return context
+
+    def get_tabs(self, request, *args, **kwargs):
+        profile = self.get_object()
+        return self.tab_group_class(request, profile=profile, **kwargs)

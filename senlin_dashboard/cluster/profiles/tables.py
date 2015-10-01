@@ -31,7 +31,7 @@ class CreateProfile(tables.LinkAction):
 class UpdateProfile(tables.LinkAction):
     name = "update"
     verbose_name = _("Update Profile")
-    url = "horizon:cluster:profiles:update"
+    url = profiles_forms.UPDATE_URL
     classes = ("ajax-modal",)
     icon = "pencil"
 
@@ -59,7 +59,8 @@ class DeleteProfile(tables.DeleteAction):
 
 
 class ProfilesTable(tables.DataTable):
-    name = tables.Column("name", verbose_name=_("Name"))
+    name = tables.Column("name", verbose_name=_("Name"),
+                         link=profiles_forms.DETAIL_URL)
     type = tables.Column("type", verbose_name=_("Type"))
     permission = tables.Column("permission",
                                verbose_name=_("Permission"))

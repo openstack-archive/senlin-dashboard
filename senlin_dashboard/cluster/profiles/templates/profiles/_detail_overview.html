@@ -1,0 +1,35 @@
+{% load i18n sizeformat parse_date nbsp %}
+{% load url from future %}
+
+<h3>{% trans "Profile Overview" %}</h3>
+
+<div class="info row detail">
+  <h4>{% trans "Information" %}</h4>
+  <hr class="header_rule">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ profile.name }}</dd>
+    <dt>{% trans "ID" %}</dt>
+    <dd>{{ profile.profile_id }}</dd>
+    <dt>{% trans "Type" %}</dt>
+    <dd>{{ profile.type }}</dd>
+    <dt>{% trans "Spec" %}</dt>
+    <dd>{{ profile.spec|force_escape|nbsp|linebreaksbr }}</dd>
+    {% if profile.permission %}
+    <dt>{% trans "Permission" %}</dt>
+    <dd>{{ profile.permission }}</dd>
+    {% endif %}
+    <dt>{% trans "Created" context "Created time" %}</dt>
+    <dd>{{ profile.created_time|parse_date }}</dd>
+    <dt>{% trans "Updated" context "Updated time" %}</dt>
+    <dd>{{ profile.updated_time|parse_date }}</dd>
+  </dl>
+</div>
+
+<div class="status row detail">
+  <h4>{% trans "Metadata" %}</h4>
+  <hr class="header_rule">
+  <dl class="dl-horizontal">
+    <dd>{{ profile.metadata|force_escape|nbsp|linebreaksbr }}</dd>
+  </dl>
+</div>

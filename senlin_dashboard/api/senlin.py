@@ -39,6 +39,11 @@ class Policy(base.APIResourceWrapper):
               'created_time', 'updated_time']
 
 
+class Node(base.APIResourceWrapper):
+    _attrs = ['id', 'name', 'status', 'created_time', 'updated_time',
+              'profile_name', 'status_reason', 'physical_id', 'role']
+
+
 @memoized.memoized
 def senlinclient(request):
     api_version = "1"
@@ -83,3 +88,9 @@ def policy_list(request):
     """Returns all policies."""
     policies = senlinclient(request).list(models.Policy)
     return [Policy(p) for p in policies]
+
+
+def node_list(request):
+    """Returns all nodes."""
+    nodes = senlinclient(request).list(models.Node)
+    return [Node(p) for p in nodes]

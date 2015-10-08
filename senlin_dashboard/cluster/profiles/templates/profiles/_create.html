@@ -1,6 +1,7 @@
 {% extends "horizon/common/_modal_form.html" %}
 {% load i18n %}
 
+{% block form_attrs %}enctype="multipart/form-data"{% endblock %}
 {% block modal-header %}{% trans "Create Profile" %}{% endblock %}
 
 {% block modal-body-right %}

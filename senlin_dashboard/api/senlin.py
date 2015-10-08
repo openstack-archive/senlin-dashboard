@@ -61,6 +61,12 @@ def cluster_list(request):
     return [Cluster(c) for c in clusters]
 
 
+def cluster_create(request, params):
+    """Create cluster."""
+    cluster = senlinclient(request).create(models.Cluster, params)
+    return cluster
+
+
 def profile_list(request):
     """Returns all profiles."""
     profiles = senlinclient(request).list(models.Profile)

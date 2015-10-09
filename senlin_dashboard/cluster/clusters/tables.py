@@ -11,9 +11,12 @@
 # limitations under the License.
 
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ungettext_lazy
 
 from horizon import tables
 from horizon.utils import filters
+
+from senlin_dashboard import api
 
 
 class CreateCluster(tables.LinkAction):
@@ -23,6 +26,28 @@ class CreateCluster(tables.LinkAction):
     classes = ("ajax-modal", "btn-create")
     icon = "plus"
     ajax = True
+
+
+class DeleteCluster(tables.DeleteAction):
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Delete Cluster",
+            u"Delete Clusters",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Deleted Cluster",
+            u"Deleted Clusters",
+            count
+        )
+
+    def delete(self, request, obj_id):
+        api.senlin.cluster_delete(request, obj_id)
 
 
 class ClustersTable(tables.DataTable):
@@ -53,4 +78,6 @@ class ClustersTable(tables.DataTable):
         name = "clusters"
         verbose_name = _("Clusters")
         table_actions = (tables.FilterAction,
-                         CreateCluster)
+                         CreateCluster,
+                         DeleteCluster,)
+        row_actions = (DeleteCluster,)

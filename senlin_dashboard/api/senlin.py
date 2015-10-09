@@ -113,3 +113,9 @@ def node_list(request):
     """Returns all nodes."""
     nodes = senlinclient(request).list(models.Node)
     return [Node(p) for p in nodes]
+
+
+def node_create(request, params):
+    """Create node."""
+    node = senlinclient(request).create(models.Node, params)
+    return node

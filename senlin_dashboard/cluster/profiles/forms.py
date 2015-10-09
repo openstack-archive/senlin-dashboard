@@ -78,27 +78,33 @@ class CreateProfileForm(forms.SelfHandlingForm):
         widget=forms.Select(attrs={
             'class': 'switchable',
             'data-slug': 'source'}))
-    spec_file = forms.FileField(label=_("Spec File"),
-                                widget=forms.FileInput(attrs={
-                                    'class': 'switched',
-                                    'data-switch-on': 'source',
-                                    'data-source-file': _('Spec File')}),
-                                required=False)
-    spec_yaml = forms.CharField(max_length=255,
-                                label=_("Spec YAML"),
-                                widget=forms.Textarea(attrs={
-                                    'rows': 6,
-                                    'class': 'switched',
-                                    'data-switch-on': 'source',
-                                    'data-source-yaml': _('Spec YAML')}),
-                                required=False)
-    permission = forms.CharField(max_length=255,
-                                 label=_("Permission"),
-                                 required=False)
-    metadata = forms.CharField(max_length=255,
-                               label=_("Metadata"),
-                               required=False,
-                               widget=forms.Textarea(attrs={'rows': 4}))
+    spec_file = forms.FileField(
+        label=_("Spec File"),
+        widget=forms.FileInput(attrs={
+            'class': 'switched',
+            'data-switch-on': 'source',
+            'data-source-file': _('Spec File')}),
+        required=False,
+        help_text=_("The spec file used to create the profile."))
+    spec_yaml = forms.CharField(
+        label=_("Spec YAML"),
+        required=False,
+        widget=forms.Textarea(attrs={
+            'rows': 6,
+            'class': 'switched',
+            'data-switch-on': 'source',
+            'data-source-yaml': _('Spec YAML')}),
+        help_text=_("The spec yaml used to create the profile."))
+    permission = forms.CharField(
+        max_length=255,
+        label=_("Permission"),
+        required=False,
+        help_text=_("A string format permission for this profile."))
+    metadata = forms.CharField(
+        label=_("Metadata"),
+        required=False,
+        widget=forms.Textarea(attrs={'rows': 4}),
+        help_text=_("YAML formatted metadata."))
 
     def handle(self, request, data):
         source_type = data.get('source_type')

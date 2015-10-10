@@ -44,8 +44,10 @@ class CreateForm(forms.SelfHandlingForm):
         label=_("Desired Capacity"),
         initial=0,
         help_text=_("Desired capacity of the cluster. Default to 0."))
+    # Hide the parent field
     parent = forms.ChoiceField(label=_("Parent Cluster"),
-                               required=False)
+                               required=False,
+                               widget=forms.HiddenInput())
     timeout = forms.IntegerField(
         label=_("Timeout"),
         required=False,
@@ -63,13 +65,11 @@ class CreateForm(forms.SelfHandlingForm):
         self.fields['profile_id'].choices = [(profile.id, profile.name)
                                              for profile in profiles]
 
-        clusters = senlin.cluster_list(request)
-        self.fields['parent'].choices = (
-            [("", _("No Parent Cluster"))] + [(cluster.id, cluster.name)
-                                              for cluster in clusters])
-
     def handle(self, request, data):
         try:
+            # As we hide the parent field, use None here
+            data['parent'] = None
+
             if not data['metadata']:
                 metadata = {}
             else:
@@ -80,8 +80,6 @@ class CreateForm(forms.SelfHandlingForm):
                                       'YAML format: %s') % six.text_type(ex))
             data['metadata'] = metadata
 
-            if not data['parent']:
-                data['parent'] = None
             cluster = senlin.cluster_create(request, data)
             msg = _('Creating cluster "%s" successfully') % data['name']
             messages.info(request, msg)

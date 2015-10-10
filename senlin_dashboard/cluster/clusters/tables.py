@@ -50,9 +50,27 @@ class DeleteCluster(tables.DeleteAction):
         api.senlin.cluster_delete(request, obj_id)
 
 
+class UpdateRow(tables.Row):
+    ajax = True
+
+    def get_data(self, request, cluster_id):
+        cluster = api.senlin.cluster_get(request, cluster_id)
+        return cluster
+
+
 class ClustersTable(tables.DataTable):
+    STATUS_CHOICES = (
+        ("ACTIVE", True),
+        ("CRITICAL", False),
+        ("ERROR", False),
+        ("WARNING", False),
+    )
+
     name = tables.Column("name", verbose_name=_("Name"))
-    status = tables.Column("status", verbose_name=_("Status"))
+    status = tables.Column("status",
+                           verbose_name=_("Status"),
+                           status=True,
+                           status_choices=STATUS_CHOICES)
     status_reason = tables.Column("status_reason",
                                   verbose_name=_("Status Reason"))
     profile_name = tables.Column("profile_name",
@@ -76,7 +94,9 @@ class ClustersTable(tables.DataTable):
 
     class Meta(object):
         name = "clusters"
+        row_class = UpdateRow
         verbose_name = _("Clusters")
+        status_columns = ["status"]
         table_actions = (tables.FilterAction,
                          CreateCluster,
                          DeleteCluster,)

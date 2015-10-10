@@ -72,6 +72,12 @@ def cluster_delete(request, cluster_id):
     senlinclient(request).delete(models.Cluster, {"id": cluster_id})
 
 
+def cluster_get(request, cluster_id):
+    """Returns cluster."""
+    cluster = senlinclient(request).get(models.Cluster, {"id": cluster_id})
+    return Cluster(cluster)
+
+
 def profile_list(request):
     """Returns all profiles."""
     profiles = senlinclient(request).list(models.Profile)

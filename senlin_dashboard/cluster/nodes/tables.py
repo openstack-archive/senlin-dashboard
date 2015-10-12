@@ -50,13 +50,29 @@ class DeleteNode(tables.DeleteAction):
         api.senlin.node_delete(request, obj_id)
 
 
+class UpdateRow(tables.Row):
+    ajax = True
+
+    def get_data(self, request, node_id):
+        node = api.senlin.node_get(request, node_id)
+        return node
+
+
 class NodesTable(tables.DataTable):
+    STATUS_CHOICES = (
+        ("ACTIVE", True),
+        ("ERROR", False),
+    )
+
     name = tables.Column("name", verbose_name=_("Name"))
     profile_name = tables.Column("profile_name",
                                  verbose_name=_("Profile Name"))
     physical_id = tables.Column("physical_id", verbose_name=_("Physical ID"))
     role = tables.Column("role", verbose_name=_("Role"))
-    status = tables.Column("status", verbose_name=_("Status"))
+    status = tables.Column("status",
+                           verbose_name=_("Status"),
+                           status=True,
+                           status_choices=STATUS_CHOICES)
     status_reason = tables.Column("status_reason",
                                   verbose_name=_("Status Reason"))
     created = tables.Column(
@@ -78,7 +94,9 @@ class NodesTable(tables.DataTable):
 
     class Meta(object):
         name = "nodes"
+        row_class = UpdateRow
         verbose_name = _("Nodes")
+        status_columns = ["status"]
         table_actions = (tables.FilterAction,
                          CreateNode,
                          DeleteNode,)

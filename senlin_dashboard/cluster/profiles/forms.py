@@ -100,6 +100,21 @@ class CreateProfileForm(forms.SelfHandlingForm):
                                required=False,
                                widget=forms.Textarea(attrs={'rows': 4}))
 
+    def clean(self):
+        data = super(CreateProfileForm, self).clean()
+
+        spec_file = data.get('spec_file', None)
+        spec_yaml = data.get('spec_yaml', None)
+
+        if not spec_file and not spec_yaml:
+            raise ValidationError(
+                _("A spec file or yaml must be specified."))
+        elif spec_file and spec_yaml:
+            raise ValidationError(
+                _("Can not specify both sepc file and yaml."))
+        else:
+            return data
+
     def handle(self, request, data):
         source_type = data.get('source_type')
         if source_type == "yaml":

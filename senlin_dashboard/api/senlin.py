@@ -130,3 +130,8 @@ def node_create(request, params):
     """Create node."""
     node = senlinclient(request).create(models.Node, params)
     return node
+
+
+def node_delete(request, node_id):
+    """Delete node."""
+    senlinclient(request).delete(models.Node, {"id": node_id})

@@ -11,9 +11,12 @@
 # limitations under the License.
 
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ungettext_lazy
 
 from horizon import tables
 from horizon.utils import filters
+
+from senlin_dashboard import api
 
 
 class CreateNode(tables.LinkAction):
@@ -23,6 +26,28 @@ class CreateNode(tables.LinkAction):
     classes = ("ajax-modal", "btn-create")
     icon = "plus"
     ajax = True
+
+
+class DeleteNode(tables.DeleteAction):
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Delete Node",
+            u"Delete Nodes",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Deleted Node",
+            u"Deleted Nodes",
+            count
+        )
+
+    def delete(self, request, obj_id):
+        api.senlin.node_delete(request, obj_id)
 
 
 class NodesTable(tables.DataTable):
@@ -55,4 +80,6 @@ class NodesTable(tables.DataTable):
         name = "nodes"
         verbose_name = _("Nodes")
         table_actions = (tables.FilterAction,
-                         CreateNode,)
+                         CreateNode,
+                         DeleteNode,)
+        row_actions = (DeleteNode,)

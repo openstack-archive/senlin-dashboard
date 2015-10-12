@@ -1,0 +1,14 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+
+{% block modal-header %}{% trans "Create Node" %}{% endblock %}
+
+{% block modal-body-right %}
+  <h3>{% trans "Description:" %}</h3>
+  <p>{% trans "Nodes are the physical objects, which can belong to any cluster of the same profile type." %}</p>
+{% endblock %}
+
+{% block modal-footer %}
+  <a href="{% url 'horizon:cluster:nodes:index' %}" class="btn btn-default cancel">{% trans "Cancel" %}</a>
+  <input class="btn btn-primary" type="submit" value="{% trans "Create Node" %}" />
+{% endblock %}

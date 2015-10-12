@@ -10,12 +10,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
+from horizon import forms
 from horizon import tables
 
 from senlin_dashboard.api import senlin
+from senlin_dashboard.cluster.nodes import forms as nodes_forms
 from senlin_dashboard.cluster.nodes.tables import NodesTable
 
 
@@ -31,3 +34,11 @@ class IndexView(tables.DataTableView):
             exceptions.handle(self.request,
                               _('Unable to retrieve nodes.'))
         return nodes
+
+
+class CreateView(forms.ModalFormView):
+    template_name = 'cluster/nodes/create.html'
+    page_title = _("Create Node")
+    form_class = nodes_forms.CreateForm
+    submit_url = reverse_lazy("horizon:cluster:nodes:create")
+    success_url = reverse_lazy("horizon:cluster:nodes:index")

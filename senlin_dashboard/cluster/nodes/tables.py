@@ -16,6 +16,15 @@ from horizon import tables
 from horizon.utils import filters
 
 
+class CreateNode(tables.LinkAction):
+    name = "create"
+    verbose_name = _("Create Node")
+    url = "horizon:cluster:nodes:create"
+    classes = ("ajax-modal", "btn-create")
+    icon = "plus"
+    ajax = True
+
+
 class NodesTable(tables.DataTable):
     name = tables.Column("name", verbose_name=_("Name"))
     profile_name = tables.Column("profile_name",
@@ -45,4 +54,5 @@ class NodesTable(tables.DataTable):
     class Meta(object):
         name = "nodes"
         verbose_name = _("Nodes")
-        table_actions = (tables.FilterAction,)
+        table_actions = (tables.FilterAction,
+                         CreateNode,)

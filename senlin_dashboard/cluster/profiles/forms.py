@@ -59,7 +59,7 @@ def _populate_profile_params(name, spec, permission, metadata, id=None):
                                     'YAML file: %s') % six.text_type(ex))
     params = {"name": name,
               "spec": spec_dict,
-              "permission": permission,
+              "permission": permission or None,
               "metadata": metadata_dict}
 
     if id is not None:
@@ -99,6 +99,7 @@ class CreateProfileForm(forms.SelfHandlingForm):
         max_length=255,
         label=_("Permission"),
         required=False,
+        widget=forms.HiddenInput(),
         help_text=_("A string format permission for this profile."))
     metadata = forms.CharField(
         label=_("Metadata"),
@@ -173,7 +174,7 @@ class UpdateProfileForm(forms.SelfHandlingForm):
             id=data.get('profile_id'),
             name=data.get('name'),
             spec=None,
-            permission=data.get('permission', ''),
+            permission=data.get('permission'),
             metadata=data.get('metadata', {})
         )
 

@@ -62,8 +62,6 @@ class ProfilesTable(tables.DataTable):
     name = tables.Column("name", verbose_name=_("Name"),
                          link=profiles_forms.DETAIL_URL)
     type = tables.Column("type", verbose_name=_("Type"))
-    permission = tables.Column("permission",
-                               verbose_name=_("Permission"))
     created = tables.Column(
         "created_time",
         verbose_name=_("Created"),

@@ -20,7 +20,8 @@ from mox3.mox import IsA  # noqa
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
-INDEX_URL = reverse('horizon:cluster:nodes:index')
+NODE_INDEX_URL = reverse('horizon:cluster:nodes:index')
+NODE_CREATE_URL = reverse('horizon:cluster:nodes:create')
 
 
 class NodesTest(test.TestCase):
@@ -32,7 +33,7 @@ class NodesTest(test.TestCase):
             IsA(http.HttpRequest)).AndReturn(nodes)
         self.mox.ReplayAll()
 
-        res = self.client.get(INDEX_URL)
+        res = self.client.get(NODE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/nodes/index.html')
         self.assertEqual(len(nodes), 1)
 
@@ -42,7 +43,7 @@ class NodesTest(test.TestCase):
             IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
         self.mox.ReplayAll()
 
-        res = self.client.get(INDEX_URL)
+        res = self.client.get(NODE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/nodes/index.html')
         self.assertEqual(len(res.context['nodes_table'].data), 0)
 
@@ -52,7 +53,37 @@ class NodesTest(test.TestCase):
             IsA(http.HttpRequest)).AndReturn([])
         self.mox.ReplayAll()
 
-        res = self.client.get(INDEX_URL)
+        res = self.client.get(NODE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/nodes/index.html')
         self.assertContains(res, 'No items to display')
         self.assertEqual(len(res.context['nodes_table'].data), 0)
+
+    @test.create_stubs({api.senlin: ('node_create',
+                                     'profile_list',
+                                     'cluster_list')})
+    def test_create_node(self):
+        node = self.nodes.list()[0]
+        profiles = self.profiles.list()
+        clusters = self.clusters.list()
+
+        formdata = {
+            'name': 'test-node',
+            'profile_id': '123456',
+            'cluster_id': '',
+            'role': '',
+            'metadata': ''
+        }
+
+        opts = formdata
+
+        api.senlin.profile_list(
+            IsA(http.HttpRequest)).AndReturn(profiles)
+        api.senlin.cluster_list(
+            IsA(http.HttpRequest)).AndReturn(clusters)
+        api.senlin.node_create(
+            IsA(http.HttpRequest), opts).AndReturn(node)
+        self.mox.ReplayAll()
+
+        res = self.client.post(NODE_CREATE_URL, formdata)
+        self.assertNoFormErrors(res)
+        self.assertRedirectsNoFollow(res, NODE_INDEX_URL)

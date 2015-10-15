@@ -21,6 +21,7 @@ def data(TEST):
     # Profiles
     TEST.profiles = test_data_utils.TestDataContainer()
     profile_1 = mock.Mock()
+    profile_1.id = "123456"
     profile_1.name = "test-profile"
 
     TEST.profiles.add(profile_1)

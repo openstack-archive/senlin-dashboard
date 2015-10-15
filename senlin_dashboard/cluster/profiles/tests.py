@@ -20,7 +20,8 @@ from mox3.mox import IsA  # noqa
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
-INDEX_URL = reverse('horizon:cluster:profiles:index')
+PROFILE_INDEX_URL = reverse('horizon:cluster:profiles:index')
+PROFILE_CREATE_URL = reverse('horizon:cluster:profiles:create')
 
 
 class ProfilesTest(test.TestCase):
@@ -32,7 +33,7 @@ class ProfilesTest(test.TestCase):
             IsA(http.HttpRequest)).AndReturn(profiles)
         self.mox.ReplayAll()
 
-        res = self.client.get(INDEX_URL)
+        res = self.client.get(PROFILE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/profiles/index.html')
         self.assertEqual(len(profiles), 1)
 
@@ -42,7 +43,7 @@ class ProfilesTest(test.TestCase):
             IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
         self.mox.ReplayAll()
 
-        res = self.client.get(INDEX_URL)
+        res = self.client.get(PROFILE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/profiles/index.html')
         self.assertEqual(len(res.context['profiles_table'].data), 0)
 
@@ -52,7 +53,47 @@ class ProfilesTest(test.TestCase):
             IsA(http.HttpRequest)).AndReturn([])
         self.mox.ReplayAll()
 
-        res = self.client.get(INDEX_URL)
+        res = self.client.get(PROFILE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/profiles/index.html')
         self.assertContains(res, 'No items to display')
         self.assertEqual(len(res.context['profiles_table'].data), 0)
+
+    @test.create_stubs({api.senlin: ('profile_create',)})
+    def test_create_profile(self):
+        profile = self.profiles.list()[0]
+
+        spec_yaml = """
+        type: os.nova.server
+        version: 1.0
+        properties:
+          name: cirros_server
+          flavor: 1
+          image: "cirros-0.3.4-x86_64-uec"
+          key_name: oskey
+          networks:
+           - network: private
+        """
+
+        formdata = {
+            'name': 'test-profile',
+            'source_type': 'yaml',
+            'spec_yaml': spec_yaml,
+            'permission': None,
+            'metadata': None
+        }
+
+        opts = {
+            'name': 'test-profile',
+            'spec_yaml': spec_yaml,
+            'type': 'os.nova.server',
+            'permission': None,
+            'metadata': None
+        }
+
+        api.senlin.profile_create(
+            IsA(http.HttpRequest), opts).AndReturn(profile)
+        self.mox.ReplayAll()
+
+        res = self.client.post(PROFILE_CREATE_URL, formdata)
+        self.assertNoFormErrors(res)
+        self.assertRedirectsNoFollow(res, PROFILE_INDEX_URL)

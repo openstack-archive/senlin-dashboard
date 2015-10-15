@@ -63,6 +63,13 @@ class UpdateView(forms.ModalFormView):
             # Get initial profile information
             profile_id = self.kwargs["profile_id"]
             profile = senlin.profile_get(self.request, profile_id)
+            # Metadata in update form should be empty rather than {}
+            if not profile.metadata:
+                metadata = None
+            else:
+                metadata = yaml.safe_dump(
+                    profile.metadata,
+                    default_flow_style=False)
             profile_dict = {"profile_id": profile_id,
                             "name": profile.name,
                             "type": profile.type,
@@ -70,9 +77,7 @@ class UpdateView(forms.ModalFormView):
                                 profile.spec,
                                 default_flow_style=False),
                             "permission": profile.permission,
-                            "metadata": yaml.safe_dump(
-                                profile.metadata,
-                                default_flow_style=False),
+                            "metadata": metadata
                             }
         except Exception:
             msg = _("Unable to retrieve profile.")

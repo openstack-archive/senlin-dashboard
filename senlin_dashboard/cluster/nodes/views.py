@@ -16,10 +16,13 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import exceptions
 from horizon import forms
 from horizon import tables
+from horizon import tabs
+from horizon.utils import memoized
 
 from senlin_dashboard.api import senlin
 from senlin_dashboard.cluster.nodes import forms as nodes_forms
 from senlin_dashboard.cluster.nodes.tables import NodesTable
+from senlin_dashboard.cluster.nodes import tabs as nodes_tabs
 
 
 class IndexView(tables.DataTableView):
@@ -42,3 +45,34 @@ class CreateView(forms.ModalFormView):
     form_class = nodes_forms.CreateForm
     submit_url = reverse_lazy("horizon:cluster:nodes:create")
     success_url = reverse_lazy("horizon:cluster:nodes:index")
+
+
+class DetailView(tabs.TabView):
+    tab_group_class = nodes_tabs.NodeDetailTabs
+    template_name = 'cluster/nodes/detail.html'
+    page_title = _("Node Details: {{ node.name }}")
+
+    @memoized.memoized_method
+    def get_object(self):
+        try:
+            # Get initial node information
+            node_id = self.kwargs["node_id"]
+            node = senlin.node_get(self.request, node_id)
+        except Exception:
+            msg = _("Unable to retrieve node.")
+            url = reverse_lazy("horizon:cluster:nodes:index")
+            exceptions.handle(self.request, msg, redirect=url)
+        return node
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        table = NodesTable(self.request)
+        node = self.get_object()
+        context["actions"] = table.render_row_actions(node)
+        context["node"] = node
+        context["url"] = reverse_lazy("horizon:cluster:nodes:index")
+        return context
+
+    def get_tabs(self, request, *args, **kwargs):
+        node = self.get_object()
+        return self.tab_group_class(request, node=node, **kwargs)

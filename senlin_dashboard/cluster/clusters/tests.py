@@ -20,7 +20,8 @@ from mox3.mox import IsA  # noqa
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
-INDEX_URL = reverse('horizon:cluster:clusters:index')
+CLUSTER_INDEX_URL = reverse('horizon:cluster:clusters:index')
+CLUSTER_CREATE_URL = reverse('horizon:cluster:clusters:create')
 
 
 class ClustersTest(test.TestCase):
@@ -32,7 +33,7 @@ class ClustersTest(test.TestCase):
             IsA(http.HttpRequest)).AndReturn(clusters)
         self.mox.ReplayAll()
 
-        res = self.client.get(INDEX_URL)
+        res = self.client.get(CLUSTER_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
         self.assertEqual(len(clusters), 1)
 
@@ -42,7 +43,7 @@ class ClustersTest(test.TestCase):
             IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
         self.mox.ReplayAll()
 
-        res = self.client.get(INDEX_URL)
+        res = self.client.get(CLUSTER_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
         self.assertEqual(len(res.context['clusters_table'].data), 0)
         self.assertMessageCount(res, error=1)
@@ -53,7 +54,36 @@ class ClustersTest(test.TestCase):
             IsA(http.HttpRequest)).AndReturn([])
         self.mox.ReplayAll()
 
-        res = self.client.get(INDEX_URL)
+        res = self.client.get(CLUSTER_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
         self.assertContains(res, 'No items to display')
         self.assertEqual(len(res.context['clusters_table'].data), 0)
+
+    @test.create_stubs({api.senlin: ('cluster_create',
+                                     'profile_list',)})
+    def test_create_node(self):
+        cluster = self.clusters.list()[0]
+        profiles = self.profiles.list()
+
+        formdata = {
+            'name': 'test-cluster',
+            'profile_id': '123456',
+            'min_size': 0,
+            'max_size': -1,
+            'desired_capacity': 1,
+            'parent': '',
+            'timeout': 200,
+            'metadata': ''
+        }
+
+        opts = formdata
+
+        api.senlin.profile_list(
+            IsA(http.HttpRequest)).AndReturn(profiles)
+        api.senlin.cluster_create(
+            IsA(http.HttpRequest), opts).AndReturn(cluster)
+        self.mox.ReplayAll()
+
+        res = self.client.post(CLUSTER_CREATE_URL, formdata)
+        self.assertNoFormErrors(res)
+        self.assertRedirectsNoFollow(res, CLUSTER_INDEX_URL)

@@ -154,20 +154,21 @@ class CreateProfileForm(forms.SelfHandlingForm):
 class UpdateProfileForm(forms.SelfHandlingForm):
     profile_id = forms.CharField(widget=forms.HiddenInput())
     name = forms.CharField(max_length=255, label=_("Name"))
-    type = forms.CharField(
-        label=_('Type'),
-        widget=forms.TextInput(attrs={'readonly': 'readonly'}))
-    spec = forms.CharField(max_length=255,
-                           label=_("Spec"),
-                           widget=forms.Textarea(attrs={'rows': 6,
-                                                 'readonly': 'readonly'}))
-    permission = forms.CharField(max_length=255,
-                                 label=_("Permission"),
-                                 required=False)
-    metadata = forms.CharField(max_length=255,
-                               label=_("Metadata"),
-                               required=False,
-                               widget=forms.Textarea(attrs={'rows': 4}))
+    spec = forms.CharField(
+        label=_("Spec"),
+        widget=forms.Textarea(attrs={'rows': 6}),
+        help_text=_("The spec yaml used to create the profile."))
+    permission = forms.CharField(
+        max_length=255,
+        label=_("Permission"),
+        required=False,
+        widget=forms.HiddenInput(),
+        help_text=_("A string format permission for this profile."))
+    metadata = forms.CharField(
+        label=_("Metadata"),
+        required=False,
+        widget=forms.Textarea(attrs={'rows': 4}),
+        help_text=_("YAML formatted metadata."))
 
     def handle(self, request, data):
         opts = _populate_profile_params(

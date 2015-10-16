@@ -10,16 +10,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.conf.urls import patterns  # noqa
-from django.conf.urls import url  # noqa
+from django.utils.translation import ugettext_lazy as _
 
-from senlin_dashboard.cluster.nodes import views
+from horizon import tabs
 
 
-urlpatterns = patterns(
-    '',
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^create/$', views.CreateView.as_view(), name='create'),
-    url(r'^(?P<node_id>[^/]+)/$',
-        views.DetailView.as_view(), name='detail'),
-)
+class OverviewTab(tabs.Tab):
+    name = _("Overview")
+    slug = "overview"
+    template_name = ("cluster/nodes/_detail_overview.html")
+
+    def get_context_data(self, request):
+        return {"node": self.tab_group.kwargs['node']}
+
+
+class NodeDetailTabs(tabs.TabGroup):
+    slug = "node_details"
+    tabs = (OverviewTab,)

@@ -64,7 +64,8 @@ class NodesTable(tables.DataTable):
         ("ERROR", False),
     )
 
-    name = tables.Column("name", verbose_name=_("Name"))
+    name = tables.Column("name", verbose_name=_("Name"),
+                         link="horizon:cluster:nodes:detail")
     profile_name = tables.Column("profile_name",
                                  verbose_name=_("Profile Name"))
     physical_id = tables.Column("physical_id", verbose_name=_("Physical ID"))

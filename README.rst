@@ -5,7 +5,7 @@ Senlin Dashboard
 Senlin Management Dashboard
 
 * Free software: Apache license
-* Source: http://git.openstack.org/cgit/stackforge/senlin-dashboard
+* Source: http://git.openstack.org/cgit/openstack/senlin-dashboard
 * Bugs: http://bugs.launchpad.net/senlin-dashboard
 
 Installation instructions
@@ -13,9 +13,9 @@ Installation instructions
 
 Begin by cloning the Horizon and Senlin Dashboard repositories::
 
-    git clone https://github.com/openstack/horizon
-    git clone https://github.com/stackforge/python-senlinclient.git
-    git clone https://github.com/stackforge/senlin-dashboard
+    git clone https://git.openstack.org/openstack/horizon
+    git clone https://git.openstack.org/openstack/python-senlinclient.git
+    git clone https://git.openstack.org/openstack/senlin-dashboard
 
 Create a virtual environment and install Horizon dependencies::
 

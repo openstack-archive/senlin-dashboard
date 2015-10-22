@@ -41,7 +41,8 @@ class Policy(base.APIResourceWrapper):
 
 class Node(base.APIResourceWrapper):
     _attrs = ['id', 'name', 'status', 'created_time', 'updated_time',
-              'profile_name', 'status_reason', 'physical_id', 'role']
+              'profile_name', 'status_reason', 'physical_id', 'role',
+              'profile_id', 'profile_url']
 
 
 @memoized.memoized

@@ -10,7 +10,7 @@
     <dt>{% trans "Name" %}</dt>
     <dd>{{ node.name }}</dd>
     <dt>{% trans "Profile Name" %}</dt>
-    <dd>{{ node.profile_name }}</dd>
+    <dd><a href="{{ node.profile_url }}">{{ node.profile_name }}</a></dd>
     <dt>{% trans "ID" %}</dt>
     <dd>{{ node.id }}</dd>
     <dt>{% trans "Status" %}</dt>

@@ -51,6 +51,7 @@ class DetailView(tabs.TabView):
     tab_group_class = nodes_tabs.NodeDetailTabs
     template_name = 'cluster/nodes/detail.html'
     page_title = _("Node Details: {{ node.name }}")
+    profile_url = 'horizon:cluster:profiles:detail'
 
     @memoized.memoized_method
     def get_object(self):
@@ -68,6 +69,8 @@ class DetailView(tabs.TabView):
         context = super(DetailView, self).get_context_data(**kwargs)
         table = NodesTable(self.request)
         node = self.get_object()
+        node.profile_url = reverse_lazy(self.profile_url,
+                                        args=[node.profile_id])
         context["actions"] = table.render_row_actions(node)
         context["node"] = node
         context["url"] = reverse_lazy("horizon:cluster:nodes:index")

@@ -22,6 +22,18 @@ def data(TEST):
     TEST.profiles = test_data_utils.TestDataContainer()
     profile_1 = mock.Mock()
     profile_1.name = "test-profile"
+    profile_1.metadata = {}
+    profile_1.spec = {
+        'type': 'os.nova.server',
+        'version': '1.0',
+        'properties': {
+            'name': 'cirros_server',
+            'flavor': 1,
+            'image': 'cirros-0.3.4-x86_64-uec',
+            'key_name': 'oskey',
+            'networks': [{'network': 'private'}]
+        },
+    }
 
     TEST.profiles.add(profile_1)
 

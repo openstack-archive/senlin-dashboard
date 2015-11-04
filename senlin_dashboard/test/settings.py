@@ -12,3 +12,6 @@
 #    under the License.
 
 from openstack_dashboard.test.settings import *  # noqa
+
+
+INSTALLED_APPS.append('senlin_dashboard.cluster')

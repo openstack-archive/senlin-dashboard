@@ -103,11 +103,11 @@ class DetailView(tabs.TabView):
             # Get initial profile information
             profile_id = self.kwargs["profile_id"]
             profile = senlin.profile_get(self.request, profile_id)
-            profile["profile_id"] = profile_id
-            profile["spec"] = yaml.safe_dump(profile.spec,
-                                             default_flow_style=False)
-            profile["metadata"] = yaml.safe_dump(profile.metadata,
-                                                 default_flow_style=False)
+            profile.profile_id = profile_id
+            profile.profile_spec = yaml.safe_dump(profile.spec,
+                                                  default_flow_style=False)
+            profile.profile_metadata = yaml.safe_dump(profile.metadata,
+                                                      default_flow_style=False)
         except Exception:
             msg = _("Unable to retrieve profile.")
             url = reverse_lazy(profiles_forms.INDEX_URL)

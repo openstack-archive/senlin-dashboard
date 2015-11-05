@@ -14,7 +14,7 @@
     <dt>{% trans "Type" %}</dt>
     <dd>{{ profile.type }}</dd>
     <dt>{% trans "Spec" %}</dt>
-    <dd>{{ profile.spec|force_escape|nbsp|linebreaksbr }}</dd>
+    <dd>{{ profile.profile_spec|force_escape|nbsp|linebreaksbr }}</dd>
     {% if profile.permission %}
     <dt>{% trans "Permission" %}</dt>
     <dd>{{ profile.permission }}</dd>
@@ -26,12 +26,12 @@
   </dl>
 </div>
 
-{% if profile.metadata.vars %}
+{% if profile.profile_metadata.vars %}
 <div class="status row detail">
   <h4>{% trans "Metadata" %}</h4>
   <hr class="header_rule">
   <dl class="dl-horizontal">
-    <dd>{{ profile.metadata|force_escape|nbsp|linebreaksbr }}</dd>
+    <dd>{{ profile.profile_metadata|force_escape|nbsp|linebreaksbr }}</dd>
   </dl>
 </div>
 {% endif %}

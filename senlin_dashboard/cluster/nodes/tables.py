@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
@@ -58,6 +59,11 @@ class UpdateRow(tables.Row):
         return node
 
 
+def get_profile_link(node):
+    return reverse_lazy('horizon:cluster:profiles:detail',
+                        args=[node.profile_id])
+
+
 class NodesTable(tables.DataTable):
     STATUS_CHOICES = (
         ("ACTIVE", True),
@@ -67,6 +73,7 @@ class NodesTable(tables.DataTable):
     name = tables.Column("name", verbose_name=_("Name"),
                          link="horizon:cluster:nodes:detail")
     profile_name = tables.Column("profile_name",
+                                 link=get_profile_link,
                                  verbose_name=_("Profile Name"))
     physical_id = tables.Column("physical_id", verbose_name=_("Physical ID"))
     role = tables.Column("role", verbose_name=_("Role"))

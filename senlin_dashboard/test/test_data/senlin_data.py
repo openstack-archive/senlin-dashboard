@@ -62,6 +62,6 @@ def data(TEST):
     # Nodes
     TEST.nodes = test_data_utils.TestDataContainer()
     node_1 = mock.Mock()
-    node_1.name = "test-policy"
+    node_1.name = "test-node"
 
     TEST.nodes.add(node_1)

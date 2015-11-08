@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
@@ -26,6 +27,11 @@ class CreateCluster(tables.LinkAction):
     classes = ("ajax-modal", "btn-create")
     icon = "plus"
     ajax = True
+
+
+def get_profile_link(cluster):
+    return reverse_lazy('horizon:cluster:profiles:detail',
+                        args=[cluster.profile_id])
 
 
 class DeleteCluster(tables.DeleteAction):
@@ -74,6 +80,7 @@ class ClustersTable(tables.DataTable):
     status_reason = tables.Column("status_reason",
                                   verbose_name=_("Status Reason"))
     profile_name = tables.Column("profile_name",
+                                 link=get_profile_link,
                                  verbose_name=_("Profile Name"))
     created = tables.Column(
         "created_time",

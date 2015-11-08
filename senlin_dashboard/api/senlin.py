@@ -22,7 +22,7 @@ USER_AGENT = 'python-senlinclient'
 
 class Cluster(base.APIResourceWrapper):
     _attrs = ['id', 'name', 'status', 'created_time', 'updated_time',
-              'profile_name', 'status_reason']
+              'profile_name', 'profile_id', 'status_reason']
 
 
 class Profile(base.APIResourceWrapper):

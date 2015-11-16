@@ -156,7 +156,8 @@ class UpdateProfileForm(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Name"))
     spec = forms.CharField(
         label=_("Spec"),
-        widget=forms.Textarea(attrs={'rows': 6}),
+        widget=forms.Textarea(
+            attrs={'rows': 6, 'readonly': 'readonly'}),
         help_text=_("The spec yaml used to create the profile."))
     permission = forms.CharField(
         max_length=255,

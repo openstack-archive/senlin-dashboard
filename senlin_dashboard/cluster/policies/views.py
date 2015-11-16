@@ -10,12 +10,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from senlin_dashboard.api import senlin
+from senlin_dashboard.cluster.policies import forms as policies_forms
 from senlin_dashboard.cluster.policies.tables import PoliciesTable
 
 from horizon import exceptions
+from horizon import forms
 from horizon import tables
 
 
@@ -31,3 +34,11 @@ class IndexView(tables.DataTableView):
             exceptions.handle(self.request,
                               _('Unable to retrieve policies.'))
         return policies
+
+
+class CreateView(forms.ModalFormView):
+    template_name = 'cluster/policies/create.html'
+    page_title = _("Create Policy")
+    form_class = policies_forms.CreatePolicyForm
+    submit_url = reverse_lazy(policies_forms.CREATE_URL)
+    success_url = reverse_lazy(policies_forms.INDEX_URL)

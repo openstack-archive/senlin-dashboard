@@ -15,11 +15,20 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import tables
 from horizon.utils import filters
 
+from senlin_dashboard.cluster.policies import forms as policies_forms
+
+
+class CreatePolicy(tables.LinkAction):
+    name = "create"
+    verbose_name = _("Create Policy")
+    url = policies_forms.CREATE_URL
+    classes = ("ajax-modal",)
+    icon = "plus"
+
 
 class PoliciesTable(tables.DataTable):
     name = tables.Column("name", verbose_name=_("Name"))
     type = tables.Column("type", verbose_name=_("Type"))
-    spec = tables.Column("spec", verbose_name=_("Spec"))
     level = tables.Column("level", verbose_name=_("Level"))
     cooldown = tables.Column("cooldown", verbose_name=_("Cooldown"))
     created = tables.Column(
@@ -42,4 +51,5 @@ class PoliciesTable(tables.DataTable):
     class Meta(object):
         name = "policies"
         verbose_name = _("Policies")
-        table_actions = (tables.FilterAction,)
+        table_actions = (tables.FilterAction,
+                         CreatePolicy,)

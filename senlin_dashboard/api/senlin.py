@@ -121,6 +121,12 @@ def policy_list(request):
     return [Policy(p) for p in policies]
 
 
+def policy_create(request, args):
+    """Create a policy."""
+    policy = senlinclient(request).create(models.Policy, args)
+    return policy
+
+
 def node_list(request):
     """Returns all nodes."""
     nodes = senlinclient(request).list(models.Node)

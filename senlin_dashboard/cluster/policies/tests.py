@@ -12,6 +12,8 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import yaml
+
 from django.core.urlresolvers import reverse
 from django import http
 
@@ -21,6 +23,7 @@ from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
 INDEX_URL = reverse('horizon:cluster:policies:index')
+CREATE_URL = reverse('horizon:cluster:policies:create')
 
 
 class PoliciesTest(test.TestCase):
@@ -57,3 +60,40 @@ class PoliciesTest(test.TestCase):
         self.assertTemplateUsed(res, 'cluster/policies/index.html')
         self.assertContains(res, 'No items to display')
         self.assertEqual(len(res.context['policies_table'].data), 0)
+
+    @test.create_stubs({api.senlin: ('policy_create',)})
+    def test_create_policy(self):
+        policy = self.policies.list()[0]
+
+        spec_yaml = """
+        type: senlin.policy.deletion
+        version: 1.0
+        description: A policy.
+        properties:
+          criteria: OLDEST_FIRST
+          destroy_after_deletion: True
+          grace_period: 60
+          reduce_desired_capacity: False
+        """
+
+        formdata = {
+            'name': 'test-policy',
+            'spec': spec_yaml,
+            'cooldown': 0,
+            'level': 0
+        }
+
+        args = {
+            'name': 'test-policy',
+            'spec': yaml.load(spec_yaml),
+            'cooldown': 0,
+            'level': 0
+        }
+
+        api.senlin.policy_create(
+            IsA(http.HttpRequest), args).AndReturn(policy)
+        self.mox.ReplayAll()
+
+        res = self.client.post(CREATE_URL, formdata)
+        self.assertNoFormErrors(res)
+        self.assertRedirectsNoFollow(res, INDEX_URL)

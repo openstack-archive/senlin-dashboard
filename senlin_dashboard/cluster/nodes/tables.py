@@ -64,6 +64,11 @@ def get_profile_link(node):
                         args=[node.profile_id])
 
 
+def get_physical_link(node):
+    return reverse_lazy('horizon:project:instances:detail',
+                        args=[node.physical_id])
+
+
 class NodesTable(tables.DataTable):
     STATUS_CHOICES = (
         ("ACTIVE", True),
@@ -75,7 +80,9 @@ class NodesTable(tables.DataTable):
     profile_name = tables.Column("profile_name",
                                  link=get_profile_link,
                                  verbose_name=_("Profile Name"))
-    physical_id = tables.Column("physical_id", verbose_name=_("Physical ID"))
+    physical_id = tables.Column("physical_id",
+                                link=get_physical_link,
+                                verbose_name=_("Physical ID"))
     role = tables.Column("role", verbose_name=_("Role"))
     status = tables.Column("status",
                            verbose_name=_("Status"),

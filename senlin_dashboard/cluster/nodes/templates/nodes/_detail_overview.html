@@ -23,8 +23,10 @@
     {% endif %}
     <dt>{% trans "Created" context "Created time" %}</dt>
     <dd>{{ node.created_time|parse_date }}</dd>
+    {% if node.updated_time %}
     <dt>{% trans "Updated" context "Updated time" %}</dt>
-    <dd>{{ node.updated_time|parse_date|default:"-" }}</dd>
+    <dd>{{ node.updated_time|parse_date }}</dd>
+    {% endif %}
   </dl>
 </div>
 

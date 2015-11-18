@@ -21,8 +21,10 @@
     {% endif %}
     <dt>{% trans "Created" context "Created time" %}</dt>
     <dd>{{ profile.created_time|parse_date }}</dd>
+    {% if profile.updated_time %}
     <dt>{% trans "Updated" context "Updated time" %}</dt>
     <dd>{{ profile.updated_time|parse_date }}</dd>
+    {% endif %}
   </dl>
 </div>
 

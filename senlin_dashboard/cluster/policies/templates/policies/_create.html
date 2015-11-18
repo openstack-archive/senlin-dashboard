@@ -1,0 +1,15 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+
+{% block modal-header %}{% trans "Create Policy" %}{% endblock %}
+
+{% block modal-body-right %}
+  <h3>{% trans "Description:" %}</h3>
+  <p>{% trans "A policy is a set of rules that can be checked and/or enforced when an Action is performed on a Cluster." %}</p>
+  <a target="_blank" href="https://github.com/openstack/senlin/tree/master/examples/policies">{% trans "Policy Spec Examples" %}</a>
+{% endblock %}
+
+{% block modal-footer %}
+  <a href="{% url 'horizon:cluster:policies:index' %}" class="btn btn-default cancel">{% trans "Cancel" %}</a>
+  <input class="btn btn-primary" type="submit" value="{% trans "Create Policy" %}" />
+{% endblock %}

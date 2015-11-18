@@ -11,6 +11,7 @@
 # limitations under the License.
 
 from django.core.urlresolvers import reverse_lazy
+from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
@@ -66,17 +67,39 @@ class UpdateRow(tables.Row):
 
 class ClustersTable(tables.DataTable):
     STATUS_CHOICES = (
+        ("INIT", None),
         ("ACTIVE", True),
-        ("CRITICAL", False),
         ("ERROR", False),
-        ("WARNING", False),
+        ("DELETED", False),
+        ("CRITICAL", False),
+        ("WARNING", None),
+        ("CREATING", None),
+        ("UPDATING", None),
+        ("DELETING", None),
+    )
+
+    STATUS_DISPLAY_CHOICES = (
+        ("INIT", pgettext_lazy("Current status of a Cluster", u"INIT")),
+        ("ACTIVE", pgettext_lazy("Current status of a Cluster", u"ACTIVE")),
+        ("ERROR", pgettext_lazy("Current status of a Cluster", u"ERROR")),
+        ("DELETED", pgettext_lazy("Current status of a Cluster", u"DELETED")),
+        ("CRITICAL", pgettext_lazy("Current status of a Cluster",
+                                   u"CRITICAL")),
+        ("WARNING", pgettext_lazy("Current status of a Cluster", u"WARNING")),
+        ("CREATING", pgettext_lazy("Current status of a Cluster",
+                                   u"CREATING")),
+        ("UPDATING", pgettext_lazy("Current status of a Cluster",
+                                   u"UPDATING")),
+        ("DELETING", pgettext_lazy("Current status of a Cluster",
+                                   u"DELETING")),
     )
 
     name = tables.Column("name", verbose_name=_("Name"))
     status = tables.Column("status",
                            verbose_name=_("Status"),
                            status=True,
-                           status_choices=STATUS_CHOICES)
+                           status_choices=STATUS_CHOICES,
+                           display_choices=STATUS_DISPLAY_CHOICES)
     status_reason = tables.Column("status_reason",
                                   verbose_name=_("Status Reason"))
     profile_name = tables.Column("profile_name",

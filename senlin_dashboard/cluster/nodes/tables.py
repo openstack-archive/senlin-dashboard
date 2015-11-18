@@ -11,6 +11,7 @@
 # limitations under the License.
 
 from django.core.urlresolvers import reverse_lazy
+from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
@@ -71,8 +72,25 @@ def get_physical_link(node):
 
 class NodesTable(tables.DataTable):
     STATUS_CHOICES = (
+        ("INIT", None),
         ("ACTIVE", True),
         ("ERROR", False),
+        ("DELETED", False),
+        ("WARNING", None),
+        ("CREATING", None),
+        ("UPDATING", None),
+        ("DELETING", None),
+    )
+
+    STATUS_DISPLAY_CHOICES = (
+        ("INIT", pgettext_lazy("Current status of a Node", u"INIT")),
+        ("ACTIVE", pgettext_lazy("Current status of a Node", u"ACTIVE")),
+        ("ERROR", pgettext_lazy("Current status of a Node", u"ERROR")),
+        ("DELETED", pgettext_lazy("Current status of a Node", u"DELETED")),
+        ("WARNING", pgettext_lazy("Current status of a Node", u"WARNING")),
+        ("CREATING", pgettext_lazy("Current status of a Node", u"CREATING")),
+        ("UPDATING", pgettext_lazy("Current status of a Node", u"UPDATING")),
+        ("DELETING", pgettext_lazy("Current status of a Node", u"DELETING")),
     )
 
     name = tables.Column("name", verbose_name=_("Name"),
@@ -87,7 +105,8 @@ class NodesTable(tables.DataTable):
     status = tables.Column("status",
                            verbose_name=_("Status"),
                            status=True,
-                           status_choices=STATUS_CHOICES)
+                           status_choices=STATUS_CHOICES,
+                           display_choices=STATUS_DISPLAY_CHOICES)
     status_reason = tables.Column("status_reason",
                                   verbose_name=_("Status Reason"))
     created = tables.Column(

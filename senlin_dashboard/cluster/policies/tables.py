@@ -11,10 +11,12 @@
 # limitations under the License.
 
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ungettext_lazy
 
 from horizon import tables
 from horizon.utils import filters
 
+from senlin_dashboard import api
 from senlin_dashboard.cluster.policies import forms as policies_forms
 
 
@@ -24,6 +26,28 @@ class CreatePolicy(tables.LinkAction):
     url = policies_forms.CREATE_URL
     classes = ("ajax-modal",)
     icon = "plus"
+
+
+class DeletePolicy(tables.DeleteAction):
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Delete Policy",
+            u"Delete Policies",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Deleted Policy",
+            u"Deleted Policies",
+            count
+        )
+
+    def delete(self, request, obj_id):
+        api.senlin.policy_delete(request, obj_id)
 
 
 class PoliciesTable(tables.DataTable):
@@ -52,4 +76,6 @@ class PoliciesTable(tables.DataTable):
         name = "policies"
         verbose_name = _("Policies")
         table_actions = (tables.FilterAction,
-                         CreatePolicy,)
+                         CreatePolicy,
+                         DeletePolicy,)
+        row_actions = (DeletePolicy,)

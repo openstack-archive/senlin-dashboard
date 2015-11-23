@@ -66,8 +66,10 @@ def get_profile_link(node):
 
 
 def get_physical_link(node):
-    return reverse_lazy('horizon:project:instances:detail',
-                        args=[node.physical_id])
+    if node.physical_id:
+        return reverse_lazy('horizon:project:instances:detail',
+                            args=[node.physical_id])
+    return None
 
 
 class NodesTable(tables.DataTable):

@@ -65,3 +65,10 @@ def data(TEST):
     node_1.name = "test-node"
 
     TEST.nodes.add(node_1)
+
+    # Events
+    TEST.events = test_data_utils.TestDataContainer()
+    event_1 = mock.Mock()
+    event_1.name = "test-event"
+
+    TEST.events.add(event_1)

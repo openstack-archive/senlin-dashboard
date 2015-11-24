@@ -45,6 +45,11 @@ class Node(base.APIResourceWrapper):
               'profile_id', 'profile_url']
 
 
+class Event(base.APIResourceWrapper):
+    _attrs = ['id', 'obj_id', 'timestamp', 'status', 'status_reason',
+              'action']
+
+
 @memoized.memoized
 def senlinclient(request):
     api_version = "1"
@@ -153,3 +158,9 @@ def node_get(request, node_id):
     """Returns node."""
     node = senlinclient(request).get(models.Node, {"id": node_id})
     return Node(node)
+
+
+def event_list(request, **kwargs):
+    """Returns events."""
+    events = senlinclient(request).list(models.Event, **kwargs)
+    return [Event(c) for c in events]

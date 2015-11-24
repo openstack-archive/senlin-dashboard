@@ -53,3 +53,12 @@ class SenlinApiTests(test.APITestCase):
         self.mox.ReplayAll()
 
         api.senlin.node_list(self.request)
+
+    def test_event_list(self):
+        events = self.events.list()
+        senlinclient = self.stub_senlinclient()
+        senlinclient.list = self.mox.CreateMockAnything()
+        senlinclient.list(models.Event).AndReturn(events)
+        self.mox.ReplayAll()
+
+        api.senlin.event_list(self.request)

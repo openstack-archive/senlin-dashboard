@@ -9,5 +9,5 @@ Django<1.9,>=1.8
 django-compressor>=1.4
 django-openstack-auth>=2.0.0
 iso8601>=0.1.9
-python-senlinclient>=0.1.5
+python-senlinclient>=0.1.7
 PyYAML>=3.1.0

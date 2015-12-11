@@ -100,8 +100,8 @@ class UpdateView(forms.ModalFormView):
 
 class DetailView(tabs.TabView):
     tab_group_class = profiles_tabs.ProfileDetailTabs
-    template_name = 'cluster/profiles/detail.html'
-    page_title = _("Profile Details: {{ profile.name }}")
+    template_name = 'horizon/common/_detail.html'
+    page_title = "{{ profile.name }}"
 
     @memoized.memoized_method
     def get_object(self):

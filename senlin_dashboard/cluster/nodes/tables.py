@@ -72,6 +72,10 @@ def get_physical_link(node):
     return None
 
 
+def get_updated_time(object):
+    return filters.parse_isotime(object.updated_time) or None
+
+
 class NodesTable(tables.DataTable):
     STATUS_CHOICES = (
         ("INIT", None),
@@ -116,16 +120,11 @@ class NodesTable(tables.DataTable):
         verbose_name=_("Created"),
         filters=(
             filters.parse_isotime,
-            filters.timesince_or_never
         )
     )
     updated = tables.Column(
-        "updated_time",
+        get_updated_time,
         verbose_name=_("Updated"),
-        filters=(
-            filters.parse_isotime,
-            filters.timesince_or_never
-        )
     )
 
     class Meta(object):

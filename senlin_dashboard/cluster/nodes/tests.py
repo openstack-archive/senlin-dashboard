@@ -98,5 +98,5 @@ class NodesTest(test.TestCase):
         self.mox.ReplayAll()
 
         res = self.client.get(NODE_DETAIL_URL)
-        self.assertTemplateUsed(res, 'cluster/nodes/detail.html')
+        self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'test-node')

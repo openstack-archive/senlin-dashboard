@@ -1,9 +1,7 @@
-{% load i18n sizeformat parse_date nbsp %}
+{% load i18n parse_date nbsp %}
 {% load url from future %}
 
-<h3>{% trans "Node Overview" %}</h3>
-
-<div class="info row detail">
+<div class="detail">
   <h4>{% trans "Information" %}</h4>
   <hr class="header_rule">
   <dl class="dl-horizontal">
@@ -28,14 +26,12 @@
     <dd>{{ node.updated_time|parse_date }}</dd>
     {% endif %}
   </dl>
-</div>
 
-{% if node.metadata.vars %}
-<div class="status row detail">
-  <h4>{% trans "Metadata" %}</h4>
-  <hr class="header_rule">
-  <dl class="dl-horizontal">
-    <dd>{{ node.metadata|force_escape|nbsp|linebreaksbr }}</dd>
-  </dl>
+  {% if node.metadata.vars %}
+    <h4>{% trans "Metadata" %}</h4>
+    <hr class="header_rule">
+    <dl class="dl-horizontal">
+      <dd>{{ node.metadata|force_escape|nbsp|linebreaksbr }}</dd>
+    </dl>
+  {% endif %}
 </div>
-{% endif %}

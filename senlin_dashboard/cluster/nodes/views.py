@@ -50,8 +50,8 @@ class CreateView(forms.ModalFormView):
 
 class DetailView(tabs.TabView):
     tab_group_class = nodes_tabs.NodeDetailTabs
-    template_name = 'cluster/nodes/detail.html'
-    page_title = _("Node Details: {{ node.name }}")
+    template_name = 'horizon/common/_detail.html'
+    page_title = "{{ node.name }}"
     profile_url = 'horizon:cluster:profiles:detail'
 
     @memoized.memoized_method

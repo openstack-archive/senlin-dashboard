@@ -30,6 +30,7 @@ import yaml
 class IndexView(tables.DataTableView):
     table_class = ProfilesTable
     template_name = 'cluster/profiles/index.html'
+    page_title = _("Profiles")
 
     def get_data(self):
         try:

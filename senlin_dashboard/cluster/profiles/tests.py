@@ -35,6 +35,7 @@ class ProfilesTest(test.TestCase):
         self.mox.ReplayAll()
 
         res = self.client.get(PROFILE_INDEX_URL)
+        self.assertContains(res, '<h1>Profiles</h1>')
         self.assertTemplateUsed(res, 'cluster/profiles/index.html')
         self.assertEqual(len(profiles), 1)
 

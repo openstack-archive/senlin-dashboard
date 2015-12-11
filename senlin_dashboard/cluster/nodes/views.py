@@ -28,6 +28,7 @@ from senlin_dashboard.cluster.nodes import tabs as nodes_tabs
 class IndexView(tables.DataTableView):
     table_class = NodesTable
     template_name = 'cluster/nodes/index.html'
+    page_title = _("Nodes")
 
     def get_data(self):
         try:

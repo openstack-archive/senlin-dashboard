@@ -34,6 +34,7 @@ class ClustersTest(test.TestCase):
         self.mox.ReplayAll()
 
         res = self.client.get(CLUSTER_INDEX_URL)
+        self.assertContains(res, '<h1>Clusters</h1>')
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
         self.assertEqual(len(clusters), 1)
 

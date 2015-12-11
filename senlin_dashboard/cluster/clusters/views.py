@@ -25,6 +25,7 @@ from horizon import tables
 class IndexView(tables.DataTableView):
     table_class = ClustersTable
     template_name = 'cluster/clusters/index.html'
+    page_title = _("Clusters")
 
     def get_data(self):
         try:

@@ -36,6 +36,7 @@ class PoliciesTest(test.TestCase):
         self.mox.ReplayAll()
 
         res = self.client.get(INDEX_URL)
+        self.assertContains(res, '<h1>Policies</h1>')
         self.assertTemplateUsed(res, 'cluster/policies/index.html')
         self.assertEqual(len(policies), 1)
 

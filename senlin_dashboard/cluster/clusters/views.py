@@ -16,10 +16,13 @@ from django.utils.translation import ugettext_lazy as _
 from senlin_dashboard.api import senlin
 from senlin_dashboard.cluster.clusters import forms as clusters_forms
 from senlin_dashboard.cluster.clusters.tables import ClustersTable
+from senlin_dashboard.cluster.clusters import tabs as clusters_tabs
 
 from horizon import exceptions
 from horizon import forms
 from horizon import tables
+from horizon import tabs
+from horizon.utils import memoized
 
 
 class IndexView(tables.DataTableView):
@@ -43,3 +46,37 @@ class CreateView(forms.ModalFormView):
     form_class = clusters_forms.CreateForm
     submit_url = reverse_lazy("horizon:cluster:clusters:create")
     success_url = reverse_lazy("horizon:cluster:clusters:index")
+
+
+class DetailView(tabs.TabView):
+    tab_group_class = clusters_tabs.ClusterDetailTabs
+    template_name = 'horizon/common/_detail.html'
+    page_title = "{{ cluster.name }}"
+    profile_url = 'horizon:cluster:profiles:detail'
+
+    @memoized.memoized_method
+    def get_object(self):
+        try:
+            # Get cluster information
+            cluster_id = self.kwargs["cluster_id"]
+            cluster = senlin.cluster_get(self.request, cluster_id)
+            cluster.profile_url = reverse_lazy(self.profile_url,
+                                               args=[cluster.profile_id])
+        except Exception:
+            msg = _("Unable to retrieve cluster.")
+            url = reverse_lazy(clusters_forms.INDEX_URL)
+            exceptions.handle(self.request, msg, redirect=url)
+        return cluster
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        table = ClustersTable(self.request)
+        cluster = self.get_object()
+        context["actions"] = table.render_row_actions(cluster)
+        context["cluster"] = cluster
+        context["url"] = reverse_lazy(clusters_forms.INDEX_URL)
+        return context
+
+    def get_tabs(self, request, *args, **kwargs):
+        cluster = self.get_object()
+        return self.tab_group_class(request, cluster=cluster, **kwargs)

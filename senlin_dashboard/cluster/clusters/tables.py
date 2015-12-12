@@ -94,7 +94,8 @@ class ClustersTable(tables.DataTable):
                                    u"DELETING")),
     )
 
-    name = tables.Column("name", verbose_name=_("Name"))
+    name = tables.Column("name", verbose_name=_("Name"),
+                         link="horizon:cluster:clusters:detail")
     status = tables.Column("status",
                            verbose_name=_("Status"),
                            status=True,

@@ -24,6 +24,7 @@ from senlin_dashboard.test import helpers as test
 
 INDEX_URL = reverse('horizon:cluster:policies:index')
 CREATE_URL = reverse('horizon:cluster:policies:create')
+DETAIL_URL = reverse('horizon:cluster:policies:detail', args=[u'1'])
 
 
 class PoliciesTest(test.TestCase):
@@ -98,3 +99,14 @@ class PoliciesTest(test.TestCase):
         res = self.client.post(CREATE_URL, formdata)
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
+
+    @test.create_stubs({api.senlin: ('policy_get',)})
+    def test_policy_detail(self):
+        policy = self.policies.list()[0]
+        api.senlin.policy_get(
+            IsA(http.HttpRequest), u'1').AndReturn(policy)
+        self.mox.ReplayAll()
+
+        res = self.client.get(DETAIL_URL)
+        self.assertTemplateUsed(res, 'horizon/common/_detail.html')
+        self.assertContains(res, 'test-policy')

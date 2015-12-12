@@ -137,6 +137,12 @@ def policy_delete(request, policy_id):
     senlinclient(request).delete(models.Policy, {"id": policy_id})
 
 
+def policy_get(request, policy_id):
+    """Returns policy."""
+    policy = senlinclient(request).get(models.Policy, {"id": policy_id})
+    return policy
+
+
 def node_list(request):
     """Returns all nodes."""
     nodes = senlinclient(request).list(models.Node)

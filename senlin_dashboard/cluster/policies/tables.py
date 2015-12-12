@@ -51,7 +51,8 @@ class DeletePolicy(tables.DeleteAction):
 
 
 class PoliciesTable(tables.DataTable):
-    name = tables.Column("name", verbose_name=_("Name"))
+    name = tables.Column("name", verbose_name=_("Name"),
+                         link=policies_forms.DETAIL_URL)
     type = tables.Column("type", verbose_name=_("Type"))
     level = tables.Column("level", verbose_name=_("Level"))
     cooldown = tables.Column("cooldown", verbose_name=_("Cooldown"))

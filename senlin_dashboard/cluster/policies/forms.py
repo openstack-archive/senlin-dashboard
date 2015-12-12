@@ -28,6 +28,7 @@ from senlin_dashboard.api import senlin
 
 INDEX_URL = "horizon:cluster:policies:index"
 CREATE_URL = "horizon:cluster:policies:create"
+DETAIL_URL = "horizon:cluster:policies:detail"
 
 
 class CreatePolicyForm(forms.SelfHandlingForm):

@@ -22,6 +22,7 @@ from senlin_dashboard.test import helpers as test
 
 CLUSTER_INDEX_URL = reverse('horizon:cluster:clusters:index')
 CLUSTER_CREATE_URL = reverse('horizon:cluster:clusters:create')
+CLUSTER_DETAIL_URL = reverse('horizon:cluster:clusters:detail', args=[u'1'])
 
 
 class ClustersTest(test.TestCase):
@@ -88,3 +89,14 @@ class ClustersTest(test.TestCase):
         res = self.client.post(CLUSTER_CREATE_URL, formdata)
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, CLUSTER_INDEX_URL)
+
+    @test.create_stubs({api.senlin: ('cluster_get',)})
+    def test_cluster_detail(self):
+        cluster = self.clusters.list()[0]
+        api.senlin.cluster_get(
+            IsA(http.HttpRequest), u'1').AndReturn(cluster)
+        self.mox.ReplayAll()
+
+        res = self.client.get(CLUSTER_DETAIL_URL)
+        self.assertTemplateUsed(res, 'horizon/common/_detail.html')
+        self.assertContains(res, 'test-cluster')

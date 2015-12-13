@@ -26,6 +26,9 @@ from horizon.utils.memoized import memoized  # noqa
 from senlin_dashboard.api import senlin
 
 
+INDEX_URL = "horizon:cluster:clusters:index"
+
+
 class CreateForm(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Cluster Name"))
     profile_id = forms.ChoiceField(label=_("Profile"))

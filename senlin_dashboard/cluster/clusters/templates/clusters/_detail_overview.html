@@ -1,0 +1,23 @@
+{% load i18n parse_date nbsp %}
+{% load url from future %}
+
+<div class="detail">
+  <h4>{% trans "Information" %}</h4>
+  <hr class="header_rule">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ cluster.name }}</dd>
+    <dt>{% trans "Profile Name" %}</dt>
+    <dd><a href="{{ cluster.profile_url }}">{{ cluster.profile_name }}</a></dd>
+    <dt>{% trans "ID" %}</dt>
+    <dd>{{ cluster.id }}</dd>
+    <dt>{% trans "Status" %}</dt>
+    <dd>{{ cluster.status }}</dd>
+    <dt>{% trans "Created" context "Created time" %}</dt>
+    <dd>{{ cluster.created_time|parse_date }}</dd>
+    {% if cluster.updated_time %}
+    <dt>{% trans "Updated" context "Updated time" %}</dt>
+    <dd>{{ cluster.updated_time|parse_date }}</dd>
+    {% endif %}
+  </dl>
+</div>

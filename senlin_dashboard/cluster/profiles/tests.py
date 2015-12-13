@@ -108,5 +108,5 @@ class ProfilesTest(test.TestCase):
         self.mox.ReplayAll()
 
         res = self.client.get(PROFILE_DETAIL_URL)
-        self.assertTemplateUsed(res, 'cluster/profiles/detail.html')
+        self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'test-profile')

@@ -50,6 +50,10 @@ class DeletePolicy(tables.DeleteAction):
         api.senlin.policy_delete(request, obj_id)
 
 
+def get_updated_time(object):
+    return filters.parse_isotime(object.updated_time) or None
+
+
 class PoliciesTable(tables.DataTable):
     name = tables.Column("name", verbose_name=_("Name"))
     type = tables.Column("type", verbose_name=_("Type"))
@@ -60,16 +64,11 @@ class PoliciesTable(tables.DataTable):
         verbose_name=_("Created"),
         filters=(
             filters.parse_isotime,
-            filters.timesince_or_never
         )
     )
     updated = tables.Column(
-        "updated_time",
+        get_updated_time,
         verbose_name=_("Updated"),
-        filters=(
-            filters.parse_isotime,
-            filters.timesince_or_never
-        )
     )
 
     class Meta(object):

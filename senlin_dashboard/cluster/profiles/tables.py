@@ -58,6 +58,10 @@ class DeleteProfile(tables.DeleteAction):
         api.senlin.profile_delete(request, obj_id)
 
 
+def get_updated_time(object):
+    return filters.parse_isotime(object.updated_time) or None
+
+
 class ProfilesTable(tables.DataTable):
     name = tables.Column("name", verbose_name=_("Name"),
                          link=profiles_forms.DETAIL_URL)
@@ -67,16 +71,11 @@ class ProfilesTable(tables.DataTable):
         verbose_name=_("Created"),
         filters=(
             filters.parse_isotime,
-            filters.timesince_or_never
         )
     )
     updated = tables.Column(
-        "updated_time",
+        get_updated_time,
         verbose_name=_("Updated"),
-        filters=(
-            filters.parse_isotime,
-            filters.timesince_or_never
-        )
     )
 
     class Meta(object):

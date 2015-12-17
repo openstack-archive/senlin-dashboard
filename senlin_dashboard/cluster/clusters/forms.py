@@ -85,7 +85,7 @@ class CreateForm(forms.SelfHandlingForm):
 
             cluster = senlin.cluster_create(request, data)
             msg = _('Creating cluster "%s" successfully') % data['name']
-            messages.info(request, msg)
+            messages.success(request, msg)
             return cluster
         except Exception:
             redirect = reverse("horizon:cluster:clusters:index")

@@ -1,0 +1,25 @@
+{% load i18n parse_date nbsp %}
+{% load url from future %}
+
+<div class="detail">
+  <h4>{% trans "Information" %}</h4>
+  <hr class="header_rule">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ policy.name }}</dd>
+    <dt>{% trans "ID" %}</dt>
+    <dd>{{ policy.id }}</dd>
+    <dt>{% trans "Spec" %}</dt>
+    <dd>{{ policy.policy_spec|force_escape|nbsp|linebreaksbr }}</dd>
+    <dt>{% trans "Level" %}</dt>
+    <dd>{{ policy.level }}</dd>
+    <dt>{% trans "Cooldown" %}</dt>
+    <dd>{{ policy.cooldown }}</dd>
+    <dt>{% trans "Created" context "Created time" %}</dt>
+    <dd>{{ policy.created_time|parse_date }}</dd>
+    {% if node.updated_time %}
+    <dt>{% trans "Updated" context "Updated time" %}</dt>
+    <dd>{{ policy.updated_time|parse_date }}</dd>
+    {% endif %}
+  </dl>
+</div>

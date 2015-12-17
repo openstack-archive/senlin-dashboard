@@ -56,6 +56,7 @@ def data(TEST):
     TEST.policies = test_data_utils.TestDataContainer()
     policy_1 = mock.Mock()
     policy_1.name = "test-policy"
+    policy_1.spec = {}
 
     TEST.policies.add(policy_1)
 

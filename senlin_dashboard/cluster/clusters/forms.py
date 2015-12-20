@@ -88,7 +88,7 @@ class CreateForm(forms.SelfHandlingForm):
             messages.success(request, msg)
             return cluster
         except Exception:
-            redirect = reverse("horizon:cluster:clusters:index")
+            redirect = reverse(INDEX_URL)
             exceptions.handle(request,
                               _("Unable to create cluster."),
                               redirect=redirect)

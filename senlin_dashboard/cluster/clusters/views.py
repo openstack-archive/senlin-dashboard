@@ -45,7 +45,7 @@ class CreateView(forms.ModalFormView):
     page_title = _("Create Cluster")
     form_class = clusters_forms.CreateForm
     submit_url = reverse_lazy("horizon:cluster:clusters:create")
-    success_url = reverse_lazy("horizon:cluster:clusters:index")
+    success_url = reverse_lazy(clusters_forms.INDEX_URL)
 
 
 class DetailView(tabs.TabView):

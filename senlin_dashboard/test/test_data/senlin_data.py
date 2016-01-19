@@ -74,3 +74,10 @@ def data(TEST):
     event_1.name = "test-event"
 
     TEST.events.add(event_1)
+
+    # Receivers
+    TEST.receivers = test_data_utils.TestDataContainer()
+    receiver_1 = mock.Mock()
+    receiver_1.name = "test-receiver"
+
+    TEST.receivers.add(receiver_1)

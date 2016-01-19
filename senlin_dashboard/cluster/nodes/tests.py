@@ -22,7 +22,8 @@ from senlin_dashboard.test import helpers as test
 
 NODE_INDEX_URL = reverse('horizon:cluster:nodes:index')
 NODE_CREATE_URL = reverse('horizon:cluster:nodes:create')
-NODE_DETAIL_URL = reverse('horizon:cluster:nodes:detail', args=[u'1'])
+NODE_DETAIL_URL = reverse('horizon:cluster:nodes:detail',
+                          args=[u'123456'])
 
 
 class NodesTest(test.TestCase):
@@ -94,9 +95,25 @@ class NodesTest(test.TestCase):
     def test_node_detail(self):
         node = self.nodes.list()[0]
         api.senlin.node_get(
-            IsA(http.HttpRequest), u'1').AndReturn(node)
+            IsA(http.HttpRequest), u'123456').AndReturn(node)
         self.mox.ReplayAll()
 
         res = self.client.get(NODE_DETAIL_URL)
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'test-node')
+
+    @test.create_stubs({api.senlin: ('event_list',
+                                     'node_get')})
+    def test_node_event(self):
+        events = self.events.list()
+        node = self.nodes.list()[0]
+        api.senlin.node_get(
+            IsA(http.HttpRequest), u'123456').AndReturn(node)
+        api.senlin.event_list(
+            IsA(http.HttpRequest),
+            params={'obj_id': u'123456'}).AndReturn(events)
+        self.mox.ReplayAll()
+
+        res = self.client.get(NODE_DETAIL_URL + '?tab=node_details__event')
+        self.assertTemplateUsed(res, 'cluster/nodes/_detail_event.html')
+        self.assertContains(res, '123456')

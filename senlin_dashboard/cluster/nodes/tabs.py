@@ -12,7 +12,11 @@
 
 from django.utils.translation import ugettext_lazy as _
 
+from horizon import exceptions
 from horizon import tabs
+
+from senlin_dashboard.api import senlin
+from senlin_dashboard.cluster.nodes import event_tables
 
 
 class OverviewTab(tabs.Tab):
@@ -24,6 +28,25 @@ class OverviewTab(tabs.Tab):
         return {"node": self.tab_group.kwargs['node']}
 
 
+class EventTab(tabs.TableTab):
+    name = _("Event")
+    slug = "event"
+    table_classes = (event_tables.EventsTable,)
+    template_name = "cluster/nodes/_detail_event.html"
+    preload = False
+
+    def get_event_data(self):
+        node_id = self.tab_group.kwargs['node_id']
+        try:
+            params = {"obj_id": node_id}
+            events = senlin.event_list(self.request, params)
+        except Exception:
+            events = []
+            exceptions.handle(self.request,
+                              _('Unable to retrieve node event list.'))
+        return sorted(events, reverse=True, key=lambda y: y.timestamp)
+
+
 class NodeDetailTabs(tabs.TabGroup):
     slug = "node_details"
-    tabs = (OverviewTab,)
+    tabs = (OverviewTab, EventTab)

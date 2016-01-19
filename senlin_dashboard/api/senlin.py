@@ -45,8 +45,8 @@ class Node(base.APIResourceWrapper):
 
 
 class Event(base.APIResourceWrapper):
-    _attrs = ['id', 'obj_id', 'timestamp', 'status', 'status_reason',
-              'action']
+    _attrs = ['id', 'obj_id', 'obj_name', 'timestamp', 'status',
+              'status_reason', 'action']
 
 
 @memoized.memoized

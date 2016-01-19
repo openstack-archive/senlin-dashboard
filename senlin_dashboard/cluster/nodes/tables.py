@@ -72,7 +72,7 @@ def get_physical_link(node):
 
 
 def get_updated_time(object):
-    return filters.parse_isotime(object.updated_time) or None
+    return filters.parse_isotime(object.updated_at) or None
 
 
 class NodesTable(tables.DataTable):
@@ -115,7 +115,7 @@ class NodesTable(tables.DataTable):
     status_reason = tables.Column("status_reason",
                                   verbose_name=_("Status Reason"))
     created = tables.Column(
-        "created_time",
+        "created_at",
         verbose_name=_("Created"),
         filters=(
             filters.parse_isotime,

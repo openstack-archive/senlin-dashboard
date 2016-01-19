@@ -46,12 +46,12 @@ class CreateForm(forms.SelfHandlingForm):
 
     def __init__(self, request, *args, **kwargs):
         super(CreateForm, self).__init__(request, *args, **kwargs)
-        profiles = senlin.profile_list(request)
+        profiles = senlin.profile_list(request, params={})
         self.fields['profile_id'].choices = (
             [("", _("Select Profile"))] + [(profile.id, profile.name)
                                            for profile in profiles])
 
-        clusters = senlin.cluster_list(request)
+        clusters = senlin.cluster_list(request, params={})
         self.fields['cluster_id'].choices = (
             [("", _("Select Cluster"))] + [(cluster.id, cluster.name)
                                            for cluster in clusters])

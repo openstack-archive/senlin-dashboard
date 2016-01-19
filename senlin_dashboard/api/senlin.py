@@ -15,19 +15,18 @@ from django.conf import settings
 from horizon.utils import memoized
 from openstack_dashboard.api import base
 from senlinclient import client as senlin_client
-from senlinclient.v1 import models
 
 USER_AGENT = 'python-senlinclient'
 
 
 class Cluster(base.APIResourceWrapper):
-    _attrs = ['id', 'name', 'status', 'created_time', 'updated_time',
+    _attrs = ['id', 'name', 'status', 'created_at', 'updated_at',
               'profile_name', 'profile_id', 'status_reason']
 
 
 class Profile(base.APIResourceWrapper):
-    _attrs = ['id', 'name', 'type', 'created_time', 'updated_time',
-              'permission']
+    _attrs = ['id', 'name', 'type_name', 'created_at', 'updated_at',
+              'permission', 'metadata', 'spec']
 
 
 class ProfileType(base.APIResourceWrapper):
@@ -36,11 +35,11 @@ class ProfileType(base.APIResourceWrapper):
 
 class Policy(base.APIResourceWrapper):
     _attrs = ['id', 'name', 'type', 'spec', 'level', 'cooldown',
-              'created_time', 'updated_time']
+              'created_at', 'updated_at']
 
 
 class Node(base.APIResourceWrapper):
-    _attrs = ['id', 'name', 'status', 'created_time', 'updated_time',
+    _attrs = ['id', 'name', 'status', 'created_at', 'updated_at',
               'profile_name', 'status_reason', 'physical_id', 'role',
               'profile_id', 'profile_url']
 
@@ -56,117 +55,112 @@ def senlinclient(request):
     kwargs = {
         'auth_url': getattr(settings, 'OPENSTACK_KEYSTONE_URL'),
         'token': request.user.token.id,
+        'user_id': request.user.id,
         'project_id': request.user.tenant_id,
+        'auth_plugin': 'token',
     }
     return senlin_client.Client(api_version, {}, USER_AGENT, **kwargs)
 
 
-def cluster_list(request):
+def cluster_list(request, params):
     """Returns all clusters."""
-    clusters = senlinclient(request).list(models.Cluster)
+    clusters = senlinclient(request).clusters(**params)
     return [Cluster(c) for c in clusters]
 
 
 def cluster_create(request, params):
     """Create cluster."""
-    cluster = senlinclient(request).create(models.Cluster, params)
-    return cluster
-
-
-def cluster_delete(request, cluster_id):
-    """Delete cluster."""
-    senlinclient(request).delete(models.Cluster, {"id": cluster_id})
-
-
-def cluster_get(request, cluster_id):
-    """Returns cluster."""
-    cluster = senlinclient(request).get(models.Cluster, {"id": cluster_id})
+    cluster = senlinclient(request).create_cluster(**params)
     return Cluster(cluster)
 
 
-def profile_list(request):
+def cluster_delete(request, cluster):
+    """Delete cluster."""
+    senlinclient(request).delete_cluster(cluster)
+
+
+def cluster_get(request, cluster):
+    """Returns cluster."""
+    cluster = senlinclient(request).get_cluster(cluster)
+    return Cluster(cluster)
+
+
+def profile_list(request, params):
     """Returns all profiles."""
-    profiles = senlinclient(request).list(models.Profile)
+    profiles = senlinclient(request).profiles(**params)
     return [Profile(p) for p in profiles]
 
 
-def profile_type_list(request):
-    """Returns all profile types."""
-    prof_types = senlinclient(request).list(models.ProfileType)
-    return [ProfileType(t) for t in prof_types]
-
-
-def profile_get(request, profile_id):
+def profile_get(request, profile):
     """Returns profile."""
-    profile = senlinclient(request).get(models.Profile, {"id": profile_id})
-    return profile
+    profile = senlinclient(request).get_profile(profile)
+    return Profile(profile)
 
 
-def profile_create(request, opts):
+def profile_create(request, params):
     """Create profile."""
-    profile = senlinclient(request).create(models.Profile, opts)
-    return profile
+    profile = senlinclient(request).create_profile(**params)
+    return Profile(profile)
 
 
-def profile_update(request, opts):
+def profile_update(request, profile, params):
     """Update profile."""
+    profile = senlinclient(request).update_profile(profile, **params)
+    return Profile(profile)
 
-    profile = senlinclient(request).update(models.Profile, opts)
-    return profile
 
-
-def profile_delete(request, profile_id):
+def profile_delete(request, profile):
     """Delete profile."""
-    senlinclient(request).delete(models.Profile, {"id": profile_id})
+    senlinclient(request).delete_profile(profile)
 
 
-def policy_list(request):
+def policy_list(request, params):
     """Returns all policies."""
-    policies = senlinclient(request).list(models.Policy)
+    policies = senlinclient(request).policies(**params)
     return [Policy(p) for p in policies]
 
 
-def policy_create(request, args):
+def policy_create(request, params):
     """Create a policy."""
-    policy = senlinclient(request).create(models.Policy, args)
+    policy = senlinclient(request).create_policy(**params)
     return policy
 
 
-def policy_delete(request, policy_id):
+def policy_delete(request, policy):
     """Delete a policy."""
-    senlinclient(request).delete(models.Policy, {"id": policy_id})
+    senlinclient(request).delete_policy(policy)
 
 
-def policy_get(request, policy_id):
+def policy_get(request, policy):
     """Returns policy."""
-    policy = senlinclient(request).get(models.Policy, {"id": policy_id})
+    policy = senlinclient(request).get_policy(policy)
     return policy
 
 
-def node_list(request):
+def node_list(request, params):
     """Returns all nodes."""
-    nodes = senlinclient(request).list(models.Node)
+    nodes = senlinclient(request).nodes(**params)
     return [Node(p) for p in nodes]
 
 
 def node_create(request, params):
     """Create node."""
-    node = senlinclient(request).create(models.Node, params)
+    node = senlinclient(request).create_node(**params)
     return node
 
 
-def node_delete(request, node_id):
+def node_delete(request, node):
     """Delete node."""
-    senlinclient(request).delete(models.Node, {"id": node_id})
+    senlinclient(request).delete_node(node)
 
 
-def node_get(request, node_id):
+def node_get(request, node):
     """Returns node."""
-    node = senlinclient(request).get(models.Node, {"id": node_id})
+    node = senlinclient(request).get_node(node)
     return Node(node)
 
 
-def event_list(request, **kwargs):
+def event_list(request, params):
     """Returns events."""
-    events = senlinclient(request).list(models.Event, **kwargs)
+    events = senlinclient(request).events(**params)
     return [Event(c) for c in events]

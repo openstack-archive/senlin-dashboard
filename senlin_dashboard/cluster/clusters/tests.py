@@ -31,7 +31,7 @@ class ClustersTest(test.TestCase):
     def test_index(self):
         clusters = self.clusters.list()
         api.senlin.cluster_list(
-            IsA(http.HttpRequest)).AndReturn(clusters)
+            IsA(http.HttpRequest), params={}).AndReturn(clusters)
         self.mox.ReplayAll()
 
         res = self.client.get(CLUSTER_INDEX_URL)
@@ -42,7 +42,7 @@ class ClustersTest(test.TestCase):
     @test.create_stubs({api.senlin: ('cluster_list',)})
     def test_index_cluster_list_exception(self):
         api.senlin.cluster_list(
-            IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
+            IsA(http.HttpRequest), params={}).AndRaise(self.exceptions.senlin)
         self.mox.ReplayAll()
 
         res = self.client.get(CLUSTER_INDEX_URL)
@@ -53,7 +53,7 @@ class ClustersTest(test.TestCase):
     @test.create_stubs({api.senlin: ('cluster_list',)})
     def test_index_no_cluster(self):
         api.senlin.cluster_list(
-            IsA(http.HttpRequest)).AndReturn([])
+            IsA(http.HttpRequest), params={}).AndReturn([])
         self.mox.ReplayAll()
 
         res = self.client.get(CLUSTER_INDEX_URL)
@@ -81,7 +81,7 @@ class ClustersTest(test.TestCase):
         opts = formdata
 
         api.senlin.profile_list(
-            IsA(http.HttpRequest)).AndReturn(profiles)
+            IsA(http.HttpRequest), params={}).AndReturn(profiles)
         api.senlin.cluster_create(
             IsA(http.HttpRequest), opts).AndReturn(cluster)
         self.mox.ReplayAll()

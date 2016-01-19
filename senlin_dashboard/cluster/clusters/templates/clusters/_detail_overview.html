@@ -13,10 +13,10 @@
     <dt>{% trans "Status" %}</dt>
     <dd>{{ cluster.status }}</dd>
     <dt>{% trans "Created" context "Created time" %}</dt>
-    <dd>{{ cluster.created_time|parse_date }}</dd>
-    {% if cluster.updated_time %}
+    <dd>{{ cluster.created_at|parse_date }}</dd>
+    {% if cluster.updated_at %}
     <dt>{% trans "Updated" context "Updated time" %}</dt>
-    <dd>{{ cluster.updated_time|parse_date }}</dd>
+    <dd>{{ cluster.updated_at|parse_date }}</dd>
     {% endif %}
   </dl>
 </div>

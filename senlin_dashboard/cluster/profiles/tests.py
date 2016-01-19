@@ -31,7 +31,7 @@ class ProfilesTest(test.TestCase):
     def test_index(self):
         profiles = self.profiles.list()
         api.senlin.profile_list(
-            IsA(http.HttpRequest)).AndReturn(profiles)
+            IsA(http.HttpRequest), params={}).AndReturn(profiles)
         self.mox.ReplayAll()
 
         res = self.client.get(PROFILE_INDEX_URL)
@@ -42,7 +42,7 @@ class ProfilesTest(test.TestCase):
     @test.create_stubs({api.senlin: ('profile_list',)})
     def test_index_profile_list_exception(self):
         api.senlin.profile_list(
-            IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
+            IsA(http.HttpRequest), params={}).AndRaise(self.exceptions.senlin)
         self.mox.ReplayAll()
 
         res = self.client.get(PROFILE_INDEX_URL)
@@ -52,7 +52,7 @@ class ProfilesTest(test.TestCase):
     @test.create_stubs({api.senlin: ('profile_list',)})
     def test_index_no_policy(self):
         api.senlin.profile_list(
-            IsA(http.HttpRequest)).AndReturn([])
+            IsA(http.HttpRequest), params={}).AndReturn([])
         self.mox.ReplayAll()
 
         res = self.client.get(PROFILE_INDEX_URL)

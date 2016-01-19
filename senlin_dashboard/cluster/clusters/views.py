@@ -32,7 +32,8 @@ class IndexView(tables.DataTableView):
 
     def get_data(self):
         try:
-            clusters = senlin.cluster_list(self.request)
+            params = {}
+            clusters = senlin.cluster_list(self.request, params)
         except Exception:
             clusters = []
             exceptions.handle(self.request,

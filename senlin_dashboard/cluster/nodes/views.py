@@ -32,7 +32,8 @@ class IndexView(tables.DataTableView):
 
     def get_data(self):
         try:
-            nodes = senlin.node_list(self.request)
+            params = {}
+            nodes = senlin.node_list(self.request, params)
         except Exception:
             nodes = []
             exceptions.handle(self.request,

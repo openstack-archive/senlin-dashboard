@@ -36,7 +36,7 @@ def get_profile_link(cluster):
 
 
 def get_updated_time(object):
-    return filters.parse_isotime(object.updated_time) or None
+    return filters.parse_isotime(object.updated_at) or None
 
 
 class DeleteCluster(tables.DeleteAction):
@@ -111,7 +111,7 @@ class ClustersTable(tables.DataTable):
                                  link=get_profile_link,
                                  verbose_name=_("Profile Name"))
     created = tables.Column(
-        "created_time",
+        "created_at",
         verbose_name=_("Created"),
         filters=(
             filters.parse_isotime,

@@ -34,7 +34,8 @@ class IndexView(tables.DataTableView):
 
     def get_data(self):
         try:
-            policies = senlin.policy_list(self.request)
+            params = {}
+            policies = senlin.policy_list(self.request, params)
         except Exception:
             policies = []
             exceptions.handle(self.request,

@@ -51,17 +51,15 @@ class DeletePolicy(tables.DeleteAction):
 
 
 def get_updated_time(object):
-    return filters.parse_isotime(object.updated_time) or None
+    return filters.parse_isotime(object.updated_at) or None
 
 
 class PoliciesTable(tables.DataTable):
     name = tables.Column("name", verbose_name=_("Name"),
                          link=policies_forms.DETAIL_URL)
     type = tables.Column("type", verbose_name=_("Type"))
-    level = tables.Column("level", verbose_name=_("Level"))
-    cooldown = tables.Column("cooldown", verbose_name=_("Cooldown"))
     created = tables.Column(
-        "created_time",
+        "created_at",
         verbose_name=_("Created"),
         filters=(
             filters.parse_isotime,
@@ -78,4 +76,3 @@ class PoliciesTable(tables.DataTable):
         table_actions = (tables.FilterAction,
                          CreatePolicy,
                          DeletePolicy,)
-        row_actions = (DeletePolicy,)

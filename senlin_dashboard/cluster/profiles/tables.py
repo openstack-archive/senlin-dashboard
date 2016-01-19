@@ -59,15 +59,15 @@ class DeleteProfile(tables.DeleteAction):
 
 
 def get_updated_time(object):
-    return filters.parse_isotime(object.updated_time) or None
+    return filters.parse_isotime(object.updated_at) or None
 
 
 class ProfilesTable(tables.DataTable):
     name = tables.Column("name", verbose_name=_("Name"),
                          link=profiles_forms.DETAIL_URL)
-    type = tables.Column("type", verbose_name=_("Type"))
+    type_name = tables.Column("type_name", verbose_name=_("Type"))
     created = tables.Column(
-        "created_time",
+        "created_at",
         verbose_name=_("Created"),
         filters=(
             filters.parse_isotime,

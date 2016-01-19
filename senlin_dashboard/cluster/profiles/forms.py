@@ -181,7 +181,7 @@ class UpdateProfileForm(forms.SelfHandlingForm):
         )
 
         try:
-            senlin.profile_update(request, opts)
+            senlin.profile_update(request, data.get('profile_id'), opts)
             messages.success(request,
                              _('Your profile %s has been updated.') %
                              opts['name'])

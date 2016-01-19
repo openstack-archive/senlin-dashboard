@@ -10,8 +10,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from senlinclient.v1 import models
-
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
@@ -19,46 +17,51 @@ from senlin_dashboard.test import helpers as test
 class SenlinApiTests(test.APITestCase):
 
     def test_cluster_list(self):
+        params = {}
         clusters = self.clusters.list()
         senlinclient = self.stub_senlinclient()
-        senlinclient.list = self.mox.CreateMockAnything()
-        senlinclient.list(models.Cluster).AndReturn(clusters)
+        senlinclient.clusters = self.mox.CreateMockAnything()
+        senlinclient.clusters(**params).AndReturn(clusters)
         self.mox.ReplayAll()
 
-        api.senlin.cluster_list(self.request)
+        api.senlin.cluster_list(self.request, params)
 
     def test_profile_list(self):
+        params = {}
         profiles = self.profiles.list()
         senlinclient = self.stub_senlinclient()
-        senlinclient.list = self.mox.CreateMockAnything()
-        senlinclient.list(models.Profile).AndReturn(profiles)
+        senlinclient.profiles = self.mox.CreateMockAnything()
+        senlinclient.profiles(**params).AndReturn(profiles)
         self.mox.ReplayAll()
 
-        api.senlin.profile_list(self.request)
+        api.senlin.profile_list(self.request, params)
 
     def test_policy_list(self):
+        params = {}
         policies = self.policies.list()
         senlinclient = self.stub_senlinclient()
-        senlinclient.list = self.mox.CreateMockAnything()
-        senlinclient.list(models.Policy).AndReturn(policies)
+        senlinclient.policies = self.mox.CreateMockAnything()
+        senlinclient.policies(**params).AndReturn(policies)
         self.mox.ReplayAll()
 
-        api.senlin.policy_list(self.request)
+        api.senlin.policy_list(self.request, params)
 
     def test_node_list(self):
+        params = {}
         nodes = self.nodes.list()
         senlinclient = self.stub_senlinclient()
-        senlinclient.list = self.mox.CreateMockAnything()
-        senlinclient.list(models.Node).AndReturn(nodes)
+        senlinclient.nodes = self.mox.CreateMockAnything()
+        senlinclient.nodes(**params).AndReturn(nodes)
         self.mox.ReplayAll()
 
-        api.senlin.node_list(self.request)
+        api.senlin.node_list(self.request, params)
 
     def test_event_list(self):
+        params = {}
         events = self.events.list()
         senlinclient = self.stub_senlinclient()
-        senlinclient.list = self.mox.CreateMockAnything()
-        senlinclient.list(models.Event).AndReturn(events)
+        senlinclient.events = self.mox.CreateMockAnything()
+        senlinclient.events(**params).AndReturn(events)
         self.mox.ReplayAll()
 
-        api.senlin.event_list(self.request)
+        api.senlin.event_list(self.request, params)

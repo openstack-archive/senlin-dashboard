@@ -22,7 +22,8 @@ from senlin_dashboard.test import helpers as test
 
 CLUSTER_INDEX_URL = reverse('horizon:cluster:clusters:index')
 CLUSTER_CREATE_URL = reverse('horizon:cluster:clusters:create')
-CLUSTER_DETAIL_URL = reverse('horizon:cluster:clusters:detail', args=[u'1'])
+CLUSTER_DETAIL_URL = reverse('horizon:cluster:clusters:detail',
+                             args=[u'123456'])
 
 
 class ClustersTest(test.TestCase):
@@ -94,9 +95,26 @@ class ClustersTest(test.TestCase):
     def test_cluster_detail(self):
         cluster = self.clusters.list()[0]
         api.senlin.cluster_get(
-            IsA(http.HttpRequest), u'1').AndReturn(cluster)
+            IsA(http.HttpRequest), u'123456').AndReturn(cluster)
         self.mox.ReplayAll()
 
         res = self.client.get(CLUSTER_DETAIL_URL)
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'test-cluster')
+
+    @test.create_stubs({api.senlin: ('event_list',
+                                     'cluster_get')})
+    def test_cluster_event(self):
+        events = self.events.list()
+        node = self.nodes.list()[0]
+        api.senlin.cluster_get(
+            IsA(http.HttpRequest), u'123456').AndReturn(node)
+        api.senlin.event_list(
+            IsA(http.HttpRequest),
+            params={'obj_id': u'123456'}).AndReturn(events)
+        self.mox.ReplayAll()
+
+        res = self.client.get(
+            CLUSTER_DETAIL_URL + '?tab=cluster_details__event')
+        self.assertTemplateUsed(res, 'cluster/nodes/_detail_event.html')
+        self.assertContains(res, '123456')

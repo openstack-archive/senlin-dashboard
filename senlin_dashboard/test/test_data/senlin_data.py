@@ -48,6 +48,7 @@ def data(TEST):
     # Clusters
     TEST.clusters = test_data_utils.TestDataContainer()
     cluster_1 = mock.Mock()
+    cluster_1.id = "123456"
     cluster_1.name = "test-cluster"
 
     TEST.clusters.add(cluster_1)

@@ -21,7 +21,8 @@ class Cluster(horizon.Dashboard):
     panels = ('profiles',
               'nodes',
               'clusters',
-              'policies')
+              'policies',
+              'receivers')
     default_panel = 'clusters'
 
 

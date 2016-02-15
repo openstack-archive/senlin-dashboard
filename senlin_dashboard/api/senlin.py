@@ -49,6 +49,11 @@ class Event(base.APIResourceWrapper):
               'status_reason', 'action']
 
 
+class Receiver(base.APIResourceWrapper):
+    _attrs = ['id', 'name', 'type', 'cluster_id', 'action', 'created_at',
+              'updated_at']
+
+
 @memoized.memoized
 def senlinclient(request):
     api_version = "1"
@@ -164,3 +169,8 @@ def event_list(request, params):
     """Returns events."""
     events = senlinclient(request).events(**params)
     return [Event(c) for c in events]
+
+
+def receiver_list(request, params):
+    receivers = senlinclient(request).receivers(**params)
+    return [Receiver(r) for r in receivers]

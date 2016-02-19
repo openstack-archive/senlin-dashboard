@@ -41,6 +41,7 @@ class CreatePolicyForm(forms.SelfHandlingForm):
         label=_("Cooldown"),
         min_value=0,
         initial=0,
+        widget=forms.HiddenInput(),
         help_text=_("An integer indicating the cooldown seconds "
                     "once the policy is effected. Default to 0."))
     level = forms.IntegerField(
@@ -48,7 +49,8 @@ class CreatePolicyForm(forms.SelfHandlingForm):
         min_value=0,
         max_value=100,
         initial=0,
-        help_text=_("An integer between 0 and 100 representing the"
+        widget=forms.HiddenInput(),
+        help_text=_("An integer between 0 and 100 representing the "
                     "enforcement level. Default to 0."))
 
     def handle(self, request, data):

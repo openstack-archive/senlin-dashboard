@@ -13,13 +13,16 @@
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from senlin_dashboard.api import senlin
-from senlin_dashboard.cluster.receivers import forms as receivers_forms
-from senlin_dashboard.cluster.receivers.tables import ReceiversTable
-
 from horizon import exceptions
 from horizon import forms
 from horizon import tables
+from horizon import tabs
+from horizon.utils import memoized
+
+from senlin_dashboard.api import senlin
+from senlin_dashboard.cluster.receivers import forms as receivers_forms
+from senlin_dashboard.cluster.receivers.tables import ReceiversTable
+from senlin_dashboard.cluster.receivers import tabs as receivers_tabs
 
 
 class IndexView(tables.DataTableView):
@@ -44,3 +47,34 @@ class CreateView(forms.ModalFormView):
     form_class = receivers_forms.CreateReceiverForm
     submit_url = reverse_lazy("horizon:cluster:receivers:create")
     success_url = reverse_lazy("horizon:cluster:receivers:index")
+
+
+class DetailView(tabs.TabView):
+    tab_group_class = receivers_tabs.ReceiverDetailTabs
+    template_name = 'horizon/common/_detail.html'
+    page_title = "{{ receiver.name }}"
+
+    @memoized.memoized_method
+    def get_object(self):
+        try:
+            # Get initial receiver information
+            receiver_id = self.kwargs["receiver_id"]
+            receiver = senlin.receiver_get(self.request, receiver_id)
+        except Exception:
+            msg = _("Unable to retrieve receiver.")
+            url = reverse_lazy("horizon:cluster:receivers:index")
+            exceptions.handle(self.request, msg, redirect=url)
+        return receiver
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        table = ReceiversTable(self.request)
+        receiver = self.get_object()
+        context["actions"] = table.render_row_actions(receiver)
+        context["receiver"] = receiver
+        context["url"] = reverse_lazy("horizon:cluster:receivers:index")
+        return context
+
+    def get_tabs(self, request, *args, **kwargs):
+        receiver = self.get_object()
+        return self.tab_group_class(request, receiver=receiver, **kwargs)

@@ -55,7 +55,8 @@ def get_updated_time(object):
 
 
 class ReceiversTable(tables.DataTable):
-    name = tables.Column("name", verbose_name=_("Name"))
+    name = tables.Column("name", verbose_name=_("Name"),
+                         link="horizon:cluster:receivers:detail")
     type = tables.Column("type", verbose_name=_("Type"))
     cluster_id = tables.Column("cluster_id", verbose_name=_("Cluster ID"))
     action = tables.Column("action", verbose_name=_("Action"))

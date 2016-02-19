@@ -51,7 +51,7 @@ class Event(base.APIResourceWrapper):
 
 class Receiver(base.APIResourceWrapper):
     _attrs = ['id', 'name', 'type', 'cluster_id', 'action', 'created_at',
-              'updated_at']
+              'updated_at', 'channel']
 
 
 @memoized.memoized
@@ -185,3 +185,8 @@ def receiver_create(request, params):
 def receiver_delete(request, receiver):
     """Delete receiver."""
     senlinclient(request).delete_receiver(receiver)
+
+
+def receiver_get(request, receiver):
+    receiver = senlinclient(request).get_receiver(receiver)
+    return Receiver(receiver)

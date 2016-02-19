@@ -1,0 +1,24 @@
+{% load i18n parse_date %}
+
+<div class="detail">
+  <h4>{% trans "Information" %}</h4>
+  <hr class="header_rule">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ receiver.name }}</dd>
+    <dt>{% trans "ID" %}</dt>
+    <dd>{{ receiver.id }}</dd>
+    <dt>{% trans "Type" %}</dt>
+    <dd>{{ receiver.type }}</dd>
+    <dt>{% trans "Cluster ID" %}</dt>
+    <dd>{{ receiver.cluster_id }}</dd>
+    <dt>{% trans "Channel" %}</dt>
+    <dd>{{ receiver.channel }}</dd>
+    <dt>{% trans "Created" context "Created time" %}</dt>
+    <dd>{{ profile.created_at|parse_date }}</dd>
+    {% if profile.updated_at %}
+    <dt>{% trans "Updated" context "Updated time" %}</dt>
+    <dd>{{ profile.updated_at|parse_date }}</dd>
+    {% endif %}
+  </dl>
+</div>

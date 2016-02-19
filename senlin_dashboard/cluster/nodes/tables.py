@@ -43,8 +43,8 @@ class DeleteNode(tables.DeleteAction):
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Deleted Node",
-            u"Deleted Nodes",
+            u"Scheduled deletion of Node",
+            u"Scheduled deletion of Nodes",
             count
         )
 

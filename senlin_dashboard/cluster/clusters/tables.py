@@ -52,8 +52,8 @@ class DeleteCluster(tables.DeleteAction):
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Deleted Cluster",
-            u"Deleted Clusters",
+            u"Scheduled deletion of Cluster",
+            u"Scheduled deletion of Clusters",
             count
         )
 

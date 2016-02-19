@@ -19,3 +19,5 @@ UNAUTHORIZED = exceptions.UNAUTHORIZED + (exc.HTTPUnauthorized,)
 RECOVERABLE = exceptions.RECOVERABLE + (
     exc.HTTPForbidden, exc.HTTPException
 )
+
+ResourceNotFound = exc.sdkexc.ResourceNotFound

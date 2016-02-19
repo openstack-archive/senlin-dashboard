@@ -174,3 +174,9 @@ def event_list(request, params):
 def receiver_list(request, params):
     receivers = senlinclient(request).receivers(**params)
     return [Receiver(r) for r in receivers]
+
+
+def receiver_create(request, params):
+    """Create receiver"""
+    receiver = senlinclient(request).create_receiver(**params)
+    return Receiver(receiver)

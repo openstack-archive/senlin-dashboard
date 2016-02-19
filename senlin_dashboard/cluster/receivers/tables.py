@@ -16,6 +16,15 @@ from horizon import tables
 from horizon.utils import filters
 
 
+class CreateReceiver(tables.LinkAction):
+    name = "create"
+    verbose_name = _("Create Receiver")
+    url = "horizon:cluster:receivers:create"
+    classes = ("ajax-modal", "btn-create")
+    icon = "plus"
+    ajax = True
+
+
 def get_updated_time(object):
     return filters.parse_isotime(object.updated_at) or None
 
@@ -40,4 +49,5 @@ class ReceiversTable(tables.DataTable):
     class Meta(object):
         name = "receivers"
         verbose_name = _("Receivers")
-        table_actions = (tables.FilterAction,)
+        table_actions = (tables.FilterAction,
+                         CreateReceiver)

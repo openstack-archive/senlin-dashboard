@@ -1,0 +1,14 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+
+{% block modal-header %}{% trans "Create Receiver" %}{% endblock %}
+
+{% block modal-body-right %}
+  <h3>{% trans "Description:" %}</h3>
+  <p>{% trans "A Receiver is used to prepare Senlin engine to react to external alarms or events so that a specific Action can be initiated on a senlin cluster automatically. For example, when workload on a cluster climbs high, a receiver can change the size of a specified cluster." %}</p>
+{% endblock %}
+
+{% block modal-footer %}
+  <a href="{% url 'horizon:cluster:receivers:index' %}" class="btn btn-default cancel">{% trans "Cancel" %}</a>
+  <input class="btn btn-primary" type="submit" value="{% trans "Create Receiver" %}" />
+{% endblock %}

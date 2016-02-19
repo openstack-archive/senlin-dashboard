@@ -180,3 +180,8 @@ def receiver_create(request, params):
     """Create receiver"""
     receiver = senlinclient(request).create_receiver(**params)
     return Receiver(receiver)
+
+
+def receiver_delete(request, receiver):
+    """Delete receiver."""
+    senlinclient(request).delete_receiver(receiver)

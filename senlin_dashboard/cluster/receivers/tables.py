@@ -11,9 +11,12 @@
 # limitations under the License.
 
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ungettext_lazy
 
 from horizon import tables
 from horizon.utils import filters
+
+from senlin_dashboard import api
 
 
 class CreateReceiver(tables.LinkAction):
@@ -23,6 +26,28 @@ class CreateReceiver(tables.LinkAction):
     classes = ("ajax-modal", "btn-create")
     icon = "plus"
     ajax = True
+
+
+class DeleteReceiver(tables.DeleteAction):
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Delete Receiver",
+            u"Delete Receivers",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Deleted Receiver",
+            u"Deleted Receivers",
+            count
+        )
+
+    def delete(self, request, obj_id):
+        api.senlin.receiver_delete(request, obj_id)
 
 
 def get_updated_time(object):
@@ -50,4 +75,6 @@ class ReceiversTable(tables.DataTable):
         name = "receivers"
         verbose_name = _("Receivers")
         table_actions = (tables.FilterAction,
-                         CreateReceiver)
+                         CreateReceiver,
+                         DeleteReceiver,)
+        row_actions = (DeleteReceiver,)

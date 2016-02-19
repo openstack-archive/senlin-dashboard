@@ -16,6 +16,7 @@ from horizon import exceptions
 from horizon import tabs
 
 from senlin_dashboard.api import senlin
+from senlin_dashboard.cluster.nodes import tables as node_table
 from senlin_dashboard.cluster.nodes import tabs as node_tab
 
 
@@ -42,6 +43,25 @@ class EventTab(node_tab.EventTab):
         return sorted(events, reverse=True, key=lambda y: y.timestamp)
 
 
+class NodesTab(tabs.TableTab):
+    name = _("Nodes")
+    slug = "nodes"
+    table_classes = (node_table.NodesTable,)
+    template_name = "cluster/clusters/_detail_nodes.html"
+    preload = False
+
+    def get_nodes_data(self):
+        cluster_id = self.tab_group.kwargs['cluster_id']
+        params = {"cluster_id": cluster_id}
+        try:
+            cluster_nodes = senlin.node_list(self.request, params)
+        except Exception:
+            cluster_nodes = []
+            exceptions.handle(self.request,
+                              _('Unable to retrieve nodes from cluster.'))
+        return cluster_nodes
+
+
 class ClusterDetailTabs(tabs.TabGroup):
     slug = "cluster_details"
-    tabs = (OverviewTab, EventTab)
+    tabs = (OverviewTab, EventTab, NodesTab)

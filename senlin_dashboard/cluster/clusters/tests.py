@@ -116,3 +116,20 @@ class ClustersTest(test.TestCase):
             CLUSTER_DETAIL_URL + '?tab=cluster_details__event')
         self.assertTemplateUsed(res, 'cluster/nodes/_detail_event.html')
         self.assertContains(res, '123456')
+
+    @test.create_stubs({api.senlin: ('node_list',
+                                     'cluster_get')})
+    def test_cluster_nodes(self):
+        cluster = self.clusters.list()[0]
+        nodes = self.nodes.list()
+        api.senlin.cluster_get(
+            IsA(http.HttpRequest), u'123456').AndReturn(cluster)
+        api.senlin.node_list(
+            IsA(http.HttpRequest),
+            params={'cluster_id': u'123456'}).AndReturn(nodes)
+        self.mox.ReplayAll()
+
+        res = self.client.get(
+            CLUSTER_DETAIL_URL + '?tab=cluster_details__nodes')
+        self.assertTemplateUsed(res, 'cluster/clusters/_detail_nodes.html')
+        self.assertContains(res, '123456')

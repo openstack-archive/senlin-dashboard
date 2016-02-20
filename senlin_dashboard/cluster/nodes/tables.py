@@ -19,6 +19,7 @@ from horizon import tables
 from horizon.utils import filters
 
 from senlin_dashboard import api
+from senlin_dashboard import exceptions
 
 
 class CreateNode(tables.LinkAction):
@@ -56,8 +57,11 @@ class UpdateRow(tables.Row):
     ajax = True
 
     def get_data(self, request, node_id):
-        node = api.senlin.node_get(request, node_id)
-        return node
+        try:
+            node = api.senlin.node_get(request, node_id)
+            return node
+        except exceptions.ResourceNotFound:
+            raise exceptions.NOT_FOUND
 
 
 def get_profile_link(node):

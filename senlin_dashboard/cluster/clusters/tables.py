@@ -19,6 +19,7 @@ from horizon import tables
 from horizon.utils import filters
 
 from senlin_dashboard import api
+from senlin_dashboard import exceptions
 
 
 class CreateCluster(tables.LinkAction):
@@ -65,8 +66,11 @@ class UpdateRow(tables.Row):
     ajax = True
 
     def get_data(self, request, cluster_id):
-        cluster = api.senlin.cluster_get(request, cluster_id)
-        return cluster
+        try:
+            cluster = api.senlin.cluster_get(request, cluster_id)
+            return cluster
+        except exceptions.ResourceNotFound:
+            raise exceptions.NOT_FOUND
 
 
 class ClustersTable(tables.DataTable):

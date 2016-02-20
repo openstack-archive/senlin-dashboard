@@ -25,7 +25,8 @@ class Cluster(base.APIResourceWrapper):
 
 
 class ClusterPolicy(base.APIResourceWrapper):
-    _attrs = ['id', 'policy_name', 'policy_type', 'enabled']
+    _attrs = ['id', 'policy_name', 'policy_type', 'enabled',
+              'cluster_id']
 
 
 class Profile(base.APIResourceWrapper):
@@ -98,6 +99,12 @@ def cluster_attach_policy(request, cluster, policy, params):
     """Attach policy to a specific cluster"""
     return senlinclient(request).cluster_attach_policy(
         cluster, policy, **params)
+
+
+def cluster_detach_policy(request, cluster, policy):
+    """Detach policy from cluster."""
+    senlinclient(request).cluster_detach_policy(
+        cluster, policy)
 
 
 def cluster_policy_list(request, cluster, params):

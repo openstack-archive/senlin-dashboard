@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -146,6 +147,37 @@ class ClustersTable(tables.DataTable):
                        DeleteCluster,)
 
 
+class DetachPolicy(tables.BatchAction):
+    name = "detach"
+    classes = ('btn-danger', 'btn-detach')
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Detach Policy",
+            u"Detach Policies",
+            count
+        )
+
+    # This action is asynchronous.
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Detaching Policy",
+            u"Detaching Policies",
+            count
+        )
+
+    def action(self, request, obj_id):
+        policy_obj = self.table.get_object_by_id(obj_id)
+        api.senlin.cluster_detach_policy(request,
+                                         policy_obj.cluster_id,
+                                         obj_id)
+
+    def get_success_url(self, request):
+        return reverse('horizon:cluster:clusters:index')
+
+
 class AttachedPoliciesTable(tables.DataTable):
     policy_name = tables.Column("policy_name", verbose_name=_("Name"))
     policy_type = tables.Column("policy_type", verbose_name=_("Type"))
@@ -155,3 +187,5 @@ class AttachedPoliciesTable(tables.DataTable):
         name = "attached_policies"
         hidden_title = False
         verbose_name = _("Attached Policies")
+        table_actions = (DetachPolicy,)
+        row_actions = (DetachPolicy,)

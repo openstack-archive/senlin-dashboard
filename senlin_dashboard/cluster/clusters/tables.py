@@ -31,6 +31,14 @@ class CreateCluster(tables.LinkAction):
     ajax = True
 
 
+class ManagePolicies(tables.LinkAction):
+    name = "manage_policies"
+    verbose_name = _("Manage Policies")
+    url = "horizon:cluster:clusters:manage_policies"
+    classes = ("ajax-modal",)
+    icon = "pencil"
+
+
 def get_profile_link(cluster):
     return reverse_lazy('horizon:cluster:profiles:detail',
                         args=[cluster.profile_id])
@@ -134,4 +142,16 @@ class ClustersTable(tables.DataTable):
         table_actions = (tables.FilterAction,
                          CreateCluster,
                          DeleteCluster,)
-        row_actions = (DeleteCluster,)
+        row_actions = (ManagePolicies,
+                       DeleteCluster,)
+
+
+class AttachedPoliciesTable(tables.DataTable):
+    policy_name = tables.Column("policy_name", verbose_name=_("Name"))
+    policy_type = tables.Column("policy_type", verbose_name=_("Type"))
+    enabled = tables.Column("enabled", verbose_name=_("Enabled"))
+
+    class Meta(object):
+        name = "attached_policies"
+        hidden_title = False
+        verbose_name = _("Attached Policies")

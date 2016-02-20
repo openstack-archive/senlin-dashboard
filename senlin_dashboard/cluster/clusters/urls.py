@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^create/$', views.CreateView.as_view(), name='create'),
     url(r'^(?P<cluster_id>[^/]+)/$',
         views.DetailView.as_view(), name='detail'),
+    url(r'^(?P<cluster_id>[^/]+)/manage_policies/$',
+        views.ManagePoliciesView.as_view(), name='manage_policies'),
 ]

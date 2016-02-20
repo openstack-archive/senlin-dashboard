@@ -1,0 +1,14 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+
+{% block modal-body %}
+  <h3>{% trans "Available Policies" %}</h3>
+  <fieldset>
+    {% include "horizon/common/_form_fields.html" %}
+  </fieldset>
+{% endblock %}
+
+{% block modal-footer %}
+  <input class="btn btn-primary pull-right" type="submit" value="{% trans "Attach Policy" %}" />
+  <a href="{% url 'horizon:cluster:clusters:index' %}" class="btn btn-default secondary cancel close">{% trans "Cancel" %}</a>
+{% endblock %}

@@ -15,10 +15,10 @@
     <dt>{% trans "Channel" %}</dt>
     <dd>{{ receiver.channel }}</dd>
     <dt>{% trans "Created" context "Created time" %}</dt>
-    <dd>{{ profile.created_at|parse_date }}</dd>
+    <dd>{{ receiver.created_at|parse_date }}</dd>
     {% if profile.updated_at %}
     <dt>{% trans "Updated" context "Updated time" %}</dt>
-    <dd>{{ profile.updated_at|parse_date }}</dd>
+    <dd>{{ receiver.updated_at|parse_date }}</dd>
     {% endif %}
   </dl>
 </div>

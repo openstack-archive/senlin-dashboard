@@ -41,7 +41,7 @@ class Policy(base.APIResourceWrapper):
 class Node(base.APIResourceWrapper):
     _attrs = ['id', 'name', 'status', 'created_at', 'updated_at',
               'profile_name', 'status_reason', 'physical_id', 'role',
-              'profile_id', 'profile_url']
+              'profile_id', 'profile_url', 'cluster_id']
 
 
 class Event(base.APIResourceWrapper):

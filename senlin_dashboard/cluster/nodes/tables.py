@@ -75,6 +75,12 @@ def get_physical_link(node):
                             args=[node.physical_id])
 
 
+def get_cluster_link(node):
+    if node.cluster_id:
+        return reverse_lazy('horizon:cluster:clusters:detail',
+                            args=[node.cluster_id])
+
+
 def get_updated_time(object):
     return filters.parse_isotime(object.updated_at) or None
 
@@ -111,6 +117,9 @@ class NodesTable(tables.DataTable):
                                 link=get_physical_link,
                                 verbose_name=_("Physical ID"))
     role = tables.Column("role", verbose_name=_("Role"))
+    cluster_id = tables.Column("cluster_id",
+                               link=get_cluster_link,
+                               verbose_name=_("Cluster ID"))
     status = tables.Column("status",
                            verbose_name=_("Status"),
                            status=True,

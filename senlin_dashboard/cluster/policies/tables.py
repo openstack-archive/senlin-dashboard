@@ -76,3 +76,4 @@ class PoliciesTable(tables.DataTable):
         table_actions = (tables.FilterAction,
                          CreatePolicy,
                          DeletePolicy,)
+        row_actions = (DeletePolicy,)

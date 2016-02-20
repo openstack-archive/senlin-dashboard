@@ -78,7 +78,6 @@ class UpdateView(forms.ModalFormView):
                             "spec": yaml.safe_dump(
                                 profile.spec,
                                 default_flow_style=False),
-                            "permission": profile.permission,
                             "metadata": metadata
                             }
         except Exception:

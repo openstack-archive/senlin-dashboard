@@ -80,7 +80,6 @@ class ProfilesTest(test.TestCase):
             'name': 'test-profile',
             'source_type': 'yaml',
             'spec_yaml': spec_yaml,
-            'permission': None,
             'metadata': None
         }
 
@@ -88,7 +87,6 @@ class ProfilesTest(test.TestCase):
             'name': 'test-profile',
             'spec_yaml': spec_yaml,
             'type': 'os.nova.server',
-            'permission': None,
             'metadata': None
         }
 

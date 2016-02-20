@@ -26,7 +26,7 @@ class Cluster(base.APIResourceWrapper):
 
 class Profile(base.APIResourceWrapper):
     _attrs = ['id', 'name', 'type_name', 'created_at', 'updated_at',
-              'permission', 'metadata', 'spec']
+              'metadata', 'spec']
 
 
 class ProfileType(base.APIResourceWrapper):

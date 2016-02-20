@@ -35,7 +35,7 @@ UPDATE_URL = "horizon:cluster:profiles:update"
 DETAIL_URL = "horizon:cluster:profiles:detail"
 
 
-def _populate_profile_params(name, spec, permission, metadata, id=None):
+def _populate_profile_params(name, spec, metadata, id=None):
 
     if spec is None:
         spec_dict = None
@@ -59,7 +59,6 @@ def _populate_profile_params(name, spec, permission, metadata, id=None):
                                     'YAML file: %s') % six.text_type(ex))
     params = {"name": name,
               "spec": spec_dict,
-              "permission": permission or None,
               "metadata": metadata_dict}
 
     if id is not None:
@@ -95,12 +94,6 @@ class CreateProfileForm(forms.SelfHandlingForm):
             'data-switch-on': 'source',
             'data-source-yaml': _('Spec YAML')}),
         help_text=_("The spec yaml used to create the profile."))
-    permission = forms.CharField(
-        max_length=255,
-        label=_("Permission"),
-        required=False,
-        widget=forms.HiddenInput(),
-        help_text=_("A string format permission for this profile."))
     metadata = forms.CharField(
         label=_("Metadata"),
         required=False,
@@ -131,7 +124,6 @@ class CreateProfileForm(forms.SelfHandlingForm):
         opts = _populate_profile_params(
             name=data.get('name'),
             spec=spec,
-            permission=data.get('permission'),
             metadata=data.get('metadata')
         )
 
@@ -159,12 +151,6 @@ class UpdateProfileForm(forms.SelfHandlingForm):
         widget=forms.Textarea(
             attrs={'rows': 6, 'readonly': 'readonly'}),
         help_text=_("The spec yaml used to create the profile."))
-    permission = forms.CharField(
-        max_length=255,
-        label=_("Permission"),
-        required=False,
-        widget=forms.HiddenInput(),
-        help_text=_("A string format permission for this profile."))
     metadata = forms.CharField(
         label=_("Metadata"),
         required=False,
@@ -176,7 +162,6 @@ class UpdateProfileForm(forms.SelfHandlingForm):
             id=data.get('profile_id'),
             name=data.get('name'),
             spec=None,
-            permission=data.get('permission'),
             metadata=data.get('metadata', {})
         )
 

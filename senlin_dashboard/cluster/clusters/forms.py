@@ -105,10 +105,14 @@ class ManagePoliciesForm(forms.SelfHandlingForm):
 
     def __init__(self, request, *args, **kwargs):
         super(ManagePoliciesForm, self).__init__(request, *args, **kwargs)
+        cluster_policies = senlin.cluster_policy_list(
+            self.request, kwargs['initial']['cluster_id'], {})
+        cluster_policies_ids = [policy.id for policy in cluster_policies]
         policies = senlin.policy_list(self.request, params={})
+        available_policies = [(policy.id, policy.name) for policy in policies
+                              if policy.id not in cluster_policies_ids]
         self.fields['policies'].choices = (
-            [("", _("Select Policy"))] + [(policy.id, policy.name)
-                                          for policy in policies])
+            [("", _("Select Policy"))] + available_policies)
 
     def handle(self, request, data):
         try:

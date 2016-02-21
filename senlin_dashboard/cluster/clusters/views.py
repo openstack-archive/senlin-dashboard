@@ -75,6 +75,9 @@ class DetailView(tabs.TabView):
         context = super(DetailView, self).get_context_data(**kwargs)
         table = ClustersTable(self.request)
         cluster = self.get_object()
+        policies = senlin.cluster_policy_list(
+            self.request, self.kwargs['cluster_id'], {})
+        cluster.policies = policies
         context["actions"] = table.render_row_actions(cluster)
         context["cluster"] = cluster
         context["url"] = reverse_lazy(clusters_forms.INDEX_URL)

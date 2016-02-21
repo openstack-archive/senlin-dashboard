@@ -63,8 +63,9 @@ class CreateForm(forms.SelfHandlingForm):
     def __init__(self, request, *args, **kwargs):
         super(CreateForm, self).__init__(request, *args, **kwargs)
         profiles = senlin.profile_list(request, params={})
-        self.fields['profile_id'].choices = [(profile.id, profile.name)
-                                             for profile in profiles]
+        self.fields['profile_id'].choices = (
+            [("", _("Select Profile"))] + [(profile.id, profile.name)
+                                           for profile in profiles])
 
     def handle(self, request, data):
         try:

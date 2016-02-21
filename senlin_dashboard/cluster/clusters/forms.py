@@ -105,7 +105,7 @@ class ManagePoliciesForm(forms.SelfHandlingForm):
 
     def __init__(self, request, *args, **kwargs):
         super(ManagePoliciesForm, self).__init__(request, *args, **kwargs)
-        policies = policies = senlin.policy_list(self.request, params={})
+        policies = senlin.policy_list(self.request, params={})
         self.fields['policies'].choices = (
             [("", _("Select Policy"))] + [(policy.id, policy.name)
                                           for policy in policies])

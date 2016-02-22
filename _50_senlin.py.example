@@ -2,6 +2,7 @@ from senlin_dashboard import exceptions
 
 DASHBOARD = 'cluster'
 ADD_INSTALLED_APPS = [
+    'senlin_dashboard',
     'senlin_dashboard.cluster'
 ]
 DEFAULT = True

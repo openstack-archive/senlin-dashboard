@@ -19,6 +19,7 @@ from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
 INDEX_URL = reverse('horizon:cluster:receivers:index')
+CREATE_URL = reverse('horizon:cluster:receivers:create')
 
 
 class ReceiversTest(test.TestCase):
@@ -56,3 +57,26 @@ class ReceiversTest(test.TestCase):
         self.assertTemplateUsed(res, 'cluster/receivers/index.html')
         self.assertContains(res, 'No items to display')
         self.assertEqual(len(res.context['receivers_table'].data), 0)
+
+    @test.create_stubs({api.senlin: ('receiver_create',
+                                     'cluster_list')})
+    def test_create_receiver(self):
+        clusters = self.clusters.list()
+        receiver = self.receivers.list()[0]
+        data = {
+            'name': 'test-receiver',
+            'type': 'webhook',
+            'cluster_id': '123456',
+            'action': 'CLUSTER_SCALE_IN',
+            'params': ''
+        }
+
+        api.senlin.cluster_list(
+            IsA(http.HttpRequest), params={}).AndReturn(clusters)
+        api.senlin.receiver_create(
+            IsA(http.HttpRequest), data).AndReturn(receiver)
+        self.mox.ReplayAll()
+
+        res = self.client.post(CREATE_URL, data)
+        self.assertNoFormErrors(res)
+        self.assertRedirectsNoFollow(res, INDEX_URL)

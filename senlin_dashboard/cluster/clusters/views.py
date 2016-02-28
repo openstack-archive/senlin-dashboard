@@ -10,11 +10,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from senlin_dashboard.api import senlin
 from senlin_dashboard.cluster.clusters import forms as clusters_forms
+from senlin_dashboard.cluster.clusters.tables import AttachedPoliciesTable
 from senlin_dashboard.cluster.clusters.tables import ClustersTable
 from senlin_dashboard.cluster.clusters import tabs as clusters_tabs
 
@@ -81,3 +83,49 @@ class DetailView(tabs.TabView):
     def get_tabs(self, request, *args, **kwargs):
         cluster = self.get_object()
         return self.tab_group_class(request, cluster=cluster, **kwargs)
+
+
+class ManagePoliciesView(tables.DataTableView, forms.ModalFormView):
+    table_class = AttachedPoliciesTable
+    form_class = clusters_forms.ManagePoliciesForm
+    form_id = "manage_policies"
+    modal_header = _("Manage Policies")
+    modal_id = "manage_policies"
+    template_name = 'cluster/clusters/manage_policies.html'
+    submit_url = "horizon:cluster:clusters:manage_policies"
+    success_url = reverse_lazy("horizon:cluster:clusters:index")
+    page_title = _("Manage Policies")
+
+    def get_data(self):
+        policies = senlin.cluster_policy_list(
+            self.request, self.kwargs['cluster_id'], {})
+        return policies
+
+    def get_context_data(self, **kwargs):
+        context = super(ManagePoliciesView, self).get_context_data(**kwargs)
+        args = (self.kwargs['cluster_id'],)
+        context['submit_url'] = reverse(self.submit_url, args=args)
+        context['form'] = self.get_form()
+        return context
+
+    def get_initial(self):
+        return {'cluster_id': self.kwargs['cluster_id']}
+
+    def get(self, request, *args, **kwargs):
+        # Table action handling
+        handled = self.construct_tables()
+        if handled:
+            return handled
+        return self.render_to_response(self.get_context_data(**kwargs))
+
+    @memoized.memoized_method
+    def get_form(self, **kwargs):
+        form_class = kwargs.get('form_class', self.get_form_class())
+        return super(ManagePoliciesView, self).get_form(form_class)
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.get(request, *args, **kwargs)

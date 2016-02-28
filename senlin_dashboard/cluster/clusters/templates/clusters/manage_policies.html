@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Manage Policies" %}{% endblock %}
+
+{% block main %}
+  {% include 'cluster/clusters/_manage_policies.html' %}
+{% endblock %}

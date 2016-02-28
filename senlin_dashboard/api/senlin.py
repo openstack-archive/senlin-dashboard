@@ -24,6 +24,10 @@ class Cluster(base.APIResourceWrapper):
               'profile_name', 'profile_id', 'status_reason']
 
 
+class ClusterPolicy(base.APIResourceWrapper):
+    _attrs = ['id', 'policy_name', 'policy_type', 'enabled']
+
+
 class Profile(base.APIResourceWrapper):
     _attrs = ['id', 'name', 'type_name', 'created_at', 'updated_at',
               'metadata', 'spec']
@@ -88,6 +92,20 @@ def cluster_get(request, cluster):
     """Returns cluster."""
     cluster = senlinclient(request).get_cluster(cluster)
     return Cluster(cluster)
+
+
+def cluster_attach_policy(request, cluster, policy, params):
+    """Attach policy to a specific cluster"""
+    return senlinclient(request).cluster_attach_policy(
+        cluster, policy, **params)
+
+
+def cluster_policy_list(request, cluster, params):
+    """List policies from cluster."""
+    policies = senlinclient(request).cluster_policies(
+        cluster, **params)
+    return [ClusterPolicy(p) for p in policies]
+    return policies
 
 
 def profile_list(request, params):

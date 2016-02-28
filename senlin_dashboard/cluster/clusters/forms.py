@@ -91,3 +91,37 @@ class CreateForm(forms.SelfHandlingForm):
             exceptions.handle(request,
                               _("Unable to create cluster."),
                               redirect=redirect)
+
+
+class ManagePoliciesForm(forms.SelfHandlingForm):
+    cluster_id = forms.CharField(widget=forms.HiddenInput())
+    policies = forms.ChoiceField(label=_("Policies"))
+    enabled = forms.BooleanField(
+        label=_("Enabled"),
+        initial=True,
+        required=False,
+        help_text=_("Whether the policy should be enabled once attached. "
+                    "Default to enabled."))
+
+    def __init__(self, request, *args, **kwargs):
+        super(ManagePoliciesForm, self).__init__(request, *args, **kwargs)
+        policies = policies = senlin.policy_list(self.request, params={})
+        self.fields['policies'].choices = (
+            [("", _("Select Policy"))] + [(policy.id, policy.name)
+                                          for policy in policies])
+
+    def handle(self, request, data):
+        try:
+            params = {"enabled": data.pop('enabled')}
+            attach = senlin.cluster_attach_policy(
+                request, data["cluster_id"], data['policies'], params)
+            msg = _('Attaching policy %(policy)s to cluster '
+                    '%(cluster)s.') % {"policy": data['policies'],
+                                       "cluster": data['cluster_id']}
+            messages.success(request, msg)
+            return attach
+        except Exception:
+            redirect = reverse(INDEX_URL)
+            exceptions.handle(request,
+                              _("Unable to attach policy."),
+                              redirect=redirect)

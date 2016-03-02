@@ -112,7 +112,6 @@ def cluster_policy_list(request, cluster, params):
     policies = senlinclient(request).cluster_policies(
         cluster, **params)
     return [ClusterPolicy(p) for p in policies]
-    return policies
 
 
 def profile_list(request, params):

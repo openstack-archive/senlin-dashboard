@@ -1,0 +1,448 @@
+# Zheng XI Zhou <zzxwill@gmail.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-02 08:25+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-03-03 02:07+0000\n"
+"Last-Translator: Zheng XI Zhou <zzxwill@gmail.com>\n"
+"Language-Team: Chinese (China)\n"
+"Language: zh-CN\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid ""
+"A Receiver is used to prepare Senlin engine to react to external alarms or "
+"events so that a specific Action can be initiated on a senlin cluster "
+"automatically. For example, when workload on a cluster climbs high, a "
+"receiver can change the size of a specified cluster."
+msgstr ""
+"接收者被用来准备Senlin engine以与报警和实践互动，这样特定的动作可以在senlin集"
+"群上自动初始化。比如，当一个节点上的工作压力升高，接收者可以改变特定集群的大"
+"小。"
+
+msgid ""
+"A policy is a set of rules that can be checked and/or enforced when an "
+"Action is performed on a Cluster."
+msgstr "策略是一套规则的集合，当动作在集群上执行时，它可以被检查或强制执行。"
+
+msgctxt "Current status of a Cluster"
+msgid "ACTIVE"
+msgstr "有效"
+
+msgctxt "Current status of a Node"
+msgid "ACTIVE"
+msgstr "有效的"
+
+msgctxt "Current status of the event"
+msgid "ACTIVE"
+msgstr "有效的"
+
+#, fuzzy
+msgid "Action"
+msgstr "操作"
+
+msgid "Attach Policy"
+msgstr "应用策略"
+
+msgid "Attached Policies"
+msgstr "已应用的策略"
+
+#, python-format
+msgid "Attaching policy %(policy)s to cluster %(cluster)s."
+msgstr "应用策略%(policy)s到集群%(cluster)s。"
+
+msgid "Available Policies"
+msgstr "可用的策略"
+
+msgctxt "Current status of a Cluster"
+msgid "CREATING"
+msgstr "创建中"
+
+msgctxt "Current status of a Node"
+msgid "CREATING"
+msgstr "创建中"
+
+msgctxt "Current status of the event"
+msgid "CREATING"
+msgstr "创建中"
+
+msgctxt "Current status of a Cluster"
+msgid "CRITICAL"
+msgstr "严重的"
+
+msgid "Cancel"
+msgstr "取消"
+
+#, fuzzy
+msgid "Channel"
+msgstr "通道"
+
+msgid "Cluster"
+msgstr "集群"
+
+msgid "Cluster ID"
+msgstr "集群ID"
+
+msgid "Cluster Name"
+msgstr "集群名称"
+
+msgid "Cluster creation timeout in seconds."
+msgstr "集群创建超时，以秒计。"
+
+msgid "Cluster for this node."
+msgstr "该节点的集群"
+
+msgid ""
+"Cluster is the collection of cloud objects, e.g. Nova servers, Heat stacks, "
+"Cinder volumes, etc."
+msgstr "集群是云对象的集合，比如，节点服务器，Heat的栈，Cinder的磁盘等。"
+
+msgid "Clusters"
+msgstr "集群"
+
+msgid "Cooldown"
+msgstr "冷却"
+
+msgid "Create Cluster"
+msgstr "创建集群"
+
+msgid "Create Node"
+msgstr "创建节点"
+
+msgid "Create Policy"
+msgstr "创建策略"
+
+msgid "Create Receiver"
+msgstr "创建接收者。"
+
+msgid "Created"
+msgstr "已创建"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "已创建"
+
+#, python-format
+msgid "Creating cluster \"%s\" successfully"
+msgstr "集群\"%s\"创建成功"
+
+#, python-format
+msgid "Creating node \"%s\" successfully"
+msgstr "节点\"%s\"创建成功"
+
+msgctxt "Current status of a Cluster"
+msgid "DELETED"
+msgstr "已删除"
+
+msgctxt "Current status of a Node"
+msgid "DELETED"
+msgstr "已删除"
+
+msgctxt "Current status of the event"
+msgid "DELETED"
+msgstr "已删除"
+
+msgctxt "Current status of a Cluster"
+msgid "DELETING"
+msgstr "删除中"
+
+msgctxt "Current status of a Node"
+msgid "DELETING"
+msgstr "删除中"
+
+msgctxt "Current status of the event"
+msgid "DELETING"
+msgstr "删除中"
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "删除集群"
+
+msgid "Delete Node"
+msgid_plural "Delete Nodes"
+msgstr[0] "删除节点"
+
+msgid "Description:"
+msgstr "描述"
+
+#, fuzzy
+msgid "Desired Capacity"
+msgstr "期望的容量"
+
+msgctxt "Current status of a Cluster"
+msgid "ERROR"
+msgstr "错误"
+
+msgctxt "Current status of a Node"
+msgid "ERROR"
+msgstr "错误"
+
+msgctxt "Current status of the event"
+msgid "ERROR"
+msgstr "错误"
+
+msgid "Event"
+msgstr "事件"
+
+msgid "File"
+msgstr "文件"
+
+msgid "ID"
+msgstr "ID"
+
+msgctxt "Current status of a Cluster"
+msgid "INIT"
+msgstr "初始化"
+
+msgctxt "Current status of a Node"
+msgid "INIT"
+msgstr "初始化"
+
+msgctxt "Current status of the event"
+msgid "INIT"
+msgstr "初始化"
+
+msgid "Information"
+msgstr "信息"
+
+msgid "Level"
+msgstr "级别"
+
+msgid "Manage Policies"
+msgstr "管理策略"
+
+msgid "Max Size"
+msgstr "最大值"
+
+msgid "Max size of the cluster. Default to -1, means unlimited."
+msgstr "集群最大值。默认为-1，表示无限制。"
+
+msgid "Metadata"
+msgstr "元数据"
+
+msgid "Min Size"
+msgstr "最小值"
+
+msgid "Min size of the cluster. Default to 0."
+msgstr "集群最小值。默认为0。"
+
+msgid "Name"
+msgstr "名称"
+
+msgid "Name or ID of the targeted action to be triggered."
+msgstr "将被触发的目标动作的名称或ID"
+
+msgid "Node Name"
+msgstr "节点名称"
+
+msgid "Nodes"
+msgstr "节点"
+
+msgid ""
+"Nodes are the physical objects, which can belong to any cluster of the same "
+"profile type."
+msgstr "节点是物理对象，它们属于相同配置类型的任意集群。"
+
+msgid "Object ID"
+msgstr "对象ID"
+
+msgid "Object Name"
+msgstr "对象名称"
+
+msgid "Overview"
+msgstr "概览"
+
+msgid "Parameters"
+msgstr "参数"
+
+msgid "Parent Cluster"
+msgstr "父集群"
+
+msgid "Permission"
+msgstr "权限"
+
+msgid "Physical ID"
+msgstr "物理ID"
+
+msgid "Policies"
+msgstr "策略"
+
+msgid "Policy Spec Examples"
+msgstr "策略规格说明实例"
+
+msgid "Receivers"
+msgstr "接收者"
+
+msgid "Role"
+msgstr "角色"
+
+msgid "Role for this node in the specific cluster."
+msgstr "特定集群中的这个节点的角色。"
+
+msgid "Scheduled deletion of Cluster"
+msgid_plural "Scheduled deletion of Clusters"
+msgstr[0] "已计划删除集群"
+
+msgid "Scheduled deletion of Node"
+msgid_plural "Scheduled deletion of Nodes"
+msgstr[0] "已计划节点删除"
+
+msgid "Select Cluster"
+msgstr "选择集群"
+
+msgid "Select Policy"
+msgstr "选择策略"
+
+msgid "Select Type"
+msgstr "选择类型"
+
+msgid "Spec"
+msgstr "规格说明"
+
+msgid "Spec File"
+msgstr "规则说明文件"
+
+msgid "Spec Source"
+msgstr "规格说明源"
+
+msgid "Status"
+msgstr "状态"
+
+msgid "Status Reason"
+msgstr "状态原因"
+
+msgid "Targeted cluster for this receiver."
+msgstr "这个接收者的目标集群。"
+
+#, python-format
+msgid "The parameters is not a valid YAML formatted: %s"
+msgstr "该参数不是有效的YAML格式：%s"
+
+#, python-format
+msgid "The specified data is not a valid YAML data: %s"
+msgstr "这些特定的数据不是有效的YAML数据：%s"
+
+#, python-format
+msgid "The specified file is not a valid YAML file: %s"
+msgstr "该特定的文件不是有效的YAML文件：%s"
+
+#, python-format
+msgid "The specified metadata is not a valid YAML: %s"
+msgstr "该元数据不是有效的YAML文件：%s"
+
+msgid "Timeout"
+msgstr "超时"
+
+msgid "Timestamp"
+msgstr "时间戳"
+
+msgid "Type"
+msgstr "类型"
+
+msgid "Type of the receiver to create. Defailt to webhook"
+msgstr "待创建的接受者类型，默认是webhook。"
+
+msgctxt "Current status of a Cluster"
+msgid "UPDATING"
+msgstr "更新中"
+
+msgctxt "Current status of a Node"
+msgid "UPDATING"
+msgstr "更新中"
+
+msgctxt "Current status of the event"
+msgid "UPDATING"
+msgstr "更新中"
+
+msgid "Unable to attach policy."
+msgstr "无法应用策略"
+
+msgid "Unable to create cluster."
+msgstr "无法创建集群"
+
+msgid "Unable to create new policy"
+msgstr "无法创建新的策略。"
+
+msgid "Unable to create new receiver"
+msgstr "无法创建新的接收者。"
+
+msgid "Unable to create node."
+msgstr "不能创建节点。"
+
+msgid "Unable to retrieve cluster event list."
+msgstr "无法获取集群事务列表"
+
+msgid "Unable to retrieve cluster."
+msgstr "无法获取集群。"
+
+msgid "Unable to retrieve clusters."
+msgstr "无法获取集群。"
+
+msgid "Unable to retrieve node event list."
+msgstr "无法获取节点的事件列表"
+
+msgid "Unable to retrieve node."
+msgstr "无法获取节点。"
+
+msgid "Unable to retrieve nodes from cluster."
+msgstr "无法获取集群的节点。"
+
+msgid "Unable to retrieve nodes."
+msgstr "无法获取节点。"
+
+msgid "Unable to retrieve policies."
+msgstr "无法获取策略。"
+
+msgid "Unable to retrieve policy."
+msgstr "无法获取策略。"
+
+msgid "Unable to retrieve receiver."
+msgstr "无法获取接收者。"
+
+msgid "Unable to retrieve receivers."
+msgstr "无法获取接收者。"
+
+msgid "Updated"
+msgstr "已更新"
+
+msgctxt "Updated time"
+msgid "Updated"
+msgstr "已更新"
+
+msgctxt "Current status of a Cluster"
+msgid "WARNING"
+msgstr "警告"
+
+msgctxt "Current status of a Node"
+msgid "WARNING"
+msgstr "警告"
+
+msgctxt "Current status of the event"
+msgid "WARNING"
+msgstr "警告"
+
+msgid "YAML"
+msgstr "YAML"
+
+msgid "YAML formated metadata"
+msgstr "YAML类型元数据"
+
+msgid "YAML formatted metadata."
+msgstr "YAML类型元数据。"
+
+msgid ""
+"YAML formatted parameters that will be passed to target action when the "
+"receiver is triggered."
+msgstr "YAML类型的参数在接受者被触发时将传递给目标动作。"
+
+#, python-format
+msgid "Your policy %s has been created."
+msgstr "你的策略%s已经被创建。"
+
+#, python-format
+msgid "Your receiver %s has been created successfully."
+msgstr "你的接收者%s已经被成功创建。"

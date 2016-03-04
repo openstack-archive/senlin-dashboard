@@ -1,0 +1,576 @@
+# Shu Muto <shu-mutou@rf.jp.nec.com>, 2016. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2016-03-02 08:25+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2016-03-03 06:01+0000\n"
+"Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid ""
+"A Receiver is used to prepare Senlin engine to react to external alarms or "
+"events so that a specific Action can be initiated on a senlin cluster "
+"automatically. For example, when workload on a cluster climbs high, a "
+"receiver can change the size of a specified cluster."
+msgstr ""
+"レシーバーは、Senlin クラスターを自動的に開始できる指定したアクションなど、外"
+"部のアラームやイベントに反応する Senlin エンジンを用意するために、使用されま"
+"す。例えば、クラスターのワークロードが高くなってきたら、レシーバーは指定した"
+"クラスターのサイズを変更できます。"
+
+msgid ""
+"A policy is a set of rules that can be checked and/or enforced when an "
+"Action is performed on a Cluster."
+msgstr ""
+"ポリシーは、アクションがクラスター上で実行された時にチェックされ、強制され"
+"る、ルールのセットです。"
+
+msgid "A profile encodes the information needed for node creation."
+msgstr "プロファイルはノードの作成に必要な情報をコードしています。"
+
+msgid "A spec file or yaml must be specified."
+msgstr "スペックファイルや YAML を指定する必要があります。"
+
+msgctxt "Current status of a Cluster"
+msgid "ACTIVE"
+msgstr "稼働中"
+
+msgctxt "Current status of a Node"
+msgid "ACTIVE"
+msgstr "稼働中"
+
+msgctxt "Current status of the event"
+msgid "ACTIVE"
+msgstr "稼働中"
+
+msgid "Action"
+msgstr "アクション"
+
+msgid ""
+"An integer between 0 and 100 representing the enforcement level. Default to "
+"0."
+msgstr "強制レベルを表す、 0 から 100 までの整数です。デフォルトは 0 です。"
+
+msgid ""
+"An integer indicating the cooldown seconds once the policy is effected. "
+"Default to 0."
+msgstr ""
+"ポリシーが適用された時に一度クールダウンする秒を表す整数です。デフォルトは 0 "
+"です。"
+
+msgid "Attach Policy"
+msgstr "ポリシーの適用"
+
+msgid "Attached Policies"
+msgstr "適用されたポリシー"
+
+#, python-format
+msgid "Attaching policy %(policy)s to cluster %(cluster)s."
+msgstr "クラスター %(cluster)s にポリシー %(policy)s を適用します。"
+
+msgid "Available Policies"
+msgstr "有効なポリシー"
+
+msgctxt "Current status of a Cluster"
+msgid "CREATING"
+msgstr "作成中"
+
+msgctxt "Current status of a Node"
+msgid "CREATING"
+msgstr "作成中"
+
+msgctxt "Current status of the event"
+msgid "CREATING"
+msgstr "作成中"
+
+msgctxt "Current status of a Cluster"
+msgid "CRITICAL"
+msgstr "重要"
+
+msgid "Can not specify both sepc file and yaml."
+msgstr "スペックファイルと YAML を両方指定することはできません。"
+
+msgid "Cancel"
+msgstr "取り消し"
+
+msgid "Channel"
+msgstr "チャンネル"
+
+msgid "Cluster"
+msgstr "クラスター"
+
+msgid "Cluster ID"
+msgstr "クラスター ID"
+
+msgid "Cluster Name"
+msgstr "クラスター名"
+
+msgid "Cluster creation timeout in seconds."
+msgstr "クラスター作成のタイムアウト時間（秒単位）。"
+
+msgid "Cluster for this node."
+msgstr "このノードのクラスター"
+
+msgid ""
+"Cluster is the collection of cloud objects, e.g. Nova servers, Heat stacks, "
+"Cinder volumes, etc."
+msgstr ""
+"クラスターはクラウドオブジェクト（例えば、Nova サーバー、Heat スタック、"
+"Cinder ボリューム、など）の集合です。"
+
+msgid "Clusters"
+msgstr "クラスター"
+
+msgid "Cooldown"
+msgstr "クールダウン"
+
+msgid "Create Cluster"
+msgstr "クラスターの作成"
+
+msgid "Create Node"
+msgstr "ノードの作成"
+
+msgid "Create Policy"
+msgstr "ポリシーの作成"
+
+msgid "Create Profile"
+msgstr "プロファイルの作成"
+
+msgid "Create Receiver"
+msgstr "レシーバーの作成"
+
+msgid "Created"
+msgstr "作成時刻"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "作成時刻"
+
+#, python-format
+msgid "Creating cluster \"%s\" successfully"
+msgstr "クラスター「%s」の作成が成功しました。"
+
+#, python-format
+msgid "Creating node \"%s\" successfully"
+msgstr "ノード「%s」の作成が成功しました。"
+
+msgctxt "Current status of a Cluster"
+msgid "DELETED"
+msgstr "削除済み"
+
+msgctxt "Current status of a Node"
+msgid "DELETED"
+msgstr "削除済み"
+
+msgctxt "Current status of the event"
+msgid "DELETED"
+msgstr "削除済み"
+
+msgctxt "Current status of a Cluster"
+msgid "DELETING"
+msgstr "削除中"
+
+msgctxt "Current status of a Node"
+msgid "DELETING"
+msgstr "削除中"
+
+msgctxt "Current status of the event"
+msgid "DELETING"
+msgstr "削除中"
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "クラスターの削除"
+
+msgid "Delete Node"
+msgid_plural "Delete Nodes"
+msgstr[0] "ノードの削除"
+
+msgid "Delete Policy"
+msgid_plural "Delete Policies"
+msgstr[0] "ポリシーの削除"
+
+msgid "Delete Profile"
+msgid_plural "Delete Profiles"
+msgstr[0] "プロファイルの削除"
+
+msgid "Delete Receiver"
+msgid_plural "Delete Receivers"
+msgstr[0] "レシーバーの削除"
+
+msgid "Deleted Policy"
+msgid_plural "Deleted Policies"
+msgstr[0] "ポリシーを削除しました"
+
+msgid "Deleted Profile"
+msgid_plural "Deleted Profiles"
+msgstr[0] "プロファイルを削除しました。"
+
+msgid "Deleted Receiver"
+msgid_plural "Deleted Receivers"
+msgstr[0] "レシーバーを削除しました。"
+
+msgid "Description:"
+msgstr "説明:"
+
+msgid "Desired Capacity"
+msgstr "希望するキャパシティー"
+
+msgid "Desired capacity of the cluster. Default to 0."
+msgstr "クラスターの希望するキャパシティー。デフォルトは 0 です。"
+
+msgid "Detach Policy"
+msgid_plural "Detach Policies"
+msgstr[0] "ポリシーの除外"
+
+msgid "Detaching Policy"
+msgid_plural "Detaching Policies"
+msgstr[0] "ポリシーを除外しています"
+
+msgctxt "Current status of a Cluster"
+msgid "ERROR"
+msgstr "エラー"
+
+msgctxt "Current status of a Node"
+msgid "ERROR"
+msgstr "エラー"
+
+msgctxt "Current status of the event"
+msgid "ERROR"
+msgstr "エラー"
+
+msgid "Enabled"
+msgstr "有効"
+
+msgid "Event"
+msgstr "イベント"
+
+msgid "File"
+msgstr "ファイル"
+
+msgid "ID"
+msgstr "ID"
+
+msgctxt "Current status of a Cluster"
+msgid "INIT"
+msgstr "初期化"
+
+msgctxt "Current status of a Node"
+msgid "INIT"
+msgstr "初期化"
+
+msgctxt "Current status of the event"
+msgid "INIT"
+msgstr "初期化"
+
+msgid "Information"
+msgstr "情報"
+
+msgid "Level"
+msgstr "レベル"
+
+msgid "Manage Policies"
+msgstr "ポリシーの管理"
+
+msgid "Max Size"
+msgstr "最大サイズ"
+
+msgid "Max size of the cluster. Default to -1, means unlimited."
+msgstr "クラスターの最大サイズです。デフォルトは -1 で、無制限を意味します。"
+
+msgid "Metadata"
+msgstr "メタデータ"
+
+msgid "Min Size"
+msgstr "最小サイズ"
+
+msgid "Min size of the cluster. Default to 0."
+msgstr "クラスターの最小サイズです。デフォルトは 0 です。"
+
+msgid "Name"
+msgstr "名前"
+
+msgid "Name or ID of the targeted action to be triggered."
+msgstr "トリガーされるターゲットとなるアクションの名前または ID。"
+
+msgid "Node Name"
+msgstr "ノード名"
+
+msgid "Nodes"
+msgstr "ノード"
+
+msgid ""
+"Nodes are the physical objects, which can belong to any cluster of the same "
+"profile type."
+msgstr ""
+"ノードは物理オブジェクトで、同じプロファイル種別のどのクラスターにでも所属す"
+"ることが出来ます。"
+
+msgid "Object ID"
+msgstr "オブジェクト ID"
+
+msgid "Object Name"
+msgstr "オブジェクト名"
+
+msgid "Overview"
+msgstr "概要"
+
+msgid "Parameters"
+msgstr "パラメーター"
+
+msgid "Parent Cluster"
+msgstr "親クラスター"
+
+msgid "Permission"
+msgstr "権限"
+
+msgid "Physical ID"
+msgstr "物理 ID"
+
+msgid "Policies"
+msgstr "ポリシー"
+
+msgid "Policy Spec Examples"
+msgstr "ポリシーのスペックの例"
+
+msgid "Profile"
+msgstr "プロファイル"
+
+msgid "Profile Name"
+msgstr "プロファイル名"
+
+msgid "Profile Spec Examples"
+msgstr "プロファイルのスペックの例"
+
+msgid "Profile used for this node."
+msgstr "このノードで使用されているプロファイル。"
+
+msgid "Profiles"
+msgstr "プロファイル"
+
+msgid "Receivers"
+msgstr "レシーバー"
+
+msgid "Role"
+msgstr "ロール"
+
+msgid "Role for this node in the specific cluster."
+msgstr "指定したクラスターにおけるこのノードのロール"
+
+msgid "Scheduled deletion of Cluster"
+msgid_plural "Scheduled deletion of Clusters"
+msgstr[0] "クラスターの削除を予約しました"
+
+msgid "Scheduled deletion of Node"
+msgid_plural "Scheduled deletion of Nodes"
+msgstr[0] "ノードの削除を予約しました"
+
+msgid "Select Cluster"
+msgstr "クラスターの選択"
+
+msgid "Select Policy"
+msgstr "ポリシーを選択してください"
+
+msgid "Select Profile"
+msgstr "プロファイルを選択してください"
+
+msgid "Select Type"
+msgstr "種別の選択"
+
+msgid "Spec"
+msgstr "スペック"
+
+msgid "Spec File"
+msgstr "スペックファイル"
+
+msgid "Spec Source"
+msgstr "スペックのソース"
+
+msgid "Spec YAML"
+msgstr "スペック YAML"
+
+msgid "Status"
+msgstr "ステータス"
+
+msgid "Status Reason"
+msgstr "ステータスの理由"
+
+msgid "Targeted cluster for this receiver."
+msgstr "このレシーバーのターゲットとなるクラスター。"
+
+#, python-format
+msgid "The parameters is not a valid YAML formatted: %s"
+msgstr "パラメータは有効な YAML 形式ではありません: %s"
+
+msgid "The spec file used to create the profile."
+msgstr "プロファイルの作成に使用されるスペックファイルです。"
+
+msgid "The spec yaml used to create the policy."
+msgstr "ポリシーの作成に使用するスペック YAML"
+
+msgid "The spec yaml used to create the profile."
+msgstr "プロファイルの作成に使用するスペック YAML"
+
+#, python-format
+msgid "The specified data is not a valid YAML data: %s"
+msgstr "指定されたデータは、有効な YAML データではありません: %s"
+
+#, python-format
+msgid "The specified file is not a valid YAML file: %s"
+msgstr "指定されたファイルは、有効な YAML ファイルではありません: %s"
+
+#, python-format
+msgid "The specified metadata is not a valid YAML format: %s"
+msgstr "指定されたメタデータは有効な YAML 形式ではありません: %s"
+
+#, python-format
+msgid "The specified metadata is not a valid YAML: %s"
+msgstr "指定されたメタデータは有効な YAML ではありません: %s"
+
+msgid "Timeout"
+msgstr "タイムアウト"
+
+msgid "Timestamp"
+msgstr "タイムスタンプ"
+
+msgid "Type"
+msgstr "種別"
+
+msgid "Type of the receiver to create. Defailt to webhook"
+msgstr "作成するレシーバの種別。デフォルトは webhook です。"
+
+msgctxt "Current status of a Cluster"
+msgid "UPDATING"
+msgstr "更新中"
+
+msgctxt "Current status of a Node"
+msgid "UPDATING"
+msgstr "更新中"
+
+msgctxt "Current status of the event"
+msgid "UPDATING"
+msgstr "更新中"
+
+msgid "Unable to attach policy."
+msgstr "ポリシーを適用できません。"
+
+msgid "Unable to create cluster."
+msgstr "クラスターを作成できません"
+
+msgid "Unable to create new policy"
+msgstr "新しいポリシーを作成できません。"
+
+msgid "Unable to create new profile"
+msgstr "新しいプロファイルを作成できません。"
+
+msgid "Unable to create new receiver"
+msgstr "新しいレシーバーを作成できません。"
+
+msgid "Unable to create node."
+msgstr "ノードを作成できません。"
+
+msgid "Unable to retrieve cluster event list."
+msgstr "クラスターのイベント一覧を取得できません。"
+
+msgid "Unable to retrieve cluster."
+msgstr "クラスターを取得できません。"
+
+msgid "Unable to retrieve clusters."
+msgstr "クラスターの一覧を取得できません"
+
+msgid "Unable to retrieve node event list."
+msgstr "ノードのイベント一覧を取得できません。"
+
+msgid "Unable to retrieve node."
+msgstr "ノードを取得できません。"
+
+msgid "Unable to retrieve nodes from cluster."
+msgstr "クラスターからノード一覧を取得できません。"
+
+msgid "Unable to retrieve nodes."
+msgstr "ノードの一覧を取得できません"
+
+msgid "Unable to retrieve policies."
+msgstr "ポリシーの一覧を取得できません"
+
+msgid "Unable to retrieve policy."
+msgstr "ポリシーを取得できません。"
+
+msgid "Unable to retrieve profile."
+msgstr "プロファイルを取得できません。"
+
+msgid "Unable to retrieve profiles."
+msgstr "プロファイルの一覧を取得できません。"
+
+msgid "Unable to retrieve receiver."
+msgstr "レシーバーを取得できません。"
+
+msgid "Unable to retrieve receivers."
+msgstr "レシーバーの一覧を取得できません。"
+
+msgid "Unable to update profile"
+msgstr "プロファイルを更新できません。"
+
+msgid "Update Profile"
+msgstr "プロファイルの更新"
+
+msgid "Updated"
+msgstr "更新時刻"
+
+msgctxt "Updated time"
+msgid "Updated"
+msgstr "更新時刻"
+
+msgctxt "Current status of a Cluster"
+msgid "WARNING"
+msgstr "警告"
+
+msgctxt "Current status of a Node"
+msgid "WARNING"
+msgstr "警告"
+
+msgctxt "Current status of the event"
+msgid "WARNING"
+msgstr "警告"
+
+msgid "Whether the policy should be enabled once attached. Default to enabled."
+msgstr "このポリシーを一度適用して有効にするかどうか。デフォルトは有効です。"
+
+msgid "YAML"
+msgstr "YAML"
+
+msgid "YAML formated metadata"
+msgstr "YAML 形式のメタデータ"
+
+msgid "YAML formatted metadata."
+msgstr "YAML 形式のメタデータ"
+
+msgid ""
+"YAML formatted parameters that will be passed to target action when the "
+"receiver is triggered."
+msgstr ""
+"レシーバーがトリガーされた時に、ターゲットアクションに渡される YAML 形式のパ"
+"ラメーター。"
+
+#, python-format
+msgid "Your policy %s has been created."
+msgstr "ポリシー %s が作成されました。"
+
+#, python-format
+msgid "Your profile %s has been created."
+msgstr "プロファイル %s が作成されました。"
+
+#, python-format
+msgid "Your profile %s has been updated."
+msgstr "プロファイル %s が更新されました。"
+
+#, python-format
+msgid "Your receiver %s has been created successfully."
+msgstr "レシーバー %s が正常に作成されました。"

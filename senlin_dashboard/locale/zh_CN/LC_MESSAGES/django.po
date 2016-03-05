@@ -1,4 +1,4 @@
-# Zheng XI Zhou <zzxwill@gmail.com>, 2016. #zanata
+# Zheng Xi Zhou <zzxwill@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-03-03 02:07+0000\n"
-"Last-Translator: Zheng XI Zhou <zzxwill@gmail.com>\n"
+"PO-Revision-Date: 2016-03-04 11:32+0000\n"
+"Last-Translator: Zheng Xi Zhou <zzxwill@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh-CN\n"
 "X-Generator: Zanata 3.7.3\n"
@@ -20,40 +20,55 @@ msgid ""
 "automatically. For example, when workload on a cluster climbs high, a "
 "receiver can change the size of a specified cluster."
 msgstr ""
-"接收者被用来准备Senlin engine以与报警和实践互动，这样特定的动作可以在senlin集"
-"群上自动初始化。比如，当一个节点上的工作压力升高，接收者可以改变特定集群的大"
-"小。"
+"接收端被用来准备Senlin引擎以完成对外部报警和事件做出响应，这样特定的Action可"
+"以在senlin集群上自动初始化。比如，当一个集群上的负载压力升高，接收端可以改变"
+"特定集群的容量。"
 
 msgid ""
 "A policy is a set of rules that can be checked and/or enforced when an "
 "Action is performed on a Cluster."
-msgstr "策略是一套规则的集合，当动作在集群上执行时，它可以被检查或强制执行。"
+msgstr "策略是一套规则的集合，当Action在集群上执行时，它可以被检查或执行。"
+
+msgid "A profile encodes the information needed for node creation."
+msgstr "样版加密节点创建所需要的信息。"
+
+msgid "A spec file or yaml must be specified."
+msgstr "必须制定规格文件或yaml。"
 
 msgctxt "Current status of a Cluster"
 msgid "ACTIVE"
-msgstr "有效"
+msgstr "活跃"
 
 msgctxt "Current status of a Node"
 msgid "ACTIVE"
-msgstr "有效的"
+msgstr "活跃"
 
 msgctxt "Current status of the event"
 msgid "ACTIVE"
-msgstr "有效的"
+msgstr "活跃"
 
-#, fuzzy
 msgid "Action"
-msgstr "操作"
+msgstr "Action"
+
+msgid ""
+"An integer between 0 and 100 representing the enforcement level. Default to "
+"0."
+msgstr "代表执行水平的从0到100的整数，默认是0"
+
+msgid ""
+"An integer indicating the cooldown seconds once the policy is effected. "
+"Default to 0."
+msgstr "当策略生效时，标记负载压力下降到正常值所花时间（秒）的整数，默认是0。"
 
 msgid "Attach Policy"
-msgstr "应用策略"
+msgstr "关联策略"
 
 msgid "Attached Policies"
-msgstr "已应用的策略"
+msgstr "已关联的策略"
 
 #, python-format
 msgid "Attaching policy %(policy)s to cluster %(cluster)s."
-msgstr "应用策略%(policy)s到集群%(cluster)s。"
+msgstr "关联策略%(policy)s到集群%(cluster)s。"
 
 msgid "Available Policies"
 msgstr "可用的策略"
@@ -72,12 +87,14 @@ msgstr "创建中"
 
 msgctxt "Current status of a Cluster"
 msgid "CRITICAL"
-msgstr "严重的"
+msgstr "严重错误"
+
+msgid "Can not specify both sepc file and yaml."
+msgstr "无法同时指定规格文件和yaml。"
 
 msgid "Cancel"
 msgstr "取消"
 
-#, fuzzy
 msgid "Channel"
 msgstr "通道"
 
@@ -91,7 +108,7 @@ msgid "Cluster Name"
 msgstr "集群名称"
 
 msgid "Cluster creation timeout in seconds."
-msgstr "集群创建超时，以秒计。"
+msgstr "集群创建超时时限，以秒计。"
 
 msgid "Cluster for this node."
 msgstr "该节点的集群"
@@ -99,7 +116,7 @@ msgstr "该节点的集群"
 msgid ""
 "Cluster is the collection of cloud objects, e.g. Nova servers, Heat stacks, "
 "Cinder volumes, etc."
-msgstr "集群是云对象的集合，比如，节点服务器，Heat的栈，Cinder的磁盘等。"
+msgstr "集群是云对象的集合，比如，Nova服务器，Heat的栈，Cinder的卷等。"
 
 msgid "Clusters"
 msgstr "集群"
@@ -116,15 +133,18 @@ msgstr "创建节点"
 msgid "Create Policy"
 msgstr "创建策略"
 
+msgid "Create Profile"
+msgstr "创建样版"
+
 msgid "Create Receiver"
-msgstr "创建接收者。"
+msgstr "创建接收端"
 
 msgid "Created"
 msgstr "已创建"
 
 msgctxt "Created time"
 msgid "Created"
-msgstr "已创建"
+msgstr "创建时间"
 
 #, python-format
 msgid "Creating cluster \"%s\" successfully"
@@ -166,12 +186,46 @@ msgid "Delete Node"
 msgid_plural "Delete Nodes"
 msgstr[0] "删除节点"
 
+msgid "Delete Policy"
+msgid_plural "Delete Policies"
+msgstr[0] "删除策略"
+
+msgid "Delete Profile"
+msgid_plural "Delete Profiles"
+msgstr[0] "删除样版"
+
+msgid "Delete Receiver"
+msgid_plural "Delete Receivers"
+msgstr[0] "删除接收端"
+
+msgid "Deleted Policy"
+msgid_plural "Deleted Policies"
+msgstr[0] "已删除的策略"
+
+msgid "Deleted Profile"
+msgid_plural "Deleted Profiles"
+msgstr[0] "删除的样版"
+
+msgid "Deleted Receiver"
+msgid_plural "Deleted Receivers"
+msgstr[0] "已删除的接收端"
+
 msgid "Description:"
 msgstr "描述"
 
-#, fuzzy
 msgid "Desired Capacity"
 msgstr "期望的容量"
+
+msgid "Desired capacity of the cluster. Default to 0."
+msgstr "集群期望的容量，默认是0。"
+
+msgid "Detach Policy"
+msgid_plural "Detach Policies"
+msgstr[0] "分离策略"
+
+msgid "Detaching Policy"
+msgid_plural "Detaching Policies"
+msgstr[0] "正在分离策略"
 
 msgctxt "Current status of a Cluster"
 msgid "ERROR"
@@ -184,6 +238,9 @@ msgstr "错误"
 msgctxt "Current status of the event"
 msgid "ERROR"
 msgstr "错误"
+
+msgid "Enabled"
+msgstr "Enabled"
 
 msgid "Event"
 msgstr "事件"
@@ -216,19 +273,19 @@ msgid "Manage Policies"
 msgstr "管理策略"
 
 msgid "Max Size"
-msgstr "最大值"
+msgstr "容量上限"
 
 msgid "Max size of the cluster. Default to -1, means unlimited."
-msgstr "集群最大值。默认为-1，表示无限制。"
+msgstr "集群容量上限。默认为-1，表示无限制。"
 
 msgid "Metadata"
 msgstr "元数据"
 
 msgid "Min Size"
-msgstr "最小值"
+msgstr "容量下限"
 
 msgid "Min size of the cluster. Default to 0."
-msgstr "集群最小值。默认为0。"
+msgstr "集群容量下限。默认为0。"
 
 msgid "Name"
 msgstr "名称"
@@ -240,12 +297,12 @@ msgid "Node Name"
 msgstr "节点名称"
 
 msgid "Nodes"
-msgstr "节点"
+msgstr "节点列表"
 
 msgid ""
 "Nodes are the physical objects, which can belong to any cluster of the same "
 "profile type."
-msgstr "节点是物理对象，它们属于相同配置类型的任意集群。"
+msgstr "节点是物理对象，可以成为任何样版类型相同的集群的成员。"
 
 msgid "Object ID"
 msgstr "对象ID"
@@ -274,8 +331,23 @@ msgstr "策略"
 msgid "Policy Spec Examples"
 msgstr "策略规格说明实例"
 
+msgid "Profile"
+msgstr "样版"
+
+msgid "Profile Name"
+msgstr "样版名称"
+
+msgid "Profile Spec Examples"
+msgstr "样版规格文档"
+
+msgid "Profile used for this node."
+msgstr "用于该节点的样版。"
+
+msgid "Profiles"
+msgstr "样版"
+
 msgid "Receivers"
-msgstr "接收者"
+msgstr "接收端"
 
 msgid "Role"
 msgstr "角色"
@@ -297,17 +369,23 @@ msgstr "选择集群"
 msgid "Select Policy"
 msgstr "选择策略"
 
+msgid "Select Profile"
+msgstr "选择样版"
+
 msgid "Select Type"
 msgstr "选择类型"
 
 msgid "Spec"
-msgstr "规格说明"
+msgstr "规格"
 
 msgid "Spec File"
-msgstr "规则说明文件"
+msgstr "规格文件"
 
 msgid "Spec Source"
-msgstr "规格说明源"
+msgstr "规格来源"
+
+msgid "Spec YAML"
+msgstr "规格YAML"
 
 msgid "Status"
 msgstr "状态"
@@ -316,26 +394,39 @@ msgid "Status Reason"
 msgstr "状态原因"
 
 msgid "Targeted cluster for this receiver."
-msgstr "这个接收者的目标集群。"
+msgstr "这个接收端所针对的集群。"
 
 #, python-format
 msgid "The parameters is not a valid YAML formatted: %s"
-msgstr "该参数不是有效的YAML格式：%s"
+msgstr "该参数不是合法的YAML格式：%s"
+
+msgid "The spec file used to create the profile."
+msgstr "用于创建样版的规格文件。"
+
+msgid "The spec yaml used to create the policy."
+msgstr "用来创建策略的规格yaml文件"
+
+msgid "The spec yaml used to create the profile."
+msgstr "用于创建样版的规格文件的规格yaml文件。"
 
 #, python-format
 msgid "The specified data is not a valid YAML data: %s"
-msgstr "这些特定的数据不是有效的YAML数据：%s"
+msgstr "所提供的数据不是合法的YAML数据：%s"
 
 #, python-format
 msgid "The specified file is not a valid YAML file: %s"
-msgstr "该特定的文件不是有效的YAML文件：%s"
+msgstr "所提供的文件不是合法的YAML文件：%s"
+
+#, python-format
+msgid "The specified metadata is not a valid YAML format: %s"
+msgstr "给定的元数据不是合法的Yaml格式：%s"
 
 #, python-format
 msgid "The specified metadata is not a valid YAML: %s"
-msgstr "该元数据不是有效的YAML文件：%s"
+msgstr "所提供的元数据不是合法的YAML文件：%s"
 
 msgid "Timeout"
-msgstr "超时"
+msgstr "超时时限"
 
 msgid "Timestamp"
 msgstr "时间戳"
@@ -344,7 +435,7 @@ msgid "Type"
 msgstr "类型"
 
 msgid "Type of the receiver to create. Defailt to webhook"
-msgstr "待创建的接受者类型，默认是webhook。"
+msgstr "待创建的接受端类型，默认是webhook。"
 
 msgctxt "Current status of a Cluster"
 msgid "UPDATING"
@@ -359,7 +450,7 @@ msgid "UPDATING"
 msgstr "更新中"
 
 msgid "Unable to attach policy."
-msgstr "无法应用策略"
+msgstr "无法关联策略。"
 
 msgid "Unable to create cluster."
 msgstr "无法创建集群"
@@ -367,20 +458,23 @@ msgstr "无法创建集群"
 msgid "Unable to create new policy"
 msgstr "无法创建新的策略。"
 
+msgid "Unable to create new profile"
+msgstr "无法创建新的样版"
+
 msgid "Unable to create new receiver"
-msgstr "无法创建新的接收者。"
+msgstr "无法创建新的接收端。"
 
 msgid "Unable to create node."
-msgstr "不能创建节点。"
+msgstr "无法创建节点。"
 
 msgid "Unable to retrieve cluster event list."
-msgstr "无法获取集群事务列表"
+msgstr "无法获取集群事件列表"
 
 msgid "Unable to retrieve cluster."
 msgstr "无法获取集群。"
 
 msgid "Unable to retrieve clusters."
-msgstr "无法获取集群。"
+msgstr "无法获取集群列表。"
 
 msgid "Unable to retrieve node event list."
 msgstr "无法获取节点的事件列表"
@@ -389,29 +483,41 @@ msgid "Unable to retrieve node."
 msgstr "无法获取节点。"
 
 msgid "Unable to retrieve nodes from cluster."
-msgstr "无法获取集群的节点。"
+msgstr "无法获取集群的节点列表。"
 
 msgid "Unable to retrieve nodes."
-msgstr "无法获取节点。"
+msgstr "无法获取节点列表。"
 
 msgid "Unable to retrieve policies."
-msgstr "无法获取策略。"
+msgstr "无法获取策略列表。"
 
 msgid "Unable to retrieve policy."
 msgstr "无法获取策略。"
 
+msgid "Unable to retrieve profile."
+msgstr "无法获取样版。"
+
+msgid "Unable to retrieve profiles."
+msgstr "无法获取样版。"
+
 msgid "Unable to retrieve receiver."
-msgstr "无法获取接收者。"
+msgstr "无法获取接收端。"
 
 msgid "Unable to retrieve receivers."
-msgstr "无法获取接收者。"
+msgstr "无法获取接收端。"
+
+msgid "Unable to update profile"
+msgstr "无法更新样版"
+
+msgid "Update Profile"
+msgstr "更新样版"
 
 msgid "Updated"
 msgstr "已更新"
 
 msgctxt "Updated time"
 msgid "Updated"
-msgstr "已更新"
+msgstr "更新时间"
 
 msgctxt "Current status of a Cluster"
 msgid "WARNING"
@@ -425,6 +531,9 @@ msgctxt "Current status of the event"
 msgid "WARNING"
 msgstr "警告"
 
+msgid "Whether the policy should be enabled once attached. Default to enabled."
+msgstr "策略一旦关联是否应该设置为有效，默认是enabled。"
+
 msgid "YAML"
 msgstr "YAML"
 
@@ -437,12 +546,20 @@ msgstr "YAML类型元数据。"
 msgid ""
 "YAML formatted parameters that will be passed to target action when the "
 "receiver is triggered."
-msgstr "YAML类型的参数在接受者被触发时将传递给目标动作。"
+msgstr "YAML类型的参数在接受端被触发时将传递给目标动作。"
 
 #, python-format
 msgid "Your policy %s has been created."
 msgstr "你的策略%s已经被创建。"
 
 #, python-format
+msgid "Your profile %s has been created."
+msgstr "你的样版%s已经创建了。"
+
+#, python-format
+msgid "Your profile %s has been updated."
+msgstr "你的样版%s已经更新了。"
+
+#, python-format
 msgid "Your receiver %s has been created successfully."
-msgstr "你的接收者%s已经被成功创建。"
+msgstr "你的接收端%s已经被成功创建。"

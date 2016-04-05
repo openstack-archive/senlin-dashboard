@@ -103,10 +103,10 @@ class ClustersTest(test.TestCase):
     @test.create_stubs({api.senlin: ('event_list',
                                      'cluster_get')})
     def test_cluster_event(self):
+        cluster = self.clusters.list()[0]
         events = self.events.list()
-        node = self.nodes.list()[0]
         api.senlin.cluster_get(
-            IsA(http.HttpRequest), u'123456').AndReturn(node)
+            IsA(http.HttpRequest), u'123456').AndReturn(cluster)
         api.senlin.event_list(
             IsA(http.HttpRequest),
             params={'obj_id': u'123456'}).AndReturn(events)

@@ -24,7 +24,9 @@ class SenlinApiTests(test.APITestCase):
         senlinclient.clusters(**params).AndReturn(clusters)
         self.mox.ReplayAll()
 
-        api.senlin.cluster_list(self.request, params)
+        ret_val = api.senlin.cluster_list(self.request, params)
+        for cluster in ret_val:
+            self.assertIsInstance(cluster, api.senlin.Cluster)
 
     def test_profile_list(self):
         params = {}
@@ -34,7 +36,9 @@ class SenlinApiTests(test.APITestCase):
         senlinclient.profiles(**params).AndReturn(profiles)
         self.mox.ReplayAll()
 
-        api.senlin.profile_list(self.request, params)
+        ret_val = api.senlin.profile_list(self.request, params)
+        for profile in ret_val:
+            self.assertIsInstance(profile, api.senlin.Profile)
 
     def test_policy_list(self):
         params = {}
@@ -44,7 +48,9 @@ class SenlinApiTests(test.APITestCase):
         senlinclient.policies(**params).AndReturn(policies)
         self.mox.ReplayAll()
 
-        api.senlin.policy_list(self.request, params)
+        ret_val = api.senlin.policy_list(self.request, params)
+        for policy in ret_val:
+            self.assertIsInstance(policy, api.senlin.Policy)
 
     def test_node_list(self):
         params = {}
@@ -54,7 +60,9 @@ class SenlinApiTests(test.APITestCase):
         senlinclient.nodes(**params).AndReturn(nodes)
         self.mox.ReplayAll()
 
-        api.senlin.node_list(self.request, params)
+        ret_val = api.senlin.node_list(self.request, params)
+        for node in ret_val:
+            self.assertIsInstance(node, api.senlin.Node)
 
     def test_event_list(self):
         params = {}
@@ -64,4 +72,6 @@ class SenlinApiTests(test.APITestCase):
         senlinclient.events(**params).AndReturn(events)
         self.mox.ReplayAll()
 
-        api.senlin.event_list(self.request, params)
+        ret_val = api.senlin.event_list(self.request, params)
+        for event in ret_val:
+            self.assertIsInstance(event, api.senlin.Event)

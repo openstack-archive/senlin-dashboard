@@ -1,4 +1,4 @@
-{% load i18n parse_date nbsp %}
+{% load i18n nbsp %}
 
 <div class="detail">
   <h4>{% trans "Information" %}</h4>
@@ -17,10 +17,10 @@
     <dd>{{ profile.permission }}</dd>
     {% endif %}
     <dt>{% trans "Created" context "Created time" %}</dt>
-    <dd>{{ profile.created_at|parse_date }}</dd>
+    <dd>{{ profile.created_at }}</dd>
     {% if profile.updated_at %}
     <dt>{% trans "Updated" context "Updated time" %}</dt>
-    <dd>{{ profile.updated_at|parse_date }}</dd>
+    <dd>{{ profile.updated_at }}</dd>
     {% endif %}
   </dl>
 

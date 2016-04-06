@@ -46,7 +46,7 @@ class Policy(base.APIResourceWrapper):
 class Node(base.APIResourceWrapper):
     _attrs = ['id', 'name', 'status', 'created_at', 'updated_at',
               'profile_name', 'status_reason', 'physical_id', 'role',
-              'profile_id', 'profile_url', 'cluster_id']
+              'profile_id', 'profile_url', 'cluster_id', 'metadata']
 
 
 class Event(base.APIResourceWrapper):
@@ -187,6 +187,12 @@ def node_get(request, node):
     """Returns node."""
     node = senlinclient(request).get_node(node)
     return Node(node)
+
+
+def node_update(request, node, params):
+    """Update node"""
+    node = senlinclient(request).update_node(node, **params)
+    return node
 
 
 def event_list(request, params):

@@ -1,4 +1,4 @@
-{% load i18n parse_date %}
+{% load i18n %}
 
 <div class="detail">
   <h4>{% trans "Information" %}</h4>
@@ -15,10 +15,10 @@
     <dt>{% trans "Channel" %}</dt>
     <dd>{{ receiver.channel }}</dd>
     <dt>{% trans "Created" context "Created time" %}</dt>
-    <dd>{{ receiver.created_at|parse_date }}</dd>
+    <dd>{{ receiver.created_at }}</dd>
     {% if profile.updated_at %}
     <dt>{% trans "Updated" context "Updated time" %}</dt>
-    <dd>{{ receiver.updated_at|parse_date }}</dd>
+    <dd>{{ receiver.updated_at }}</dd>
     {% endif %}
   </dl>
 </div>

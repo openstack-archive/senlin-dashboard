@@ -1,4 +1,4 @@
-{% load i18n parse_date nbsp %}
+{% load i18n nbsp %}
 
 <div class="detail">
   <h4>{% trans "Information" %}</h4>
@@ -11,10 +11,10 @@
     <dt>{% trans "Spec" %}</dt>
     <dd>{{ policy.policy_spec|force_escape|nbsp|linebreaksbr }}</dd>
     <dt>{% trans "Created" context "Created time" %}</dt>
-    <dd>{{ policy.created_at|parse_date }}</dd>
+    <dd>{{ policy.created_at }}</dd>
     {% if node.updated_at %}
     <dt>{% trans "Updated" context "Updated time" %}</dt>
-    <dd>{{ policy.updated_at|parse_date }}</dd>
+    <dd>{{ policy.updated_at }}</dd>
     {% endif %}
   </dl>
 </div>

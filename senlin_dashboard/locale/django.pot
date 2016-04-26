@@ -1,14 +1,15 @@
-# Translations template for PROJECT.
+# Translations template for senlin-dashboard.
 # Copyright (C) 2016 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the senlin-dashboard
+# project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-03-04 06:19+0000\n"
+"Project-Id-Version: senlin-dashboard 0.2.1.dev8\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2016-04-26 06:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -102,14 +103,14 @@ msgstr ""
 
 #: senlin_dashboard/cluster/clusters/forms.py:98
 #: senlin_dashboard/cluster/policies/panel.py:21
-#: senlin_dashboard/cluster/policies/tables.py:75
+#: senlin_dashboard/cluster/policies/tables.py:71
 #: senlin_dashboard/cluster/policies/views.py:33
 #: senlin_dashboard/cluster/policies/templates/policies/index.html:3
 msgid "Policies"
 msgstr ""
 
 #: senlin_dashboard/cluster/clusters/forms.py:100
-#: senlin_dashboard/cluster/clusters/tables.py:184
+#: senlin_dashboard/cluster/clusters/tables.py:180
 msgid "Enabled"
 msgstr ""
 
@@ -117,27 +118,27 @@ msgstr ""
 msgid "Whether the policy should be enabled once attached. Default to enabled."
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/forms.py:110
+#: senlin_dashboard/cluster/clusters/forms.py:115
 msgid "Select Policy"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/forms.py:118
+#: senlin_dashboard/cluster/clusters/forms.py:122
 #, python-format
 msgid "Attaching policy %(policy)s to cluster %(cluster)s."
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/forms.py:126
+#: senlin_dashboard/cluster/clusters/forms.py:130
 msgid "Unable to attach policy."
 msgstr ""
 
 #: senlin_dashboard/cluster/clusters/panel.py:21
-#: senlin_dashboard/cluster/clusters/tables.py:141
+#: senlin_dashboard/cluster/clusters/tables.py:137
 #: senlin_dashboard/cluster/clusters/views.py:33
 #: senlin_dashboard/cluster/clusters/templates/clusters/index.html:3
 msgid "Clusters"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:28
+#: senlin_dashboard/cluster/clusters/tables.py:27
 #: senlin_dashboard/cluster/clusters/views.py:48
 #: senlin_dashboard/cluster/clusters/templates/clusters/_create.html:4
 #: senlin_dashboard/cluster/clusters/templates/clusters/_create.html:13
@@ -145,148 +146,148 @@ msgstr ""
 msgid "Create Cluster"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:37
+#: senlin_dashboard/cluster/clusters/tables.py:36
 #: senlin_dashboard/cluster/clusters/views.py:92
 #: senlin_dashboard/cluster/clusters/views.py:97
 #: senlin_dashboard/cluster/clusters/templates/clusters/manage_policies.html:3
 msgid "Manage Policies"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:56
+#: senlin_dashboard/cluster/clusters/tables.py:55
 msgid "Delete Cluster"
 msgid_plural "Delete Clusters"
 msgstr[0] ""
 msgstr[1] ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:64
+#: senlin_dashboard/cluster/clusters/tables.py:63
 msgid "Scheduled deletion of Cluster"
 msgid_plural "Scheduled deletion of Clusters"
 msgstr[0] ""
 msgstr[1] ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:99
+#: senlin_dashboard/cluster/clusters/tables.py:98
 msgctxt "Current status of a Cluster"
 msgid "INIT"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:100
+#: senlin_dashboard/cluster/clusters/tables.py:99
 msgctxt "Current status of a Cluster"
 msgid "ACTIVE"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:101
+#: senlin_dashboard/cluster/clusters/tables.py:100
 msgctxt "Current status of a Cluster"
 msgid "ERROR"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:102
+#: senlin_dashboard/cluster/clusters/tables.py:101
 msgctxt "Current status of a Cluster"
 msgid "DELETED"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:103
+#: senlin_dashboard/cluster/clusters/tables.py:102
 msgctxt "Current status of a Cluster"
 msgid "CRITICAL"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:105
+#: senlin_dashboard/cluster/clusters/tables.py:104
 msgctxt "Current status of a Cluster"
 msgid "WARNING"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:106
+#: senlin_dashboard/cluster/clusters/tables.py:105
 msgctxt "Current status of a Cluster"
 msgid "CREATING"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:108
+#: senlin_dashboard/cluster/clusters/tables.py:107
 msgctxt "Current status of a Cluster"
 msgid "UPDATING"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:110
+#: senlin_dashboard/cluster/clusters/tables.py:109
 msgctxt "Current status of a Cluster"
 msgid "DELETING"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:114
-#: senlin_dashboard/cluster/clusters/tables.py:182
+#: senlin_dashboard/cluster/clusters/tables.py:113
+#: senlin_dashboard/cluster/clusters/tables.py:178
 #: senlin_dashboard/cluster/clusters/templates/clusters/_detail_overview.html:7
-#: senlin_dashboard/cluster/nodes/tables.py:111
+#: senlin_dashboard/cluster/nodes/tables.py:110
 #: senlin_dashboard/cluster/nodes/templates/nodes/_detail_overview.html:7
 #: senlin_dashboard/cluster/policies/forms.py:35
-#: senlin_dashboard/cluster/policies/tables.py:58
+#: senlin_dashboard/cluster/policies/tables.py:57
 #: senlin_dashboard/cluster/policies/templates/policies/_detail_overview.html:7
 #: senlin_dashboard/cluster/profiles/forms.py:71
 #: senlin_dashboard/cluster/profiles/forms.py:148
-#: senlin_dashboard/cluster/profiles/tables.py:66
+#: senlin_dashboard/cluster/profiles/tables.py:65
 #: senlin_dashboard/cluster/profiles/templates/profiles/_detail_overview.html:7
 #: senlin_dashboard/cluster/receivers/forms.py:34
-#: senlin_dashboard/cluster/receivers/tables.py:58
+#: senlin_dashboard/cluster/receivers/tables.py:57
 #: senlin_dashboard/cluster/receivers/templates/receivers/_detail_overview.html:7
 msgid "Name"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:117
+#: senlin_dashboard/cluster/clusters/tables.py:116
 #: senlin_dashboard/cluster/clusters/templates/clusters/_detail_overview.html:13
-#: senlin_dashboard/cluster/nodes/event_tables.py:49
-#: senlin_dashboard/cluster/nodes/tables.py:124
+#: senlin_dashboard/cluster/nodes/event_tables.py:48
+#: senlin_dashboard/cluster/nodes/tables.py:123
 #: senlin_dashboard/cluster/nodes/templates/nodes/_detail_overview.html:13
 msgid "Status"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:122
-#: senlin_dashboard/cluster/nodes/event_tables.py:54
-#: senlin_dashboard/cluster/nodes/tables.py:129
+#: senlin_dashboard/cluster/clusters/tables.py:121
+#: senlin_dashboard/cluster/nodes/event_tables.py:53
+#: senlin_dashboard/cluster/nodes/tables.py:128
 msgid "Status Reason"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:125
+#: senlin_dashboard/cluster/clusters/tables.py:124
 #: senlin_dashboard/cluster/clusters/templates/clusters/_detail_overview.html:9
-#: senlin_dashboard/cluster/nodes/tables.py:115
+#: senlin_dashboard/cluster/nodes/tables.py:114
 #: senlin_dashboard/cluster/nodes/templates/nodes/_detail_overview.html:9
 msgid "Profile Name"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:128
-#: senlin_dashboard/cluster/nodes/tables.py:132
-#: senlin_dashboard/cluster/policies/tables.py:63
-#: senlin_dashboard/cluster/profiles/tables.py:71
-#: senlin_dashboard/cluster/receivers/tables.py:65
+#: senlin_dashboard/cluster/clusters/tables.py:127
+#: senlin_dashboard/cluster/nodes/tables.py:131
+#: senlin_dashboard/cluster/policies/tables.py:62
+#: senlin_dashboard/cluster/profiles/tables.py:70
+#: senlin_dashboard/cluster/receivers/tables.py:64
 msgid "Created"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:135
-#: senlin_dashboard/cluster/nodes/tables.py:139
-#: senlin_dashboard/cluster/policies/tables.py:70
-#: senlin_dashboard/cluster/profiles/tables.py:78
-#: senlin_dashboard/cluster/receivers/tables.py:72
+#: senlin_dashboard/cluster/clusters/tables.py:131
+#: senlin_dashboard/cluster/nodes/tables.py:135
+#: senlin_dashboard/cluster/policies/tables.py:66
+#: senlin_dashboard/cluster/profiles/tables.py:74
+#: senlin_dashboard/cluster/receivers/tables.py:68
 msgid "Updated"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:156
+#: senlin_dashboard/cluster/clusters/tables.py:152
 msgid "Detach Policy"
 msgid_plural "Detach Policies"
 msgstr[0] ""
 msgstr[1] ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:165
+#: senlin_dashboard/cluster/clusters/tables.py:161
 msgid "Detaching Policy"
 msgid_plural "Detaching Policies"
 msgstr[0] ""
 msgstr[1] ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:183
-#: senlin_dashboard/cluster/policies/tables.py:60
-#: senlin_dashboard/cluster/profiles/tables.py:68
+#: senlin_dashboard/cluster/clusters/tables.py:179
+#: senlin_dashboard/cluster/policies/tables.py:59
+#: senlin_dashboard/cluster/profiles/tables.py:67
 #: senlin_dashboard/cluster/profiles/templates/profiles/_detail_overview.html:11
 #: senlin_dashboard/cluster/receivers/forms.py:43
-#: senlin_dashboard/cluster/receivers/tables.py:60
+#: senlin_dashboard/cluster/receivers/tables.py:59
 #: senlin_dashboard/cluster/receivers/templates/receivers/_detail_overview.html:11
 msgid "Type"
 msgstr ""
 
-#: senlin_dashboard/cluster/clusters/tables.py:189
+#: senlin_dashboard/cluster/clusters/tables.py:185
 msgid "Attached Policies"
 msgstr ""
 
@@ -304,7 +305,7 @@ msgstr ""
 
 #: senlin_dashboard/cluster/clusters/tabs.py:47
 #: senlin_dashboard/cluster/nodes/panel.py:21
-#: senlin_dashboard/cluster/nodes/tables.py:145
+#: senlin_dashboard/cluster/nodes/tables.py:141
 #: senlin_dashboard/cluster/nodes/views.py:31
 #: senlin_dashboard/cluster/nodes/templates/nodes/index.html:3
 msgid "Nodes"
@@ -389,65 +390,65 @@ msgstr ""
 msgid "Attach Policy"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:33
+#: senlin_dashboard/cluster/nodes/event_tables.py:32
 msgctxt "Current status of the event"
 msgid "INIT"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:34
+#: senlin_dashboard/cluster/nodes/event_tables.py:33
 msgctxt "Current status of the event"
 msgid "ACTIVE"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:35
+#: senlin_dashboard/cluster/nodes/event_tables.py:34
 msgctxt "Current status of the event"
 msgid "ERROR"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:36
+#: senlin_dashboard/cluster/nodes/event_tables.py:35
 msgctxt "Current status of the event"
 msgid "DELETED"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:37
+#: senlin_dashboard/cluster/nodes/event_tables.py:36
 msgctxt "Current status of the event"
 msgid "WARNING"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:39
+#: senlin_dashboard/cluster/nodes/event_tables.py:38
 msgctxt "Current status of the event"
 msgid "CREATING"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:41
+#: senlin_dashboard/cluster/nodes/event_tables.py:40
 msgctxt "Current status of the event"
 msgid "UPDATING"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:43
+#: senlin_dashboard/cluster/nodes/event_tables.py:42
 msgctxt "Current status of the event"
 msgid "DELETING"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:46
+#: senlin_dashboard/cluster/nodes/event_tables.py:45
 msgid "Object ID"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:47
+#: senlin_dashboard/cluster/nodes/event_tables.py:46
 msgid "Object Name"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:55
+#: senlin_dashboard/cluster/nodes/event_tables.py:54
 #: senlin_dashboard/cluster/receivers/forms.py:40
-#: senlin_dashboard/cluster/receivers/tables.py:62
+#: senlin_dashboard/cluster/receivers/tables.py:61
 msgid "Action"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:57
+#: senlin_dashboard/cluster/nodes/event_tables.py:56
 msgid "Timestamp"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/event_tables.py:62
+#: senlin_dashboard/cluster/nodes/event_tables.py:60
 #: senlin_dashboard/cluster/nodes/tabs.py:32
 msgid "Event"
 msgstr ""
@@ -465,7 +466,7 @@ msgid "Cluster for this node."
 msgstr ""
 
 #: senlin_dashboard/cluster/nodes/forms.py:38
-#: senlin_dashboard/cluster/nodes/tables.py:119
+#: senlin_dashboard/cluster/nodes/tables.py:118
 #: senlin_dashboard/cluster/nodes/templates/nodes/_detail_overview.html:18
 msgid "Role"
 msgstr ""
@@ -499,7 +500,7 @@ msgstr ""
 msgid "Unable to create node."
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:27
+#: senlin_dashboard/cluster/nodes/tables.py:26
 #: senlin_dashboard/cluster/nodes/views.py:46
 #: senlin_dashboard/cluster/nodes/templates/nodes/_create.html:4
 #: senlin_dashboard/cluster/nodes/templates/nodes/_create.html:13
@@ -507,65 +508,65 @@ msgstr ""
 msgid "Create Node"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:38
+#: senlin_dashboard/cluster/nodes/tables.py:37
 msgid "Delete Node"
 msgid_plural "Delete Nodes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:46
+#: senlin_dashboard/cluster/nodes/tables.py:45
 msgid "Scheduled deletion of Node"
 msgid_plural "Scheduled deletion of Nodes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:101
+#: senlin_dashboard/cluster/nodes/tables.py:100
 msgctxt "Current status of a Node"
 msgid "INIT"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:102
+#: senlin_dashboard/cluster/nodes/tables.py:101
 msgctxt "Current status of a Node"
 msgid "ACTIVE"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:103
+#: senlin_dashboard/cluster/nodes/tables.py:102
 msgctxt "Current status of a Node"
 msgid "ERROR"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:104
+#: senlin_dashboard/cluster/nodes/tables.py:103
 msgctxt "Current status of a Node"
 msgid "DELETED"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:105
+#: senlin_dashboard/cluster/nodes/tables.py:104
 msgctxt "Current status of a Node"
 msgid "WARNING"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:106
+#: senlin_dashboard/cluster/nodes/tables.py:105
 msgctxt "Current status of a Node"
 msgid "CREATING"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:107
+#: senlin_dashboard/cluster/nodes/tables.py:106
 msgctxt "Current status of a Node"
 msgid "UPDATING"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:108
+#: senlin_dashboard/cluster/nodes/tables.py:107
 msgctxt "Current status of a Node"
 msgid "DELETING"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:118
+#: senlin_dashboard/cluster/nodes/tables.py:117
 #: senlin_dashboard/cluster/nodes/templates/nodes/_detail_overview.html:15
 msgid "Physical ID"
 msgstr ""
 
-#: senlin_dashboard/cluster/nodes/tables.py:122
-#: senlin_dashboard/cluster/receivers/tables.py:61
+#: senlin_dashboard/cluster/nodes/tables.py:121
+#: senlin_dashboard/cluster/receivers/tables.py:60
 #: senlin_dashboard/cluster/receivers/templates/receivers/_detail_overview.html:13
 msgid "Cluster ID"
 msgstr ""
@@ -633,7 +634,7 @@ msgstr ""
 msgid "Unable to create new policy"
 msgstr ""
 
-#: senlin_dashboard/cluster/policies/tables.py:25
+#: senlin_dashboard/cluster/policies/tables.py:24
 #: senlin_dashboard/cluster/policies/views.py:48
 #: senlin_dashboard/cluster/policies/templates/policies/_create.html:4
 #: senlin_dashboard/cluster/policies/templates/policies/_create.html:14
@@ -641,13 +642,13 @@ msgstr ""
 msgid "Create Policy"
 msgstr ""
 
-#: senlin_dashboard/cluster/policies/tables.py:35
+#: senlin_dashboard/cluster/policies/tables.py:34
 msgid "Delete Policy"
 msgid_plural "Delete Policies"
 msgstr[0] ""
 msgstr[1] ""
 
-#: senlin_dashboard/cluster/policies/tables.py:43
+#: senlin_dashboard/cluster/policies/tables.py:42
 msgid "Deleted Policy"
 msgid_plural "Deleted Policies"
 msgstr[0] ""
@@ -735,13 +736,13 @@ msgid "Unable to update profile"
 msgstr ""
 
 #: senlin_dashboard/cluster/profiles/panel.py:21
-#: senlin_dashboard/cluster/profiles/tables.py:83
+#: senlin_dashboard/cluster/profiles/tables.py:79
 #: senlin_dashboard/cluster/profiles/views.py:33
 #: senlin_dashboard/cluster/profiles/templates/profiles/index.html:3
 msgid "Profiles"
 msgstr ""
 
-#: senlin_dashboard/cluster/profiles/tables.py:25
+#: senlin_dashboard/cluster/profiles/tables.py:24
 #: senlin_dashboard/cluster/profiles/views.py:49
 #: senlin_dashboard/cluster/profiles/templates/profiles/_create.html:5
 #: senlin_dashboard/cluster/profiles/templates/profiles/_create.html:15
@@ -749,7 +750,7 @@ msgstr ""
 msgid "Create Profile"
 msgstr ""
 
-#: senlin_dashboard/cluster/profiles/tables.py:33
+#: senlin_dashboard/cluster/profiles/tables.py:32
 #: senlin_dashboard/cluster/profiles/views.py:57
 #: senlin_dashboard/cluster/profiles/templates/profiles/_update.html:4
 #: senlin_dashboard/cluster/profiles/templates/profiles/_update.html:13
@@ -757,13 +758,13 @@ msgstr ""
 msgid "Update Profile"
 msgstr ""
 
-#: senlin_dashboard/cluster/profiles/tables.py:43
+#: senlin_dashboard/cluster/profiles/tables.py:42
 msgid "Delete Profile"
 msgid_plural "Delete Profiles"
 msgstr[0] ""
 msgstr[1] ""
 
-#: senlin_dashboard/cluster/profiles/tables.py:51
+#: senlin_dashboard/cluster/profiles/tables.py:50
 msgid "Deleted Profile"
 msgid_plural "Deleted Profiles"
 msgstr[0] ""
@@ -832,13 +833,13 @@ msgid "Unable to create new receiver"
 msgstr ""
 
 #: senlin_dashboard/cluster/receivers/panel.py:21
-#: senlin_dashboard/cluster/receivers/tables.py:77
+#: senlin_dashboard/cluster/receivers/tables.py:73
 #: senlin_dashboard/cluster/receivers/views.py:31
 #: senlin_dashboard/cluster/receivers/templates/receivers/index.html:3
 msgid "Receivers"
 msgstr ""
 
-#: senlin_dashboard/cluster/receivers/tables.py:24
+#: senlin_dashboard/cluster/receivers/tables.py:23
 #: senlin_dashboard/cluster/receivers/views.py:46
 #: senlin_dashboard/cluster/receivers/templates/receivers/_create.html:4
 #: senlin_dashboard/cluster/receivers/templates/receivers/_create.html:13
@@ -846,13 +847,13 @@ msgstr ""
 msgid "Create Receiver"
 msgstr ""
 
-#: senlin_dashboard/cluster/receivers/tables.py:35
+#: senlin_dashboard/cluster/receivers/tables.py:34
 msgid "Delete Receiver"
 msgid_plural "Delete Receivers"
 msgstr[0] ""
 msgstr[1] ""
 
-#: senlin_dashboard/cluster/receivers/tables.py:43
+#: senlin_dashboard/cluster/receivers/tables.py:42
 msgid "Deleted Receiver"
 msgid_plural "Deleted Receivers"
 msgstr[0] ""

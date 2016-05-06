@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^create/$', views.CreateView.as_view(), name='create'),
     url(r'^(?P<node_id>[^/]+)/$',
         views.DetailView.as_view(), name='detail'),
+    url(r'^(?P<node_id>[^/]+)/update/$',
+        views.UpdateView.as_view(), name='update'),
 ]

@@ -52,6 +52,14 @@ class DeleteNode(tables.DeleteAction):
         api.senlin.node_delete(request, obj_id)
 
 
+class UpdateNode(tables.LinkAction):
+    name = "update"
+    verbose_name = _("Update Node")
+    url = "horizon:cluster:nodes:update"
+    classes = ("ajax-modal",)
+    icon = "pencil"
+
+
 class UpdateRow(tables.Row):
     ajax = True
 
@@ -143,4 +151,5 @@ class NodesTable(tables.DataTable):
         table_actions = (tables.FilterAction,
                          CreateNode,
                          DeleteNode,)
-        row_actions = (DeleteNode,)
+        row_actions = (UpdateNode,
+                       DeleteNode,)

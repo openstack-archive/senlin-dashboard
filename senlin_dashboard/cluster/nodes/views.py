@@ -10,6 +10,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import yaml
+
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
@@ -81,3 +83,48 @@ class DetailView(tabs.TabView):
     def get_tabs(self, request, *args, **kwargs):
         node = self.get_object()
         return self.tab_group_class(request, node=node, **kwargs)
+
+
+class UpdateView(forms.ModalFormView):
+    template_name = 'cluster/nodes/update.html'
+    page_title = _("Update Node")
+    form_class = nodes_forms.UpdateNodeForm
+    submit_url = reverse_lazy("horizon:cluster:nodes:update")
+    success_url = reverse_lazy("horizon:cluster:nodes:index")
+
+    @memoized.memoized_method
+    def get_object(self):
+        try:
+            # Get initial node information
+            node_id = self.kwargs["node_id"]
+            node = senlin.node_get(self.request, node_id)
+            # Metadata in update form should be empty rather than {}
+            if not node.metadata:
+                metadata = None
+            else:
+                metadata = yaml.safe_dump(
+                    node.metadata,
+                    default_flow_style=False)
+            node_dict = {"node_id": node_id,
+                         "name": node.name,
+                         "profile_id": node.profile_id,
+                         "role": node.role,
+                         "metadata": metadata}
+
+        except Exception:
+            msg = _("Unable to retrieve node.")
+            url = reverse_lazy("horizon:cluster:nodes:index")
+            exceptions.handle(self.request, msg, redirect=url)
+        return node_dict
+
+    def get_context_data(self, **kwargs):
+        args = (self.kwargs["node_id"],)
+        context = super(UpdateView, self).get_context_data(**kwargs)
+        context["node"] = self.get_object()
+        context["submit_url"] = reverse_lazy(
+            "horizon:cluster:nodes:update",
+            args=args)
+        return context
+
+    def get_initial(self):
+        return self.get_object()

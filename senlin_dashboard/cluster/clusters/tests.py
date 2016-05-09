@@ -89,11 +89,15 @@ class ClustersTest(test.TestCase):
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, CLUSTER_INDEX_URL)
 
-    @test.create_stubs({api.senlin: ('cluster_get',)})
+    @test.create_stubs({api.senlin: ('cluster_get',
+                                     'cluster_policy_list')})
     def test_cluster_detail(self):
+        policies = self.policies.list()
         cluster = self.clusters.list()[0]
         api.senlin.cluster_get(
             IsA(http.HttpRequest), u'123456').AndReturn(cluster)
+        api.senlin.cluster_policy_list(
+            IsA(http.HttpRequest), u'123456', {}).AndReturn(policies)
         self.mox.ReplayAll()
 
         res = self.client.get(CLUSTER_DETAIL_URL)
@@ -101,15 +105,19 @@ class ClustersTest(test.TestCase):
         self.assertContains(res, 'test-cluster')
 
     @test.create_stubs({api.senlin: ('event_list',
-                                     'cluster_get')})
+                                     'cluster_get',
+                                     'cluster_policy_list')})
     def test_cluster_event(self):
         cluster = self.clusters.list()[0]
+        policies = self.policies.list()
         events = self.events.list()
         api.senlin.cluster_get(
             IsA(http.HttpRequest), u'123456').AndReturn(cluster)
         api.senlin.event_list(
             IsA(http.HttpRequest),
             params={'obj_id': u'123456'}).AndReturn(events)
+        api.senlin.cluster_policy_list(
+            IsA(http.HttpRequest), u'123456', {}).AndReturn(policies)
         self.mox.ReplayAll()
 
         res = self.client.get(
@@ -118,8 +126,10 @@ class ClustersTest(test.TestCase):
         self.assertContains(res, '123456')
 
     @test.create_stubs({api.senlin: ('node_list',
-                                     'cluster_get')})
+                                     'cluster_get',
+                                     'cluster_policy_list')})
     def test_cluster_nodes(self):
+        policies = self.policies.list()
         cluster = self.clusters.list()[0]
         nodes = self.nodes.list()
         api.senlin.cluster_get(
@@ -127,6 +137,8 @@ class ClustersTest(test.TestCase):
         api.senlin.node_list(
             IsA(http.HttpRequest),
             params={'cluster_id': u'123456'}).AndReturn(nodes)
+        api.senlin.cluster_policy_list(
+            IsA(http.HttpRequest), u'123456', {}).AndReturn(policies)
         self.mox.ReplayAll()
 
         res = self.client.get(

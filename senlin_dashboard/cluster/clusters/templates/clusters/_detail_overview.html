@@ -12,6 +12,13 @@
     <dd>{{ cluster.id }}</dd>
     <dt>{% trans "Status" %}</dt>
     <dd>{{ cluster.status }}</dd>
+    {{ url }}
+    {% if cluster.policies %}
+      <dt>{% trans "Policies" %}</dt>
+      {% for policy in cluster.policies %}
+      <dd><a href="{% url 'horizon:cluster:policies:detail' policy.id %}">{{ policy.policy_name }}</a></dd>
+      {% endfor %}
+    {% endif %}
     <dt>{% trans "Created" context "Created time" %}</dt>
     <dd>{{ cluster.created_at }}</dd>
     {% if cluster.updated_at %}

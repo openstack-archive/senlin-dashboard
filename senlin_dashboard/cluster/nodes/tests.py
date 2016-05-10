@@ -80,7 +80,7 @@ class NodesTest(test.TestCase):
         opts = formdata
 
         api.senlin.profile_list(
-            IsA(http.HttpRequest), params={}).AndReturn(profiles)
+            IsA(http.HttpRequest)).AndReturn(profiles)
         api.senlin.cluster_list(
             IsA(http.HttpRequest), params={}).AndReturn(clusters)
         api.senlin.node_create(

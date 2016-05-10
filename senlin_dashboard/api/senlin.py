@@ -114,8 +114,10 @@ def cluster_policy_list(request, cluster, params):
     return [ClusterPolicy(p) for p in policies]
 
 
-def profile_list(request, params):
+def profile_list(request, sort_dir='desc', sort_key='created_at'):
     """Returns all profiles."""
+    params = {
+        'sort': '%s:%s' % (sort_key, sort_dir)}
     profiles = senlinclient(request).profiles(**params)
     return [Profile(p) for p in profiles]
 

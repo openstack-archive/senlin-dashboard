@@ -97,22 +97,23 @@ class NodesTable(tables.DataTable):
         ("INIT", None),
         ("ACTIVE", True),
         ("ERROR", False),
-        ("DELETED", False),
         ("WARNING", None),
         ("CREATING", None),
         ("UPDATING", None),
         ("DELETING", None),
+        ("RECOVERING", None),
     )
 
     STATUS_DISPLAY_CHOICES = (
         ("INIT", pgettext_lazy("Current status of a Node", u"INIT")),
         ("ACTIVE", pgettext_lazy("Current status of a Node", u"ACTIVE")),
         ("ERROR", pgettext_lazy("Current status of a Node", u"ERROR")),
-        ("DELETED", pgettext_lazy("Current status of a Node", u"DELETED")),
         ("WARNING", pgettext_lazy("Current status of a Node", u"WARNING")),
         ("CREATING", pgettext_lazy("Current status of a Node", u"CREATING")),
         ("UPDATING", pgettext_lazy("Current status of a Node", u"UPDATING")),
         ("DELETING", pgettext_lazy("Current status of a Node", u"DELETING")),
+        ("RECOVERING", pgettext_lazy("Current status of a Node",
+                                     u"RECOVERING")),
     )
 
     name = tables.Column("name", verbose_name=_("Name"),

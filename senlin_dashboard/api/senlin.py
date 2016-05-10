@@ -72,8 +72,10 @@ def senlinclient(request):
     return senlin_client.Client(api_version, {}, USER_AGENT, **kwargs)
 
 
-def cluster_list(request, params):
+def cluster_list(request, sort_dir='desc', sort_key='created_at'):
     """Returns all clusters."""
+    params = {
+        'sort': '%s:%s' % (sort_key, sort_dir)}
     clusters = senlinclient(request).clusters(**params)
     return [Cluster(c) for c in clusters]
 

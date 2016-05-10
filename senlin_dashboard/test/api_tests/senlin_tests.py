@@ -17,14 +17,14 @@ from senlin_dashboard.test import helpers as test
 class SenlinApiTests(test.APITestCase):
 
     def test_cluster_list(self):
-        params = {}
+        params = {'sort': 'created_at:desc'}
         clusters = self.clusters.list()
         senlinclient = self.stub_senlinclient()
         senlinclient.clusters = self.mox.CreateMockAnything()
         senlinclient.clusters(**params).AndReturn(clusters)
         self.mox.ReplayAll()
 
-        ret_val = api.senlin.cluster_list(self.request, params)
+        ret_val = api.senlin.cluster_list(self.request)
         for cluster in ret_val:
             self.assertIsInstance(cluster, api.senlin.Cluster)
 

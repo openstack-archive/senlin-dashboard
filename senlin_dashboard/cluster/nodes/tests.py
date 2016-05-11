@@ -82,7 +82,7 @@ class NodesTest(test.TestCase):
         api.senlin.profile_list(
             IsA(http.HttpRequest)).AndReturn(profiles)
         api.senlin.cluster_list(
-            IsA(http.HttpRequest), params={}).AndReturn(clusters)
+            IsA(http.HttpRequest)).AndReturn(clusters)
         api.senlin.node_create(
             IsA(http.HttpRequest), opts).AndReturn(node)
         self.mox.ReplayAll()

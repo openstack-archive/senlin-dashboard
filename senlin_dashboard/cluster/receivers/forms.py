@@ -52,7 +52,7 @@ class CreateReceiverForm(forms.SelfHandlingForm):
 
     def __init__(self, request, *args, **kwargs):
         super(CreateReceiverForm, self).__init__(request, *args, **kwargs)
-        clusters = senlin.cluster_list(request, params={})
+        clusters = senlin.cluster_list(request)
         self.fields['cluster_id'].choices = (
             [("", _("Select Cluster"))] + [(cluster.id, cluster.name)
                                            for cluster in clusters])

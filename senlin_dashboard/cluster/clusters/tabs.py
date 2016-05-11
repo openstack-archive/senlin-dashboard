@@ -52,9 +52,9 @@ class NodesTab(tabs.TableTab):
 
     def get_nodes_data(self):
         cluster_id = self.tab_group.kwargs['cluster_id']
-        params = {"cluster_id": cluster_id}
         try:
-            cluster_nodes = senlin.node_list(self.request, params)
+            cluster_nodes = senlin.node_list(self.request,
+                                             cluster_id=cluster_id)
         except Exception:
             cluster_nodes = []
             exceptions.handle(self.request,

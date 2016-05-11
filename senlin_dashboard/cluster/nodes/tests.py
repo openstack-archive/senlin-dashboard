@@ -32,7 +32,7 @@ class NodesTest(test.TestCase):
     def test_index(self):
         nodes = self.nodes.list()
         api.senlin.node_list(
-            IsA(http.HttpRequest), params={}).AndReturn(nodes)
+            IsA(http.HttpRequest)).AndReturn(nodes)
         self.mox.ReplayAll()
 
         res = self.client.get(NODE_INDEX_URL)
@@ -43,7 +43,7 @@ class NodesTest(test.TestCase):
     @test.create_stubs({api.senlin: ('node_list',)})
     def test_index_node_list_exception(self):
         api.senlin.node_list(
-            IsA(http.HttpRequest), params={}).AndRaise(self.exceptions.senlin)
+            IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
         self.mox.ReplayAll()
 
         res = self.client.get(NODE_INDEX_URL)
@@ -53,7 +53,7 @@ class NodesTest(test.TestCase):
     @test.create_stubs({api.senlin: ('node_list',)})
     def test_index_no_node(self):
         api.senlin.node_list(
-            IsA(http.HttpRequest), params={}).AndReturn([])
+            IsA(http.HttpRequest)).AndReturn([])
         self.mox.ReplayAll()
 
         res = self.client.get(NODE_INDEX_URL)

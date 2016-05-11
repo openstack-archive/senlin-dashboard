@@ -136,7 +136,7 @@ class ClustersTest(test.TestCase):
             IsA(http.HttpRequest), u'123456').AndReturn(cluster)
         api.senlin.node_list(
             IsA(http.HttpRequest),
-            params={'cluster_id': u'123456'}).AndReturn(nodes)
+            cluster_id=u'123456').AndReturn(nodes)
         api.senlin.cluster_policy_list(
             IsA(http.HttpRequest), u'123456', {}).AndReturn(policies)
         self.mox.ReplayAll()

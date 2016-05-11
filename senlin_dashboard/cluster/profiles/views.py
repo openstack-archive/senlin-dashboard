@@ -34,8 +34,7 @@ class IndexView(tables.DataTableView):
 
     def get_data(self):
         try:
-            params = {}
-            profiles = senlin.profile_list(self.request, params)
+            profiles = senlin.profile_list(self.request)
         except Exception:
             profiles = []
             msg = _('Unable to retrieve profiles.')

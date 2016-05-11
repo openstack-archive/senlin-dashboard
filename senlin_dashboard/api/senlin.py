@@ -12,8 +12,11 @@
 
 from django.conf import settings
 
+from horizon.utils import functions as utils
 from horizon.utils import memoized
+
 from openstack_dashboard.api import base
+from senlin_dashboard.api import utils as api_utils
 from senlinclient import client as senlin_client
 
 USER_AGENT = 'python-senlinclient'
@@ -116,12 +119,37 @@ def cluster_policy_list(request, cluster, params):
     return [ClusterPolicy(p) for p in policies]
 
 
-def profile_list(request, sort_dir='desc', sort_key='created_at'):
+def profile_list(request, sort_dir='desc', sort_key='created_at',
+                 marker=None, paginate=False, reversed_order=False):
     """Returns all profiles."""
+
+    limit = getattr(settings, 'API_RESULT_LIMIT', 1000)
+    page_size = utils.get_page_size(request)
+
+    if paginate:
+        request_size = page_size + 1
+    else:
+        request_size = limit
+
+    if reversed_order:
+        sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
+
     params = {
-        'sort': '%s:%s' % (sort_key, sort_dir)}
-    profiles = senlinclient(request).profiles(**params)
-    return [Profile(p) for p in profiles]
+        'sort': '%s:%s' % (sort_key, sort_dir),
+        'limit': request_size,
+        'marker': marker}
+
+    profiles_iter = senlinclient(request).profiles(**params)
+
+    if paginate:
+        profiles, has_more_data, has_prev_data = api_utils.update_pagination(
+            profiles_iter, request_size, page_size, marker,
+            sort_dir, sort_key, reversed_order)
+
+        return [Profile(p) for p in profiles], has_more_data, has_prev_data
+    else:
+        profiles = list(profiles_iter)
+        return [Profile(p) for p in profiles]
 
 
 def profile_get(request, profile):

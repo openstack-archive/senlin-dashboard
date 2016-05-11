@@ -29,7 +29,9 @@ class SenlinApiTests(test.APITestCase):
             self.assertIsInstance(cluster, api.senlin.Cluster)
 
     def test_profile_list(self):
-        params = {'sort': 'created_at:desc'}
+        params = {'sort': 'created_at:desc',
+                  'limit': 1000,
+                  'marker': None}
         profiles = self.profiles.list()
         senlinclient = self.stub_senlinclient()
         senlinclient.profiles = self.mox.CreateMockAnything()

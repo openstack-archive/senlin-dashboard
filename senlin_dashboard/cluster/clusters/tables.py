@@ -86,19 +86,20 @@ class ClustersTable(tables.DataTable):
         ("INIT", None),
         ("ACTIVE", True),
         ("ERROR", False),
-        ("DELETED", False),
         ("CRITICAL", False),
-        ("WARNING", None),
+        ("WARNING", False),
         ("CREATING", None),
         ("UPDATING", None),
         ("DELETING", None),
+        ("RESIZING", None),
+        ("CHECKING", None),
+        ("RECOVERING", None),
     )
 
     STATUS_DISPLAY_CHOICES = (
         ("INIT", pgettext_lazy("Current status of a Cluster", u"INIT")),
         ("ACTIVE", pgettext_lazy("Current status of a Cluster", u"ACTIVE")),
         ("ERROR", pgettext_lazy("Current status of a Cluster", u"ERROR")),
-        ("DELETED", pgettext_lazy("Current status of a Cluster", u"DELETED")),
         ("CRITICAL", pgettext_lazy("Current status of a Cluster",
                                    u"CRITICAL")),
         ("WARNING", pgettext_lazy("Current status of a Cluster", u"WARNING")),
@@ -108,6 +109,12 @@ class ClustersTable(tables.DataTable):
                                    u"UPDATING")),
         ("DELETING", pgettext_lazy("Current status of a Cluster",
                                    u"DELETING")),
+        ("RESIZING", pgettext_lazy("Current status of a Cluster",
+                                   u"RESIZING")),
+        ("CHECKING", pgettext_lazy("Current status of a Cluster",
+                                   u"CHECKING")),
+        ("RECOVERING", pgettext_lazy("Current status of a Cluster",
+                                     u"RECOVERING")),
     )
 
     name = tables.Column("name", verbose_name=_("Name"),

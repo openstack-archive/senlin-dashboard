@@ -200,10 +200,36 @@ def profile_delete(request, profile):
     senlinclient(request).delete_profile(profile)
 
 
-def policy_list(request, params):
+def policy_list(request, sort_dir='desc', sort_key='created_at',
+                marker=None, paginate=False, reversed_order=False):
     """Returns all policies."""
-    policies = senlinclient(request).policies(**params)
-    return [Policy(p) for p in policies]
+    limit = getattr(settings, 'API_RESULT_LIMIT', 1000)
+    page_size = utils.get_page_size(request)
+
+    if paginate:
+        request_size = page_size + 1
+    else:
+        request_size = limit
+
+    if reversed_order:
+        sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
+
+    params = {
+        'sort': '%s:%s' % (sort_key, sort_dir),
+        'limit': request_size,
+        'marker': marker}
+
+    policies_iter = senlinclient(request).policies(**params)
+
+    if paginate:
+        policies, has_more_data, has_prev_data = api_utils.update_pagination(
+            policies_iter, request_size, page_size, marker,
+            sort_dir, sort_key, reversed_order)
+
+        return [Policy(p) for p in policies], has_more_data, has_prev_data
+    else:
+        policies = list(policies_iter)
+        return [Policy(p) for p in policies]
 
 
 def policy_create(request, params):

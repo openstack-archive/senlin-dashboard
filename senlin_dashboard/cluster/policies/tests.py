@@ -31,7 +31,7 @@ class PoliciesTest(test.TestCase):
     def test_index(self):
         policies = self.policies.list()
         api.senlin.policy_list(
-            IsA(http.HttpRequest), params={}).AndReturn(policies)
+            IsA(http.HttpRequest)).AndReturn(policies)
         self.mox.ReplayAll()
 
         res = self.client.get(INDEX_URL)
@@ -42,7 +42,7 @@ class PoliciesTest(test.TestCase):
     @test.create_stubs({api.senlin: ('policy_list',)})
     def test_index_policy_list_exception(self):
         api.senlin.policy_list(
-            IsA(http.HttpRequest), params={}).AndRaise(self.exceptions.senlin)
+            IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
         self.mox.ReplayAll()
 
         res = self.client.get(INDEX_URL)
@@ -53,7 +53,7 @@ class PoliciesTest(test.TestCase):
     @test.create_stubs({api.senlin: ('policy_list',)})
     def test_index_no_policy(self):
         api.senlin.policy_list(
-            IsA(http.HttpRequest), params={}).AndReturn([])
+            IsA(http.HttpRequest)).AndReturn([])
         self.mox.ReplayAll()
 
         res = self.client.get(INDEX_URL)

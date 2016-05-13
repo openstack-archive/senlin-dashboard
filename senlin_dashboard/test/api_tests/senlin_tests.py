@@ -45,14 +45,16 @@ class SenlinApiTests(test.APITestCase):
             self.assertIsInstance(profile, api.senlin.Profile)
 
     def test_policy_list(self):
-        params = {}
+        params = {'sort': 'created_at:desc',
+                  'limit': 1000,
+                  'marker': None}
         policies = self.policies.list()
         senlinclient = self.stub_senlinclient()
         senlinclient.policies = self.mox.CreateMockAnything()
         senlinclient.policies(**params).AndReturn(policies)
         self.mox.ReplayAll()
 
-        ret_val = api.senlin.policy_list(self.request, params)
+        ret_val = api.senlin.policy_list(self.request)
         for policy in ret_val:
             self.assertIsInstance(policy, api.senlin.Policy)
 

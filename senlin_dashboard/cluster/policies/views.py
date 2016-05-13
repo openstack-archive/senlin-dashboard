@@ -32,14 +32,33 @@ class IndexView(tables.DataTableView):
     template_name = 'cluster/policies/index.html'
     page_title = _("Policies")
 
+    def has_prev_data(self, table):
+        return getattr(self, "_prev", False)
+
+    def has_more_data(self, table):
+        return getattr(self, "_more", False)
+
     def get_data(self):
+        prev_marker = self.request.GET.get(
+            PoliciesTable._meta.prev_pagination_param, None)
+
+        if prev_marker is not None:
+            marker = prev_marker
+        else:
+            marker = self.request.GET.get(
+                PoliciesTable._meta.pagination_param, None)
+        reversed_order = prev_marker is not None
         try:
-            params = {}
-            policies = senlin.policy_list(self.request, params)
+            policies, self._more, self._prev = senlin.policy_list(
+                self.request,
+                marker=marker,
+                paginate=True,
+                reversed_order=reversed_order)
         except Exception:
+            self._prev = self._more = False
             policies = []
-            exceptions.handle(self.request,
-                              _('Unable to retrieve policies.'))
+            msg = _('Unable to retrieve policies..')
+            exceptions.handle(self.request, msg)
         return policies
 
 

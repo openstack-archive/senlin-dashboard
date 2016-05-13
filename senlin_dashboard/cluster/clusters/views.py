@@ -32,13 +32,33 @@ class IndexView(tables.DataTableView):
     template_name = 'cluster/clusters/index.html'
     page_title = _("Clusters")
 
+    def has_prev_data(self, table):
+        return getattr(self, "_prev", False)
+
+    def has_more_data(self, table):
+        return getattr(self, "_more", False)
+
     def get_data(self):
+        prev_marker = self.request.GET.get(
+            ClustersTable._meta.prev_pagination_param, None)
+
+        if prev_marker is not None:
+            marker = prev_marker
+        else:
+            marker = self.request.GET.get(
+                ClustersTable._meta.pagination_param, None)
+        reversed_order = prev_marker is not None
         try:
-            clusters = senlin.cluster_list(self.request)
+            clusters, self._more, self._prev = senlin.cluster_list(
+                self.request,
+                marker=marker,
+                paginate=True,
+                reversed_order=reversed_order)
         except Exception:
+            self._prev = self._more = False
             clusters = []
-            exceptions.handle(self.request,
-                              _('Unable to retrieve clusters.'))
+            msg = _('Unable to retrieve clusters.')
+            exceptions.handle(self.request, msg)
         return clusters
 
 

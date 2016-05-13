@@ -17,7 +17,9 @@ from senlin_dashboard.test import helpers as test
 class SenlinApiTests(test.APITestCase):
 
     def test_cluster_list(self):
-        params = {'sort': 'created_at:desc'}
+        params = {'sort': 'created_at:desc',
+                  'limit': 1000,
+                  'marker': None}
         clusters = self.clusters.list()
         senlinclient = self.stub_senlinclient()
         senlinclient.clusters = self.mox.CreateMockAnything()

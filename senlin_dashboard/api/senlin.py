@@ -75,12 +75,37 @@ def senlinclient(request):
     return senlin_client.Client(api_version, {}, USER_AGENT, **kwargs)
 
 
-def cluster_list(request, sort_dir='desc', sort_key='created_at'):
+def cluster_list(request, sort_dir='desc', sort_key='created_at',
+                 marker=None, paginate=False, reversed_order=False):
     """Returns all clusters."""
+
+    limit = getattr(settings, 'API_RESULT_LIMIT', 1000)
+    page_size = utils.get_page_size(request)
+
+    if paginate:
+        request_size = page_size + 1
+    else:
+        request_size = limit
+
+    if reversed_order:
+        sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
+
     params = {
-        'sort': '%s:%s' % (sort_key, sort_dir)}
-    clusters = senlinclient(request).clusters(**params)
-    return [Cluster(c) for c in clusters]
+        'sort': '%s:%s' % (sort_key, sort_dir),
+        'limit': request_size,
+        'marker': marker}
+
+    clusters_iter = senlinclient(request).clusters(**params)
+
+    if paginate:
+        clusters, has_more_data, has_prev_data = api_utils.update_pagination(
+            clusters_iter, request_size, page_size, marker,
+            sort_dir, sort_key, reversed_order)
+
+        return [Cluster(p) for p in clusters], has_more_data, has_prev_data
+    else:
+        clusters = list(clusters_iter)
+        return [Cluster(p) for p in clusters]
 
 
 def cluster_create(request, params):

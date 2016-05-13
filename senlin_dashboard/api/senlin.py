@@ -249,8 +249,13 @@ def policy_get(request, policy):
     return policy
 
 
-def node_list(request, params):
+def node_list(request, sort_dir='desc', sort_key='created_at',
+              cluster_id=None):
     """Returns all nodes."""
+    params = {
+        'sort': '%s:%s' % (sort_key, sort_dir)}
+    if cluster_id:
+        params.update({'cluster_id': cluster_id})
     nodes = senlinclient(request).nodes(**params)
     return [Node(p) for p in nodes]
 

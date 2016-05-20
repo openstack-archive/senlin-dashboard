@@ -57,7 +57,7 @@ class IndexView(tables.DataTableView):
         except Exception:
             self._prev = self._more = False
             policies = []
-            msg = _('Unable to retrieve policies..')
+            msg = _('Unable to retrieve policies.')
             exceptions.handle(self.request, msg)
         return policies
 

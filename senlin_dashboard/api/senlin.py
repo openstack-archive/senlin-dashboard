@@ -289,9 +289,37 @@ def event_list(request, params):
     return [Event(c) for c in events]
 
 
-def receiver_list(request, params):
-    receivers = senlinclient(request).receivers(**params)
-    return [Receiver(r) for r in receivers]
+def receiver_list(request, sort_dir='desc', sort_key='created_at',
+                  marker=None, paginate=False, reversed_order=False):
+    """Returns all receivers."""
+
+    limit = getattr(settings, 'API_RESULT_LIMIT', 1000)
+    page_size = utils.get_page_size(request)
+
+    if paginate:
+        request_size = page_size + 1
+    else:
+        request_size = limit
+
+    if reversed_order:
+        sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
+
+    params = {
+        'sort': '%s:%s' % (sort_key, sort_dir),
+        'limit': request_size,
+        'marker': marker}
+
+    receivers_iter = senlinclient(request).receivers(**params)
+
+    if paginate:
+        receivers, has_more_data, has_prev_data = api_utils.update_pagination(
+            receivers_iter, request_size, page_size, marker,
+            sort_dir, sort_key, reversed_order)
+
+        return [Receiver(r) for r in receivers], has_more_data, has_prev_data
+    else:
+        receivers = list(receivers_iter)
+        return [Receiver(r) for r in receivers]
 
 
 def receiver_create(request, params):

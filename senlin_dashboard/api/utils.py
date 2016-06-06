@@ -35,8 +35,6 @@ def update_pagination(entities, request_size, page_size, marker,
 
     # restore the original ordering here
     if reversed_order:
-        entities = sorted(entities, key=lambda entity:
-                          (getattr(entity, sort_key)),
-                          reverse=(sort_dir == sort_dir))
+        entities.reverse()
 
     return entities, has_more_data, has_prev_data

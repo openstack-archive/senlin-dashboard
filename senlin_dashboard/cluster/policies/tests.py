@@ -37,7 +37,7 @@ class PoliciesTest(test.TestCase):
         res = self.client.get(INDEX_URL)
         self.assertContains(res, '<h1>Policies</h1>')
         self.assertTemplateUsed(res, 'cluster/policies/index.html')
-        self.assertEqual(len(policies), 1)
+        self.assertEqual(len(policies), 2)
 
     @test.create_stubs({api.senlin: ('policy_list',)})
     def test_index_policy_list_exception(self):

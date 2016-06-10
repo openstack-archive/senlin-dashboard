@@ -28,7 +28,7 @@ class ReceiversTest(test.TestCase):
     def test_index(self):
         receivers = self.receivers.list()
         api.senlin.receiver_list(
-            IsA(http.HttpRequest), params={}).AndReturn(receivers)
+            IsA(http.HttpRequest)).AndReturn(receivers)
         self.mox.ReplayAll()
 
         res = self.client.get(INDEX_URL)
@@ -39,7 +39,7 @@ class ReceiversTest(test.TestCase):
     @test.create_stubs({api.senlin: ('receiver_list',)})
     def test_index_receiver_list_exception(self):
         api.senlin.receiver_list(
-            IsA(http.HttpRequest), params={}).AndRaise(self.exceptions.senlin)
+            IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
         self.mox.ReplayAll()
 
         res = self.client.get(INDEX_URL)
@@ -50,7 +50,7 @@ class ReceiversTest(test.TestCase):
     @test.create_stubs({api.senlin: ('receiver_list',)})
     def test_index_no_receiver(self):
         api.senlin.receiver_list(
-            IsA(http.HttpRequest), params={}).AndReturn([])
+            IsA(http.HttpRequest)).AndReturn([])
         self.mox.ReplayAll()
 
         res = self.client.get(INDEX_URL)

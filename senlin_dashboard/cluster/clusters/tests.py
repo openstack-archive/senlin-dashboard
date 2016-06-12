@@ -22,6 +22,9 @@ CLUSTER_INDEX_URL = reverse('horizon:cluster:clusters:index')
 CLUSTER_CREATE_URL = reverse('horizon:cluster:clusters:create')
 CLUSTER_DETAIL_URL = reverse('horizon:cluster:clusters:detail',
                              args=[u'123456'])
+CLUSTER_MANAGE_POLICIES_URL = reverse(
+    'horizon:cluster:clusters:manage_policies',
+    args=[u'123456'])
 
 
 class ClustersTest(test.TestCase):
@@ -145,3 +148,20 @@ class ClustersTest(test.TestCase):
             CLUSTER_DETAIL_URL + '?tab=cluster_details__nodes')
         self.assertTemplateUsed(res, 'cluster/clusters/_detail_nodes.html')
         self.assertContains(res, '123456')
+
+    @test.create_stubs({api.senlin: ('policy_list',
+                                     'cluster_policy_list')})
+    def test_cluster_mamage_policies_index(self):
+        policies = self.policies.list()
+        cluster_policies = policies[:1]
+        api.senlin.policy_list(
+            IsA(http.HttpRequest)).AndReturn(policies)
+        api.senlin.cluster_policy_list(
+            IsA(http.HttpRequest), u'123456', {}).AndReturn(cluster_policies)
+        api.senlin.cluster_policy_list(
+            IsA(http.HttpRequest), u'123456', {}).AndReturn(cluster_policies)
+        self.mox.ReplayAll()
+
+        res = self.client.get(CLUSTER_MANAGE_POLICIES_URL)
+        self.assertTemplateUsed(res, 'cluster/clusters/manage_policies.html')
+        self.assertContains(res, 'test-policy02')

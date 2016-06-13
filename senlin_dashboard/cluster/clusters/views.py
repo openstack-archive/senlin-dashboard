@@ -99,7 +99,6 @@ class DetailView(tabs.TabView):
         cluster.policies = policies
         context["actions"] = table.render_row_actions(cluster)
         context["cluster"] = cluster
-        context["url"] = reverse_lazy(clusters_forms.INDEX_URL)
         return context
 
     def get_tabs(self, request, *args, **kwargs):

@@ -27,6 +27,7 @@ ChangeLog
 tags
 openstack_dashboard/dummydb.sqlite
 *.lock
+.idea
 
 # Files created by releasenotes build
 releasenotes/build

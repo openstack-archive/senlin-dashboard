@@ -12,7 +12,6 @@
     <dd>{{ cluster.id }}</dd>
     <dt>{% trans "Status" %}</dt>
     <dd>{{ cluster.status }}</dd>
-    {{ url }}
     {% if cluster.policies %}
       <dt>{% trans "Policies" %}</dt>
       {% for policy in cluster.policies %}

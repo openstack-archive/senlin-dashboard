@@ -24,7 +24,9 @@ USER_AGENT = 'python-senlinclient'
 
 class Cluster(base.APIResourceWrapper):
     _attrs = ['id', 'name', 'status', 'created_at', 'updated_at',
-              'profile_name', 'profile_id', 'status_reason']
+              'profile_name', 'profile_id', 'status_reason',
+              'max_size', 'min_size', 'desired_capacity', 'timeout',
+              'metadata']
 
 
 class ClusterPolicy(base.APIResourceWrapper):

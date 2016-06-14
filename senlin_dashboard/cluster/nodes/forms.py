@@ -92,7 +92,7 @@ class UpdateNodeForm(forms.SelfHandlingForm):
         max_length=255,
         label=_("Role"),
         required=False,
-        help_text=_("Role for this node in the specific node."))
+        help_text=_("Role for this node in the specific cluster."))
     metadata = forms.CharField(
         label=_("Metadata"),
         required=False,

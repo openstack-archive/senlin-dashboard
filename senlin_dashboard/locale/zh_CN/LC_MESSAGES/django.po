@@ -2,13 +2,13 @@
 # Zheng Xi Zhou <zzxwill@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: senlin-dashboard 0.2.1.dev37\n"
+"Project-Id-Version: senlin-dashboard 0.2.1.dev42\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-06-13 08:50+0000\n"
+"POT-Creation-Date: 2016-06-14 13:24+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-06-14 07:00+0000\n"
+"PO-Revision-Date: 2016-06-15 02:00+0000\n"
 "Last-Translator: Zheng Xi Zhou <zzxwill@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh-CN\n"
@@ -347,6 +347,10 @@ msgctxt "Current status of a Cluster"
 msgid "RECOVERING"
 msgstr "恢复中"
 
+msgctxt "Current status of a Node"
+msgid "RECOVERING"
+msgstr "恢复中"
+
 msgctxt "Current status of a Cluster"
 msgid "RESIZING"
 msgstr "调整大小中"
@@ -359,6 +363,10 @@ msgstr "角色"
 
 msgid "Role for this node in the specific cluster."
 msgstr "特定集群中的这个节点的角色。"
+
+#, fuzzy
+msgid "Role for this node in the specific node."
+msgstr "The original string is not correct. Reported a bug."
 
 msgid "Scheduled deletion of Cluster"
 msgid_plural "Scheduled deletion of Clusters"
@@ -508,8 +516,18 @@ msgstr "无法获取样版。"
 msgid "Unable to retrieve receiver."
 msgstr "无法获取接收端。"
 
+#, fuzzy
+msgid "Unable to retrieve receivers.."
+msgstr "The original string is not correct, proposed a fix to modify it."
+
+msgid "Unable to update node."
+msgstr "不能更新节点。"
+
 msgid "Unable to update profile"
 msgstr "无法更新样版"
+
+msgid "Update Node"
+msgstr "更新节点"
 
 msgid "Update Profile"
 msgstr "更新样版"
@@ -549,6 +567,10 @@ msgid ""
 "YAML formatted parameters that will be passed to target action when the "
 "receiver is triggered."
 msgstr "YAML类型的参数在接受端被触发时将传递给目标动作。"
+
+#, fuzzy, python-format
+msgid "Your node %s update request has been accepted for processing."
+msgstr "你的节点%s更新请求已被接受并正在处理。"
 
 #, python-format
 msgid "Your policy %s has been created."

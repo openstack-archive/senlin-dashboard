@@ -55,7 +55,7 @@ class IndexView(tables.DataTableView):
         except Exception:
             self._prev = self._more = False
             receivers = []
-            msg = _('Unable to retrieve receivers..')
+            msg = _('Unable to retrieve receivers.')
             exceptions.handle(self.request, msg)
         return receivers
 

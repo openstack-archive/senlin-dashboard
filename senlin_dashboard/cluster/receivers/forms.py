@@ -32,14 +32,14 @@ INDEX_URL = "horizon:cluster:receivers:index"
 
 class CreateReceiverForm(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Name"))
-    cluster_id = forms.ChoiceField(
+    cluster_id = forms.ThemableChoiceField(
         label=_("Cluster"),
         help_text=_("Targeted cluster for this receiver."))
     action = forms.CharField(
         max_length=255,
         label=_("Action"),
         help_text=_("Name or ID of the targeted action to be triggered."))
-    type = forms.ChoiceField(
+    type = forms.ThemableChoiceField(
         label=_("Type"),
         initial='webhook',
         help_text=_("Type of the receiver to create. Defailt to webhook"))

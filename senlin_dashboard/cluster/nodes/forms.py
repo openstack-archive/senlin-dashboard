@@ -26,10 +26,10 @@ from senlin_dashboard.api import senlin
 
 class CreateForm(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Node Name"))
-    profile_id = forms.ChoiceField(
+    profile_id = forms.ThemableChoiceField(
         label=_("Profile"),
         help_text=_("Profile used for this node."))
-    cluster_id = forms.ChoiceField(
+    cluster_id = forms.ThemableChoiceField(
         label=_("Cluster"),
         required=False,
         help_text=_("Cluster for this node."))
@@ -85,7 +85,7 @@ class CreateForm(forms.SelfHandlingForm):
 class UpdateNodeForm(forms.SelfHandlingForm):
     node_id = forms.CharField(widget=forms.HiddenInput())
     name = forms.CharField(max_length=255, label=_("Node Name"))
-    profile_id = forms.ChoiceField(
+    profile_id = forms.ThemableChoiceField(
         label=_("Profile"),
         help_text=_("Profile used for this node."))
     role = forms.CharField(

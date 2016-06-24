@@ -69,7 +69,7 @@ def _populate_profile_params(name, spec, metadata, id=None):
 
 class CreateProfileForm(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Name"))
-    source_type = forms.ChoiceField(
+    source_type = forms.ThemableChoiceField(
         label=_('Spec Source'),
         required=False,
         choices=[('file', _('File')),

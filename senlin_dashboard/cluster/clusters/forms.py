@@ -29,7 +29,7 @@ INDEX_URL = "horizon:cluster:clusters:index"
 
 class CreateForm(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Cluster Name"))
-    profile_id = forms.ChoiceField(label=_("Profile"))
+    profile_id = forms.ThemableChoiceField(label=_("Profile"))
     min_size = forms.IntegerField(
         label=_("Min Size"),
         required=False,
@@ -46,9 +46,10 @@ class CreateForm(forms.SelfHandlingForm):
         initial=0,
         help_text=_("Desired capacity of the cluster. Default to 0."))
     # Hide the parent field
-    parent = forms.ChoiceField(label=_("Parent Cluster"),
-                               required=False,
-                               widget=forms.HiddenInput())
+    parent = forms.ThemableChoiceField(
+        label=_("Parent Cluster"),
+        required=False,
+        widget=forms.HiddenInput())
     timeout = forms.IntegerField(
         label=_("Timeout"),
         required=False,
@@ -95,7 +96,7 @@ class CreateForm(forms.SelfHandlingForm):
 
 class ManagePoliciesForm(forms.SelfHandlingForm):
     cluster_id = forms.CharField(widget=forms.HiddenInput())
-    policies = forms.ChoiceField(label=_("Policies"))
+    policies = forms.ThemableChoiceField(label=_("Policies"))
     enabled = forms.BooleanField(
         label=_("Enabled"),
         initial=True,

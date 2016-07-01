@@ -32,13 +32,33 @@ class IndexView(tables.DataTableView):
     template_name = 'cluster/nodes/index.html'
     page_title = _("Nodes")
 
+    def has_prev_data(self, table):
+        return getattr(self, "_prev", False)
+
+    def has_more_data(self, table):
+        return getattr(self, "_more", False)
+
     def get_data(self):
+        prev_marker = self.request.GET.get(
+            NodesTable._meta.prev_pagination_param, None)
+
+        if prev_marker is not None:
+            marker = prev_marker
+        else:
+            marker = self.request.GET.get(
+                NodesTable._meta.pagination_param, None)
+        reversed_order = prev_marker is not None
         try:
-            nodes = senlin.node_list(self.request)
+            nodes, self._more, self._prev = senlin.node_list(
+                self.request,
+                marker=marker,
+                paginate=True,
+                reversed_order=reversed_order)
         except Exception:
+            self._prev = self._more = False
             nodes = []
-            exceptions.handle(self.request,
-                              _('Unable to retrieve nodes.'))
+            msg = _('Unable to retrieve nodes.')
+            exceptions.handle(self.request, msg)
         return nodes
 
 

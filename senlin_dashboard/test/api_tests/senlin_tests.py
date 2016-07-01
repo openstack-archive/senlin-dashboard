@@ -59,7 +59,10 @@ class SenlinApiTests(test.APITestCase):
             self.assertIsInstance(policy, api.senlin.Policy)
 
     def test_node_list(self):
-        params = {'sort': 'created_at:desc'}
+        params = {'sort': 'created_at:desc',
+                  'limit': 1000,
+                  'marker': None,
+                  'cluster_id': None}
         nodes = self.nodes.list()
         senlinclient = self.stub_senlinclient()
         senlinclient.nodes = self.mox.CreateMockAnything()

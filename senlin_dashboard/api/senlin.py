@@ -252,14 +252,38 @@ def policy_get(request, policy):
 
 
 def node_list(request, sort_dir='desc', sort_key='created_at',
+              marker=None, paginate=False, reversed_order=False,
               cluster_id=None):
     """Returns all nodes."""
+
+    limit = getattr(settings, 'API_RESULT_LIMIT', 1000)
+    page_size = utils.get_page_size(request)
+
+    if paginate:
+        request_size = page_size + 1
+    else:
+        request_size = limit
+
+    if reversed_order:
+        sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
+
     params = {
-        'sort': '%s:%s' % (sort_key, sort_dir)}
-    if cluster_id:
-        params.update({'cluster_id': cluster_id})
-    nodes = senlinclient(request).nodes(**params)
-    return [Node(p) for p in nodes]
+        'sort': '%s:%s' % (sort_key, sort_dir),
+        'limit': request_size,
+        'marker': marker,
+        'cluster_id': cluster_id}
+
+    nodes_iter = senlinclient(request).nodes(**params)
+
+    if paginate:
+        nodes, has_more_data, has_prev_data = api_utils.update_pagination(
+            nodes_iter, request_size, page_size, marker,
+            sort_dir, sort_key, reversed_order)
+
+        return [Node(n) for n in nodes], has_more_data, has_prev_data
+    else:
+        nodes = list(nodes_iter)
+        return [Node(n) for n in nodes]
 
 
 def node_create(request, params):

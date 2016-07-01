@@ -23,6 +23,8 @@ function usage {
   echo "  -P, --no-pep8            Don't run pep8 by default"
   echo "  -t, --tabs               Check for tab characters in files."
   echo "  -y, --pylint             Just run pylint"
+  echo "  -e, --eslint             Just run eslint"
+  echo "  -k, --karma              Just run karma"
   echo "  -q, --quiet              Run non-interactively. (Relatively) quiet."
   echo "                           Implies -V if -N is not set."
   echo "  --only-selenium          Run only the Selenium unit tests"
@@ -61,6 +63,8 @@ just_pep8=0
 just_pep8_changed=0
 no_pep8=0
 just_pylint=0
+just_eslint=0
+just_karma=0
 just_docs=0
 just_tabs=0
 never_venv=0
@@ -95,6 +99,8 @@ function process_option {
     -8|--pep8-changed) just_pep8_changed=1;;
     -P|--no-pep8) no_pep8=1;;
     -y|--pylint) just_pylint=1;;
+    -e|--eslint) just_eslint=1;;
+    -k|--karma) just_karma=1;;
     -f|--force) force=1;;
     -t|--tabs) just_tabs=1;;
     -q|--quiet) quiet=1;;
@@ -136,6 +142,22 @@ function run_pylint {
       echo "Completed with problems."
       exit $CODE
   fi
+}
+
+function run_eslint {
+  echo "Running eslint ..."
+  if [ "`which npm`" == '' ] ; then
+    echo "npm is not present; please install, e.g. sudo apt-get install npm"
+  else
+    npm install
+    npm run lint
+  fi
+}
+
+function run_karma {
+  echo "Running karma ..."
+  npm install
+  npm run test
 }
 
 function warn_on_flake8_without_venv {
@@ -425,6 +447,18 @@ fi
 # Pylint
 if [ $just_pylint -eq 1 ]; then
     run_pylint
+    exit $?
+fi
+
+# ESLint
+if [ $just_eslint -eq 1 ]; then
+    run_eslint
+    exit $?
+fi
+
+# Karma
+if [ $just_karma -eq 1 ]; then
+    run_karma
     exit $?
 fi
 

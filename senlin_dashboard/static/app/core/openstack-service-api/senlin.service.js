@@ -35,7 +35,8 @@
    */
   function senlinAPI(apiService, toastService) {
     var service = {
-      getReceivers: getReceivers
+      getReceivers: getReceivers,
+      getReceiver: getReceiver
     };
 
     return service;
@@ -54,6 +55,23 @@
       return apiService.get('/api/senlin/receivers/', config)
         .error(function () {
           toastService.add('error', gettext('Unable to retrieve the receivers.'));
+        });
+    }
+
+    /*
+     * @name getReceiver
+     * @description
+     * Get a single receiver by ID
+     *
+     * @param {string} id
+     * Specifies the id of the receiver to request.
+     *
+     * @returns {Object} The result of the API call
+     */
+    function getReceiver(id) {
+      return apiService.get('/api/senlin/receivers/' + id + '/')
+        .error(function () {
+          toastService.add('error', gettext('Unable to retrieve the receiver.'));
         });
     }
 

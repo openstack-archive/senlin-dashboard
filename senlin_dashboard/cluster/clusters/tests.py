@@ -10,7 +10,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 from django import http
 
 from mox3.mox import IsA  # noqa
@@ -18,11 +18,12 @@ from mox3.mox import IsA  # noqa
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
-CLUSTER_INDEX_URL = reverse('horizon:cluster:clusters:index')
-CLUSTER_CREATE_URL = reverse('horizon:cluster:clusters:create')
-CLUSTER_DETAIL_URL = reverse('horizon:cluster:clusters:detail',
-                             args=[u'123456'])
-CLUSTER_MANAGE_POLICIES_URL = reverse(
+CLUSTER_INDEX_URL = reverse_lazy('horizon:cluster:clusters:index')
+CLUSTER_CREATE_URL = reverse_lazy('horizon:cluster:clusters:create')
+CLUSTER_DETAIL_URL = reverse_lazy(
+    'horizon:cluster:clusters:detail',
+    args=[u'123456'])
+CLUSTER_MANAGE_POLICIES_URL = reverse_lazy(
     'horizon:cluster:clusters:manage_policies',
     args=[u'123456'])
 
@@ -90,7 +91,6 @@ class ClustersTest(test.TestCase):
 
         res = self.client.post(CLUSTER_CREATE_URL, formdata)
         self.assertNoFormErrors(res)
-        self.assertRedirectsNoFollow(res, CLUSTER_INDEX_URL)
 
     @test.create_stubs({api.senlin: ('cluster_get',
                                      'cluster_policy_list')})

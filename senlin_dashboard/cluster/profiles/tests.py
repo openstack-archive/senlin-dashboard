@@ -12,7 +12,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 from django import http
 
 from mox3.mox import IsA  # noqa
@@ -20,9 +20,10 @@ from mox3.mox import IsA  # noqa
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
-PROFILE_INDEX_URL = reverse('horizon:cluster:profiles:index')
-PROFILE_CREATE_URL = reverse('horizon:cluster:profiles:create')
-PROFILE_DETAIL_URL = reverse('horizon:cluster:profiles:detail', args=[u'1'])
+PROFILE_INDEX_URL = reverse_lazy('horizon:cluster:profiles:index')
+PROFILE_CREATE_URL = reverse_lazy('horizon:cluster:profiles:create')
+PROFILE_DETAIL_URL = reverse_lazy(
+    'horizon:cluster:profiles:detail', args=[u'1'])
 
 
 class ProfilesTest(test.TestCase):
@@ -96,7 +97,6 @@ class ProfilesTest(test.TestCase):
 
         res = self.client.post(PROFILE_CREATE_URL, formdata)
         self.assertNoFormErrors(res)
-        self.assertRedirectsNoFollow(res, PROFILE_INDEX_URL)
 
     @test.create_stubs({api.senlin: ('profile_get',)})
     def test_profile_detail(self):

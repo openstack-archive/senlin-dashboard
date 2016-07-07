@@ -12,7 +12,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 from django import http
 
 from mox3.mox import IsA  # noqa
@@ -20,10 +20,11 @@ from mox3.mox import IsA  # noqa
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
-NODE_INDEX_URL = reverse('horizon:cluster:nodes:index')
-NODE_CREATE_URL = reverse('horizon:cluster:nodes:create')
-NODE_DETAIL_URL = reverse('horizon:cluster:nodes:detail',
-                          args=[u'123456'])
+NODE_INDEX_URL = reverse_lazy('horizon:cluster:nodes:index')
+NODE_CREATE_URL = reverse_lazy('horizon:cluster:nodes:create')
+NODE_DETAIL_URL = reverse_lazy(
+    'horizon:cluster:nodes:detail',
+    args=[u'123456'])
 
 
 class NodesTest(test.TestCase):
@@ -89,7 +90,6 @@ class NodesTest(test.TestCase):
 
         res = self.client.post(NODE_CREATE_URL, formdata)
         self.assertNoFormErrors(res)
-        self.assertRedirectsNoFollow(res, NODE_INDEX_URL)
 
     @test.create_stubs({api.senlin: ('node_get',)})
     def test_node_detail(self):

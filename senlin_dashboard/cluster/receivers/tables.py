@@ -10,6 +10,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
@@ -53,11 +54,19 @@ def get_updated_time(object):
     return object.updated_at or None
 
 
+def get_cluster_link(receiver):
+    if receiver.cluster_id:
+        return reverse_lazy('horizon:cluster:clusters:detail',
+                            args=[receiver.cluster_id])
+
+
 class ReceiversTable(tables.DataTable):
     name = tables.Column("name", verbose_name=_("Name"),
                          link="horizon:cluster:receivers:detail")
     type = tables.Column("type", verbose_name=_("Type"))
-    cluster_id = tables.Column("cluster_id", verbose_name=_("Cluster ID"))
+    cluster_id = tables.Column('cluster_id',
+                               link=get_cluster_link,
+                               verbose_name=_("Cluster ID"))
     action = tables.Column("action", verbose_name=_("Action"))
     created = tables.Column(
         "created_at",

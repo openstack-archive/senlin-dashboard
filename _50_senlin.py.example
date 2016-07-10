@@ -6,6 +6,8 @@ ADD_INSTALLED_APPS = [
     'senlin_dashboard.cluster'
 ]
 DEFAULT = True
+AUTO_DISCOVER_STATIC_FILES = True
+ADD_ANGULAR_MODULES = ['horizon.cluster']
 
 ADD_EXCEPTIONS = {
     'recoverable': exceptions.RECOVERABLE,

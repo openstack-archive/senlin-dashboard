@@ -22,6 +22,8 @@
    */
 
   angular
-    .module('horizon.cluster', []);
+    .module('horizon.cluster', [
+      'horizon.cluster.receivers'
+    ]);
 
 }());

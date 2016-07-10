@@ -316,8 +316,12 @@ def event_list(request, params):
 
 
 def receiver_list(request, sort_dir='desc', sort_key='created_at',
-                  marker=None, paginate=False, reversed_order=False):
+                  marker=None, paginate=False, reversed_order=False,
+                  filters=None):
     """Returns all receivers."""
+
+    has_prev_data = False
+    has_more_data = False
 
     limit = getattr(settings, 'API_RESULT_LIMIT', 1000)
     page_size = utils.get_page_size(request)
@@ -341,11 +345,10 @@ def receiver_list(request, sort_dir='desc', sort_key='created_at',
         receivers, has_more_data, has_prev_data = api_utils.update_pagination(
             receivers_iter, request_size, page_size, marker,
             sort_dir, sort_key, reversed_order)
-
-        return [Receiver(r) for r in receivers], has_more_data, has_prev_data
     else:
         receivers = list(receivers_iter)
-        return [Receiver(r) for r in receivers]
+
+    return [Receiver(r) for r in receivers], has_more_data, has_prev_data
 
 
 def receiver_create(request, params):

@@ -1,0 +1,20 @@
+<div class="row">
+  <dl class="col-md-4">
+    <dt translate>ID</dt>
+    <dd>{$ item.id $}</dd>
+  </dl>
+  <dl class="col-md-2">
+    <dt translate>Created</dt>
+    <dd>{$ item.created_at | date:'short'$}</dd>
+  </dl>
+  <dl class="col-md-2">
+    <dt translate>Updated</dt>
+    <dd>{$ item.updated_at | date:'short' | noValue $}</dd>
+  </dl>
+</div>
+<div class="row">
+  <dl class="col-md-12">
+    <dt translate>Channel</dt>
+    <dd>{$ item.channel $}</dd>
+  </dl>
+</div>

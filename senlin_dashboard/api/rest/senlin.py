@@ -61,3 +61,11 @@ class Receiver(generic.View):
         The result is a receiver object.
         """
         return senlin.receiver_get(request, receiver_id).to_dict()
+
+    @rest_utils.ajax()
+    def delete(self, request, receiver_id):
+        """Delete a specific receiver
+
+        DELETE http://localhost/api/senlin/receivers/cc758c90-3d98-4ea1-af44-aab405c9c915  # noqa
+        """
+        senlin.receiver_delete(request, receiver_id)

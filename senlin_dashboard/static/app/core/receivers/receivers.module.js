@@ -25,7 +25,8 @@
    */
   angular
     .module('horizon.cluster.receivers', [
-      'ngRoute'
+      'ngRoute',
+      'horizon.cluster.receivers.details'
     ])
     .constant('horizon.app.core.receivers.resourceType', 'OS::Senlin::Receiver')
     .run(run)

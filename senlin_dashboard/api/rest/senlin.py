@@ -42,3 +42,22 @@ class Receivers(generic.View):
             'has_more_data': has_more_data,
             'has_prev_data': has_prev_data,
         }
+
+
+@urls.register
+class Receiver(generic.View):
+    """API for Senlin receiver."""
+
+    url_regex = r'senlin/receivers/(?P<receiver_id>[^/]+)/$'
+
+    @rest_utils.ajax()
+    def get(self, request, receiver_id):
+        """Get a single receiver's details with the receiver id.
+
+        The following get parameters may be passed in the GET
+
+        :param receiver_id: the id of the receiver
+
+        The result is a receiver object.
+        """
+        return senlin.receiver_get(request, receiver_id).to_dict()

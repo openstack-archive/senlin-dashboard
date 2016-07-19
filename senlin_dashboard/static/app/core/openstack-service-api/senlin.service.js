@@ -36,7 +36,8 @@
   function senlinAPI(apiService, toastService) {
     var service = {
       getReceivers: getReceivers,
-      getReceiver: getReceiver
+      getReceiver: getReceiver,
+      deleteReceiver: deleteReceiver
     };
 
     return service;
@@ -73,6 +74,28 @@
         .error(function () {
           toastService.add('error', gettext('Unable to retrieve the receiver.'));
         });
+    }
+
+    /**
+     * @name deleteReceiver
+     * @description
+     * Deletes single Receiver by ID.
+     *
+     * @param {string} receiverId
+     * The Id of the receiver to delete.
+     *
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     *
+     * @returns {Object} The result of the API call
+     */
+    function deleteReceiver(receiverId, suppressError) {
+      var promise = apiService.delete('/api/senlin/receivers/' + receiverId + '/');
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to delete the receiver with id: %(id)s');
+        toastService.add('error', interpolate(msg, { id: receiverId }, true));
+      });
     }
 
   }

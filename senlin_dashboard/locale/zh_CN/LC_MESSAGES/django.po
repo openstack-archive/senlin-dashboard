@@ -2,13 +2,13 @@
 # zzxwill <zzxwill@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: senlin-dashboard 0.2.1.dev49\n"
+"Project-Id-Version: senlin-dashboard 0.2.1.dev64\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-06-30 03:40+0000\n"
+"POT-Creation-Date: 2016-07-19 02:05+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-06-25 04:21+0000\n"
+"PO-Revision-Date: 2016-07-19 10:35+0000\n"
 "Last-Translator: zzxwill <zzxwill@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh-CN\n"
@@ -22,8 +22,8 @@ msgid ""
 "receiver can change the size of a specified cluster."
 msgstr ""
 "接收端被用来准备Senlin引擎以完成对外部报警和事件做出响应，这样特定的Action可"
-"以在senlin集群上自动初始化。比如，当一个集群上的负载压力升高，接收端可以改变"
-"特定集群的容量。"
+"以在senlin集群上自动初始化。比如，当一个集群上的负载压力升高，receiver可以改"
+"变特定集群的容量。"
 
 msgid ""
 "A policy is a set of rules that can be checked and/or enforced when an "
@@ -142,7 +142,7 @@ msgid "Create Profile"
 msgstr "创建样版"
 
 msgid "Create Receiver"
-msgstr "创建接收端"
+msgstr "创建receiver"
 
 msgid "Created"
 msgstr "已创建"
@@ -193,7 +193,7 @@ msgstr[0] "删除样版"
 
 msgid "Delete Receiver"
 msgid_plural "Delete Receivers"
-msgstr[0] "删除接收端"
+msgstr[0] "删除receiver"
 
 msgid "Deleted Policy"
 msgid_plural "Deleted Policies"
@@ -205,7 +205,7 @@ msgstr[0] "删除的样版"
 
 msgid "Deleted Receiver"
 msgid_plural "Deleted Receivers"
-msgstr[0] "已删除的接收端"
+msgstr[0] "已删除的receiver"
 
 msgid "Description:"
 msgstr "描述"
@@ -356,7 +356,7 @@ msgid "RESIZING"
 msgstr "调整大小中"
 
 msgid "Receivers"
-msgstr "接收端"
+msgstr "Receiver"
 
 msgid "Role"
 msgstr "角色"
@@ -471,7 +471,7 @@ msgid "Unable to create new profile"
 msgstr "无法创建新的样版"
 
 msgid "Unable to create new receiver"
-msgstr "无法创建新的接收端。"
+msgstr "无法创建新的receiver。"
 
 msgid "Unable to create node."
 msgstr "无法创建节点。"
@@ -510,10 +510,10 @@ msgid "Unable to retrieve profiles."
 msgstr "无法获取样版。"
 
 msgid "Unable to retrieve receiver."
-msgstr "无法获取接收端。"
+msgstr "无法获取receiver。"
 
 msgid "Unable to retrieve receivers."
-msgstr "无法获取接收端。"
+msgstr "无法获取receiver。"
 
 msgid "Unable to update node."
 msgstr "不能更新节点。"
@@ -581,4 +581,4 @@ msgstr "你的样版%s已经更新了。"
 
 #, python-format
 msgid "Your receiver %s has been created successfully."
-msgstr "你的接收端%s已经被成功创建。"
+msgstr "你的receiver %s已经被成功创建。"

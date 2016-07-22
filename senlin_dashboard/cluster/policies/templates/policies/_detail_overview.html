@@ -8,6 +8,8 @@
     <dd>{{ policy.name }}</dd>
     <dt>{% trans "ID" %}</dt>
     <dd>{{ policy.id }}</dd>
+    <dt>{% trans "Type" %}</dt>
+    <dd>{{ policy.type }}</dd>
     <dt>{% trans "Spec" %}</dt>
     <dd>{{ policy.policy_spec|force_escape|nbsp|linebreaksbr }}</dd>
     <dt>{% trans "Created" context "Created time" %}</dt>

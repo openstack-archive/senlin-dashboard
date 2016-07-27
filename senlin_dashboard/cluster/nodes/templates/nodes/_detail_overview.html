@@ -8,8 +8,10 @@
     <dd>{{ node.name }}</dd>
     <dt>{% trans "Profile Name" %}</dt>
     <dd><a href="{{ node.profile_url }}">{{ node.profile_name }}</a></dd>
-    <dt>{% trans "Cluster ID" %}</dt>
-    <dd><a href="{{ node.cluster_url }}">{{ node.cluster_id }}</a></dd>
+    {% if node.cluster_id %}
+      <dt>{% trans "Cluster ID" %}</dt>
+      <dd><a href="{{ node.cluster_url }}">{{ node.cluster_id }}</a></dd>
+    {% endif %}
     <dt>{% trans "ID" %}</dt>
     <dd>{{ node.id }}</dd>
     <dt>{% trans "Status" %}</dt>

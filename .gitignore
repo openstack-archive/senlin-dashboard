@@ -5,6 +5,7 @@
 .selenium_log
 .coverage*
 .noseids
+.DS_Store
 .DS_STORE
 *.egg/
 *.egg-info/

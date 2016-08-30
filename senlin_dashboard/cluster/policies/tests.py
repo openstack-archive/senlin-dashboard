@@ -78,7 +78,7 @@ class PoliciesTest(test.TestCase):
 
         formdata = {
             'name': 'test-policy',
-            'spec': spec_yaml,
+            'spec': yaml.load(spec_yaml),
             'cooldown': 0,
             'level': 0
         }

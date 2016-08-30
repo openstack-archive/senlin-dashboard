@@ -95,8 +95,9 @@ class DetailView(tabs.TabView):
         node = self.get_object()
         node.profile_url = reverse_lazy(self.profile_url,
                                         args=[node.profile_id])
-        node.cluster_url = reverse_lazy(self.cluster_url,
-                                        args=[node.cluster_id])
+        if node.cluster_id:
+            node.cluster_url = reverse_lazy(self.cluster_url,
+                                            args=[node.cluster_id])
         context["actions"] = table.render_row_actions(node)
         context["node"] = node
         context["url"] = reverse_lazy("horizon:cluster:nodes:index")

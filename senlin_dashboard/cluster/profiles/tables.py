@@ -66,8 +66,10 @@ def get_profile_name(profile):
 
 
 class ProfilesTable(tables.DataTable):
-    name = tables.Column(get_profile_name, verbose_name=_("Name"),
-                         link=profiles_forms.DETAIL_URL)
+    name = tables.WrappingColumn(
+        get_profile_name,
+        verbose_name=_("Name"),
+        link=profiles_forms.DETAIL_URL)
     type_name = tables.Column("type_name", verbose_name=_("Type"))
     created = tables.Column(
         "created_at",

@@ -117,8 +117,10 @@ class ClustersTable(tables.DataTable):
                                      u"RECOVERING")),
     )
 
-    name = tables.Column("name", verbose_name=_("Name"),
-                         link="horizon:cluster:clusters:detail")
+    name = tables.WrappingColumn(
+        "name",
+        verbose_name=_("Name"),
+        link="horizon:cluster:clusters:detail")
     status = tables.Column("status",
                            verbose_name=_("Status"),
                            status=True,

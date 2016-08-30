@@ -54,8 +54,10 @@ def get_updated_time(object):
 
 
 class PoliciesTable(tables.DataTable):
-    name = tables.Column("name", verbose_name=_("Name"),
-                         link=policies_forms.DETAIL_URL)
+    name = tables.WrappingColumn(
+        "name",
+        verbose_name=_("Name"),
+        link=policies_forms.DETAIL_URL)
     type = tables.Column("type", verbose_name=_("Type"))
     created = tables.Column(
         "created_at",

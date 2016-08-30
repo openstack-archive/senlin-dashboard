@@ -61,8 +61,10 @@ def get_cluster_link(receiver):
 
 
 class ReceiversTable(tables.DataTable):
-    name = tables.Column("name", verbose_name=_("Name"),
-                         link="horizon:cluster:receivers:detail")
+    name = tables.WrappingColumn(
+        "name",
+        verbose_name=_("Name"),
+        link="horizon:cluster:receivers:detail")
     type = tables.Column("type", verbose_name=_("Type"))
     cluster_id = tables.Column('cluster_id',
                                link=get_cluster_link,

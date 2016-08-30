@@ -116,8 +116,10 @@ class NodesTable(tables.DataTable):
                                      u"RECOVERING")),
     )
 
-    name = tables.Column("name", verbose_name=_("Name"),
-                         link="horizon:cluster:nodes:detail")
+    name = tables.WrappingColumn(
+        "name",
+        verbose_name=_("Name"),
+        link="horizon:cluster:nodes:detail")
     profile_name = tables.Column("profile_name",
                                  link=get_profile_link,
                                  verbose_name=_("Profile Name"))

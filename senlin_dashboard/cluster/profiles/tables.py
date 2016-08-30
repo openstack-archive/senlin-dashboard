@@ -61,8 +61,12 @@ def get_updated_time(object):
     return object.updated_at or None
 
 
+def get_profile_name(profile):
+    return getattr(profile, "name").strip() or profile.id
+
+
 class ProfilesTable(tables.DataTable):
-    name = tables.Column("name", verbose_name=_("Name"),
+    name = tables.Column(get_profile_name, verbose_name=_("Name"),
                          link=profiles_forms.DETAIL_URL)
     type_name = tables.Column("type_name", verbose_name=_("Type"))
     created = tables.Column(

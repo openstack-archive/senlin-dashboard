@@ -1,0 +1,3 @@
+---
+fixes:
+  - Fixed the display of long names which could break the table layout.

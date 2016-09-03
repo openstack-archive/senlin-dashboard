@@ -12,6 +12,10 @@
     <dd>{{ cluster.id }}</dd>
     <dt>{% trans "Status" %}</dt>
     <dd>{{ cluster.status }}</dd>
+    {% if cluster.status_reason %}
+      <dt>{% trans "Status Reason " %}</dt>
+      <dd>{{ cluster.status_reason }}</dd>
+    {% endif %}
     <dt>{% trans "Max Size" %}</dt>
     <dd>{{ cluster.max_size }}</dd>
     <dt>{% trans "Min Size" %}</dt>

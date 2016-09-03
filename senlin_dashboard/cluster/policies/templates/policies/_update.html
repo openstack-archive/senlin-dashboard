@@ -1,0 +1,14 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+
+{% block modal-header %}{% trans "Update Policy" %}{% endblock %}
+
+{% block modal-body-right %}
+  <h3>{% trans "Description:" %}</h3>
+  <p>{% trans "Edit the name for the Policy." %}</p>
+{% endblock %}
+
+{% block modal-footer %}
+  <a href="{% url 'horizon:cluster:policies:index' %}" class="btn btn-default cancel">{% trans "Cancel" %}</a>
+  <input class="btn btn-primary" type="submit" value="{% trans "Update Policy" %}" />
+{% endblock %}

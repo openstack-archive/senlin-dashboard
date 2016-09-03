@@ -18,6 +18,7 @@ import six
 import yaml
 
 from django.core.urlresolvers import reverse
+from django.forms import ValidationError
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
@@ -29,6 +30,7 @@ from senlin_dashboard.api import senlin
 INDEX_URL = "horizon:cluster:policies:index"
 CREATE_URL = "horizon:cluster:policies:create"
 DETAIL_URL = "horizon:cluster:policies:detail"
+UPDATE_URL = "horizon:cluster:policies:update"
 
 
 class CreatePolicyForm(forms.SelfHandlingForm):
@@ -75,5 +77,29 @@ class CreatePolicyForm(forms.SelfHandlingForm):
         except Exception:
             redirect = reverse(INDEX_URL)
             msg = _('Unable to create new policy')
+            exceptions.handle(request, msg, redirect=redirect)
+            return False
+
+
+class UpdatePolicyForm(forms.SelfHandlingForm):
+    policy_id = forms.CharField(widget=forms.HiddenInput())
+    name = forms.CharField(max_length=255, label=_("Name"))
+
+    def handle(self, request, data):
+        params = {"name": data.get('name'),
+                  "id": data.get('policy_id')}
+
+        try:
+            senlin.policy_update(request, data.get('policy_id'), params)
+            messages.success(request,
+                             _('Your policy %s has been updated.') %
+                             params['name'])
+            return True
+        except ValidationError as e:
+            self.api_error(e.messages[0])
+            return False
+        except Exception:
+            redirect = reverse(INDEX_URL)
+            msg = _('Unable to update policy')
             exceptions.handle(request, msg, redirect=redirect)
             return False

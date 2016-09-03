@@ -27,6 +27,14 @@ class CreatePolicy(tables.LinkAction):
     icon = "plus"
 
 
+class UpdatePolicy(tables.LinkAction):
+    name = "update"
+    verbose_name = _("Update Policy")
+    url = policies_forms.UPDATE_URL
+    classes = ("ajax-modal",)
+    icon = "pencil"
+
+
 class DeletePolicy(tables.DeleteAction):
 
     @staticmethod
@@ -74,4 +82,4 @@ class PoliciesTable(tables.DataTable):
         table_actions = (tables.FilterAction,
                          CreatePolicy,
                          DeletePolicy,)
-        row_actions = (DeletePolicy,)
+        row_actions = (UpdatePolicy, DeletePolicy,)

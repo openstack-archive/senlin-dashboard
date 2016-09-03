@@ -101,3 +101,36 @@ class DetailView(tabs.TabView):
     def get_tabs(self, request, *args, **kwargs):
         policy = self.get_object()
         return self.tab_group_class(request, policy=policy, **kwargs)
+
+
+class UpdateView(forms.ModalFormView):
+    template_name = 'cluster/policies/update.html'
+    page_title = _("Update Policy")
+    form_class = policies_forms.UpdatePolicyForm
+    submit_url = reverse_lazy(policies_forms.UPDATE_URL)
+    success_url = reverse_lazy(policies_forms.INDEX_URL)
+
+    @memoized.memoized_method
+    def get_object(self):
+        try:
+            # Get initial policy information
+            policy_id = self.kwargs["policy_id"]
+            policy = senlin.policy_get(self.request, policy_id)
+            policy_dict = {"policy_id": policy_id,
+                           "name": policy.name}
+        except Exception:
+            msg = _("Unable to retrieve policy.")
+            url = reverse_lazy(policies_forms.INDEX_URL)
+            exceptions.handle(self.request, msg, redirect=url)
+        return policy_dict
+
+    def get_context_data(self, **kwargs):
+        args = (self.kwargs["policy_id"],)
+        context = super(UpdateView, self).get_context_data(**kwargs)
+        context["policy"] = self.get_object()
+        context["submit_url"] = reverse_lazy(policies_forms.UPDATE_URL,
+                                             args=args)
+        return context
+
+    def get_initial(self):
+        return self.get_object()

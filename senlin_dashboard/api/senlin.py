@@ -240,6 +240,12 @@ def policy_create(request, params):
     return policy
 
 
+def policy_update(request, policy, params):
+    """Update policy."""
+    policy = senlinclient(request).update_policy(policy, **params)
+    return Policy(policy)
+
+
 def policy_delete(request, policy):
     """Delete a policy."""
     senlinclient(request).delete_policy(policy)

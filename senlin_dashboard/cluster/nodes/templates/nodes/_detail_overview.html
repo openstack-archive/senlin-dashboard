@@ -16,6 +16,10 @@
     <dd>{{ node.id }}</dd>
     <dt>{% trans "Status" %}</dt>
     <dd>{{ node.status }}</dd>
+    {% if node.status_reason %}
+      <dt>{% trans "Status Reason " %}</dt>
+      <dd>{{ node.status_reason }}</dd>
+    {% endif %}
     <dt>{% trans "Physical ID" %}</dt>
     <dd>{{ node.physical_id }}</dd>
     {% if node.role %}

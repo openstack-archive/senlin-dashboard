@@ -77,10 +77,7 @@ def senlinclient(request):
     return senlin_client.Client(api_version, {}, USER_AGENT, **kwargs)
 
 
-def cluster_list(request, sort_dir='desc', sort_key='created_at',
-                 marker=None, paginate=False, reversed_order=False):
-    """Returns all clusters."""
-
+def _populate_request_size_and_page_size(request, paginate=False):
     limit = getattr(settings, 'API_RESULT_LIMIT', 1000)
     page_size = utils.get_page_size(request)
 
@@ -88,6 +85,16 @@ def cluster_list(request, sort_dir='desc', sort_key='created_at',
         request_size = page_size + 1
     else:
         request_size = limit
+
+    return page_size, request_size
+
+
+def cluster_list(request, sort_dir='desc', sort_key='created_at',
+                 marker=None, paginate=False, reversed_order=False):
+    """Returns all clusters."""
+
+    page_size, request_size = _populate_request_size_and_page_size(
+        request, paginate)
 
     if reversed_order:
         sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
@@ -150,16 +157,8 @@ def profile_list(request, sort_dir='desc', sort_key='created_at',
                  marker=None, paginate=False, reversed_order=False):
     """Returns all profiles."""
 
-    limit = getattr(settings, 'API_RESULT_LIMIT', 1000)
-    page_size = utils.get_page_size(request)
-
-    if paginate:
-        request_size = page_size + 1
-    else:
-        request_size = limit
-
-    if reversed_order:
-        sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
+    page_size, request_size = _populate_request_size_and_page_size(
+        request, paginate)
 
     params = {
         'sort': '%s:%s' % (sort_key, sort_dir),
@@ -205,13 +204,9 @@ def profile_delete(request, profile):
 def policy_list(request, sort_dir='desc', sort_key='created_at',
                 marker=None, paginate=False, reversed_order=False):
     """Returns all policies."""
-    limit = getattr(settings, 'API_RESULT_LIMIT', 1000)
-    page_size = utils.get_page_size(request)
 
-    if paginate:
-        request_size = page_size + 1
-    else:
-        request_size = limit
+    page_size, request_size = _populate_request_size_and_page_size(
+        request, paginate)
 
     if reversed_order:
         sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
@@ -262,13 +257,8 @@ def node_list(request, sort_dir='desc', sort_key='created_at',
               cluster_id=None):
     """Returns all nodes."""
 
-    limit = getattr(settings, 'API_RESULT_LIMIT', 1000)
-    page_size = utils.get_page_size(request)
-
-    if paginate:
-        request_size = page_size + 1
-    else:
-        request_size = limit
+    page_size, request_size = _populate_request_size_and_page_size(
+        request, paginate)
 
     if reversed_order:
         sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
@@ -329,13 +319,8 @@ def receiver_list(request, sort_dir='desc', sort_key='created_at',
     has_prev_data = False
     has_more_data = False
 
-    limit = getattr(settings, 'API_RESULT_LIMIT', 1000)
-    page_size = utils.get_page_size(request)
-
-    if paginate:
-        request_size = page_size + 1
-    else:
-        request_size = limit
+    page_size, request_size = _populate_request_size_and_page_size(
+        request, paginate)
 
     if reversed_order:
         sort_dir = 'desc' if sort_dir == 'asc' else 'asc'

@@ -12,6 +12,7 @@
 
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
+from django.template import defaultfilters as filters
 from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
@@ -186,7 +187,10 @@ class DetachPolicy(tables.BatchAction):
 class AttachedPoliciesTable(tables.DataTable):
     policy_name = tables.Column("policy_name", verbose_name=_("Name"))
     policy_type = tables.Column("policy_type", verbose_name=_("Type"))
-    enabled = tables.Column("enabled", verbose_name=_("Enabled"))
+    enabled = tables.Column(
+        "enabled",
+        verbose_name=_("Enabled"),
+        filters=(filters.yesno, filters.capfirst))
 
     class Meta(object):
         name = "attached_policies"

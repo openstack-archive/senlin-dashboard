@@ -2,13 +2,13 @@
 # zzxwill <zzxwill@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: senlin-dashboard 0.2.1.dev64\n"
+"Project-Id-Version: senlin-dashboard 0.4.1.dev16\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-07-19 02:05+0000\n"
+"POT-Creation-Date: 2016-09-14 03:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-07-19 10:35+0000\n"
+"PO-Revision-Date: 2016-09-13 01:57+0000\n"
 "Last-Translator: zzxwill <zzxwill@gmail.com>\n"
 "Language-Team: Chinese (China)\n"
 "Language: zh-CN\n"
@@ -236,6 +236,9 @@ msgctxt "Current status of the event"
 msgid "ERROR"
 msgstr "错误"
 
+msgid "Edit the name for the Policy."
+msgstr "编辑策略的名称。"
+
 msgid "Enabled"
 msgstr "Enabled"
 
@@ -402,6 +405,9 @@ msgstr "状态"
 msgid "Status Reason"
 msgstr "状态原因"
 
+msgid "Status Reason "
+msgstr "状态原因"
+
 msgid "Targeted cluster for this receiver."
 msgstr "receiver的目标集群。"
 
@@ -518,11 +524,17 @@ msgstr "无法获取receiver。"
 msgid "Unable to update node."
 msgstr "不能更新节点。"
 
+msgid "Unable to update policy"
+msgstr "无法更新策略"
+
 msgid "Unable to update profile"
 msgstr "无法更新样版"
 
 msgid "Update Node"
 msgstr "更新节点"
+
+msgid "Update Policy"
+msgstr "更新策略"
 
 msgid "Update Profile"
 msgstr "更新样版"
@@ -563,6 +575,12 @@ msgid ""
 "receiver is triggered."
 msgstr "YAML类型的参数在receiver被触发时将传递给目标动作。"
 
+msgid "You may update the editable properties of your node here."
+msgstr "您可在此处更新节点的可编辑属性。"
+
+msgid "You may update the editable properties of your profile here."
+msgstr "您可在此处更新样版的可编辑属性。"
+
 #, python-format
 msgid "Your node %s update request has been accepted for processing."
 msgstr "你的节点%s更新请求已被接受并正在处理。"
@@ -570,6 +588,10 @@ msgstr "你的节点%s更新请求已被接受并正在处理。"
 #, python-format
 msgid "Your policy %s has been created."
 msgstr "你的策略%s已经被创建。"
+
+#, python-format
+msgid "Your policy %s has been updated."
+msgstr "你的策略%s已经更新了。"
 
 #, python-format
 msgid "Your profile %s has been created."

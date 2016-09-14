@@ -62,6 +62,9 @@ module.exports = function (config) {
       toxPath + 'xstatic/pkg/angular_lrdragndrop/data/lrdragndrop.js',
       toxPath + 'xstatic/pkg/spin/data/spin.js',
       toxPath + 'xstatic/pkg/spin/data/spin.jquery.js',
+      toxPath + 'xstatic/pkg/tv4/data/tv4.js',
+      toxPath + 'xstatic/pkg/objectpath/data/ObjectPath.js',
+      toxPath + 'xstatic/pkg/angular_schema_form/data/schema-form.js',
 
       // TODO: These should be mocked.
       toxPath + '/horizon/static/horizon/js/horizon.js',

@@ -31,10 +31,10 @@
       {% endfor %}
     {% endif %}
     <dt>{% trans "Created" context "Created time" %}</dt>
-    <dd>{{ cluster.created_at }}</dd>
+    <dd>{{ cluster.created_at|parse_isotime }}</dd>
     {% if cluster.updated_at %}
     <dt>{% trans "Updated" context "Updated time" %}</dt>
-    <dd>{{ cluster.updated_at }}</dd>
+    <dd>{{ cluster.updated_at|parse_isotime }}</dd>
     {% endif %}
   </dl>
 

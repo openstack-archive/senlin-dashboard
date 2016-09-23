@@ -14,6 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
 from horizon import tables
+from horizon.utils import filters
 
 from senlin_dashboard import api
 from senlin_dashboard.cluster.policies import forms as policies_forms
@@ -70,10 +71,12 @@ class PoliciesTable(tables.DataTable):
     created = tables.Column(
         "created_at",
         verbose_name=_("Created"),
+        filters=(filters.parse_isotime,)
     )
     updated = tables.Column(
         get_updated_time,
         verbose_name=_("Updated"),
+        filters=(filters.parse_isotime,)
     )
 
     class Meta(object):

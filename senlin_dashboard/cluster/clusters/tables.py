@@ -12,12 +12,13 @@
 
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
-from django.template import defaultfilters as filters
+from django.template import defaultfilters
 from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
 from horizon import tables
+from horizon.utils import filters
 
 from senlin_dashboard import api
 from senlin_dashboard import exceptions
@@ -135,10 +136,12 @@ class ClustersTable(tables.DataTable):
     created = tables.Column(
         "created_at",
         verbose_name=_("Created"),
+        filters=(filters.parse_isotime,)
     )
     updated = tables.Column(
         get_updated_time,
         verbose_name=_("Updated"),
+        filters=(filters.parse_isotime,)
     )
 
     class Meta(object):
@@ -190,7 +193,7 @@ class AttachedPoliciesTable(tables.DataTable):
     enabled = tables.Column(
         "enabled",
         verbose_name=_("Enabled"),
-        filters=(filters.yesno, filters.capfirst))
+        filters=(defaultfilters.yesno, defaultfilters.capfirst))
 
     class Meta(object):
         name = "attached_policies"

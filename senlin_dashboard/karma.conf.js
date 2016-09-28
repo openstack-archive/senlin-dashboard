@@ -119,7 +119,7 @@ module.exports = function (config) {
 
     frameworks: ['jasmine'],
 
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
     phantomjsLauncher: {
       // Have phantomjs exit if a ResourceError is encountered
@@ -130,7 +130,7 @@ module.exports = function (config) {
     reporters: ['progress', 'coverage', 'threshold'],
 
     plugins: [
-      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-jasmine',
       'karma-ng-html2js-preprocessor',
       'karma-coverage',
@@ -139,7 +139,7 @@ module.exports = function (config) {
 
     coverageReporter: {
       type: 'html',
-      dir: '../coverage-karma/'
+      dir: '../cover/senlin_dashboard'
     },
 
     // Coverage threshold values.

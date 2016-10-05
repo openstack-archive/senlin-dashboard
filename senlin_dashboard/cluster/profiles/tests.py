@@ -65,17 +65,16 @@ class ProfilesTest(test.TestCase):
     def test_create_profile(self):
         profile = self.profiles.list()[0]
 
-        spec_yaml = """
-        type: os.nova.server
-        version: 1.0
-        properties:
-          name: cirros_server
-          flavor: 1
-          image: "cirros-0.3.4-x86_64-uec"
-          key_name: oskey
-          networks:
-           - network: private
-        """
+        spec_yaml = \
+            'type: os.nova.server\n'\
+            'version: 1.0\n'\
+            'properties:\n'\
+            '  name: cirros_server\n'\
+            '  flavor: 1\n'\
+            '  image: "cirros-0.3.4-x86_64-uec"\n'\
+            '  key_name: oskey\n'\
+            '  networks:\n'\
+            '    - network: private\n'
 
         formdata = {
             'name': 'test-profile',

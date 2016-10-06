@@ -365,7 +365,7 @@ function run_tests_all {
   rm -f .coverage.*
 
   PEP8_RESULT=0
-  if [ $only_selenium -eq 0 ]; then
+  if [ $no_pep8 -eq 0 ] && [ $only_selenium -eq 0 ]; then
     run_pep8
     PEP8_RESULT=$?
   fi

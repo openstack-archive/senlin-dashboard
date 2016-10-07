@@ -64,10 +64,14 @@ class IndexView(tables.DataTableView):
 
 class CreateView(forms.ModalFormView):
     template_name = 'cluster/policies/create.html'
-    page_title = _("Create Policy")
     form_class = policies_forms.CreatePolicyForm
     submit_url = reverse_lazy(policies_forms.CREATE_URL)
     success_url = reverse_lazy(policies_forms.INDEX_URL)
+
+    text = _("Create Policy")
+    modal_header = text
+    submit_label = text
+    page_title = text
 
 
 class DetailView(tabs.TabView):
@@ -105,10 +109,14 @@ class DetailView(tabs.TabView):
 
 class UpdateView(forms.ModalFormView):
     template_name = 'cluster/policies/update.html'
-    page_title = _("Update Policy")
     form_class = policies_forms.UpdatePolicyForm
     submit_url = reverse_lazy(policies_forms.UPDATE_URL)
     success_url = reverse_lazy(policies_forms.INDEX_URL)
+
+    text = _("Update Policy")
+    modal_header = text
+    submit_label = text
+    page_title = text
 
     @memoized.memoized_method
     def get_object(self):

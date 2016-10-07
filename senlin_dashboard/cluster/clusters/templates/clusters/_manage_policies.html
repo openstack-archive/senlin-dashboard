@@ -7,8 +7,3 @@
     {% include "horizon/common/_form_fields.html" %}
   </fieldset>
 {% endblock %}
-
-{% block modal-footer %}
-  <a href="{% url 'horizon:cluster:clusters:index' %}" class="btn btn-default cancel">{% trans "Cancel" %}</a>
-  <input class="btn btn-primary" type="submit" value="{% trans "Attach Policy" %}" />
-{% endblock %}

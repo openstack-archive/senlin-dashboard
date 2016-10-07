@@ -64,10 +64,14 @@ class IndexView(tables.DataTableView):
 
 class CreateView(forms.ModalFormView):
     template_name = 'cluster/clusters/create.html'
-    page_title = _("Create Cluster")
     form_class = clusters_forms.CreateForm
     submit_url = reverse_lazy("horizon:cluster:clusters:create")
     success_url = reverse_lazy(clusters_forms.INDEX_URL)
+
+    text = _("Create Cluster")
+    modal_header = text
+    submit_label = text
+    page_title = text
 
 
 class DetailView(tabs.TabView):
@@ -109,13 +113,14 @@ class DetailView(tabs.TabView):
 class ManagePoliciesView(tables.DataTableView, forms.ModalFormView):
     table_class = AttachedPoliciesTable
     form_class = clusters_forms.ManagePoliciesForm
-    form_id = "manage_policies"
-    modal_header = _("Manage Policies")
-    modal_id = "manage_policies"
     template_name = 'cluster/clusters/manage_policies.html'
     submit_url = "horizon:cluster:clusters:manage_policies"
     success_url = reverse_lazy("horizon:cluster:clusters:index")
-    page_title = _("Manage Policies")
+
+    text = _("Manage Policies")
+    modal_header = text
+    submit_label = text
+    page_title = text
 
     def get_data(self):
         policies = senlin.cluster_policy_list(

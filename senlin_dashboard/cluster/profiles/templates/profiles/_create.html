@@ -1,16 +1,10 @@
 {% extends "horizon/common/_modal_form.html" %}
 {% load i18n %}
 
-{% block form_attrs %}enctype="multipart/form-data"{% endblock %}
-{% block modal-header %}{% trans "Create Profile" %}{% endblock %}
-
 {% block modal-body-right %}
   <h3>{% trans "Description:" %}</h3>
   <p>{% trans "A profile encodes the information needed for node creation." %}</p>
-  <a target="_blank" href="https://github.com/openstack/senlin/tree/master/examples/profiles">{% trans "Profile Spec Examples" %}</a>
-{% endblock %}
-
-{% block modal-footer %}
-  <a href="{% url 'horizon:cluster:profiles:index' %}" class="btn btn-default cancel">{% trans "Cancel" %}</a>
-  <input class="btn btn-primary" type="submit" value="{% trans "Create Profile" %}" />
+  <a target="_blank" href="https://github.com/openstack/senlin/tree/master/examples/profiles">
+    {% trans "Profile Spec Examples" %}
+  </a>
 {% endblock %}

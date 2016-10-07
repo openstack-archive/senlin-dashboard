@@ -64,10 +64,14 @@ class IndexView(tables.DataTableView):
 
 class CreateView(forms.ModalFormView):
     template_name = 'cluster/nodes/create.html'
-    page_title = _("Create Node")
     form_class = nodes_forms.CreateForm
     submit_url = reverse_lazy("horizon:cluster:nodes:create")
     success_url = reverse_lazy("horizon:cluster:nodes:index")
+
+    text = _("Create Node")
+    modal_header = text
+    submit_label = text
+    page_title = text
 
 
 class DetailView(tabs.TabView):
@@ -110,10 +114,14 @@ class DetailView(tabs.TabView):
 
 class UpdateView(forms.ModalFormView):
     template_name = 'cluster/nodes/update.html'
-    page_title = _("Update Node")
     form_class = nodes_forms.UpdateNodeForm
     submit_url = reverse_lazy("horizon:cluster:nodes:update")
     success_url = reverse_lazy("horizon:cluster:nodes:index")
+
+    text = _("Update Node")
+    modal_header = text
+    submit_label = text
+    page_title = text
 
     @memoized.memoized_method
     def get_object(self):

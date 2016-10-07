@@ -62,10 +62,14 @@ class IndexView(tables.DataTableView):
 
 class CreateView(forms.ModalFormView):
     template_name = 'cluster/receivers/create.html'
-    page_title = _("Create Receiver")
     form_class = receivers_forms.CreateReceiverForm
     submit_url = reverse_lazy("horizon:cluster:receivers:create")
     success_url = reverse_lazy("horizon:cluster:receivers:index")
+
+    text = _("Create Receiver")
+    modal_header = text
+    submit_label = text
+    page_title = text
 
 
 class DetailView(tabs.TabView):

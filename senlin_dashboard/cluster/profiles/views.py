@@ -64,18 +64,26 @@ class IndexView(tables.DataTableView):
 
 class CreateView(forms.ModalFormView):
     template_name = 'cluster/profiles/create.html'
-    page_title = _("Create Profile")
     form_class = profiles_forms.CreateProfileForm
     submit_url = reverse_lazy(profiles_forms.CREATE_URL)
     success_url = reverse_lazy(profiles_forms.INDEX_URL)
 
+    text = _("Create Profile")
+    modal_header = text
+    submit_label = text
+    page_title = text
+
 
 class UpdateView(forms.ModalFormView):
     template_name = 'cluster/profiles/update.html'
-    page_title = _("Update Profile")
     form_class = profiles_forms.UpdateProfileForm
     submit_url = reverse_lazy(profiles_forms.UPDATE_URL)
     success_url = reverse_lazy(profiles_forms.INDEX_URL)
+
+    text = _("Update Profile")
+    modal_header = text
+    submit_label = text
+    page_title = text
 
     @memoized.memoized_method
     def get_object(self):

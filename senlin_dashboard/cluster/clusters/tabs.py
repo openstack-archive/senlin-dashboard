@@ -40,7 +40,7 @@ class EventTab(node_tab.EventTab):
             events = []
             exceptions.handle(self.request,
                               _('Unable to retrieve cluster event list.'))
-        return sorted(events, reverse=True, key=lambda y: y.timestamp)
+        return sorted(events, reverse=True, key=lambda y: y.generated_at)
 
 
 class NodesTab(tabs.TableTab):

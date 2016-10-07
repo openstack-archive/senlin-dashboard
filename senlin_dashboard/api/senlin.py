@@ -55,7 +55,7 @@ class Node(base.APIResourceWrapper):
 
 
 class Event(base.APIResourceWrapper):
-    _attrs = ['id', 'obj_id', 'obj_name', 'timestamp', 'status',
+    _attrs = ['id', 'obj_id', 'obj_name', 'generated_at', 'status',
               'status_reason', 'action']
 
 

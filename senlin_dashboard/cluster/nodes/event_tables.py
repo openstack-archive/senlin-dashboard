@@ -14,6 +14,7 @@ from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import tables
+from horizon.utils import filters
 
 
 class EventsTable(tables.DataTable):
@@ -52,8 +53,9 @@ class EventsTable(tables.DataTable):
     status_reason = tables.Column("status_reason",
                                   verbose_name=_("Status Reason"))
     action = tables.Column("action", verbose_name=_("Action"))
-    timestamp = tables.Column("timestamp",
-                              verbose_name=_("Timestamp"))
+    generated_at = tables.Column("generated_at",
+                                 verbose_name=_("Generated At"),
+                                 filters=(filters.parse_isotime,))
 
     class Meta(object):
         name = "event"

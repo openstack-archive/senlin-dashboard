@@ -44,7 +44,7 @@ class EventTab(tabs.TableTab):
             events = []
             exceptions.handle(self.request,
                               _('Unable to retrieve node event list.'))
-        return sorted(events, reverse=True, key=lambda y: y.timestamp)
+        return sorted(events, reverse=True, key=lambda y: y.generated_at)
 
 
 class NodeDetailTabs(tabs.TabGroup):

@@ -86,8 +86,7 @@ class UpdatePolicyForm(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Name"))
 
     def handle(self, request, data):
-        params = {"name": data.get('name'),
-                  "id": data.get('policy_id')}
+        params = {"name": data.get('name')}
 
         try:
             senlin.policy_update(request, data.get('policy_id'), params)

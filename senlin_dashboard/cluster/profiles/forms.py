@@ -150,7 +150,7 @@ class UpdateProfileForm(forms.SelfHandlingForm):
         label=_("Spec"),
         widget=forms.Textarea(
             attrs={'rows': 6, 'readonly': 'readonly'}),
-        help_text=_("The spec yaml used to create the profile."))
+        help_text=_('Update the spec of a profile is not allowed'))
     metadata = forms.CharField(
         label=_("Metadata"),
         required=False,

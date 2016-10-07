@@ -59,7 +59,7 @@ class SenlinApiTests(test.APITestCase):
             self.assertIsInstance(policy, api.senlin.Policy)
 
     def test_node_list(self):
-        params = {'sort': 'created_at:desc',
+        params = {'sort': 'name:desc',
                   'limit': 1000,
                   'marker': None,
                   'cluster_id': None}

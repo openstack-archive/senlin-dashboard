@@ -252,10 +252,16 @@ def policy_get(request, policy):
     return policy
 
 
-def node_list(request, sort_dir='desc', sort_key='created_at',
+def node_list(request, sort_dir='desc', sort_key='name',
               marker=None, paginate=False, reversed_order=False,
               cluster_id=None):
     """Returns all nodes."""
+
+    # NOTE(Liuqing): workaround for bug: 1594352
+    # https://bugs.launchpad.net/senlin/+bug/1594352
+    # Sometimes we failed to create node and the `created_at` attribution
+    # node object will be None. The api node_list will failed if we
+    # use `created_at` as the `sort_key`.
 
     page_size, request_size = _populate_request_size_and_page_size(
         request, paginate)

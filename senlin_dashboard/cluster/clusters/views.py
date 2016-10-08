@@ -39,6 +39,8 @@ class IndexView(tables.DataTableView):
         return getattr(self, "_more", False)
 
     def get_data(self):
+        filters = self.get_filters()
+
         prev_marker = self.request.GET.get(
             ClustersTable._meta.prev_pagination_param, None)
 
@@ -53,7 +55,8 @@ class IndexView(tables.DataTableView):
                 self.request,
                 marker=marker,
                 paginate=True,
-                reversed_order=reversed_order)
+                reversed_order=reversed_order,
+                filters=filters)
         except Exception:
             self._prev = self._more = False
             clusters = []

@@ -83,6 +83,15 @@ class UpdateRow(tables.Row):
             raise exceptions.NOT_FOUND
 
 
+class ClusterFilterAction(tables.FilterAction):
+    filter_type = "server"
+    filter_choices = (
+        ("name", _("Cluster Name ="), True),
+        ("status", _("Status ="), True),
+        ("profile_name", _("Profile Name ="), True),
+    )
+
+
 class ClustersTable(tables.DataTable):
     STATUS_CHOICES = (
         ("INIT", None),
@@ -149,7 +158,7 @@ class ClustersTable(tables.DataTable):
         row_class = UpdateRow
         verbose_name = _("Clusters")
         status_columns = ["status"]
-        table_actions = (tables.FilterAction,
+        table_actions = (ClusterFilterAction,
                          CreateCluster,
                          DeleteCluster,)
         row_actions = (ManagePolicies,

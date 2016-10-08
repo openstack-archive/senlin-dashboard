@@ -159,7 +159,6 @@ class UpdateProfileForm(forms.SelfHandlingForm):
 
     def handle(self, request, data):
         opts = _populate_profile_params(
-            id=data.get('profile_id'),
             name=data.get('name'),
             spec=None,
             metadata=data.get('metadata', {})

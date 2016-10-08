@@ -266,7 +266,7 @@ def policy_get(request, policy):
 
 def node_list(request, sort_dir='desc', sort_key='name',
               marker=None, paginate=False, reversed_order=False,
-              cluster_id=None):
+              cluster_id=None, filters=None):
     """Returns all nodes."""
 
     # NOTE(Liuqing): workaround for bug: 1594352
@@ -278,6 +278,9 @@ def node_list(request, sort_dir='desc', sort_key='name',
     page_size, request_size = _populate_request_size_and_page_size(
         request, paginate)
 
+    if not filters:
+        filters = {}
+
     if reversed_order:
         sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
 
@@ -286,6 +289,8 @@ def node_list(request, sort_dir='desc', sort_key='name',
         'limit': request_size,
         'marker': marker,
         'cluster_id': cluster_id}
+
+    params.update(filters)
 
     nodes_iter = senlinclient(request).nodes(**params)
 

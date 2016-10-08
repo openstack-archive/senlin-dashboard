@@ -61,6 +61,16 @@ def get_cluster_link(receiver):
                             args=[receiver.cluster_id])
 
 
+class ReceiverFilterAction(tables.FilterAction):
+    filter_type = "server"
+    filter_choices = (
+        ("name", _("Receiver Name ="), True),
+        ("type", _("Type ="), True),
+        ("action", _("Action ="), True),
+        ("cluster_id", _("Cluster ID ="), True),
+    )
+
+
 class ReceiversTable(tables.DataTable):
     name = tables.WrappingColumn(
         "name",
@@ -85,7 +95,7 @@ class ReceiversTable(tables.DataTable):
     class Meta(object):
         name = "receivers"
         verbose_name = _("Receivers")
-        table_actions = (tables.FilterAction,
+        table_actions = (ReceiverFilterAction,
                          CreateReceiver,
                          DeleteReceiver,)
         row_actions = (DeleteReceiver,)

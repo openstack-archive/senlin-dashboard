@@ -9,7 +9,7 @@
     <dt>{% trans "ID" %}</dt>
     <dd>{{ profile.profile_id }}</dd>
     <dt>{% trans "Type" %}</dt>
-    <dd>{{ profile.type_name }}</dd>
+    <dd>{{ profile.type }}</dd>
     <dt>{% trans "Spec" %}</dt>
     <dd>{{ profile.profile_spec|force_escape|nbsp|linebreaksbr }}</dd>
     {% if profile.permission %}

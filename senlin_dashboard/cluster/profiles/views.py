@@ -92,7 +92,7 @@ class UpdateView(forms.ModalFormView):
                     default_flow_style=False)
             profile_dict = {"profile_id": profile_id,
                             "name": profile.name,
-                            "type": profile.type_name,
+                            "type": profile.type,
                             "spec": yaml.safe_dump(
                                 profile.spec,
                                 default_flow_style=False),

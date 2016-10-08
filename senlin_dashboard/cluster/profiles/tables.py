@@ -71,7 +71,7 @@ class ProfilesTable(tables.DataTable):
         get_profile_name,
         verbose_name=_("Name"),
         link=profiles_forms.DETAIL_URL)
-    type_name = tables.Column("type_name", verbose_name=_("Type"))
+    type = tables.Column("type", verbose_name=_("Type"))
     created = tables.Column(
         "created_at",
         verbose_name=_("Created"),

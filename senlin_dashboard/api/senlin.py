@@ -35,7 +35,7 @@ class ClusterPolicy(base.APIResourceWrapper):
 
 
 class Profile(base.APIResourceWrapper):
-    _attrs = ['id', 'name', 'type_name', 'created_at', 'updated_at',
+    _attrs = ['id', 'name', 'type', 'created_at', 'updated_at',
               'metadata', 'spec']
 
 

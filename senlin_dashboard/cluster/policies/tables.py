@@ -62,6 +62,15 @@ def get_updated_time(object):
     return object.updated_at or None
 
 
+class PolicyFilterAction(tables.FilterAction):
+    filter_type = "server"
+    filter_choices = (
+        ("name", _("Policy Name ="), True),
+        ("type", _("Type ="), True),
+        ("level", _("Level ="), True),
+    )
+
+
 class PoliciesTable(tables.DataTable):
     name = tables.WrappingColumn(
         "name",
@@ -82,7 +91,7 @@ class PoliciesTable(tables.DataTable):
     class Meta(object):
         name = "policies"
         verbose_name = _("Policies")
-        table_actions = (tables.FilterAction,
+        table_actions = (PolicyFilterAction,
                          CreatePolicy,
                          DeletePolicy,)
         row_actions = (UpdatePolicy, DeletePolicy,)

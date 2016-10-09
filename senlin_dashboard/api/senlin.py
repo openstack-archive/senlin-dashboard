@@ -154,16 +154,22 @@ def cluster_policy_list(request, cluster, params):
 
 
 def profile_list(request, sort_dir='desc', sort_key='created_at',
-                 marker=None, paginate=False, reversed_order=False):
+                 marker=None, paginate=False, reversed_order=False,
+                 filters=None):
     """Returns all profiles."""
 
     page_size, request_size = _populate_request_size_and_page_size(
         request, paginate)
 
+    if not filters:
+        filters = {}
+
     params = {
         'sort': '%s:%s' % (sort_key, sort_dir),
         'limit': request_size,
         'marker': marker}
+
+    params.update(filters)
 
     profiles_iter = senlinclient(request).profiles(**params)
 

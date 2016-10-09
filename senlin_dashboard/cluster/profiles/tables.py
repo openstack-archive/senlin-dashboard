@@ -66,6 +66,13 @@ def get_profile_name(profile):
     return getattr(profile, "name").strip() or profile.id
 
 
+class ProfileFilterAction(tables.FilterAction):
+    filter_type = "server"
+    filter_choices = (
+        ("name", _("Profile Name ="), True),
+    )
+
+
 class ProfilesTable(tables.DataTable):
     name = tables.WrappingColumn(
         get_profile_name,
@@ -86,7 +93,7 @@ class ProfilesTable(tables.DataTable):
     class Meta(object):
         name = "profiles"
         verbose_name = _("Profiles")
-        table_actions = (tables.FilterAction,
+        table_actions = (ProfileFilterAction,
                          CreateProfile,
                          DeleteProfile)
         row_actions = (UpdateProfile, DeleteProfile,)

@@ -93,6 +93,16 @@ def get_updated_time(object):
     return object.updated_at or None
 
 
+class NodeFilterAction(tables.FilterAction):
+    filter_type = "server"
+    filter_choices = (
+        ("name", _("Node Name ="), True),
+        ("status", _("Status ="), True),
+        ("profile_name", _("Profile Name ="), True),
+        ("cluster_id", _("Cluster ID ="), True),
+    )
+
+
 class NodesTable(tables.DataTable):
     STATUS_CHOICES = (
         ("INIT", None),
@@ -154,7 +164,7 @@ class NodesTable(tables.DataTable):
         row_class = UpdateRow
         verbose_name = _("Nodes")
         status_columns = ["status"]
-        table_actions = (tables.FilterAction,
+        table_actions = (NodeFilterAction,
                          CreateNode,
                          DeleteNode,)
         row_actions = (UpdateNode,

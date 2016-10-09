@@ -345,6 +345,9 @@ def receiver_list(request, sort_dir='desc', sort_key='created_at',
     page_size, request_size = _populate_request_size_and_page_size(
         request, paginate)
 
+    if not filters:
+        filters = {}
+
     if reversed_order:
         sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
 
@@ -352,6 +355,8 @@ def receiver_list(request, sort_dir='desc', sort_key='created_at',
         'sort': '%s:%s' % (sort_key, sort_dir),
         'limit': request_size,
         'marker': marker}
+
+    params.update(filters)
 
     receivers_iter = senlinclient(request).receivers(**params)
 

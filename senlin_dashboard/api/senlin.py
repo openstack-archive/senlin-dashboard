@@ -90,11 +90,15 @@ def _populate_request_size_and_page_size(request, paginate=False):
 
 
 def cluster_list(request, sort_dir='desc', sort_key='created_at',
-                 marker=None, paginate=False, reversed_order=False):
+                 marker=None, paginate=False, reversed_order=False,
+                 filters=None):
     """Returns all clusters."""
 
     page_size, request_size = _populate_request_size_and_page_size(
         request, paginate)
+
+    if not filters:
+        filters = {}
 
     if reversed_order:
         sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
@@ -103,6 +107,8 @@ def cluster_list(request, sort_dir='desc', sort_key='created_at',
         'sort': '%s:%s' % (sort_key, sort_dir),
         'limit': request_size,
         'marker': marker}
+
+    params.update(filters)
 
     clusters_iter = senlinclient(request).clusters(**params)
 

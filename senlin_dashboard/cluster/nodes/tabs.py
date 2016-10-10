@@ -72,4 +72,5 @@ class EventTab(tabs.TableTab):
 
 class NodeDetailTabs(tabs.TabGroup):
     slug = "node_details"
+    sticky = True
     tabs = (OverviewTab, EventTab)

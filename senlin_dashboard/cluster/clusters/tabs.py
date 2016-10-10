@@ -82,4 +82,5 @@ class NodesTab(tabs.TableTab):
 
 class ClusterDetailTabs(tabs.TabGroup):
     slug = "cluster_details"
+    sticky = True
     tabs = (OverviewTab, EventTab, NodesTab)

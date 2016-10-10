@@ -334,10 +334,40 @@ def node_update(request, node, params):
     return node
 
 
-def event_list(request, params):
-    """Returns events."""
-    events = senlinclient(request).events(**params)
-    return [Event(c) for c in events]
+def event_list(request, sort_dir='desc', sort_key='timestamp',
+               marker=None, paginate=False, reversed_order=False,
+               filters=None):
+    """Returns all events."""
+
+    has_prev_data = False
+    has_more_data = False
+
+    page_size, request_size = _populate_request_size_and_page_size(
+        request, paginate)
+
+    if not filters:
+        filters = {}
+
+    if reversed_order:
+        sort_dir = 'desc' if sort_dir == 'asc' else 'asc'
+
+    params = {
+        'sort': '%s:%s' % (sort_key, sort_dir),
+        'limit': request_size,
+        'marker': marker}
+
+    params.update(filters)
+
+    events_iter = senlinclient(request).events(**params)
+
+    if paginate:
+        events, has_more_data, has_prev_data = api_utils.update_pagination(
+            events_iter, request_size, page_size, marker,
+            sort_dir, sort_key, reversed_order)
+        return [Event(e) for e in events], has_more_data, has_prev_data
+    else:
+        events = list(events_iter)
+        return [Event(e) for e in events]
 
 
 def receiver_list(request, sort_dir='desc', sort_key='created_at',

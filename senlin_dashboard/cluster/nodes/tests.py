@@ -110,8 +110,7 @@ class NodesTest(test.TestCase):
         api.senlin.node_get(
             IsA(http.HttpRequest), u'123456').AndReturn(node)
         api.senlin.event_list(
-            IsA(http.HttpRequest),
-            params={'obj_id': u'123456'}).AndReturn(events)
+            IsA(http.HttpRequest)).AndReturn(events)
         self.mox.ReplayAll()
 
         res = self.client.get(NODE_DETAIL_URL + '?tab=node_details__event')

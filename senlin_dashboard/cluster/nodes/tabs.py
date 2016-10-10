@@ -35,16 +35,39 @@ class EventTab(tabs.TableTab):
     template_name = "cluster/nodes/_detail_event.html"
     preload = False
 
+    def has_prev_data(self, table):
+        return getattr(self, "_prev", False)
+
+    def has_more_data(self, table):
+        return getattr(self, "_more", False)
+
     def get_event_data(self):
+
+        prev_marker = self.request.GET.get(
+            event_tables.EventsTable._meta.prev_pagination_param, None)
+
+        if prev_marker is not None:
+            marker = prev_marker
+        else:
+            marker = self.request.GET.get(
+                event_tables.EventsTable._meta.pagination_param, None)
+        reversed_order = prev_marker is not None
+
         node_id = self.tab_group.kwargs['node_id']
         try:
-            params = {"obj_id": node_id}
-            events = senlin.event_list(self.request, params)
+            filters = {"obj_id": node_id}
+            events, self._more, self._prev = senlin.event_list(
+                self.request,
+                marker=marker,
+                paginate=True,
+                reversed_order=reversed_order,
+                filters=filters)
         except Exception:
+            self._prev = self._more = False
             events = []
             exceptions.handle(self.request,
                               _('Unable to retrieve node event list.'))
-        return sorted(events, reverse=True, key=lambda y: y.generated_at)
+        return events
 
 
 class NodeDetailTabs(tabs.TabGroup):

@@ -74,13 +74,15 @@ class SenlinApiTests(test.APITestCase):
             self.assertIsInstance(node, api.senlin.Node)
 
     def test_event_list(self):
-        params = {}
+        params = {'sort': 'timestamp:desc',
+                  'limit': 1000,
+                  'marker': None}
         events = self.events.list()
         senlinclient = self.stub_senlinclient()
         senlinclient.events = self.mox.CreateMockAnything()
         senlinclient.events(**params).AndReturn(events)
         self.mox.ReplayAll()
 
-        ret_val = api.senlin.event_list(self.request, params)
+        ret_val = api.senlin.event_list(self.request)
         for event in ret_val:
             self.assertIsInstance(event, api.senlin.Event)

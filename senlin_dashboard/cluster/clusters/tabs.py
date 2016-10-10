@@ -16,6 +16,7 @@ from horizon import exceptions
 from horizon import tabs
 
 from senlin_dashboard.api import senlin
+from senlin_dashboard.cluster.nodes import event_tables
 from senlin_dashboard.cluster.nodes import tables as node_table
 from senlin_dashboard.cluster.nodes import tabs as node_tab
 
@@ -32,15 +33,32 @@ class OverviewTab(tabs.Tab):
 class EventTab(node_tab.EventTab):
 
     def get_event_data(self):
+
+        prev_marker = self.request.GET.get(
+            event_tables.EventsTable._meta.prev_pagination_param, None)
+
+        if prev_marker is not None:
+            marker = prev_marker
+        else:
+            marker = self.request.GET.get(
+                event_tables.EventsTable._meta.pagination_param, None)
+        reversed_order = prev_marker is not None
+
         cluster_id = self.tab_group.kwargs['cluster_id']
         try:
-            params = {"obj_id": cluster_id}
-            events = senlin.event_list(self.request, params)
+            filters = {"obj_id": cluster_id}
+            events, self._more, self._prev = senlin.event_list(
+                self.request,
+                marker=marker,
+                paginate=True,
+                reversed_order=reversed_order,
+                filters=filters)
         except Exception:
+            self._prev = self._more = False
             events = []
             exceptions.handle(self.request,
-                              _('Unable to retrieve cluster event list.'))
-        return sorted(events, reverse=True, key=lambda y: y.generated_at)
+                              _('Unable to retrieve node event list.'))
+        return events
 
 
 class NodesTab(tabs.TableTab):

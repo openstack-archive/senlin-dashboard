@@ -117,8 +117,7 @@ class ClustersTest(test.TestCase):
         api.senlin.cluster_get(
             IsA(http.HttpRequest), u'123456').AndReturn(cluster)
         api.senlin.event_list(
-            IsA(http.HttpRequest),
-            params={'obj_id': u'123456'}).AndReturn(events)
+            IsA(http.HttpRequest)).AndReturn(events)
         api.senlin.cluster_policy_list(
             IsA(http.HttpRequest), u'123456', {}).AndReturn(policies)
         self.mox.ReplayAll()

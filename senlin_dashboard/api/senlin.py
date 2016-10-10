@@ -114,8 +114,7 @@ def cluster_list(request, sort_dir='desc', sort_key='created_at',
 
     if paginate:
         clusters, has_more_data, has_prev_data = api_utils.update_pagination(
-            clusters_iter, request_size, page_size, marker,
-            sort_dir, sort_key, reversed_order)
+            clusters_iter, request_size, page_size, marker, reversed_order)
 
         return [Cluster(p) for p in clusters], has_more_data, has_prev_data
     else:
@@ -181,8 +180,7 @@ def profile_list(request, sort_dir='desc', sort_key='created_at',
 
     if paginate:
         profiles, has_more_data, has_prev_data = api_utils.update_pagination(
-            profiles_iter, request_size, page_size, marker,
-            sort_dir, sort_key, reversed_order)
+            profiles_iter, request_size, page_size, marker, reversed_order)
 
         return [Profile(p) for p in profiles], has_more_data, has_prev_data
     else:
@@ -238,8 +236,7 @@ def policy_list(request, sort_dir='desc', sort_key='created_at',
 
     if paginate:
         policies, has_more_data, has_prev_data = api_utils.update_pagination(
-            policies_iter, request_size, page_size, marker,
-            sort_dir, sort_key, reversed_order)
+            policies_iter, request_size, page_size, marker, reversed_order)
 
         return [Policy(p) for p in policies], has_more_data, has_prev_data
     else:
@@ -302,8 +299,7 @@ def node_list(request, sort_dir='desc', sort_key='name',
 
     if paginate:
         nodes, has_more_data, has_prev_data = api_utils.update_pagination(
-            nodes_iter, request_size, page_size, marker,
-            sort_dir, sort_key, reversed_order)
+            nodes_iter, request_size, page_size, marker, reversed_order)
 
         return [Node(n) for n in nodes], has_more_data, has_prev_data
     else:
@@ -362,8 +358,7 @@ def event_list(request, sort_dir='desc', sort_key='timestamp',
 
     if paginate:
         events, has_more_data, has_prev_data = api_utils.update_pagination(
-            events_iter, request_size, page_size, marker,
-            sort_dir, sort_key, reversed_order)
+            events_iter, request_size, page_size, marker, reversed_order)
         return [Event(e) for e in events], has_more_data, has_prev_data
     else:
         events = list(events_iter)
@@ -398,8 +393,7 @@ def receiver_list(request, sort_dir='desc', sort_key='created_at',
 
     if paginate:
         receivers, has_more_data, has_prev_data = api_utils.update_pagination(
-            receivers_iter, request_size, page_size, marker,
-            sort_dir, sort_key, reversed_order)
+            receivers_iter, request_size, page_size, marker, reversed_order)
     else:
         receivers = list(receivers_iter)
 

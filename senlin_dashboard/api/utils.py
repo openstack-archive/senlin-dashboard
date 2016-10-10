@@ -14,7 +14,7 @@ import itertools
 
 
 def update_pagination(entities, request_size, page_size, marker,
-                      sort_dir, sort_key, reversed_order):
+                      reversed_order):
     has_prev_data = False
     has_more_data = False
 

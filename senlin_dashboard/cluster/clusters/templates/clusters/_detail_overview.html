@@ -6,8 +6,16 @@
   <dl class="dl-horizontal">
     <dt>{% trans "Name" %}</dt>
     <dd>{{ cluster.name }}</dd>
-    <dt>{% trans "Profile Name" %}</dt>
+    <dt>{% trans "Profile" %}</dt>
     <dd><a href="{{ cluster.profile_url }}">{{ cluster.profile_name }}</a></dd>
+    {% if cluster.policies %}
+      <dt>{% trans "Policies" %}</dt>
+      {% for policy in cluster.policies %}
+        <dd>
+          <a href="{% url 'horizon:cluster:policies:detail' policy.id %}">{{ policy.policy_name }}</a>
+        </dd>
+      {% endfor %}
+    {% endif %}
     <dt>{% trans "ID" %}</dt>
     <dd>{{ cluster.id }}</dd>
     <dt>{% trans "Status" %}</dt>
@@ -24,12 +32,6 @@
     <dd>{{ cluster.desired_capacity }}</dd>
     <dt>{% trans "Timeout" %}</dt>
     <dd>{{ cluster.timeout }}</dd>
-    {% if cluster.policies %}
-      <dt>{% trans "Policies" %}</dt>
-      {% for policy in cluster.policies %}
-      <dd><a href="{% url 'horizon:cluster:policies:detail' policy.id %}">{{ policy.policy_name }}</a></dd>
-      {% endfor %}
-    {% endif %}
     <dt>{% trans "Created" context "Created time" %}</dt>
     <dd>{{ cluster.created_at|parse_isotime }}</dd>
     {% if cluster.updated_at %}

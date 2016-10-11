@@ -41,6 +41,29 @@ class ManagePolicies(tables.LinkAction):
     icon = "pencil"
 
 
+class CheckCluster(tables.BatchAction):
+    name = "check"
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Check Cluster",
+            u"Check Clusters",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Checked Cluster",
+            u"Checked Cluster",
+            count
+        )
+
+    def action(self, request, obj_id):
+        api.senlin.cluster_check(request, obj_id)
+
+
 def get_profile_link(cluster):
     return reverse_lazy('horizon:cluster:profiles:detail',
                         args=[cluster.profile_id])
@@ -160,8 +183,10 @@ class ClustersTable(tables.DataTable):
         status_columns = ["status"]
         table_actions = (ClusterFilterAction,
                          CreateCluster,
+                         CheckCluster,
                          DeleteCluster,)
         row_actions = (ManagePolicies,
+                       CheckCluster,
                        DeleteCluster,)
 
 

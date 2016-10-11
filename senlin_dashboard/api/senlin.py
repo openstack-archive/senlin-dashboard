@@ -128,6 +128,13 @@ def cluster_create(request, params):
     return Cluster(cluster)
 
 
+def cluster_check(request, cluster, params=None):
+    """Check a Cluster's Health Status."""
+    if not params:
+        params = {}
+    senlinclient(request).check_cluster(cluster, **params)
+
+
 def cluster_delete(request, cluster):
     """Delete cluster."""
     senlinclient(request).delete_cluster(cluster)

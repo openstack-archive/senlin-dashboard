@@ -86,3 +86,17 @@ class SenlinApiTests(test.APITestCase):
         ret_val = api.senlin.event_list(self.request)
         for event in ret_val:
             self.assertIsInstance(event, api.senlin.Event)
+
+    def test_receiver_list(self):
+        params = {'sort': 'created_at:desc',
+                  'limit': 1000,
+                  'marker': None}
+        receivers = self.receivers.list()
+        senlinclient = self.stub_senlinclient()
+        senlinclient.receivers = self.mox.CreateMockAnything()
+        senlinclient.receivers(**params).AndReturn(receivers)
+        self.mox.ReplayAll()
+
+        ret_val, _more, _prev = api.senlin.receiver_list(self.request)
+        for receiver in ret_val:
+            self.assertIsInstance(receiver, api.senlin.Receiver)

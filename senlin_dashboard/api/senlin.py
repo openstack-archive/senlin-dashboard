@@ -313,6 +313,13 @@ def node_create(request, params):
     return node
 
 
+def node_check(request, node, params=None):
+    """Check node's health status."""
+    if not params:
+        params = {}
+    senlinclient(request).check_node(node, **params)
+
+
 def node_delete(request, node):
     """Delete node."""
     senlinclient(request).delete_node(node)

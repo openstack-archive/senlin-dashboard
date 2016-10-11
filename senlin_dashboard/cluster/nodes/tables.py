@@ -61,6 +61,29 @@ class UpdateNode(tables.LinkAction):
     icon = "pencil"
 
 
+class CheckNode(tables.BatchAction):
+    name = "check"
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Check Node",
+            u"Check Nodes",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Checked Node",
+            u"Checked Nodes",
+            count
+        )
+
+    def action(self, request, obj_id):
+        api.senlin.node_check(request, obj_id)
+
+
 class UpdateRow(tables.Row):
     ajax = True
 
@@ -166,6 +189,8 @@ class NodesTable(tables.DataTable):
         status_columns = ["status"]
         table_actions = (NodeFilterAction,
                          CreateNode,
+                         CheckNode,
                          DeleteNode,)
         row_actions = (UpdateNode,
+                       CheckNode,
                        DeleteNode,)

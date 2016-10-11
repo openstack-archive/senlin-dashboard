@@ -327,6 +327,13 @@ def node_check(request, node, params=None):
     senlinclient(request).check_node(node, **params)
 
 
+def node_recover(request, node, params=None):
+    """Recover a Node to Healthy Status"""
+    if not params:
+        params = {}
+    senlinclient(request).recover_node(node, **params)
+
+
 def node_delete(request, node):
     """Delete node."""
     senlinclient(request).delete_node(node)

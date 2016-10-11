@@ -52,6 +52,9 @@ class DeleteNode(tables.DeleteAction):
     def delete(self, request, obj_id):
         api.senlin.node_delete(request, obj_id)
 
+    def allowed(self, request, datum):
+        return datum.status == "ERROR"
+
 
 class UpdateNode(tables.LinkAction):
     name = "update"
@@ -59,6 +62,29 @@ class UpdateNode(tables.LinkAction):
     url = "horizon:cluster:nodes:update"
     classes = ("ajax-modal",)
     icon = "pencil"
+
+
+class RecoverNode(tables.BatchAction):
+    name = "recover"
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Recover Node",
+            u"Recover Nodes",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Recovered Node",
+            u"Recovered Nodes",
+            count
+        )
+
+    def action(self, request, obj_id):
+        api.senlin.node_recover(request, obj_id)
 
 
 class CheckNode(tables.BatchAction):
@@ -187,9 +213,9 @@ class NodesTable(tables.DataTable):
         row_class = UpdateRow
         verbose_name = _("Nodes")
         status_columns = ["status"]
+        table_actions_menu = (CheckNode, RecoverNode)
         table_actions = (NodeFilterAction,
                          CreateNode,
-                         CheckNode,
                          DeleteNode,)
         row_actions = (UpdateNode,
                        CheckNode,

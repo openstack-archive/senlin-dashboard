@@ -135,6 +135,13 @@ def cluster_check(request, cluster, params=None):
     senlinclient(request).check_cluster(cluster, **params)
 
 
+def cluster_recover(request, cluster, params=None):
+    """Recover a Cluster to a Healthy Status"""
+    if not params:
+        params = {}
+    senlinclient(request).recover_cluster(cluster, **params)
+
+
 def cluster_delete(request, cluster):
     """Delete cluster."""
     senlinclient(request).delete_cluster(cluster)

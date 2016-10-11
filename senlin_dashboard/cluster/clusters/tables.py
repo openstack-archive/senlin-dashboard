@@ -64,6 +64,29 @@ class CheckCluster(tables.BatchAction):
         api.senlin.cluster_check(request, obj_id)
 
 
+class RecoverCluster(tables.BatchAction):
+    name = "recover"
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Recover Cluster",
+            u"Recover Clusters",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Recovered Cluster",
+            u"Recovered Cluster",
+            count
+        )
+
+    def action(self, request, obj_id):
+        api.senlin.cluster_recover(request, obj_id)
+
+
 def get_profile_link(cluster):
     return reverse_lazy('horizon:cluster:profiles:detail',
                         args=[cluster.profile_id])
@@ -93,6 +116,9 @@ class DeleteCluster(tables.DeleteAction):
 
     def delete(self, request, obj_id):
         api.senlin.cluster_delete(request, obj_id)
+
+    def allowed(self, request, datum):
+        return datum.status == "ERROR"
 
 
 class UpdateRow(tables.Row):
@@ -181,9 +207,9 @@ class ClustersTable(tables.DataTable):
         row_class = UpdateRow
         verbose_name = _("Clusters")
         status_columns = ["status"]
+        table_actions_menu = (CheckCluster, RecoverCluster)
         table_actions = (ClusterFilterAction,
                          CreateCluster,
-                         CheckCluster,
                          DeleteCluster,)
         row_actions = (ManagePolicies,
                        CheckCluster,

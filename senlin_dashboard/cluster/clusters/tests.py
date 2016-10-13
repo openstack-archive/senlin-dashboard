@@ -84,7 +84,7 @@ class ClustersTest(test.TestCase):
         opts = formdata
 
         api.senlin.profile_list(
-            IsA(http.HttpRequest)).AndReturn(profiles)
+            IsA(http.HttpRequest)).AndReturn((profiles, False, False))
         api.senlin.cluster_create(
             IsA(http.HttpRequest), opts).AndReturn(cluster)
         self.mox.ReplayAll()

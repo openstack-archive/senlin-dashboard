@@ -10,16 +10,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.conf import settings
 from django.conf.urls import url  # noqa
 
 from senlin_dashboard.cluster.profiles import views
 
 
-urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^create/$', views.CreateView.as_view(), name='create'),
-    url(r'^(?P<profile_id>[^/]+)/update/$',
-        views.UpdateView.as_view(), name='update'),
-    url(r'^(?P<profile_id>[^/]+)/$',
-        views.DetailView.as_view(), name='detail'),
-]
+if settings.ANGULAR_FEATURES.get('profiles_panel'):
+    urlpatterns = [
+        url(r'^(?P<profile_id>[^/]+)/$',
+            views.DetailView.as_view(), name='detail'),
+        url('', views.AngularIndexView.as_view(), name='index'),
+    ]
+else:
+    urlpatterns = [
+        url(r'^$', views.IndexView.as_view(), name='index'),
+        url(r'^create/$', views.CreateView.as_view(), name='create'),
+        url(r'^(?P<profile_id>[^/]+)/update/$',
+            views.UpdateView.as_view(), name='update'),
+        url(r'^(?P<profile_id>[^/]+)/$',
+            views.DetailView.as_view(), name='detail'),
+    ]

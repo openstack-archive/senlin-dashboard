@@ -69,3 +69,45 @@ class Receiver(generic.View):
         DELETE http://localhost/api/senlin/receivers/cc758c90-3d98-4ea1-af44-aab405c9c915  # noqa
         """
         senlin.receiver_delete(request, receiver_id)
+
+
+@urls.register
+class Profiles(generic.View):
+    """API for Senlin profile."""
+
+    url_regex = r'senlin/profiles/$'
+
+    @rest_utils.ajax()
+    def get(self, request):
+        """Get a list of profiles."""
+
+        filters, kwargs = rest_utils.parse_filters_kwargs(request,
+                                                          CLIENT_KEYWORDS)
+
+        profiles, has_more_data, has_prev_data = senlin.profile_list(
+            request, filters=filters, **kwargs)
+
+        return {
+            'items': [p.to_dict() for p in profiles],
+            'has_more_data': has_more_data,
+            'has_prev_data': has_prev_data,
+        }
+
+
+@urls.register
+class Profile(generic.View):
+    """API for Senlin profile."""
+
+    url_regex = r'senlin/profiles/(?P<profile_id>[^/]+)/$'
+
+    @rest_utils.ajax()
+    def get(self, request, profile_id):
+        """Get a single profile's details with the profile id.
+
+        The following get parameters may be passed in the GET
+
+        :param profile_id: the id of the profile
+
+        The result is a profile object.
+        """
+        return senlin.profile_get(request, profile_id).to_dict()

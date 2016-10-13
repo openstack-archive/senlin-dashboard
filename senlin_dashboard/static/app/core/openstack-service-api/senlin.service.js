@@ -35,6 +35,8 @@
    */
   function senlinAPI(apiService, toastService) {
     var service = {
+      getProfiles: getProfiles,
+      getProfile: getProfile,
       getReceivers: getReceivers,
       getReceiver: getReceiver,
       deleteReceiver: deleteReceiver
@@ -98,5 +100,32 @@
       });
     }
 
+    // Profiles
+
+    /*
+     * @name getProfiles
+     * @description
+     * Get a list of profiles.
+     */
+    function getProfiles(params) {
+      var config = params ? {params: params} : {};
+      return apiService.get('/api/senlin/profiles/', config)
+        .error(function () {
+          toastService.add('error', gettext('Unable to retrieve the profiles.'));
+        });
+    }
+
+    /*
+     * @name getProfile
+     * @description
+     * Get a list of profile.
+     */
+    function getProfile(id) {
+      return apiService.get('/api/senlin/profiles/' + id + '/')
+        .error(function () {
+          var msg = gettext('Unable to retrieve the profile with id: %(id)s.');
+          toastService.add('error', interpolate(msg, {id: id}, true));
+        });
+    }
   }
 }());

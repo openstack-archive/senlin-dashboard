@@ -23,6 +23,7 @@
 
   angular
     .module('horizon.cluster', [
+      'horizon.cluster.profiles',
       'horizon.cluster.receivers'
     ]);
 

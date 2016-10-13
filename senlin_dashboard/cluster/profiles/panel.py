@@ -14,6 +14,8 @@ from django.utils.translation import ugettext_lazy as _
 
 import horizon
 
+# import REST API modules here
+from senlin_dashboard.api.rest import senlin  # noqa
 from senlin_dashboard.cluster import dashboard
 
 

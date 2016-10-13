@@ -41,7 +41,7 @@ class SenlinApiTests(test.APITestCase):
         self.mox.ReplayAll()
 
         ret_val = api.senlin.profile_list(self.request)
-        for profile in ret_val:
+        for profile in ret_val[0]:
             self.assertIsInstance(profile, api.senlin.Profile)
 
     def test_policy_list(self):

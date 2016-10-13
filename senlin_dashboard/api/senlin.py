@@ -177,6 +177,9 @@ def profile_list(request, sort_dir='desc', sort_key='created_at',
                  filters=None):
     """Returns all profiles."""
 
+    has_prev_data = False
+    has_more_data = False
+
     page_size, request_size = _populate_request_size_and_page_size(
         request, paginate)
 
@@ -195,11 +198,10 @@ def profile_list(request, sort_dir='desc', sort_key='created_at',
     if paginate:
         profiles, has_more_data, has_prev_data = api_utils.update_pagination(
             profiles_iter, request_size, page_size, marker, reversed_order)
-
-        return [Profile(p) for p in profiles], has_more_data, has_prev_data
     else:
         profiles = list(profiles_iter)
-        return [Profile(p) for p in profiles]
+
+    return [Profile(p) for p in profiles], has_more_data, has_prev_data
 
 
 def profile_get(request, profile):

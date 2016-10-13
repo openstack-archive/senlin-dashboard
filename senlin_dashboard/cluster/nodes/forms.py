@@ -46,7 +46,7 @@ class CreateForm(forms.SelfHandlingForm):
 
     def __init__(self, request, *args, **kwargs):
         super(CreateForm, self).__init__(request, *args, **kwargs)
-        profiles = senlin.profile_list(request)
+        profiles = senlin.profile_list(request)[0]
         self.fields['profile_id'].choices = (
             [("", _("Select Profile"))] + [(profile.id, profile.name)
                                            for profile in profiles])
@@ -101,7 +101,7 @@ class UpdateNodeForm(forms.SelfHandlingForm):
 
     def __init__(self, request, *args, **kwargs):
         super(UpdateNodeForm, self).__init__(request, *args, **kwargs)
-        profiles = senlin.profile_list(request)
+        profiles = senlin.profile_list(request)[0]
         self.fields['profile_id'].choices = (
             [("", _("Select Profile"))] + [(profile.id, profile.name)
                                            for profile in profiles])

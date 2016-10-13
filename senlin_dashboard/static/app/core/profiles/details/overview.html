@@ -1,0 +1,14 @@
+<div ng-controller="horizon.cluster.profiles.profileOverviewController as ctrl">
+  <div class="row">
+    <div class="col-md-6 detail">
+      <h3 translate>Profile</h3>
+      <hr>
+      <hz-resource-property-list
+        resource-type-name="OS::Senlin::Profile"
+        cls="dl-horizontal"
+        item="ctrl.profile"
+        property-groups="[['name', 'id', 'type', 'spec', 'metadata', 'created_at']]">
+      </hz-resource-property-list>
+    </div>
+  </div>
+</div>

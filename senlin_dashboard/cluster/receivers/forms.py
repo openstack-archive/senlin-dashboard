@@ -42,7 +42,7 @@ class CreateReceiverForm(forms.SelfHandlingForm):
     type = forms.ThemableChoiceField(
         label=_("Type"),
         initial='webhook',
-        help_text=_("Type of the receiver to create. Defailt to webhook"))
+        help_text=_("Type of the receiver to create. Default to webhook"))
     params = forms.CharField(
         label=_("Parameters"),
         required=False,

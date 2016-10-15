@@ -261,7 +261,7 @@ def policy_list(request, sort_dir='desc', sort_key='created_at',
 def policy_create(request, params):
     """Create a policy."""
     policy = senlinclient(request).create_policy(**params)
-    return policy
+    return Policy(policy)
 
 
 def policy_update(request, policy, params):
@@ -278,7 +278,7 @@ def policy_delete(request, policy):
 def policy_get(request, policy):
     """Returns policy."""
     policy = senlinclient(request).get_policy(policy)
-    return policy
+    return Policy(policy)
 
 
 def node_list(request, sort_dir='desc', sort_key='name',
@@ -324,7 +324,7 @@ def node_list(request, sort_dir='desc', sort_key='name',
 def node_create(request, params):
     """Create node."""
     node = senlinclient(request).create_node(**params)
-    return node
+    return Node(node)
 
 
 def node_check(request, node, params=None):
@@ -355,7 +355,7 @@ def node_get(request, node):
 def node_update(request, node, params):
     """Update node"""
     node = senlinclient(request).update_node(node, **params)
-    return node
+    return Node(node)
 
 
 def event_list(request, sort_dir='desc', sort_key='timestamp',

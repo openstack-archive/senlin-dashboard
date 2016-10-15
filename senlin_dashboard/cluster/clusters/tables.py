@@ -86,6 +86,9 @@ class RecoverCluster(tables.BatchAction):
     def action(self, request, obj_id):
         api.senlin.cluster_recover(request, obj_id)
 
+    def allowed(self, request, datum):
+        return datum.status == "ERROR"
+
 
 def get_profile_link(cluster):
     return reverse_lazy('horizon:cluster:profiles:detail',

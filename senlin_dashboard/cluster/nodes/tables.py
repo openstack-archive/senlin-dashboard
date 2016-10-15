@@ -83,6 +83,9 @@ class RecoverNode(tables.BatchAction):
     def action(self, request, obj_id):
         api.senlin.node_recover(request, obj_id)
 
+    def allowed(self, request, datum):
+        return datum.status == "ERROR"
+
 
 class CheckNode(tables.BatchAction):
     name = "check"

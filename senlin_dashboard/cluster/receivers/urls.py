@@ -10,14 +10,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.conf import settings
 from django.conf.urls import url  # noqa
 
+from senlin_dashboard.api import rest  # noqa
 from senlin_dashboard.cluster.receivers import views
 
 
-urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^create/$', views.CreateView.as_view(), name='create'),
-    url(r'^(?P<receiver_id>[^/]+)/$',
-        views.DetailView.as_view(), name='detail'),
-]
+if settings.ANGULAR_FEATURES.get('receivers_panel'):
+    urlpatterns = [
+        url(r'^$', views.AngularIndexView.as_view(), name='index'),
+    ]
+else:
+    urlpatterns = [
+        url(r'^$', views.IndexView.as_view(), name='index'),
+        url(r'^create/$', views.CreateView.as_view(), name='create'),
+        url(r'^(?P<receiver_id>[^/]+)/$',
+            views.DetailView.as_view(), name='detail'),
+    ]

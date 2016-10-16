@@ -116,7 +116,7 @@
     var path = $windowProvider.$get().STATIC_URL + 'app/core/receivers/';
     $provide.constant('horizon.app.core.receivers.basePath', path);
 
-    $routeProvider.when('/cluster/ngreceivers/', {
+    $routeProvider.when('/cluster/receivers', {
       templateUrl: path + 'panel.html'
     });
   }

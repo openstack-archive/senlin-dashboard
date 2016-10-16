@@ -12,6 +12,7 @@
 
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
+from django.views import generic
 
 from horizon import exceptions
 from horizon import forms
@@ -23,6 +24,10 @@ from senlin_dashboard.api import senlin
 from senlin_dashboard.cluster.receivers import forms as receivers_forms
 from senlin_dashboard.cluster.receivers.tables import ReceiversTable
 from senlin_dashboard.cluster.receivers import tabs as receivers_tabs
+
+
+class AngularIndexView(generic.TemplateView):
+    template_name = 'angular.html'
 
 
 class IndexView(tables.DataTableView):

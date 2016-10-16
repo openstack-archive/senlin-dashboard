@@ -216,6 +216,7 @@ class ClustersTable(tables.DataTable):
                          DeleteCluster,)
         row_actions = (ManagePolicies,
                        CheckCluster,
+                       RecoverCluster,
                        DeleteCluster,)
 
 

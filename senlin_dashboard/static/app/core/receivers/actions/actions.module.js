@@ -39,8 +39,8 @@
     deleteReceiverService,
     receiverResourceType
   ) {
-    var receiverResourceType = registry.getResourceType(receiverResourceType);
-    receiverResourceType.itemActions
+    var receiverResource = registry.getResourceType(receiverResourceType);
+    receiverResource.itemActions
       .append({
         id: 'deleteReceiverAction',
         service: deleteReceiverService,
@@ -50,7 +50,7 @@
         }
       });
 
-    receiverResourceType.batchActions
+    receiverResource.batchActions
       .append({
         id: 'batchDeleteReceiverAction',
         service: deleteReceiverService,

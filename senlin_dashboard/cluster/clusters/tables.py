@@ -87,7 +87,10 @@ class RecoverCluster(tables.BatchAction):
         api.senlin.cluster_recover(request, obj_id)
 
     def allowed(self, request, datum):
-        return datum.status == "ERROR"
+        if datum:
+            return datum.status == "ERROR"
+        else:
+            return True
 
 
 def get_profile_link(cluster):

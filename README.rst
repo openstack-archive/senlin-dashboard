@@ -18,8 +18,6 @@ Devstack Installation
     [[local|localrc]]
     #Enable senlin
     enable_plugin senlin https://git.openstack.org/openstack/senlin
-    #Enable senlin-dashboard
-    enable_plugin senlin-dashboard https://git.openstack.org/openstack/senlin-dashboard 
 
 3. Run ``stack.sh``::
 
@@ -32,6 +30,14 @@ The unit tests can be executed directly from within this Senlin Dashboard plugin
 project directory by using::
 
     tox
+
+Switch to Angularized panels
+----------------------------
+
+The panels are ongoing to migrate to AngularJS based. If you would try them,
+please copy ``_59_toggle_angular_senlin_dashboard.py.example`` to
+``horizon/openstack_dashboard/local_settings.d/_59_toggle_angular_senlin_dashboard.py``
+and restart Horizon.
 
 Blueprints
 ----------

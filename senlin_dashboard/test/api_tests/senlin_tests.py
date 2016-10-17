@@ -70,7 +70,7 @@ class SenlinApiTests(test.APITestCase):
         self.mox.ReplayAll()
 
         ret_val = api.senlin.node_list(self.request)
-        for node in ret_val:
+        for node in ret_val[0]:
             self.assertIsInstance(node, api.senlin.Node)
 
     def test_event_list(self):
@@ -84,7 +84,7 @@ class SenlinApiTests(test.APITestCase):
         self.mox.ReplayAll()
 
         ret_val = api.senlin.event_list(self.request)
-        for event in ret_val:
+        for event in ret_val[0]:
             self.assertIsInstance(event, api.senlin.Event)
 
     def test_receiver_list(self):

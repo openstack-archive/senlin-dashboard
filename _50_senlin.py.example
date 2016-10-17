@@ -8,7 +8,9 @@ ADD_INSTALLED_APPS = [
 DEFAULT = True
 AUTO_DISCOVER_STATIC_FILES = True
 ADD_ANGULAR_MODULES = ['horizon.cluster']
-
+ADD_SCSS_FILES = [
+    'app/core/cluster.scss'
+]
 ADD_EXCEPTIONS = {
     'recoverable': exceptions.RECOVERABLE,
     'not_found': exceptions.NOT_FOUND,

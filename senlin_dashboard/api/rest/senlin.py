@@ -16,6 +16,7 @@ from django.views import generic
 from openstack_dashboard.api.rest import urls
 from openstack_dashboard.api.rest import utils as rest_utils
 from senlin_dashboard.api import senlin
+from senlin_dashboard.api import utils as api_utils
 from senlin_dashboard.cluster.profiles import forms
 
 
@@ -135,6 +136,70 @@ class Profile(generic.View):
         DELETE http://localhost/api/senlin/profiles/cc758c90-3d98-4ea1-af44-aab405c9c915  # noqa
         """
         senlin.profile_delete(request, profile_id)
+
+
+@urls.register
+class Nodes(generic.View):
+    """API for Senlin node."""
+
+    url_regex = r'senlin/nodes/$'
+
+    @rest_utils.ajax()
+    def get(self, request):
+        """Get a list of nodes."""
+
+        filters, kwargs = rest_utils.parse_filters_kwargs(request,
+                                                          CLIENT_KEYWORDS)
+
+        nodes, has_more_data, has_prev_data = senlin.node_list(
+            request, filters=filters, **kwargs)
+
+        return {
+            'items': [n.to_dict() for n in nodes],
+            'has_more_data': has_more_data,
+            'has_prev_data': has_prev_data,
+        }
+
+
+@urls.register
+class Node(generic.View):
+    """API for Senlin node."""
+
+    url_regex = r'senlin/nodes/(?P<node_id>[^/]+)/$'
+
+    @rest_utils.ajax()
+    def get(self, request, node_id):
+        """Get a single node's details with the receiver id.
+
+        The following get parameters may be passed in the GET
+
+        :param node_id: the id of the node
+
+        The result is a node object.
+        """
+        node = senlin.node_get(request, node_id).to_dict()
+        node["metadata"] = api_utils.convert_to_yaml(node["metadata"])
+        return node
+
+
+@urls.register
+class Events(generic.View):
+    """API for Senlin events."""
+
+    url_regex = r'senlin/events/(?P<obj_id>[^/]+)/$'
+
+    @rest_utils.ajax()
+    def get(self, request, obj_id):
+        """Get a list of events."""
+
+        events, has_more_data, has_prev_data = senlin.event_list(
+            request, filters={"obj_id": obj_id}, paginate=False)
+
+        return {
+            'items': [e.to_dict() for e in events],
+            'has_more_data': has_more_data,
+            'has_prev_data': has_prev_data,
+        }
 
 
 @urls.register

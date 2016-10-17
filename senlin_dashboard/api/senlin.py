@@ -304,6 +304,9 @@ def node_list(request, sort_dir='desc', sort_key='name',
               cluster_id=None, filters=None):
     """Returns all nodes."""
 
+    has_prev_data = False
+    has_more_data = False
+
     # NOTE(Liuqing): workaround for bug: 1594352
     # https://bugs.launchpad.net/senlin/+bug/1594352
     # Sometimes we failed to create node and the `created_at` attribution
@@ -332,11 +335,10 @@ def node_list(request, sort_dir='desc', sort_key='name',
     if paginate:
         nodes, has_more_data, has_prev_data = api_utils.update_pagination(
             nodes_iter, request_size, page_size, marker, reversed_order)
-
-        return [Node(n) for n in nodes], has_more_data, has_prev_data
     else:
         nodes = list(nodes_iter)
-        return [Node(n) for n in nodes]
+
+    return [Node(n) for n in nodes], has_more_data, has_prev_data
 
 
 def node_create(request, params):
@@ -405,10 +407,10 @@ def event_list(request, sort_dir='desc', sort_key='timestamp',
     if paginate:
         events, has_more_data, has_prev_data = api_utils.update_pagination(
             events_iter, request_size, page_size, marker, reversed_order)
-        return [Event(e) for e in events], has_more_data, has_prev_data
     else:
         events = list(events_iter)
-        return [Event(e) for e in events]
+
+    return [Event(e) for e in events], has_more_data, has_prev_data
 
 
 def receiver_list(request, sort_dir='desc', sort_key='created_at',

@@ -11,6 +11,7 @@
 # under the License.
 
 import itertools
+import yaml
 
 
 def update_pagination(entities, request_size, page_size, marker,
@@ -38,3 +39,12 @@ def update_pagination(entities, request_size, page_size, marker,
         entities.reverse()
 
     return entities, has_more_data, has_prev_data
+
+
+def convert_to_yaml(data, default_flow_style=False):
+    if not data:
+        return ''
+    try:
+        return yaml.safe_dump(data, default_flow_style=default_flow_style)
+    except Exception:
+        return ''

@@ -1,0 +1,6 @@
+<div ng-controller="NodeEventsController as ctrl" class="events">
+  <hz-resource-table
+    resource-type-name="OS::Senlin::Event"
+    list-function-extra-params="{obj_id: ctrl.node.id}">
+  </hz-resource-table>
+</div>

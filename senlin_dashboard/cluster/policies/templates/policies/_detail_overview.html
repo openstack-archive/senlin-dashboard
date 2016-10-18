@@ -14,7 +14,7 @@
     <dd>{{ policy.policy_spec|force_escape|nbsp|linebreaksbr }}</dd>
     <dt>{% trans "Created" context "Created time" %}</dt>
     <dd>{{ policy.created_at|parse_isotime }}</dd>
-    {% if node.updated_at %}
+    {% if policy.updated_at %}
     <dt>{% trans "Updated" context "Updated time" %}</dt>
     <dd>{{ policy.updated_at|parse_isotime }}</dd>
     {% endif %}

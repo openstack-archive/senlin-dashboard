@@ -34,6 +34,5 @@ pylint.txt
 releasenotes/build
 reports
 senlin_dashboard/test/.secret_key_store
-static
 tags
 

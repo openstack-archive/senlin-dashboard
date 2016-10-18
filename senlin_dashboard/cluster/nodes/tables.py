@@ -222,4 +222,5 @@ class NodesTable(tables.DataTable):
                          DeleteNode,)
         row_actions = (UpdateNode,
                        CheckNode,
+                       RecoverNode,
                        DeleteNode,)

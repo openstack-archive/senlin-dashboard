@@ -2,9 +2,9 @@
 # zzxwill <zzxwill@gmail.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: senlin-dashboard 0.4.1.dev16\n"
+"Project-Id-Version: senlin-dashboard 0.5.1.dev33\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-09-14 03:53+0000\n"
+"POT-Creation-Date: 2016-10-18 15:54+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -61,9 +61,6 @@ msgid ""
 "Default to 0."
 msgstr "当策略生效时，标记负载压力下降到正常值所花时间（秒）的整数，默认是0。"
 
-msgid "Attach Policy"
-msgstr "关联策略"
-
 msgid "Attached Policies"
 msgstr "已关联的策略"
 
@@ -96,9 +93,6 @@ msgstr "严重错误"
 
 msgid "Can not specify both sepc file and yaml."
 msgstr "无法同时指定规格文件和yaml。"
-
-msgid "Cancel"
-msgstr "取消"
 
 msgid "Channel"
 msgstr "通道"
@@ -405,9 +399,6 @@ msgstr "状态"
 msgid "Status Reason"
 msgstr "状态原因"
 
-msgid "Status Reason "
-msgstr "状态原因"
-
 msgid "Targeted cluster for this receiver."
 msgstr "receiver的目标集群。"
 
@@ -443,14 +434,8 @@ msgstr "所提供的元数据不是合法的YAML文件：%s"
 msgid "Timeout"
 msgstr "超时时限"
 
-msgid "Timestamp"
-msgstr "时间戳"
-
 msgid "Type"
 msgstr "类型"
-
-msgid "Type of the receiver to create. Defailt to webhook"
-msgstr "待创建的receiver类型，默认是webhook。"
 
 msgctxt "Current status of a Cluster"
 msgid "UPDATING"
@@ -481,9 +466,6 @@ msgstr "无法创建新的receiver。"
 
 msgid "Unable to create node."
 msgstr "无法创建节点。"
-
-msgid "Unable to retrieve cluster event list."
-msgstr "无法获取集群事件列表"
 
 msgid "Unable to retrieve cluster."
 msgstr "无法获取集群。"

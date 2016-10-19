@@ -56,7 +56,7 @@ class CheckCluster(tables.BatchAction):
     def action_past(count):
         return ungettext_lazy(
             u"Checked Cluster",
-            u"Checked Cluster",
+            u"Checked Clusters",
             count
         )
 
@@ -79,7 +79,7 @@ class RecoverCluster(tables.BatchAction):
     def action_past(count):
         return ungettext_lazy(
             u"Recovered Cluster",
-            u"Recovered Cluster",
+            u"Recovered Clusters",
             count
         )
 

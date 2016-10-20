@@ -321,3 +321,25 @@ class Cluster(generic.View):
         The result is a cluster object.
         """
         return senlin.cluster_get(request, cluster_id).to_dict()
+
+
+@urls.register
+class Policies(generic.View):
+    """API for Senlin policies."""
+
+    url_regex = r'senlin/policies/$'
+
+    @rest_utils.ajax()
+    def get(self, request):
+        """Get a list of policies."""
+
+        filters, kwargs = rest_utils.parse_filters_kwargs(request,
+                                                          CLIENT_KEYWORDS)
+        policies, has_more_data, has_prev_data = senlin.policy_list(
+            request, filters=filters, **kwargs)
+
+        return {
+            'items': [p.to_dict() for p in policies],
+            'has_more_data': has_more_data,
+            'has_prev_data': has_prev_data,
+        }

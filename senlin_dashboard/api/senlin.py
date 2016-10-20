@@ -249,6 +249,9 @@ def policy_list(request, sort_dir='desc', sort_key='created_at',
                 filters=None):
     """Returns all policies."""
 
+    has_prev_data = False
+    has_more_data = False
+
     page_size, request_size = _populate_request_size_and_page_size(
         request, paginate)
 
@@ -271,10 +274,10 @@ def policy_list(request, sort_dir='desc', sort_key='created_at',
         policies, has_more_data, has_prev_data = api_utils.update_pagination(
             policies_iter, request_size, page_size, marker, reversed_order)
 
-        return [Policy(p) for p in policies], has_more_data, has_prev_data
     else:
         policies = list(policies_iter)
-        return [Policy(p) for p in policies]
+
+    return [Policy(p) for p in policies], has_more_data, has_prev_data
 
 
 def policy_create(request, params):

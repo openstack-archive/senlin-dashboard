@@ -23,10 +23,11 @@
 
   angular
     .module('horizon.cluster', [
-      'horizon.cluster.clusters',
       'horizon.cluster.profiles',
+      'horizon.cluster.clusters',
       'horizon.cluster.nodes',
       'horizon.cluster.events',
+      'horizon.cluster.policies',
       'horizon.cluster.receivers'
     ]);
 

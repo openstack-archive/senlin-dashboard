@@ -60,7 +60,7 @@ class SenlinApiTests(test.APITestCase):
         senlinclient.policies = mock.Mock()
         senlinclient.policies.return_value = policies
 
-        ret_val = api.senlin.policy_list(self.request)
+        ret_val, False, False = api.senlin.policy_list(self.request)
         for policy in ret_val:
             self.assertIsInstance(policy, api.senlin.Policy)
 

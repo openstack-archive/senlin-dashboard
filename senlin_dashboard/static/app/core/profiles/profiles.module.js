@@ -66,6 +66,19 @@
         id: 'updated_at',
         priority: 1
       });
+
+    // for magic-search
+    registry.getResourceType(profileResourceType).filterFacets
+      .append({
+        label: gettext('Name'),
+        name: 'name',
+        singleton: true
+      })
+      .append({
+        label: gettext('Type'),
+        name: 'type',
+        singleton: true
+      });
   }
 
   function profileProperties() {

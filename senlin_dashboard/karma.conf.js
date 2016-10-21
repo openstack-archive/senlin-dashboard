@@ -55,6 +55,7 @@ module.exports = function (config) {
       toxPath + 'xstatic/pkg/angular/data/angular-cookies.js',
       toxPath + 'xstatic/pkg/angular_bootstrap/data/angular-bootstrap.js',
       toxPath + 'xstatic/pkg/angular_gettext/data/angular-gettext.js',
+      toxPath + 'xstatic/pkg/angular_fileupload/data/ng-file-upload-all.js',
       toxPath + 'xstatic/pkg/angular/data/angular-sanitize.js',
       toxPath + 'xstatic/pkg/d3/data/d3.js',
       toxPath + 'xstatic/pkg/rickshaw/data/rickshaw.js',

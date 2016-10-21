@@ -52,6 +52,12 @@ class DeleteNode(tables.DeleteAction):
     def delete(self, request, obj_id):
         api.senlin.node_delete(request, obj_id)
 
+    def allowed(self, request, datum):
+        if datum:
+            return datum.status != "DELETING"
+        else:
+            return True
+
 
 class UpdateNode(tables.LinkAction):
     name = "update"

@@ -123,6 +123,12 @@ class DeleteCluster(tables.DeleteAction):
     def delete(self, request, obj_id):
         api.senlin.cluster_delete(request, obj_id)
 
+    def allowed(self, request, datum):
+        if datum:
+            return datum.status != "DELETING"
+        else:
+            return True
+
 
 class UpdateRow(tables.Row):
     ajax = True

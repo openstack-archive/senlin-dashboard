@@ -84,6 +84,7 @@ class DetailView(tabs.TabView):
     tab_group_class = receivers_tabs.ReceiverDetailTabs
     template_name = 'horizon/common/_detail.html'
     page_title = "{{ receiver.name }}"
+    cluster_url = 'horizon:cluster:clusters:detail'
 
     @memoized.memoized_method
     def get_object(self):
@@ -101,6 +102,8 @@ class DetailView(tabs.TabView):
         context = super(DetailView, self).get_context_data(**kwargs)
         table = ReceiversTable(self.request)
         receiver = self.get_object()
+        receiver.cluster_url = reverse_lazy(self.cluster_url,
+                                            args=[receiver.cluster_id])
         context["actions"] = table.render_row_actions(receiver)
         context["receiver"] = receiver
         context["url"] = reverse_lazy("horizon:cluster:receivers:index")

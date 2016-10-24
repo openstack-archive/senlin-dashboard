@@ -12,7 +12,7 @@
       <dt>{% trans "Policies" %}</dt>
       {% for policy in cluster.policies %}
         <dd>
-          <a href="{% url 'horizon:cluster:policies:detail' policy.id %}">{{ policy.policy_name }}</a>
+          <a href="{% url 'horizon:cluster:policies:detail' policy.policy_id %}">{{ policy.policy_name }}</a>
         </dd>
       {% endfor %}
     {% endif %}

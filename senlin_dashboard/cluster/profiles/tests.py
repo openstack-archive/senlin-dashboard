@@ -91,7 +91,7 @@ class ProfilesTest(test.TestCase):
         }
 
         api.senlin.profile_create(
-            IsA(http.HttpRequest), opts).AndReturn(profile)
+            IsA(http.HttpRequest), **opts).AndReturn(profile)
         self.mox.ReplayAll()
 
         res = self.client.post(PROFILE_CREATE_URL, formdata)

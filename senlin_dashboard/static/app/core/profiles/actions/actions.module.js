@@ -30,16 +30,28 @@
 
   registerProfileActions.$inject = [
     'horizon.framework.conf.resource-type-registry.service',
+    'horizon.cluster.profiles.actions.create.service',
     'horizon.cluster.profiles.actions.delete.service',
     'horizon.app.core.profiles.resourceType'
   ];
 
   function registerProfileActions(
     registry,
+    createProfileService,
     deleteProfileService,
     profileResourceType
   ) {
     var resourceType = registry.getResourceType(profileResourceType);
+
+    resourceType.globalActions
+      .append({
+        id: 'createProfileAction',
+        service: createProfileService,
+        template: {
+          text: gettext('Create Profile'),
+          type: 'create'
+        }
+      });
 
     resourceType.itemActions
       .append({

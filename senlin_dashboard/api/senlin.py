@@ -210,7 +210,7 @@ def profile_get(request, profile):
     return Profile(profile)
 
 
-def profile_create(request, params):
+def profile_create(request, **params):
     """Create profile."""
     profile = senlinclient(request).create_profile(**params)
     return Profile(profile)

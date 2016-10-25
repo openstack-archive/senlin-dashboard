@@ -35,6 +35,7 @@
    */
   function senlinAPI(apiService, toastService) {
     var service = {
+      createProfile: createProfile,
       deleteProfile: deleteProfile,
       getProfiles: getProfiles,
       getProfile: getProfile,
@@ -148,6 +149,26 @@
       return suppressError ? promise : promise.error(function() {
         var msg = gettext('Unable to delete the profile with id: %(id)s');
         toastService.add('error', interpolate(msg, { id: profileId }, true));
+      });
+    }
+
+    /**
+     * @name createProfile
+     * @description
+     * Create new Profile.
+     *
+     * @param {Object} params
+     * JSON object to create new profile like name, spec, metadata.
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     * @returns {Object} The result of the API call
+     */
+    function createProfile(params, suppressError) {
+      var promise = apiService.post('/api/senlin/profiles/', params);
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to create the profile with id: %(name)s');
+        toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
     }
   }

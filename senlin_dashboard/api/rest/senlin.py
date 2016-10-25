@@ -111,3 +111,11 @@ class Profile(generic.View):
         The result is a profile object.
         """
         return senlin.profile_get(request, profile_id).to_dict()
+
+    @rest_utils.ajax()
+    def delete(self, request, profile_id):
+        """Delete a specific profile
+
+        DELETE http://localhost/api/senlin/profiles/cc758c90-3d98-4ea1-af44-aab405c9c915  # noqa
+        """
+        senlin.profile_delete(request, profile_id)

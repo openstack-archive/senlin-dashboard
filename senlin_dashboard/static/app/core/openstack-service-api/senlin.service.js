@@ -35,6 +35,7 @@
    */
   function senlinAPI(apiService, toastService) {
     var service = {
+      deleteProfile: deleteProfile,
       getProfiles: getProfiles,
       getProfile: getProfile,
       getReceivers: getReceivers,
@@ -126,6 +127,28 @@
           var msg = gettext('Unable to retrieve the profile with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
+    }
+
+    /**
+     * @name deleteProfile
+     * @description
+     * Deletes single Profile by ID.
+     *
+     * @param {string} profileId
+     * The Id of the profile to delete.
+     *
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     *
+     * @returns {Object} The result of the API call
+     */
+    function deleteProfile(profileId, suppressError) {
+      var promise = apiService.delete('/api/senlin/profiles/' + profileId + '/');
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to delete the profile with id: %(id)s');
+        toastService.add('error', interpolate(msg, { id: profileId }, true));
+      });
     }
   }
 }());

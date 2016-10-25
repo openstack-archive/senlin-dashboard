@@ -26,7 +26,8 @@
   angular
     .module('horizon.cluster.profiles', [
       'ngRoute',
-      'horizon.cluster.profiles.details'
+      'horizon.cluster.profiles.details',
+      'horizon.cluster.profiles.actions'
     ])
     .constant('horizon.app.core.profiles.resourceType', 'OS::Senlin::Profile')
     .run(run)

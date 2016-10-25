@@ -11,7 +11,7 @@
     <dt>{% trans "Type" %}</dt>
     <dd>{{ receiver.type }}</dd>
     <dt>{% trans "Cluster ID" %}</dt>
-    <dd>{{ receiver.cluster_id }}</dd>
+    <dd><a href="{{ receiver.cluster_url }}">{{ receiver.cluster_id }}</a></dd>
     <dt>{% trans "Channel" %}</dt>
     <dd>{{ receiver.channel }}</dd>
     <dt>{% trans "Created" context "Created time" %}</dt>

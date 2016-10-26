@@ -9,14 +9,9 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This package holds the REST API that supports the Horizon dashboard
+
+"""This package holds the REST API that supports the Senlin dashboard
 Javascript code.
-
-It is not intended to be used outside of Horizon, and makes no promises of
-stability or fitness for purpose outside of that scope.
-
-It does not promise to adhere to the general OpenStack API Guidelines set out
-in https://wiki.openstack.org/wiki/APIChangeGuidelines.
 """
 
 # import REST API modules here

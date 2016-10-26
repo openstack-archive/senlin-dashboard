@@ -35,8 +35,22 @@ class ClusterPolicy(base.APIResourceWrapper):
 
 
 class Profile(base.APIResourceWrapper):
-    _attrs = ['id', 'name', 'type', 'created_at', 'updated_at',
-              'metadata', 'spec']
+    # NOTE(Kenji-i): Generally, openstack.cluster.v1.profile.Profile
+    # class has 'type'. However, it doesn't provide that attribute at
+    # least in Oct 2016. Instead of this, it provides 'type_name'
+    # attribute.
+    _attrs = ['id', 'name', 'type', 'type_name', 'created_at',
+              'updated_at', 'metadata', 'spec']
+
+    # Attribute mapping. All of original codes are using 'type' and
+    # it's correct. Thus, this is to avoid changing these codes.
+    _attrs_map = {'type': 'type_name'}
+
+    def __getattr__(self, attr):
+        try:
+            return super(Profile, self).__getattribute__(attr)
+        except Exception:
+            return super(Profile, self).__getattribute__(self._attrs_map[attr])
 
 
 class ProfileType(base.APIResourceWrapper):

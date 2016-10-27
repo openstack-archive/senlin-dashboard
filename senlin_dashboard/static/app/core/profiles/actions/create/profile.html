@@ -1,0 +1,58 @@
+<div ng-controller="horizon.cluster.profiles.actions.create.createProfileController as ctrl">
+  <div class="row">
+    <div class="col-xs-12">
+
+      <!-- Form for Profile Name -->
+      <div class="form-group">
+        <label class="control-label" for="profile-name" translate>
+          Profile Name<span class="hz-icon-required fa fa-asterisk"></span>
+        </label>
+        <input name="profile-name" type="text" class="form-control" id="profile-name"
+               ng-model="model.newProfileSpec.name"
+               placeholder="{$ 'Name of the profile to create.'|translate $}">
+      </div>
+
+      <!-- Form for Profile Spec -->
+      <div class="form-group">
+        <label class="control-label required" for="source_type" translate>
+          Source Type<span class="hz-icon-required fa fa-asterisk"></span>
+        </label>
+        <select name="source_type" class="form-control" id="source_type"
+                ng-options="src.value as src.label for src in ctrl.toggleOptions| orderBy:'label'"
+                ng-model="ctrl.source_type" ng-change="ctrl.changeSourceType()">
+        </select>
+      </div>
+      <div ng-if="ctrl.source_type === 'file'">
+        <div class="form-group">
+          <label class="control-label required" for="profile-specFile" translate>Profile Spec File</label>
+          <input id="profile-specFile" type="file" name="profile-specFile" required
+                 ng-model="model.newProfileSpec.spec" on-file-change="ctrl.changeFile">
+        </div>
+      </div>
+      <div ng-if="ctrl.source_type !== 'file'">
+        <div class="form-group">
+          <label class="control-label required" for="profile-specData" translate>Profile Spec</label>
+          <textarea class="form-control"
+                    rows="8"
+                    id="profile-specData"
+                    name="profile-specData"
+                    ng-model="model.newProfileSpec.spec"
+                    placeholder="{$ 'Spec of the profile to create.'|translate $}">
+          </textarea>
+        </div>
+      </div>
+
+      <!-- Form for Metadata -->
+      <div class="form-group">
+        <label class="control-label" for="profile-metadata" translate>Metadata</label>
+        <textarea class="form-control"
+                  rows="8"
+                  id="profile-metadata"
+                  name="profile-metadata"
+                  ng-model="model.newProfileSpec.metadata"
+                  placeholder="{$ 'Metadata of the profile to create.'|translate $}">
+        </textarea>
+      </div>
+    </div>
+  </div>
+</div>

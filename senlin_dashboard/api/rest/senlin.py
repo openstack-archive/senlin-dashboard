@@ -16,6 +16,7 @@ from django.views import generic
 from openstack_dashboard.api.rest import urls
 from openstack_dashboard.api.rest import utils as rest_utils
 from senlin_dashboard.api import senlin
+from senlin_dashboard.cluster.profiles import forms
 
 
 CLIENT_KEYWORDS = {'marker', 'sort_dir', 'sort_key', 'paginate'}
@@ -92,6 +93,21 @@ class Profiles(generic.View):
             'has_more_data': has_more_data,
             'has_prev_data': has_prev_data,
         }
+
+    @rest_utils.ajax(data_required=True)
+    def post(self, request):
+        """Create a new Profile.
+
+        Returns the new Profile object on success.
+        """
+        request_param = request.DATA
+        params = forms._populate_profile_params(request_param.get("name"),
+                                                request_param.get("spec"),
+                                                request_param.get("metadata"))
+        new_profile = senlin.profile_create(request, **params)
+        return rest_utils.CreatedResponse(
+            '/api/senlin/profiles/%s' % new_profile.id,
+            new_profile.to_dict())
 
 
 @urls.register

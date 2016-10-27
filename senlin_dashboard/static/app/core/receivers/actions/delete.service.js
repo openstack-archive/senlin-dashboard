@@ -76,13 +76,11 @@
     }
 
     function allowed() {
-      return $q.all([
-        $qExtensions.booleanAsPromise(true)
-      ]);
+      return $qExtensions.booleanAsPromise(true);
     }
 
     function checkPermission(receiver) {
-      return {promise: allowed(receiver), context: receiver};
+      return {promise: allowed(), context: receiver};
     }
 
     function afterCheck(result) {

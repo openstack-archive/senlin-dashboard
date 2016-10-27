@@ -76,7 +76,8 @@
     function getReceiver(id) {
       return apiService.get('/api/senlin/receivers/' + id + '/')
         .error(function () {
-          toastService.add('error', gettext('Unable to retrieve the receiver.'));
+          var msg = gettext('Unable to retrieve the receiver with id: %(id)s.');
+          toastService.add('error', interpolate(msg, {id: id}, true));
         });
     }
 
@@ -97,7 +98,7 @@
       var promise = apiService.delete('/api/senlin/receivers/' + receiverId + '/');
 
       return suppressError ? promise : promise.error(function() {
-        var msg = gettext('Unable to delete the receiver with id: %(id)s');
+        var msg = gettext('Unable to delete the receiver with id: %(id)s.');
         toastService.add('error', interpolate(msg, { id: receiverId }, true));
       });
     }
@@ -147,7 +148,7 @@
       var promise = apiService.delete('/api/senlin/profiles/' + profileId + '/');
 
       return suppressError ? promise : promise.error(function() {
-        var msg = gettext('Unable to delete the profile with id: %(id)s');
+        var msg = gettext('Unable to delete the profile with id: %(id)s.');
         toastService.add('error', interpolate(msg, { id: profileId }, true));
       });
     }

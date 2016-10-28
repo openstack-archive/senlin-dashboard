@@ -33,14 +33,7 @@
     $scope.context.loadPromise.then(onGetProfile);
 
     function onGetProfile(profile) {
-      var _profile = profile.data;
-      if (_profile.spec) {
-        _profile.spec = angular.toJson(_profile.spec);
-      }
-      if (_profile.metadata) {
-        _profile.metadata = angular.toJson(_profile.metadata);
-      }
-      ctrl.profile = _profile;
+      ctrl.profile = profile.data;
     }
   }
 

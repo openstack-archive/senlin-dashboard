@@ -232,10 +232,11 @@ def profile_create(request, **params):
     return Profile(profile)
 
 
-def profile_update(request, profile, params):
+def profile_update(request, profile_id, **params):
     """Update profile."""
-    profile = senlinclient(request).update_profile(profile, **params)
-    return Profile(profile)
+    profile = senlinclient(request).get_profile(profile_id)
+    updated_profile = senlinclient(request).update_profile(profile, **params)
+    return Profile(updated_profile)
 
 
 def profile_delete(request, profile):

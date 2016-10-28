@@ -61,9 +61,6 @@ def _populate_profile_params(name, spec, metadata, id=None):
               "spec": spec_dict,
               "metadata": metadata_dict}
 
-    if id is not None:
-        params["id"] = id
-
     return params
 
 
@@ -165,7 +162,7 @@ class UpdateProfileForm(forms.SelfHandlingForm):
         )
 
         try:
-            senlin.profile_update(request, data.get('profile_id'), opts)
+            senlin.profile_update(request, data.get('profile_id'), **opts)
             messages.success(request,
                              _('Your profile %s has been updated.') %
                              opts['name'])

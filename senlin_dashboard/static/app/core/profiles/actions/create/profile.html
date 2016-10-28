@@ -10,12 +10,13 @@
         </label>
         <input name="profile-name" type="text" class="form-control" id="profile-name"
                ng-model="model.newProfileSpec.name"
-               placeholder="{$ 'Name of the profile to create.'|translate $}">
+               placeholder="{$ 'Name of the profile.'|translate $}"
+               ng-required="true">
       </div>
 
       <!-- Form for Profile Spec -->
-      <div class="form-group">
-        <label class="control-label required" for="source_type">
+      <div class="form-group" ng-if="actionType === 'create'">
+        <label class="control-label" for="source_type">
           <translate>Source Type</translate>
           <span class="hz-icon-required fa fa-asterisk"></span>
         </label>
@@ -26,20 +27,26 @@
       </div>
       <div ng-if="ctrl.source_type === 'file'">
         <div class="form-group">
-          <label class="control-label required" for="profile-specFile" translate>Profile Spec File</label>
-          <input id="profile-specFile" type="file" name="profile-specFile" required
-                 ng-model="model.newProfileSpec.spec" on-file-change="ctrl.changeFile">
+          <label class="control-label" for="profile-specFile" translate>Profile Spec File</label>
+          <input id="profile-specFile"
+                 type="file"
+                 name="profile-specFile"
+                 ng-model="model.newProfileSpec.spec"
+                 ng-required="true"
+                 on-file-change="ctrl.changeFile">
         </div>
       </div>
       <div ng-if="ctrl.source_type !== 'file'">
         <div class="form-group">
-          <label class="control-label required" for="profile-specData" translate>Profile Spec</label>
+          <label class="control-label" for="profile-specData" translate>Profile Spec</label>
           <textarea class="form-control"
                     rows="8"
                     id="profile-specData"
                     name="profile-specData"
                     ng-model="model.newProfileSpec.spec"
-                    placeholder="{$ 'Spec of the profile to create.'|translate $}">
+                    placeholder="{$ 'Spec of the profile.'|translate $}"
+                    ng-required="true"
+                    ng-disabled="actionType === 'update'">
           </textarea>
         </div>
       </div>
@@ -52,7 +59,7 @@
                   id="profile-metadata"
                   name="profile-metadata"
                   ng-model="model.newProfileSpec.metadata"
-                  placeholder="{$ 'Metadata of the profile to create.'|translate $}">
+                  placeholder="{$ 'Metadata of the profile.'|translate $}">
         </textarea>
       </div>
     </div>

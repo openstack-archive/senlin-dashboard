@@ -64,21 +64,10 @@
      * @name getProfilesPromise
      * @description
      * Given filter/query parameters, returns a promise for the matching
-     * profiles.  This is used in displaying lists of Profiles.  In this case,
-     * we need to modify the API's response by adding a composite value called
-     * 'trackBy' to assist the display mechanism when updating rows.
+     * profiles.  This is used in displaying lists of Profiles.
      */
     function getProfilesPromise(params) {
-      return senlin.getProfiles(params).then(modifyResponse);
-
-      function modifyResponse(response) {
-        return {data: {items: response.data.items.map(addTrackBy)}};
-
-        function addTrackBy(profile) {
-          profile.trackBy = profile.id;
-          return profile;
-        }
-      }
+      return senlin.getProfiles(params);
     }
   }
 })();

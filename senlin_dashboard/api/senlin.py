@@ -31,7 +31,7 @@ class Cluster(base.APIResourceWrapper):
 
 class ClusterPolicy(base.APIResourceWrapper):
     _attrs = ['id', 'policy_name', 'policy_type', 'enabled',
-              'cluster_id']
+              'cluster_id', 'policy_id']
 
 
 class Profile(base.APIResourceWrapper):

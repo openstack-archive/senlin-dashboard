@@ -31,7 +31,6 @@
   ) {
     var ctrl = this;
 
-    ctrl.receiver = {};
     ctrl.resourceType = registry.getResourceType(receiverResourceType);
 
     $scope.context.loadPromise.then(onGetReceiver);

@@ -30,7 +30,6 @@
     $scope
   ) {
     var ctrl = this;
-    ctrl.profile = {};
     $scope.context.loadPromise.then(onGetProfile);
 
     function onGetProfile(profile) {

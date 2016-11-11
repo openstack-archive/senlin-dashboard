@@ -30,24 +30,28 @@
 
   registerNodeActions.$inject = [
     'horizon.framework.conf.resource-type-registry.service',
+    'horizon.cluster.nodes.actions.create.service',
     'horizon.cluster.nodes.actions.delete.service',
+    'horizon.cluster.nodes.actions.update.service',
     'horizon.app.core.nodes.resourceType'
   ];
 
   function registerNodeActions(
     registry,
+    createNodeService,
     deleteNodeService,
+    updateNodeService,
     nodeResourceType
   ) {
     var resourceType = registry.getResourceType(nodeResourceType);
 
-    resourceType.itemActions
+    resourceType.globalActions
       .append({
-        id: 'deleteNodeAction',
-        service: deleteNodeService,
+        id: 'createNodeAction',
+        service: createNodeService,
         template: {
-          text: gettext('Delete Node'),
-          type: 'delete'
+          text: gettext('Create Node'),
+          type: 'create'
         }
       });
 
@@ -60,6 +64,23 @@
           text: gettext('Delete Nodes')
         }
       });
-  }
 
+    resourceType.itemActions
+      .append({
+        id: 'updateNodeAction',
+        service: updateNodeService,
+        template: {
+          text: gettext('Update Node'),
+          type: 'row'
+        }
+      })
+      .append({
+        id: 'deleteNodeAction',
+        service: deleteNodeService,
+        template: {
+          text: gettext('Delete Node'),
+          type: 'delete'
+        }
+      });
+  }
 })();

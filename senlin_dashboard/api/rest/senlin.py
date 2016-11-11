@@ -17,6 +17,7 @@ from openstack_dashboard.api.rest import urls
 from openstack_dashboard.api.rest import utils as rest_utils
 from senlin_dashboard.api import senlin
 from senlin_dashboard.api import utils as api_utils
+from senlin_dashboard.cluster.nodes import forms as node_forms
 from senlin_dashboard.cluster.profiles import forms
 
 
@@ -160,6 +161,24 @@ class Nodes(generic.View):
             'has_prev_data': has_prev_data,
         }
 
+    @rest_utils.ajax(data_required=True)
+    def post(self, request):
+        """Create a new Node.
+
+        Returns the new Node object on success.
+        """
+        request_param = request.DATA
+        params = node_forms._populate_node_params(
+            request_param.get("name"),
+            request_param.get("profile_id"),
+            request_param.get("cluster_id"),
+            request_param.get("role"),
+            request_param.get("metadata"))
+        new_node = senlin.node_create(request, **params)
+        return rest_utils.CreatedResponse(
+            '/api/senlin/nodes/%s' % new_node.id,
+            new_node.to_dict())
+
 
 @urls.register
 class Node(generic.View):
@@ -188,6 +207,26 @@ class Node(generic.View):
         DELETE http://localhost/api/senlin/nodes/cc758c90-3d98-4ea1-af44-aab405c9c915  # noqa
         """
         senlin.node_delete(request, node_id)
+
+    @rest_utils.ajax(data_required=True)
+    def put(self, request, node_id):
+        """Update a Node.
+
+        Returns the Node object on success.
+        """
+        request_param = request.DATA
+        params = node_forms._populate_node_params(
+            request_param.get("name"),
+            request_param.get("profile_id"),
+            None,
+            request_param.get("role"),
+            request_param.get("metadata"))
+        params.pop('cluster_id')
+        updated_node = senlin.node_update(
+            request, node_id, **params)
+        return rest_utils.CreatedResponse(
+            '/api/senlin/nodes/%s' % updated_node.id,
+            updated_node.to_dict())
 
 
 @urls.register

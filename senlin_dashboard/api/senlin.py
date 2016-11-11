@@ -341,7 +341,7 @@ def node_list(request, sort_dir='desc', sort_key='name',
     return [Node(n) for n in nodes], has_more_data, has_prev_data
 
 
-def node_create(request, params):
+def node_create(request, **params):
     """Create node."""
     node = senlinclient(request).create_node(**params)
     return Node(node)
@@ -372,10 +372,11 @@ def node_get(request, node):
     return Node(node)
 
 
-def node_update(request, node, params):
+def node_update(request, node_id, **params):
     """Update node"""
-    node = senlinclient(request).update_node(node, **params)
-    return Node(node)
+    node = senlinclient(request).get_node(node_id)
+    updated = senlinclient(request).update_node(node, **params)
+    return Node(updated)
 
 
 def event_list(request, sort_dir='desc', sort_key='timestamp',

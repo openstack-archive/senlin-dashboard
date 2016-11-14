@@ -87,7 +87,6 @@
     }
 
     function success(response) {
-      response.data.id = response.data.uuid;
       toast.add('success', interpolate(message.success, [response.data.id]));
       var result = actionResult.getActionResult()
                    .created(resourceType, response.data.id);

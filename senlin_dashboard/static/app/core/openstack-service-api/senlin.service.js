@@ -41,7 +41,10 @@
       getProfile: getProfile,
       getReceivers: getReceivers,
       getReceiver: getReceiver,
-      deleteReceiver: deleteReceiver
+      deleteReceiver: deleteReceiver,
+      getCluster: getCluster,
+      getClusters: getClusters
+
     };
 
     return service;
@@ -171,6 +174,34 @@
         var msg = gettext('Unable to create the profile with id: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
+    }
+
+    // Clusters
+
+    /*
+     * @name getClusters
+     * @description
+     * Get a list of clusters.
+     */
+    function getClusters(params) {
+      var config = params ? {params: params} : {};
+      return apiService.get('/api/senlin/clusters/', config)
+        .error(function () {
+          toastService.add('error', gettext('Unable to retrieve the clusters.'));
+        });
+    }
+
+    /*
+     * @name getCluster
+     * @description
+     * Get a single cluster by ID.
+     */
+    function getCluster(id) {
+      return apiService.get('/api/senlin/clusters/' + id + '/')
+        .error(function () {
+          var msg = gettext('Unable to retrieve the cluster with id: %(id)s.');
+          toastService.add('error', interpolate(msg, {id: id}, true));
+        });
     }
   }
 }());

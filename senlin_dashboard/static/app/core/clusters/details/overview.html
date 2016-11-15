@@ -1,0 +1,14 @@
+<div ng-controller="horizon.cluster.clusters.clusterOverviewController as ctrl">
+  <div class="row">
+    <div class="col-md-6 detail">
+      <h3 translate>Cluster</h3>
+      <hr>
+      <hz-resource-property-list
+        resource-type-name="OS::Senlin::Cluster"
+        cls="dl-horizontal"
+        item="ctrl.cluster"
+        property-groups="[['name', 'id', 'status', 'status_reason', 'profile_name', 'created_at', 'updated_at']]">
+      </hz-resource-property-list>
+    </div>
+  </div>
+</div>

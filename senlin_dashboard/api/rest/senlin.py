@@ -135,3 +135,45 @@ class Profile(generic.View):
         DELETE http://localhost/api/senlin/profiles/cc758c90-3d98-4ea1-af44-aab405c9c915  # noqa
         """
         senlin.profile_delete(request, profile_id)
+
+
+@urls.register
+class Clusters(generic.View):
+    """API for Senlin cluster."""
+
+    url_regex = r'senlin/clusters/$'
+
+    @rest_utils.ajax()
+    def get(self, request):
+        """Get a list of clusters."""
+
+        filters, kwargs = rest_utils.parse_filters_kwargs(request,
+                                                          CLIENT_KEYWORDS)
+
+        clusters, has_more_data, has_prev_data = senlin.cluster_list(
+            request, filters=filters, **kwargs)
+
+        return {
+            'items': [c.to_dict() for c in clusters],
+            'has_more_data': has_more_data,
+            'has_prev_data': has_prev_data,
+        }
+
+
+@urls.register
+class Cluster(generic.View):
+    """API for Senlin cluster."""
+
+    url_regex = r'senlin/clusters/(?P<cluster_id>[^/]+)/$'
+
+    @rest_utils.ajax()
+    def get(self, request, cluster_id):
+        """Get a single cluster's details with the cluster id.
+
+        The following get parameters may be passed in the GET
+
+        :param cluster_id: the id of the cluster
+
+        The result is a cluster object.
+        """
+        return senlin.cluster_get(request, cluster_id).to_dict()

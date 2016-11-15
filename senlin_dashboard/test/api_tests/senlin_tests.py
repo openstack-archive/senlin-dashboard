@@ -27,7 +27,7 @@ class SenlinApiTests(test.APITestCase):
         self.mox.ReplayAll()
 
         ret_val = api.senlin.cluster_list(self.request)
-        for cluster in ret_val:
+        for cluster in ret_val[0]:
             self.assertIsInstance(cluster, api.senlin.Cluster)
 
     def test_profile_list(self):

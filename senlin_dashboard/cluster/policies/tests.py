@@ -37,7 +37,7 @@ class PoliciesTest(test.TestCase):
         res = self.client.get(INDEX_URL)
         self.assertContains(res, '<h1>Policies</h1>')
         self.assertTemplateUsed(res, 'cluster/policies/index.html')
-        self.assertEqual(len(policies), 2)
+        self.assertEqual(2, len(policies))
 
     @test.create_stubs({api.senlin: ('policy_list',)})
     def test_index_policy_list_exception(self):
@@ -47,7 +47,7 @@ class PoliciesTest(test.TestCase):
 
         res = self.client.get(INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/policies/index.html')
-        self.assertEqual(len(res.context['policies_table'].data), 0)
+        self.assertEqual(0, len(res.context['policies_table'].data))
         self.assertMessageCount(res, error=1)
 
     @test.create_stubs({api.senlin: ('policy_list',)})
@@ -59,7 +59,7 @@ class PoliciesTest(test.TestCase):
         res = self.client.get(INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/policies/index.html')
         self.assertContains(res, 'No items to display')
-        self.assertEqual(len(res.context['policies_table'].data), 0)
+        self.assertEqual(0, len(res.context['policies_table'].data))
 
     @test.create_stubs({api.senlin: ('policy_create',)})
     def test_create_policy(self):

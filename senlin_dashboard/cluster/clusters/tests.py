@@ -40,7 +40,7 @@ class ClustersTest(test.TestCase):
         res = self.client.get(CLUSTER_INDEX_URL)
         self.assertContains(res, '<h1>Clusters</h1>')
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
-        self.assertEqual(len(clusters), 1)
+        self.assertEqual(1, len(clusters))
 
     @test.create_stubs({api.senlin: ('cluster_list',)})
     def test_index_cluster_list_exception(self):
@@ -50,7 +50,7 @@ class ClustersTest(test.TestCase):
 
         res = self.client.get(CLUSTER_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
-        self.assertEqual(len(res.context['clusters_table'].data), 0)
+        self.assertEqual(0, len(res.context['clusters_table'].data))
         self.assertMessageCount(res, error=1)
 
     @test.create_stubs({api.senlin: ('cluster_list',)})
@@ -62,7 +62,7 @@ class ClustersTest(test.TestCase):
         res = self.client.get(CLUSTER_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
         self.assertContains(res, 'No items to display')
-        self.assertEqual(len(res.context['clusters_table'].data), 0)
+        self.assertEqual(0, len(res.context['clusters_table'].data))
 
     @test.create_stubs({api.senlin: ('cluster_create',
                                      'profile_list',)})

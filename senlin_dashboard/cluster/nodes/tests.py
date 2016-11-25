@@ -39,7 +39,7 @@ class NodesTest(test.TestCase):
         res = self.client.get(NODE_INDEX_URL)
         self.assertContains(res, '<h1>Nodes</h1>')
         self.assertTemplateUsed(res, 'cluster/nodes/index.html')
-        self.assertEqual(len(nodes), 1)
+        self.assertEqual(1, len(nodes))
 
     @test.create_stubs({api.senlin: ('node_list',)})
     def test_index_node_list_exception(self):
@@ -49,7 +49,7 @@ class NodesTest(test.TestCase):
 
         res = self.client.get(NODE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/nodes/index.html')
-        self.assertEqual(len(res.context['nodes_table'].data), 0)
+        self.assertEqual(0, len(res.context['nodes_table'].data))
 
     @test.create_stubs({api.senlin: ('node_list',)})
     def test_index_no_node(self):
@@ -60,7 +60,7 @@ class NodesTest(test.TestCase):
         res = self.client.get(NODE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/nodes/index.html')
         self.assertContains(res, 'No items to display')
-        self.assertEqual(len(res.context['nodes_table'].data), 0)
+        self.assertEqual(0, len(res.context['nodes_table'].data))
 
     @test.create_stubs({api.senlin: ('node_create',
                                      'profile_list',

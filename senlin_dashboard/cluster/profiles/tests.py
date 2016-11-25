@@ -38,7 +38,7 @@ class ProfilesTest(test.TestCase):
         res = self.client.get(PROFILE_INDEX_URL)
         self.assertContains(res, '<h1>Profiles</h1>')
         self.assertTemplateUsed(res, 'cluster/profiles/index.html')
-        self.assertEqual(len(profiles), 1)
+        self.assertEqual(1, len(profiles))
 
     @test.create_stubs({api.senlin: ('profile_list',)})
     def test_index_profile_list_exception(self):
@@ -48,7 +48,7 @@ class ProfilesTest(test.TestCase):
 
         res = self.client.get(PROFILE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/profiles/index.html')
-        self.assertEqual(len(res.context['profiles_table'].data), 0)
+        self.assertEqual(0, len(res.context['profiles_table'].data))
 
     @test.create_stubs({api.senlin: ('profile_list',)})
     def test_index_no_policy(self):
@@ -59,7 +59,7 @@ class ProfilesTest(test.TestCase):
         res = self.client.get(PROFILE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/profiles/index.html')
         self.assertContains(res, 'No items to display')
-        self.assertEqual(len(res.context['profiles_table'].data), 0)
+        self.assertEqual(0, len(res.context['profiles_table'].data))
 
     @test.create_stubs({api.senlin: ('profile_create',)})
     def test_create_profile(self):

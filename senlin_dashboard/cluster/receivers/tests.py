@@ -34,7 +34,7 @@ class ReceiversTest(test.TestCase):
         res = self.client.get(INDEX_URL)
         self.assertContains(res, '<h1>Receivers</h1>')
         self.assertTemplateUsed(res, 'cluster/receivers/index.html')
-        self.assertEqual(len(receivers), 1)
+        self.assertEqual(1, len(receivers))
 
     @test.create_stubs({api.senlin: ('receiver_list',)})
     def test_index_receiver_list_exception(self):
@@ -44,7 +44,7 @@ class ReceiversTest(test.TestCase):
 
         res = self.client.get(INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/receivers/index.html')
-        self.assertEqual(len(res.context['receivers_table'].data), 0)
+        self.assertEqual(0, len(res.context['receivers_table'].data))
         self.assertMessageCount(res, error=1)
 
     @test.create_stubs({api.senlin: ('receiver_list',)})
@@ -56,7 +56,7 @@ class ReceiversTest(test.TestCase):
         res = self.client.get(INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/receivers/index.html')
         self.assertContains(res, 'No items to display')
-        self.assertEqual(len(res.context['receivers_table'].data), 0)
+        self.assertEqual(0, len(res.context['receivers_table'].data))
 
     @test.create_stubs({api.senlin: ('receiver_create',
                                      'cluster_list')})

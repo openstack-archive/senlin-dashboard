@@ -32,9 +32,9 @@ class SenlinRestTestCase(test.TestCase):
 
         response = senlin.Receivers().get(request)
         self.assertStatusCode(response, 200)
-        self.assertEqual(len(response.json['items']), 2)
-        self.assertEqual(response.json['has_more_data'], False)
-        self.assertEqual(response.json['has_prev_data'], True)
+        self.assertEqual(2, len(response.json['items']))
+        self.assertFalse(response.json['has_more_data'])
+        self.assertTrue(response.json['has_prev_data'])
 
     @mock.patch.object(senlin, 'senlin')
     def test_receiver_get_single(self, client):
@@ -44,7 +44,7 @@ class SenlinRestTestCase(test.TestCase):
 
         response = senlin.Receiver().get(request, '1')
         self.assertStatusCode(response, 200)
-        self.assertEqual(response.json['name'], 'test-receiver')
+        self.assertEqual('test-receiver', response.json['name'])
 
     @mock.patch.object(senlin, 'senlin')
     def test_receiver_delete(self, client):

@@ -232,6 +232,18 @@ class Clusters(generic.View):
             'has_prev_data': has_prev_data,
         }
 
+    @rest_utils.ajax(data_required=True)
+    def post(self, request):
+        """Create a new Cluster.
+
+        Returns the new Cluster object on success.
+        """
+        params = request.DATA
+        params["metadata"] = api_utils.load_yaml(params.get("metadata"))
+        cluster = senlin.cluster_create(request, **params)
+        return rest_utils.CreatedResponse(
+            '/api/senlin/clusters/%s' % cluster.id, cluster.to_dict())
+
 
 @urls.register
 class Cluster(generic.View):

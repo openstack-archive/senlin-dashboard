@@ -26,6 +26,7 @@
   angular
     .module('horizon.cluster.clusters', [
       'ngRoute',
+      'horizon.cluster.clusters.actions',
       'horizon.cluster.clusters.details'
     ])
     .constant('horizon.app.core.clusters.resourceType', 'OS::Senlin::Cluster')

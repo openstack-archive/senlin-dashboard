@@ -11,7 +11,10 @@
 # under the License.
 
 import itertools
+import six
 import yaml
+
+from django.utils.translation import ugettext_lazy as _
 
 
 def update_pagination(entities, request_size, page_size, marker,
@@ -48,3 +51,15 @@ def convert_to_yaml(data, default_flow_style=False):
         return yaml.safe_dump(data, default_flow_style=default_flow_style)
     except Exception:
         return ''
+
+
+def load_yaml(data):
+    if not data:
+        loaded_data = {}
+    else:
+        try:
+            loaded_data = yaml.load(data)
+        except Exception as ex:
+            raise Exception(_('The specified inpu is not a valid '
+                              'YAML format: %s') % six.text_type(ex))
+    return loaded_data

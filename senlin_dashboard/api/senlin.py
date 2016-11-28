@@ -138,7 +138,7 @@ def cluster_list(request, sort_dir='desc', sort_key='created_at',
     return [Cluster(c) for c in clusters], has_more_data, has_prev_data
 
 
-def cluster_create(request, params):
+def cluster_create(request, **params):
     """Create cluster."""
     cluster = senlinclient(request).create_cluster(**params)
     return Cluster(cluster)

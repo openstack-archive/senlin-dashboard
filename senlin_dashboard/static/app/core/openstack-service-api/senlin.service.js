@@ -35,6 +35,7 @@
    */
   function senlinAPI(apiService, toastService) {
     var service = {
+      createCluster: createCluster,
       createProfile: createProfile,
       deleteProfile: deleteProfile,
       getProfiles: getProfiles,
@@ -286,6 +287,28 @@
           var msg = gettext('Unable to retrieve the cluster with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
+    }
+
+    ///// cluster
+
+    /**
+     * @name createCluster
+     * @description
+     * Create new Cluster.
+     *
+     * @param {Object} params
+     * JSON object to create new cluster like name, metadata.
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     * @returns {Object} The result of the API call
+     */
+    function createCluster(params, suppressError) {
+      var promise = apiService.post('/api/senlin/clusters/', params);
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to create the cluster with name: %(name)s');
+        toastService.add('error', interpolate(msg, { name: params.name }, true));
+      });
     }
   }
 }());

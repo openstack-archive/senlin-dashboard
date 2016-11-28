@@ -83,7 +83,7 @@ class CreateForm(forms.SelfHandlingForm):
                                       'YAML format: %s') % six.text_type(ex))
             data['metadata'] = metadata
 
-            cluster = senlin.cluster_create(request, data)
+            cluster = senlin.cluster_create(request, **data)
             msg = _('Creating cluster "%s" successfully') % data['name']
             messages.success(request, msg)
             return cluster

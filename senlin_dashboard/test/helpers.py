@@ -12,9 +12,9 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from openstack_dashboard.test import helpers
+import mock
 
-from senlinclient import client as senlin_client
+from openstack_dashboard.test import helpers
 
 from senlin_dashboard import api
 from senlin_dashboard.test.test_data import utils
@@ -50,6 +50,5 @@ class APITestCase(SenlinTestsMixin, helpers.APITestCase):
 
     def stub_senlinclient(self):
         if not hasattr(self, "senlinclient"):
-            self.mox.StubOutWithMock(senlin_client, 'Client')
-            self.senlinclient = self.mox.CreateMock(senlin_client.Client)
+            self.senlinclient = mock.Mock()
         return self.senlinclient

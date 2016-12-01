@@ -10,6 +10,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import mock
+
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
@@ -22,13 +24,15 @@ class SenlinApiTests(test.APITestCase):
                   'marker': None}
         clusters = self.clusters.list()
         senlinclient = self.stub_senlinclient()
-        senlinclient.clusters = self.mox.CreateMockAnything()
-        senlinclient.clusters(**params).AndReturn(clusters)
-        self.mox.ReplayAll()
+
+        senlinclient.clusters = mock.Mock()
+        senlinclient.clusters.return_value = clusters
 
         ret_val = api.senlin.cluster_list(self.request)
         for cluster in ret_val[0]:
             self.assertIsInstance(cluster, api.senlin.Cluster)
+
+        senlinclient.clusters.assert_called_once_with(**params)
 
     def test_profile_list(self):
         params = {'sort': 'created_at:desc',
@@ -36,13 +40,15 @@ class SenlinApiTests(test.APITestCase):
                   'marker': None}
         profiles = self.profiles.list()
         senlinclient = self.stub_senlinclient()
-        senlinclient.profiles = self.mox.CreateMockAnything()
-        senlinclient.profiles(**params).AndReturn(profiles)
-        self.mox.ReplayAll()
+
+        senlinclient.profiles = mock.Mock()
+        senlinclient.profiles.return_value = profiles
 
         ret_val = api.senlin.profile_list(self.request)
         for profile in ret_val[0]:
             self.assertIsInstance(profile, api.senlin.Profile)
+
+        senlinclient.profiles.assert_called_once_with(**params)
 
     def test_policy_list(self):
         params = {'sort': 'created_at:desc',
@@ -50,13 +56,15 @@ class SenlinApiTests(test.APITestCase):
                   'marker': None}
         policies = self.policies.list()
         senlinclient = self.stub_senlinclient()
-        senlinclient.policies = self.mox.CreateMockAnything()
-        senlinclient.policies(**params).AndReturn(policies)
-        self.mox.ReplayAll()
+
+        senlinclient.policies = mock.Mock()
+        senlinclient.policies.return_value = policies
 
         ret_val = api.senlin.policy_list(self.request)
         for policy in ret_val:
             self.assertIsInstance(policy, api.senlin.Policy)
+
+        senlinclient.policies.assert_called_once_with(**params)
 
     def test_node_list(self):
         params = {'sort': 'name:desc',
@@ -65,13 +73,15 @@ class SenlinApiTests(test.APITestCase):
                   'cluster_id': None}
         nodes = self.nodes.list()
         senlinclient = self.stub_senlinclient()
-        senlinclient.nodes = self.mox.CreateMockAnything()
-        senlinclient.nodes(**params).AndReturn(nodes)
-        self.mox.ReplayAll()
+
+        senlinclient.nodes = mock.Mock()
+        senlinclient.nodes.return_value = nodes
 
         ret_val = api.senlin.node_list(self.request)
         for node in ret_val[0]:
             self.assertIsInstance(node, api.senlin.Node)
+
+        senlinclient.nodes.assert_called_once_with(**params)
 
     def test_event_list(self):
         params = {'sort': 'timestamp:desc',
@@ -79,13 +89,15 @@ class SenlinApiTests(test.APITestCase):
                   'marker': None}
         events = self.events.list()
         senlinclient = self.stub_senlinclient()
-        senlinclient.events = self.mox.CreateMockAnything()
-        senlinclient.events(**params).AndReturn(events)
-        self.mox.ReplayAll()
+
+        senlinclient.events = mock.Mock()
+        senlinclient.events.return_value = events
 
         ret_val = api.senlin.event_list(self.request)
         for event in ret_val[0]:
             self.assertIsInstance(event, api.senlin.Event)
+
+        senlinclient.events.assert_called_once_with(**params)
 
     def test_receiver_list(self):
         params = {'sort': 'created_at:desc',
@@ -93,10 +105,12 @@ class SenlinApiTests(test.APITestCase):
                   'marker': None}
         receivers = self.receivers.list()
         senlinclient = self.stub_senlinclient()
-        senlinclient.receivers = self.mox.CreateMockAnything()
-        senlinclient.receivers(**params).AndReturn(receivers)
-        self.mox.ReplayAll()
+
+        senlinclient.receivers = mock.Mock()
+        senlinclient.receivers.return_value = receivers
 
         ret_val, _more, _prev = api.senlin.receiver_list(self.request)
         for receiver in ret_val:
             self.assertIsInstance(receiver, api.senlin.Receiver)
+
+        senlinclient.receivers.assert_called_once_with(**params)

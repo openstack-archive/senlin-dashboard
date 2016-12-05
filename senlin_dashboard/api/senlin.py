@@ -108,6 +108,9 @@ def cluster_list(request, sort_dir='desc', sort_key='created_at',
                  filters=None):
     """Returns all clusters."""
 
+    has_prev_data = False
+    has_more_data = False
+
     page_size, request_size = _populate_request_size_and_page_size(
         request, paginate)
 
@@ -129,11 +132,10 @@ def cluster_list(request, sort_dir='desc', sort_key='created_at',
     if paginate:
         clusters, has_more_data, has_prev_data = api_utils.update_pagination(
             clusters_iter, request_size, page_size, marker, reversed_order)
-
-        return [Cluster(p) for p in clusters], has_more_data, has_prev_data
     else:
         clusters = list(clusters_iter)
-        return [Cluster(p) for p in clusters]
+
+    return [Cluster(c) for c in clusters], has_more_data, has_prev_data
 
 
 def cluster_create(request, params):

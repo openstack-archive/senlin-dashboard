@@ -1,0 +1,85 @@
+/*
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+(function() {
+  "use strict";
+
+  angular
+    .module('horizon.cluster.clusters')
+    .factory('horizon.cluster.clusters.service', clusterService);
+
+  clusterService.$inject = [
+    'horizon.app.core.openstack-service-api.senlin'
+  ];
+
+  /*
+   * @ngdoc factory
+   * @name horizon.cluster.clusters.service
+   *
+   * @description
+   * This service provides functions that are used through
+   * the Clusters features.
+   */
+  function clusterService(senlin) {
+    return {
+      getDetailsClusterPath: getDetailsClusterPath,
+      getDetailsProfilePath: getDetailsProfilePath,
+      getClusterPromise: getClusterPromise,
+      getClustersPromise: getClustersPromise
+    };
+
+    /*
+     * @ngdoc function
+     * @name getDetailsClusterPath
+     * @param item {Object} - The cluster object
+     * @description
+     * Returns the relative path to the details view.
+     */
+    function getDetailsClusterPath(item) {
+      return 'project/ngdetails/OS::Senlin::Cluster/' + item.id;
+    }
+
+    /*
+     * @ngdoc function
+     * @name getDetailsProfilePath
+     * @param item {Object} - The cluster object
+     * @description
+     * Returns the relative path to the details view.
+     */
+    function getDetailsProfilePath(item) {
+      return 'project/ngdetails/OS::Senlin::Profile/' + item.profile_id;
+    }
+
+    /*
+     * @ngdoc function
+     * @name getClusterPromise
+     * @description
+     * Given an id, returns a promise for the cluster data.
+     */
+    function getClusterPromise(identifier) {
+      return senlin.getCluster(identifier);
+    }
+
+    /*
+     * @ngdoc function
+     * @name getClustersPromise
+     * @description
+     * Given filter/query parameters, returns a promise for the matching
+     * clusters.  This is used in displaying lists of Clusters.
+     */
+    function getClustersPromise(params) {
+      return senlin.getClusters(params);
+    }
+  }
+})();

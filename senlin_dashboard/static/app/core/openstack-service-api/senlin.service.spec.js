@@ -82,6 +82,28 @@
         path: '/api/senlin/profiles/666/',
         error: 'Unable to delete the profile with id: 666.',
         testInput: [666]
+      },
+      {
+        func: 'getNodes',
+        method: 'get',
+        path: '/api/senlin/nodes/',
+        data: { params: 'config' },
+        error: 'Unable to retrieve the nodes.',
+        testInput: [ 'config' ]
+      },
+      {
+        func: 'getNode',
+        method: 'get',
+        path: '/api/senlin/nodes/666/',
+        error: 'Unable to retrieve the node with id: 666.',
+        testInput: [666]
+      },
+      {
+        func: 'getEvents',
+        method: 'get',
+        path: '/api/senlin/events/666/',
+        error: 'Unable to retrieve the events with id: 666.',
+        testInput: [666]
       }
     ];
 

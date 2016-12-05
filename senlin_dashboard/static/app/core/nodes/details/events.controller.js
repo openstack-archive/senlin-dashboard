@@ -11,23 +11,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-(function () {
-  'use strict';
-
-  /**
-   * @ngdoc overview
-   * @name horizon.cluster
-   * @description
-   * OpenStack cluster modelue
-   */
+(function() {
+  "use strict";
 
   angular
-    .module('horizon.cluster', [
-      'horizon.cluster.clusters',
-      'horizon.cluster.profiles',
-      'horizon.cluster.nodes',
-      'horizon.cluster.events',
-      'horizon.cluster.receivers'
-    ]);
+    .module('horizon.cluster.nodes')
+    .controller('NodeEventsController', NodeEventsController);
 
-}());
+  NodeEventsController.$inject = [
+    '$scope'
+  ];
+
+  function NodeEventsController(
+    $scope
+  ) {
+    var ctrl = this;
+
+    $scope.context.loadPromise.then(onGetNode);
+
+    function onGetNode(node) {
+      ctrl.node = node.data;
+    }
+  }
+})();

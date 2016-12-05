@@ -39,6 +39,9 @@
       deleteProfile: deleteProfile,
       getProfiles: getProfiles,
       getProfile: getProfile,
+      getNodes: getNodes,
+      getNode: getNode,
+      getEvents: getEvents,
       getReceivers: getReceivers,
       getReceiver: getReceiver,
       deleteReceiver: deleteReceiver,
@@ -50,6 +53,64 @@
     return service;
 
     ///////////////
+
+    // Nodes
+
+    /**
+     * @name getNodes
+     * @description
+     * Get a list of nodes.
+     *
+     * @param {string} params
+     * The Id of the profile to delete.
+     *
+     * @returns {Object} The result of the API call
+     */
+    function getNodes(params) {
+      var config = params ? {params: params} : {};
+      return apiService.get('/api/senlin/nodes/', config)
+        .error(function () {
+          toastService.add('error', gettext('Unable to retrieve the nodes.'));
+        });
+    }
+
+    /**
+     * @name getNode
+     * @description
+     * Get a list of node.
+     *
+     * @param {string} id
+     * The Id of the node to get.
+     *
+     * @returns {Object} The result of the API call
+     */
+    function getNode(id) {
+      return apiService.get('/api/senlin/nodes/' + id + '/')
+        .error(function () {
+          var msg = gettext('Unable to retrieve the node with id: %(id)s.');
+          toastService.add('error', interpolate(msg, {id: id}, true));
+        });
+    }
+
+    // Events
+
+    /**
+     * @name getEvents
+     * @description
+     * Get a list of events.
+     *
+     * @param {string} objId
+     * The Id of the object to get events.
+     *
+     * @returns {Object} The result of the API call
+     */
+    function getEvents(objId) {
+      return apiService.get('/api/senlin/events/' + objId + '/')
+        .error(function () {
+          var msg = gettext('Unable to retrieve the events with id: %(id)s.');
+          toastService.add('error', interpolate(msg, {id: objId}, true));
+        });
+    }
 
     // Receivers
 

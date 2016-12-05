@@ -1,0 +1,16 @@
+<div ng-controller="NodeOverviewController as ctrl">
+  <div class="row">
+    <div class="col-md-12 detail">
+      <h3 translate>Node</h3>
+      <hr>
+      <hz-resource-property-list
+        resource-type-name="OS::Senlin::Node"
+        cls="dl-horizontal"
+        item="ctrl.node"
+        property-groups="[['id', 'name', 'status', 'status_reason', 'created_at', 'updated_at'],
+                          ['profile_name', 'physical_id', 'role', 'cluster_id'],
+                          ['metadata']]">
+      </hz-resource-property-list>
+    </div>
+  </div>
+</div>

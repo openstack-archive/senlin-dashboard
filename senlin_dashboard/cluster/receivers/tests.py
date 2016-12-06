@@ -72,7 +72,7 @@ class ReceiversTest(test.TestCase):
         }
 
         api.senlin.cluster_list(
-            IsA(http.HttpRequest)).AndReturn(clusters)
+            IsA(http.HttpRequest)).AndReturn((clusters, False, False))
         api.senlin.receiver_create(
             IsA(http.HttpRequest), data).AndReturn(receiver)
         self.mox.ReplayAll()

@@ -28,12 +28,14 @@
 
     it("getDetailsClusterPath creates urls using the item's ID", function() {
       var myItem = {id: "666"};
-      expect(service.getDetailsClusterPath(myItem)).toBe('project/ngdetails/OS::Senlin::Cluster/666');
+      expect(service.getDetailsClusterPath(myItem)).toBe(
+        'project/ngdetails/OS::Senlin::Cluster/666');
     });
 
     it("getDetailsProfilePath creates urls using the item's ID", function() {
       var myItem = {profile_id: "666"};
-      expect(service.getDetailsProfilePath(myItem)).toBe('project/ngdetails/OS::Senlin::Profile/666');
+      expect(service.getDetailsProfilePath(myItem)).toBe(
+        'project/ngdetails/OS::Senlin::Profile/666');
     });
 
     describe('getClusterPromise', function() {

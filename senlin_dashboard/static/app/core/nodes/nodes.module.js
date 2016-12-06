@@ -26,7 +26,8 @@
   angular
     .module('horizon.cluster.nodes', [
       'ngRoute',
-      'horizon.cluster.nodes.details'
+      'horizon.cluster.nodes.details',
+      'horizon.cluster.nodes.actions'
     ])
     .constant('horizon.app.core.nodes.resourceType', 'OS::Senlin::Node')
     .run(run)

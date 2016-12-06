@@ -181,6 +181,14 @@ class Node(generic.View):
         node["metadata"] = api_utils.convert_to_yaml(node["metadata"])
         return node
 
+    @rest_utils.ajax()
+    def delete(self, request, node_id):
+        """Delete a specific node
+
+        DELETE http://localhost/api/senlin/nodes/cc758c90-3d98-4ea1-af44-aab405c9c915  # noqa
+        """
+        senlin.node_delete(request, node_id)
+
 
 @urls.register
 class Events(generic.View):

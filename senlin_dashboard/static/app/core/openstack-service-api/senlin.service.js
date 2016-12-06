@@ -41,6 +41,7 @@
       getProfile: getProfile,
       getNodes: getNodes,
       getNode: getNode,
+      deleteNode: deleteNode,
       getEvents: getEvents,
       getReceivers: getReceivers,
       getReceiver: getReceiver,
@@ -90,6 +91,28 @@
           var msg = gettext('Unable to retrieve the node with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
+    }
+
+    /**
+     * @name deleteNode
+     * @description
+     * Deletes single Node by ID.
+     *
+     * @param {string} nodeId
+     * The Id of the node to delete.
+     *
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     *
+     * @returns {Object} The result of the API call
+     */
+    function deleteNode(nodeId, suppressError) {
+      var promise = apiService.delete('/api/senlin/nodes/' + nodeId + '/');
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to delete the node with id: %(id)s');
+        toastService.add('error', interpolate(msg, { id: nodeId }, true));
+      });
     }
 
     // Events

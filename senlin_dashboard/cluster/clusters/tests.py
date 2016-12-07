@@ -34,7 +34,7 @@ class ClustersTest(test.TestCase):
     def test_index(self):
         clusters = self.clusters.list()
         api.senlin.cluster_list(
-            IsA(http.HttpRequest)).AndReturn(clusters)
+            IsA(http.HttpRequest)).AndReturn((clusters, False, False))
         self.mox.ReplayAll()
 
         res = self.client.get(CLUSTER_INDEX_URL)
@@ -56,7 +56,7 @@ class ClustersTest(test.TestCase):
     @test.create_stubs({api.senlin: ('cluster_list',)})
     def test_index_no_cluster(self):
         api.senlin.cluster_list(
-            IsA(http.HttpRequest)).AndReturn([])
+            IsA(http.HttpRequest)).AndReturn(([], False, False))
         self.mox.ReplayAll()
 
         res = self.client.get(CLUSTER_INDEX_URL)

@@ -51,7 +51,7 @@ class CreateForm(forms.SelfHandlingForm):
             [("", _("Select Profile"))] + [(profile.id, profile.name)
                                            for profile in profiles])
 
-        clusters = senlin.cluster_list(request)
+        clusters = senlin.cluster_list(request)[0]
         self.fields['cluster_id'].choices = (
             [("", _("Select Cluster"))] + [(cluster.id, cluster.name)
                                            for cluster in clusters])

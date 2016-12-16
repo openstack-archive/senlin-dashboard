@@ -256,7 +256,7 @@
       var promise = apiService.post('/api/senlin/profiles/', params);
 
       return suppressError ? promise : promise.error(function() {
-        var msg = gettext('Unable to create the profile with id: %(name)s');
+        var msg = gettext('Unable to create the profile with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
     }

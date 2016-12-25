@@ -12,7 +12,6 @@
 
 from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
-from django.views import generic
 
 from horizon import exceptions
 from horizon import forms
@@ -26,10 +25,6 @@ from senlin_dashboard.cluster.profiles.tables import ProfilesTable
 from senlin_dashboard.cluster.profiles import tabs as profiles_tabs
 
 import yaml
-
-
-class AngularIndexView(generic.TemplateView):
-    template_name = 'angular.html'
 
 
 class IndexView(tables.DataTableView):

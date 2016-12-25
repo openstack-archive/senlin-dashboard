@@ -12,19 +12,23 @@
 
 from django.conf import settings
 from django.conf.urls import url  # noqa
+from django.utils.translation import ugettext_lazy as _
+
+from horizon.browsers.views import AngularIndexView
 
 from senlin_dashboard.api import rest  # noqa
-from senlin_dashboard.cluster.receivers import views
+from senlin_dashboard.cluster.receivers import views as legacyViews
 
 
 if settings.ANGULAR_FEATURES.get('receivers_panel'):
+    title = _("Receivers")
     urlpatterns = [
-        url(r'^$', views.AngularIndexView.as_view(), name='index'),
+        url(r'^$', AngularIndexView.as_view(title=title), name='index'),
     ]
 else:
     urlpatterns = [
-        url(r'^$', views.IndexView.as_view(), name='index'),
-        url(r'^create/$', views.CreateView.as_view(), name='create'),
+        url(r'^$', legacyViews.IndexView.as_view(), name='index'),
+        url(r'^create/$', legacyViews.CreateView.as_view(), name='create'),
         url(r'^(?P<receiver_id>[^/]+)/$',
-            views.DetailView.as_view(), name='detail'),
+            legacyViews.DetailView.as_view(), name='detail'),
     ]

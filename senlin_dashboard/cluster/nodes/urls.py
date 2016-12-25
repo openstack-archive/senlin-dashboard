@@ -12,12 +12,15 @@
 
 from django.conf import settings
 from django.conf.urls import url  # noqa
+from django.utils.translation import ugettext_lazy as _
+
 from horizon.browsers import views
 from senlin_dashboard.cluster.nodes import views as legacyView
 
 if settings.ANGULAR_FEATURES.get('nodes_panel'):
+    title = _("Nodes")
     urlpatterns = [
-        url('', views.AngularIndexView.as_view(), name='index'),
+        url('', views.AngularIndexView.as_view(title=title), name='index'),
     ]
 else:
     urlpatterns = [

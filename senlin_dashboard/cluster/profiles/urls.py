@@ -12,22 +12,25 @@
 
 from django.conf import settings
 from django.conf.urls import url  # noqa
+from django.utils.translation import ugettext_lazy as _
 
-from senlin_dashboard.cluster.profiles import views
+from horizon.browsers.views import AngularIndexView
+from senlin_dashboard.cluster.profiles import views as legacyViews
 
 
 if settings.ANGULAR_FEATURES.get('profiles_panel'):
+    title = _("Profiles")
     urlpatterns = [
         url(r'^(?P<profile_id>[^/]+)/$',
-            views.DetailView.as_view(), name='detail'),
-        url('', views.AngularIndexView.as_view(), name='index'),
+            legacyViews.DetailView.as_view(), name='detail'),
+        url('', AngularIndexView.as_view(title=title), name='index'),
     ]
 else:
     urlpatterns = [
-        url(r'^$', views.IndexView.as_view(), name='index'),
-        url(r'^create/$', views.CreateView.as_view(), name='create'),
+        url(r'^$', legacyViews.IndexView.as_view(), name='index'),
+        url(r'^create/$', legacyViews.CreateView.as_view(), name='create'),
         url(r'^(?P<profile_id>[^/]+)/update/$',
-            views.UpdateView.as_view(), name='update'),
+            legacyViews.UpdateView.as_view(), name='update'),
         url(r'^(?P<profile_id>[^/]+)/$',
-            views.DetailView.as_view(), name='detail'),
+            legacyViews.DetailView.as_view(), name='detail'),
     ]

@@ -1,26 +1,15 @@
 <div ng-controller="ReceiverOverviewController as ctrl">
   <div class="row">
-    <div class="col-md-6 detail">
+    <div class="col-md-12 detail">
       <h3 translate>Receiver</h3>
       <hr>
-      <dl class="dl-horizontal">
-        <dt translate>Name</dt>
-        <dd>{$ ctrl.receiver.name | noValue $}</dd>
-        <dt translate>ID</dt>
-        <dd>{$ ::ctrl.receiver.id $}</dd>
-        <dt translate>Type</dt>
-        <dd>{$ ctrl.receiver.type $}</dd>
-        <dt translate>Cluster ID</dt>
-        <dd>{$ ctrl.receiver.cluster_id | noValue $}</dd>
-        <dt translate>Action</dt>
-        <dd>{$ ctrl.receiver.action $}</dd>
-        <dt translate>Channel</dt>
-        <dd>{$ ctrl.receiver.channel $}</dd>
-        <dt translate>Created</dt>
-        <dd>{$ ctrl.receiver.created_at | date:'short' | noValue $}</dd>
-        <dt translate>Updated</dt>
-        <dd>{$ ctrl.receiver.updated_at | date:'short' | noValue $}</dd>
-      </dl>
+      <hz-resource-property-list
+        resource-type-name="OS::Senlin::Receiver"
+        cls="dl-horizontal"
+        item="ctrl.receiver"
+        property-groups="[['id', 'name', 'created_at', 'updated_at'],
+                          ['type', 'cluster_id', 'action', 'channel']]">
+      </hz-resource-property-list>
     </div>
   </div>
 </div>

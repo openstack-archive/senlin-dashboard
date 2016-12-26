@@ -19,20 +19,13 @@
     .controller('ReceiverOverviewController', ReceiverOverviewController);
 
   ReceiverOverviewController.$inject = [
-    'horizon.app.core.receivers.resourceType',
-    'horizon.framework.conf.resource-type-registry.service',
     '$scope'
   ];
 
   function ReceiverOverviewController(
-    receiverResourceType,
-    registry,
     $scope
   ) {
     var ctrl = this;
-
-    ctrl.resourceType = registry.getResourceType(receiverResourceType);
-
     $scope.context.loadPromise.then(onGetReceiver);
 
     function onGetReceiver(receiver) {

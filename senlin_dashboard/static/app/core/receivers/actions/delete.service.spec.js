@@ -85,7 +85,7 @@
 
       beforeEach(function() {
         spyOn(deleteModalService, 'open').and.callThrough();
-        service.initScope($scope, labelize);
+        service.initAction(labelize);
       });
 
       function labelize(count) {

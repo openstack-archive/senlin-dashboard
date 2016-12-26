@@ -21,6 +21,7 @@
 
   deleteReceiverService.$inject = [
     '$q',
+    '$location',
     'horizon.app.core.openstack-service-api.senlin',
     'horizon.framework.util.actions.action-result.service',
     'horizon.framework.util.i18n.gettext',
@@ -42,6 +43,7 @@
    */
   function deleteReceiverService(
     $q,
+    $location,
     senlin,
     actionResultService,
     gettext,
@@ -54,7 +56,7 @@
     var notAllowedMessage = gettext("You are not allowed to delete receivers: %s");
 
     var service = {
-      initScope: initScope,
+      initAction: initAction,
       allowed: allowed,
       perform: perform
     };
@@ -63,12 +65,12 @@
 
     //////////////
 
-    function initScope(newScope) {
-      scope = newScope;
+    function initAction() {
       context = { };
     }
 
-    function perform(items) {
+    function perform(items, newScope) {
+      scope = newScope;
       var receivers = angular.isArray(items) ? items : [items];
       context.labels = labelize(receivers.length);
       context.deleteEntity = deleteReceiver;
@@ -105,7 +107,12 @@
       deleteModalResult.fail.forEach(function markFailed(item) {
         actionResult.failed(receiversResourceType, getEntity(item).id);
       });
-      return actionResult.result;
+      if (actionResult.result.failed.length === 0 &&
+          actionResult.result.deleted.length > 0) {
+        $location.path('/cluster/receivers');
+      } else {
+        return actionResult.result;
+      }
     }
 
     function labelize(count) {

@@ -34,47 +34,24 @@
     .config(config);
 
   run.$inject = [
-    'horizon.framework.conf.resource-type-registry.service',
-    'horizon.app.core.openstack-service-api.senlin',
     'horizon.app.core.receivers.basePath',
-    'horizon.app.core.receivers.resourceType'
+    'horizon.app.core.receivers.resourceType',
+    'horizon.cluster.receivers.service',
+    'horizon.framework.conf.resource-type-registry.service'
   ];
 
-  function run(registry, senlin, basePath, receiverResourceType) {
+  function run(basePath, receiverResourceType, receiverService, registry) {
     registry.getResourceType(receiverResourceType)
       .setNames(gettext('Receiver'), gettext('Receivers'))
       .setSummaryTemplateUrl(basePath + 'details/drawer.html')
-      .setProperty('name', {
-        label: gettext('Name')
-      })
-      .setProperty('id', {
-        label: gettext('ID')
-      })
-      .setProperty('type', {
-        label: gettext('Type')
-      })
-      .setProperty('cluster_id', {
-        label: gettext('Cluster ID')
-      })
-      .setProperty('action', {
-        label: gettext('Action')
-      })
-      .setProperty('created_at', {
-        label: gettext('Created')
-      })
-      .setProperty('updated_at', {
-        label: gettext('Updated')
-      })
-      .setProperty('channel', {
-        label: gettext('Channel')
-      })
-      .setListFunction(listFunction)
+      .setProperties(receiverProperties())
+      .setListFunction(receiverService.getReceiversPromise)
       .tableColumns
       .append({
         id: 'name',
         priority: 1,
         sortDefault: true,
-        urlFunction: urlFunction
+        urlFunction: receiverService.getDetailsPath
       })
       .append({
         id: 'type',
@@ -87,15 +64,55 @@
       .append({
         id: 'action',
         priority: 1
+      })
+      .append({
+        id: 'created_at',
+        priority: 2
+      })
+      .append({
+        id: 'updated_at',
+        priority: 2
       });
+    // for magic-search
+    registry.getResourceType(receiverResourceType).filterFacets
+      .append({
+        label: gettext('Name'),
+        name: 'name',
+        singleton: true
+      })
+      .append({
+        label: gettext('Type'),
+        name: 'type',
+        singleton: true
+      })
+      .append({
+        label: gettext('Cluster ID'),
+        name: 'cluster_id',
+        singleton: true
+      })
+      .append({
+        label: gettext('Action'),
+        name: 'action',
+        singleton: true
+      })
+      .append({
+        label: gettext('Channel'),
+        name: 'channel',
+        singleton: true
+      });
+  }
 
-    function listFunction() {
-      return senlin.getReceivers();
-    }
-
-    function urlFunction(item) {
-      return 'project/ngdetails/OS::Senlin::Receiver/' + item.id;
-    }
+  function receiverProperties() {
+    return {
+      id: { label: gettext('ID'), filters: ['noValue'] },
+      name: { label: gettext('Name'), filters: ['noName'] },
+      type: { label: gettext('Type'), filters: ['noName'] },
+      cluster_id: { label: gettext('Cluster ID'), filters: ['noValue'] },
+      action: { label: gettext('Action'), filters: ['noValue'] },
+      channel: { label: gettext('Channel'), filters: ['noValue', 'json'] },
+      created_at: { label: gettext('Created'), filters: ['simpleDate'] },
+      updated_at: { label: gettext('Updated'), filters: ['simpleDate'] }
+    };
   }
 
   config.$inject = [

@@ -31,27 +31,23 @@
   registerReceiverDetails.$inject = [
     'horizon.app.core.receivers.basePath',
     'horizon.app.core.receivers.resourceType',
-    'horizon.app.core.openstack-service-api.senlin',
+    'horizon.cluster.receivers.service',
     'horizon.framework.conf.resource-type-registry.service'
   ];
 
   function registerReceiverDetails(
     basePath,
     receiverResourceType,
-    senlin,
+    receiverService,
     registry
   ) {
     registry.getResourceType(receiverResourceType)
-      .setLoadFunction(loadFunction)
-      .detailsViews.append({
+      .setLoadFunction(receiverService.getReceiverPromise)
+      .detailsViews
+      .append({
         id: 'receiverDetailsOverview',
         name: gettext('Overview'),
         template: basePath + 'details/overview.html'
       });
-
-    function loadFunction(identifier) {
-      return senlin.getReceiver(identifier);
-    }
   }
-
 })();

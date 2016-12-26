@@ -37,6 +37,7 @@
     var service = {
       createCluster: createCluster,
       createProfile: createProfile,
+      updateProfile: updateProfile,
       deleteProfile: deleteProfile,
       getProfiles: getProfiles,
       getProfile: getProfile,
@@ -261,6 +262,26 @@
       });
     }
 
+   /**
+     * @name updateProfile
+     * @description
+     * Update a Profile.
+     *
+     * @param {Object} params
+     * JSON object to update a profile like name, metadata.
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     * @returns {Object} The result of the API call
+     */
+    function updateProfile(params, suppressError) {
+      var promise = apiService.put('/api/senlin/profiles/' + params.id + '/', params);
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to update the profile with id: %(id)s');
+        toastService.add('error', interpolate(msg, { id: params.id }, true));
+      });
+    }
+
     // Clusters
 
     /*
@@ -311,4 +332,4 @@
       });
     }
   }
-}());
+})();

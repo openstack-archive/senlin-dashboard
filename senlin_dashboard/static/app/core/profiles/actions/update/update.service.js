@@ -19,39 +19,39 @@
 
   /**
    * @ngdoc factory
-   * @name horizon.cluster.profiles.actions.create.service
+   * @name horizon.cluster.profiles.actions.update.service
    * @description
-   * Service for the cluster profile create modal
+   * Service for the cluster profile update modal
    */
   angular
     .module('horizon.cluster.profiles.actions')
-    .factory('horizon.cluster.profiles.actions.create.service', createService);
+    .factory('horizon.cluster.profiles.actions.update.service', updateService);
 
-  createService.$inject = [
+  updateService.$inject = [
     '$location',
     'horizon.app.core.openstack-service-api.policy',
+    'horizon.app.core.openstack-service-api.senlin',
+    'horizon.app.core.profiles.resourceType',
     'horizon.framework.util.actions.action-result.service',
     'horizon.framework.util.i18n.gettext',
     'horizon.framework.util.q.extensions',
     'horizon.framework.widgets.modal.wizard-modal.service',
     'horizon.framework.widgets.toast.service',
     'horizon.cluster.profiles.actions.create.model',
-    'horizon.app.core.profiles.resourceType',
-    'horizon.cluster.profiles.actions.create.service.workflow'
+    'horizon.cluster.profiles.actions.update.service.workflow'
   ];
 
-  function createService(
-    $location, policy, actionResult, gettext, $qExtensions, wizardModalService, toast,
-    model, resourceType, createWorkflow
+  function updateService(
+    $location, policy, senlin, resourceType, actionResult, gettext, $qExtensions,
+    wizardModalService, toast, model, updateWorkflow
   ) {
 
-    var scope;
     var message = {
-      success: gettext('Profile %s was successfully created.')
+      success: gettext('Profile %s was successfully updated.')
     };
 
     var service = {
-      initScope: initScope,
+      initAction: initAction,
       perform: perform,
       allowed: allowed
     };
@@ -60,27 +60,23 @@
 
     //////////////
 
-    function initScope($scope) {
-      scope = $scope;
-      scope.workflow = createWorkflow;
-      scope.model = model;
-      scope.$on('$destroy', function() {
-      });
+    function initAction() {
     }
 
-    function perform(selected) {
-      scope.model.init();
-      scope.model.actionType = 'create';
-      scope.selected = selected;
+    function perform(selected, scope) {
+      scope.model = model;
+      scope.model.init('update', selected.id);
+
       return wizardModalService.modal({
         scope: scope,
-        workflow: createWorkflow,
-        submit: submit
+        workflow: updateWorkflow,
+        submit: submit,
+        data: scope.model
       }).result;
     }
 
     function allowed() {
-      return $qExtensions.booleanAsPromise(true);
+      return policy.ifAllowed({ rules: [['cluster', 'profiles:update']] });
     }
 
     function submit() {
@@ -90,8 +86,8 @@
     function success(response) {
       toast.add('success', interpolate(message.success, [response.data.id]));
       var result = actionResult.getActionResult()
-                   .created(resourceType, response.data.id);
-      if (result.result.failed.length === 0 && result.result.created.length > 0) {
+                   .updated(resourceType, response.data.id);
+      if (result.result.failed.length === 0 && result.result.updated.length > 0) {
         $location.path("/cluster/profiles");
       } else {
         return result.result;

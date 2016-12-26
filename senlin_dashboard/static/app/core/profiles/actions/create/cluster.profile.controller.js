@@ -52,7 +52,11 @@
     ////
 
     function init() {
-      ctrl.source_type = ctrl.toggleOptions[0].value;
+      var initOption = ctrl.toggleOptions[0];
+      if (model.actionType !== 'create') {
+        initOption = ctrl.toggleOptions[1];
+      }
+      ctrl.source_type = initOption.value;
     }
 
     function changeFile(files) {

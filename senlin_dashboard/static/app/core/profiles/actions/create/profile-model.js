@@ -27,31 +27,48 @@
 
   function ProfileModel(senlin) {
     var model = {
+      actionType: "",
       newProfileSpec: {},
       init: init,
-      createProfile: createProfile
+      setProfile: setProfile
     };
 
-    function init() {
-      initNewProfileSpec();
+    function init(actionType, profileId) {
+      model.actionType = actionType;
+      if (actionType === 'update') {
+        var deferred = senlin.getProfile(profileId);
+        deferred.then(onLoad);
+      }else {
+        model.newProfileSpec = {
+          id: null,
+          name: null,
+          metadata: null,
+          spec: null
+        };
+      }
     }
 
-    ////
-
-    function initNewProfileSpec() {
+    function onLoad(response) {
+      var currentProfile = response.data;
       model.newProfileSpec = {
-        name: null,
-        metadata: null,
-        spec: null
+        id: currentProfile.id,
+        name: currentProfile.name,
+        metadata: currentProfile.metadata,
+        spec: currentProfile.spec
       };
     }
 
-    function createProfile() {
+    function setProfile() {
       var finalSpec = angular.copy(model.newProfileSpec);
 
       cleanNullProperties(finalSpec);
 
-      return senlin.createProfile(finalSpec, true);
+      if (model.actionType === 'create') {
+        delete finalSpec.id;
+        return senlin.createProfile(finalSpec, true);
+      }else {
+        return senlin.updateProfile(finalSpec, true);
+      }
     }
 
     function cleanNullProperties(finalSpec) {

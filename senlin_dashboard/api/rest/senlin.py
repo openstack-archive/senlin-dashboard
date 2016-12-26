@@ -127,7 +127,27 @@ class Profile(generic.View):
 
         The result is a profile object.
         """
-        return senlin.profile_get(request, profile_id).to_dict()
+        profile = senlin.profile_get(request, profile_id).to_dict()
+        profile["spec"] = api_utils.convert_to_yaml(profile["spec"])
+        profile["metadata"] = api_utils.convert_to_yaml(profile["metadata"])
+        return profile
+
+    @rest_utils.ajax(data_required=True)
+    def put(self, request, profile_id):
+        """Update a Profile.
+
+        Returns the Profile object on success.
+        """
+        request_param = request.DATA
+        params = forms._populate_profile_params(request_param.get("name"),
+                                                None,
+                                                request_param.get("metadata"))
+        del params['spec']
+        updated_profile = senlin.profile_update(
+            request, profile_id, **params)
+        return rest_utils.CreatedResponse(
+            '/api/senlin/profiles/%s' % updated_profile.id,
+            updated_profile.to_dict())
 
     @rest_utils.ajax()
     def delete(self, request, profile_id):

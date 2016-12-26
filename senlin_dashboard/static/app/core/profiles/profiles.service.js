@@ -67,7 +67,17 @@
      * profiles.  This is used in displaying lists of Profiles.
      */
     function getProfilesPromise(params) {
-      return senlin.getProfiles(params);
+      return senlin.getProfiles(params).then(modifyResponse);
+
+      function modifyResponse(response) {
+        return {data: {items: response.data.items.map(modifyItem)}};
+
+        function modifyItem(item) {
+          var timestamp = item.updated_at ? item.updated_at : item.created_at;
+          item.trackBy = item.id + timestamp;
+          return item;
+        }
+      }
     }
   }
 })();

@@ -31,17 +31,6 @@
       }
     };
 
-    var getProfilesResponse = {
-      data: {
-        items: [
-          {
-            name: 'test_profile',
-            id: '5678'
-          }
-        ]
-      }
-    };
-
     beforeEach(module('horizon.framework'));
     beforeEach(module('horizon.app.core'));
     beforeEach(module('horizon.cluster.clusters.actions'));

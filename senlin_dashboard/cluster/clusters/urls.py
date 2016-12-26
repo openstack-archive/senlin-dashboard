@@ -12,6 +12,7 @@
 
 from django.conf import settings
 from django.conf.urls import url  # noqa
+from django.utils.translation import ugettext_lazy as _
 
 from horizon.browsers.views import AngularIndexView
 
@@ -19,8 +20,9 @@ from senlin_dashboard.cluster.clusters import views as legacyViews
 
 
 if settings.ANGULAR_FEATURES.get('clusters_panel'):
+    title = _("Clusters")
     urlpatterns = [
-        url('', AngularIndexView.as_view(), name='index'),
+        url('', AngularIndexView.as_view(title=title), name='index'),
     ]
 else:
     urlpatterns = [

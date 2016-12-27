@@ -19,7 +19,7 @@ from senlin_dashboard.api import senlin
 from senlin_dashboard.api import utils as api_utils
 from senlin_dashboard.cluster.nodes import forms as node_forms
 from senlin_dashboard.cluster.profiles import forms
-
+from senlin_dashboard.cluster.receivers import forms as receiver_forms
 
 CLIENT_KEYWORDS = {'marker', 'sort_dir', 'sort_key', 'paginate'}
 
@@ -40,11 +40,36 @@ class Receivers(generic.View):
         receivers, has_more_data, has_prev_data = senlin.receiver_list(
             request, filters=filters, **kwargs)
 
+        receivers_dict = []
+        for r in receivers:
+            r = r.to_dict()
+            r["params"] = api_utils.convert_to_yaml(r["params"])
+            r["channel"] = api_utils.convert_to_yaml(r["channel"])
+            receivers_dict.append(r)
+
         return {
-            'items': [r.to_dict() for r in receivers],
+            'items': receivers_dict,
             'has_more_data': has_more_data,
             'has_prev_data': has_prev_data,
         }
+
+    @rest_utils.ajax(data_required=True)
+    def post(self, request):
+        """Create a new Receiver.
+
+        Returns the new Receiver object on success.
+        """
+        request_param = request.DATA
+        params = receiver_forms._populate_receiver_params(
+            request_param.get("name"),
+            request_param.get("type"),
+            request_param.get("cluster_id"),
+            request_param.get("action"),
+            request_param.get("params"))
+        new_receiver = senlin.receiver_create(request, **params)
+        return rest_utils.CreatedResponse(
+            '/api/senlin/receivers/%s' % new_receiver.id,
+            new_receiver.to_dict())
 
 
 @urls.register
@@ -63,7 +88,10 @@ class Receiver(generic.View):
 
         The result is a receiver object.
         """
-        return senlin.receiver_get(request, receiver_id).to_dict()
+        receiver = senlin.receiver_get(request, receiver_id).to_dict()
+        receiver["params"] = api_utils.convert_to_yaml(receiver["params"])
+        receiver["channel"] = api_utils.convert_to_yaml(receiver["channel"])
+        return receiver
 
     @rest_utils.ajax()
     def delete(self, request, receiver_id):

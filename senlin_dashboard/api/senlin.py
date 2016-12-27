@@ -75,7 +75,7 @@ class Event(base.APIResourceWrapper):
 
 class Receiver(base.APIResourceWrapper):
     _attrs = ['id', 'name', 'type', 'cluster_id', 'action', 'created_at',
-              'updated_at', 'channel']
+              'updated_at', 'params', 'channel']
 
 
 @memoized.memoized
@@ -450,7 +450,7 @@ def receiver_list(request, sort_dir='desc', sort_key='created_at',
     return [Receiver(r) for r in receivers], has_more_data, has_prev_data
 
 
-def receiver_create(request, params):
+def receiver_create(request, **params):
     """Create receiver"""
     receiver = senlinclient(request).create_receiver(**params)
     return Receiver(receiver)

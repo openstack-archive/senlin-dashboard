@@ -17,7 +17,7 @@
 
   angular
     .module('horizon.cluster.receivers')
-    .factory('horizon.app.core.receivers.actions.delete.service', deleteReceiverService);
+    .factory('horizon.cluster.receivers.actions.delete.service', deleteReceiverService);
 
   deleteReceiverService.$inject = [
     '$q',
@@ -33,7 +33,7 @@
 
   /*
    * @ngdoc factory
-   * @name horizon.app.core.receivers.actions.delete.service
+   * @name horizon.cluster.receivers.actions.delete.service
    *
    * @Description
    * Brings up the delete receivers confirmation modal dialog.
@@ -100,18 +100,17 @@
     function createResult(deleteModalResult) {
       // To make the result of this action generically useful, reformat the return
       // from the deleteModal into a standard form
-      var actionResult = actionResultService.getActionResult();
+      var result = actionResultService.getActionResult();
       deleteModalResult.pass.forEach(function markDeleted(item) {
-        actionResult.deleted(receiversResourceType, getEntity(item).id);
+        result.deleted(receiversResourceType, getEntity(item).id);
       });
       deleteModalResult.fail.forEach(function markFailed(item) {
-        actionResult.failed(receiversResourceType, getEntity(item).id);
+        result.failed(receiversResourceType, getEntity(item).id);
       });
-      if (actionResult.result.failed.length === 0 &&
-          actionResult.result.deleted.length > 0) {
+      if (result.result.failed.length === 0 && result.result.deleted.length > 0) {
         $location.path('/cluster/receivers');
       } else {
-        return actionResult.result;
+        return result.result;
       }
     }
 

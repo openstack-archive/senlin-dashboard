@@ -30,16 +30,29 @@
 
   registerReceiverActions.$inject = [
     'horizon.framework.conf.resource-type-registry.service',
-    'horizon.app.core.receivers.actions.delete.service',
+    'horizon.cluster.receivers.actions.create.service',
+    'horizon.cluster.receivers.actions.delete.service',
     'horizon.app.core.receivers.resourceType'
   ];
 
   function registerReceiverActions(
     registry,
+    createReceiverService,
     deleteReceiverService,
     receiverResourceType
   ) {
     var receiverResource = registry.getResourceType(receiverResourceType);
+
+    receiverResource.globalActions
+      .append({
+        id: 'createReceiverAction',
+        service: createReceiverService,
+        template: {
+          text: gettext('Create Receiver'),
+          type: 'create'
+        }
+      });
+
     receiverResource.itemActions
       .append({
         id: 'deleteReceiverAction',

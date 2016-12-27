@@ -15,7 +15,7 @@
 (function() {
   'use strict';
 
-  describe('horizon.app.core.receivers.actions.delete.service', function() {
+  describe('horizon.cluster.receivers.actions.delete.service', function() {
 
     var service, $scope, deferredModal;
 
@@ -62,7 +62,7 @@
 
     beforeEach(inject(function($injector, _$rootScope_, $q) {
       $scope = _$rootScope_.$new();
-      service = $injector.get('horizon.app.core.receivers.actions.delete.service');
+      service = $injector.get('horizon.cluster.receivers.actions.delete.service');
       deferredModal = $q.defer();
     }));
 

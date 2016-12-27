@@ -106,10 +106,11 @@
     return {
       id: { label: gettext('ID'), filters: ['noValue'] },
       name: { label: gettext('Name'), filters: ['noName'] },
-      type: { label: gettext('Type'), filters: ['noName'] },
+      type: { label: gettext('Type'), filters: ['noValue'] },
       cluster_id: { label: gettext('Cluster ID'), filters: ['noValue'] },
       action: { label: gettext('Action'), filters: ['noValue'] },
-      channel: { label: gettext('Channel'), filters: ['noValue', 'json'] },
+      params: { label: gettext('Parameters'), filters: ['noValue'] },
+      channel: { label: gettext('Channel'), filters: ['noValue'] },
       created_at: { label: gettext('Created'), filters: ['simpleDate'] },
       updated_at: { label: gettext('Updated'), filters: ['simpleDate'] }
     };

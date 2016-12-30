@@ -24,6 +24,24 @@ from horizon.utils.memoized import memoized  # noqa
 from senlin_dashboard.api import senlin
 
 
+def _populate_node_params(name, profile_id, cluster_id, role, metadata):
+    if not metadata:
+        metadata_dict = {}
+    else:
+        try:
+            metadata_dict = yaml.load(metadata)
+        except Exception as ex:
+            raise Exception(_('The specified metadata is not a valid '
+                              'YAML: %s') % six.text_type(ex))
+    params = {"name": name,
+              "profile_id": profile_id,
+              "cluster_id": cluster_id,
+              "role": role,
+              "metadata": metadata_dict}
+
+    return params
+
+
 class CreateForm(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Node Name"))
     profile_id = forms.ThemableChoiceField(
@@ -58,20 +76,13 @@ class CreateForm(forms.SelfHandlingForm):
 
     def handle(self, request, data):
         try:
-            if not data['metadata']:
-                metadata = {}
-            else:
-                try:
-                    metadata = yaml.load(data['metadata'])
-                except Exception as ex:
-                    raise Exception(_('The specified metadata is not a valid '
-                                      'YAML: %s') % six.text_type(ex))
-            data['metadata'] = metadata
+            params = _populate_node_params(data['name'],
+                                           data['profile_id'],
+                                           data['cluster_id'],
+                                           data['role'],
+                                           data['metadata'])
 
-            data['cluster_id'] = data['cluster_id'] or None
-            data['role'] = data['role'] or None
-
-            node = senlin.node_create(request, data)
+            node = senlin.node_create(request, params)
             msg = _('Creating node "%s" successfully') % data['name']
             messages.info(request, msg)
             return node
@@ -107,18 +118,14 @@ class UpdateNodeForm(forms.SelfHandlingForm):
                                            for profile in profiles])
 
     def handle(self, request, data):
-        if not data['metadata']:
-            metadata = {}
-        else:
-            try:
-                metadata = yaml.load(data['metadata'])
-            except Exception as ex:
-                raise Exception(_('The specified metadata is not a valid '
-                                  'YAML: %s') % six.text_type(ex))
-        data['metadata'] = metadata
+        params = _populate_node_params(data['name'],
+                                       data['profile_id'],
+                                       data['cluster_id'],
+                                       data['role'],
+                                       data['metadata'])
 
         try:
-            node = senlin.node_update(request, data.get('node_id'), data)
+            node = senlin.node_update(request, data.get('node_id'), params)
             messages.success(
                 request,
                 _('Your node %s update request'

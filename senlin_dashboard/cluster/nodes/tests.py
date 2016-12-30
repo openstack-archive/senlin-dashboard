@@ -85,7 +85,7 @@ class NodesTest(test.TestCase):
         api.senlin.cluster_list(
             IsA(http.HttpRequest)).AndReturn((clusters, False, False))
         api.senlin.node_create(
-            IsA(http.HttpRequest), opts).AndReturn(node)
+            IsA(http.HttpRequest), **opts).AndReturn(node)
         self.mox.ReplayAll()
 
         res = self.client.post(NODE_CREATE_URL, formdata)

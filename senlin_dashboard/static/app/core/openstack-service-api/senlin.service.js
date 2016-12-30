@@ -43,6 +43,8 @@
       getProfile: getProfile,
       getNodes: getNodes,
       getNode: getNode,
+      createNode: createNode,
+      updateNode: updateNode,
       deleteNode: deleteNode,
       getEvents: getEvents,
       getReceivers: getReceivers,
@@ -93,6 +95,50 @@
           var msg = gettext('Unable to retrieve the node with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
+    }
+
+    /**
+     * @name createNode
+     * @description
+     * Create new Node.
+     *
+     * @param {Object} params
+     * JSON object to create new node like name, profile_id, cluster_id, role
+     * and metadata.
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     * @returns {Object} The result of the API call
+     */
+    function createNode(params, suppressError) {
+      var promise = apiService.post('/api/senlin/nodes/', params);
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to create the node with name: %(name)s');
+        toastService.add('error', interpolate(msg, { name: params.name }, true));
+      });
+    }
+
+    /**
+      * @name updateNode
+      * @description
+      * Update a Node.
+      *
+      * @param {Object} id
+      * Node ID to update.
+      * @param {Object} params
+      * JSON object to update a node like name, profile_id, cluster_id, role
+      * and metadata.
+      * @param {boolean} suppressError
+      * If passed in, this will not show the default error handling
+      * @returns {Object} The result of the API call
+      */
+    function updateNode(id, params, suppressError) {
+      var promise = apiService.put('/api/senlin/nodes/' + id + '/', params);
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to update the node with name: %(name)s');
+        toastService.add('error', interpolate(msg, { name: params.name }, true));
+      });
     }
 
     /**

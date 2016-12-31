@@ -1,13 +1,13 @@
 # Shu Muto <shu-mutou@rf.jp.nec.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: senlin-dashboard 0.5.1.dev105\n"
+"Project-Id-Version: senlin-dashboard 0.5.1.dev114\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2016-12-18 05:44+0000\n"
+"POT-Creation-Date: 2016-12-30 09:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-12-16 06:54+0000\n"
+"PO-Revision-Date: 2016-12-28 07:39+0000\n"
 "Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -138,8 +138,8 @@ msgstr "クラスターの最大サイズです。デフォルトは -1 で、�
 msgid "Metadata"
 msgstr "メタデータ"
 
-msgid "Metadata of the profile to create."
-msgstr "作成するプロファイルのメタデータ。"
+msgid "Metadata of the profile."
+msgstr "プロファイルのメタデータ"
 
 msgid "Min Size"
 msgstr "最小サイズ"
@@ -150,8 +150,8 @@ msgstr "クラスターの最小サイズです。デフォルトは 0 です。
 msgid "Name"
 msgstr "名前"
 
-msgid "Name of the profile to create."
-msgstr "作成するプロファイルの名前。"
+msgid "Name of the profile."
+msgstr "プロファイルの名前"
 
 msgid "Node"
 msgstr "ノード"
@@ -177,6 +177,10 @@ msgstr "プロファイル"
 #, python-format
 msgid "Profile %s was successfully created."
 msgstr "プロファイル %s が正常に作成されました。"
+
+#, python-format
+msgid "Profile %s was successfully updated."
+msgstr "プロファイル %s が正常に更新されました。"
 
 msgid "Profile Name"
 msgstr "プロファイル名"
@@ -211,8 +215,8 @@ msgstr "ソース指定方法"
 msgid "Spec"
 msgstr "スペック"
 
-msgid "Spec of the profile to create."
-msgstr "作成するプロファイルのスペック。"
+msgid "Spec of the profile."
+msgstr "プロファイルのスペック"
 
 msgid "Status"
 msgstr "ステータス"
@@ -229,6 +233,10 @@ msgstr "種別"
 #, python-format
 msgid "Unable to create the cluster with name: %(name)s"
 msgstr "以下の名前のクラスターを作成できません: %(name)s"
+
+#, python-format
+msgid "Unable to create the profile with name: %(name)s"
+msgstr "以下の名前のプロファイルを作成できません: %(name)s"
 
 #, python-format
 msgid "Unable to delete Node: %s."
@@ -289,6 +297,16 @@ msgstr "以下の ID のレシーバーを取得できません: %(id)s"
 msgid "Unable to retrieve the receivers."
 msgstr "レシーバーの一覧を取得できません。"
 
+#, python-format
+msgid "Unable to update the profile with id: %(id)s"
+msgstr "以下の ID のプロファイルを更新できません: %(id)s"
+
+msgid "Update"
+msgstr "更新"
+
+msgid "Update Profile"
+msgstr "プロファイルの更新"
+
 msgid "Updated"
 msgstr "更新時刻"
 
@@ -321,6 +339,9 @@ msgstr[0] "\"%s\" を選択しました。削除されたプロファイルは�
 msgid "You have selected \"%s\". Deleted Receiver is not recoverable."
 msgid_plural "You have selected \"%s\". Deleted Receivers are not recoverable."
 msgstr[0] "\"%s\" を選択しました。削除されたレシーバーは元に戻せません。"
+
+msgid "You may update the editable properties of your profile here."
+msgstr "ポリシーの変更可能な属性を更新できます。"
 
 msgid "error"
 msgid_plural "errors"

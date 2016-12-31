@@ -1,13 +1,13 @@
 # Shu Muto <shu-mutou@rf.jp.nec.com>, 2016. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: Senlin Dashboard Release Notes 0.4.1\n"
+"Project-Id-Version: Senlin Dashboard Release Notes 0.5.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 13:22+0000\n"
+"POT-Creation-Date: 2016-12-30 09:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-09-20 03:56+0000\n"
+"PO-Revision-Date: 2016-12-28 07:39+0000\n"
 "Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -37,6 +37,9 @@ msgstr "テーブルレイアウトを崩す可能性がある、長い名前の
 
 msgid "New Features"
 msgstr "新機能"
+
+msgid "Newton Series Release Notes"
+msgstr "Newton バージョンのリリースノート"
 
 msgid "Paginated list for node objects."
 msgstr "ノードオブジェクトのページ送り付きリスト。"

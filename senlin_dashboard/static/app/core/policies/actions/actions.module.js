@@ -30,16 +30,30 @@
 
   registerPolicyActions.$inject = [
     'horizon.framework.conf.resource-type-registry.service',
+    'horizon.cluster.policies.actions.create.service',
     'horizon.cluster.policies.actions.delete.service',
+    'horizon.cluster.policies.actions.update.service',
     'horizon.app.core.policies.resourceType'
   ];
 
   function registerPolicyActions(
     registry,
+    createPolicyService,
     deletePolicyService,
+    updatePolicyService,
     policyResourceType
   ) {
     var policyResource = registry.getResourceType(policyResourceType);
+
+    policyResource.globalActions
+      .append({
+        id: 'createPolicyAction',
+        service: createPolicyService,
+        template: {
+          text: gettext('Create Policy'),
+          type: 'create'
+        }
+      });
 
     policyResource.batchActions
       .append({
@@ -52,13 +66,21 @@
       });
 
     policyResource.itemActions
-    .append({
-      id: 'deletePolicyAction',
-      service: deletePolicyService,
-      template: {
-        text: gettext('Delete Policy'),
-        type: 'delete'
-      }
-    });
+      .append({
+        id: 'updatePolicyAction',
+        service: updatePolicyService,
+        template: {
+          text: gettext('Update Policy'),
+          type: 'row'
+        }
+      })
+      .append({
+        id: 'deletePolicyAction',
+        service: deletePolicyService,
+        template: {
+          text: gettext('Delete Policy'),
+          type: 'delete'
+        }
+      });
   }
 })();

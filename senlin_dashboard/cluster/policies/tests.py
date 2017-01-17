@@ -91,7 +91,7 @@ class PoliciesTest(test.TestCase):
         }
 
         api.senlin.policy_create(
-            IsA(http.HttpRequest), args).AndReturn(policy)
+            IsA(http.HttpRequest), **args).AndReturn(policy)
         self.mox.ReplayAll()
 
         res = self.client.post(CREATE_URL, formdata)

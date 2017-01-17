@@ -25,6 +25,23 @@
       $scope = _$rootScope_.$new();
     }));
 
+    it("getDetailsPath creates urls using the item's ID", function() {
+      var myItem = {id: "666"};
+      expect(service.getDetailsPath(myItem)).toBe('project/ngdetails/OS::Senlin::Policy/666');
+    });
+
+    describe('getPolicyPromise', function() {
+      it("get policy promise", inject(function($q, $injector) {
+        var senlin = $injector.get('horizon.app.core.openstack-service-api.senlin');
+        var deferred = $q.defer();
+        spyOn(senlin, 'getPolicy').and.returnValue(deferred.promise);
+        var result = service.getPolicyPromise({});
+        deferred.resolve({id: 1, name: 'test-policy'});
+        $scope.$apply();
+        expect(result.$$state.value.id).toBe(1);
+      }));
+    });
+
     describe('getPoliciesPromise', function() {
       it("get policies promise", inject(function($q, $injector) {
         var senlin = $injector.get('horizon.app.core.openstack-service-api.senlin');

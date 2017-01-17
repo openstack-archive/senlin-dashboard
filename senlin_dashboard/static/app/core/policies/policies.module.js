@@ -25,7 +25,8 @@
    */
   angular
     .module('horizon.cluster.policies', [
-      'ngRoute'
+      'ngRoute',
+      'horizon.cluster.policies.details'
     ])
     .constant('horizon.app.core.policies.resourceType', 'OS::Senlin::Policy')
     .run(run)
@@ -41,13 +42,15 @@
   function run(basePath, policyResourceType, policyService, registry) {
     registry.getResourceType(policyResourceType)
       .setNames(gettext('Policy'), gettext('Policies'))
+      .setSummaryTemplateUrl(basePath + 'details/drawer.html')
       .setProperties(policyProperties())
       .setListFunction(policyService.getPoliciesPromise)
       .tableColumns
       .append({
         id: 'name',
         priority: 1,
-        sortDefault: true
+        sortDefault: true,
+        urlFunction: policyService.getDetailsPath
       })
       .append({
         id: 'type',
@@ -80,6 +83,7 @@
       id: { label: gettext('ID'), filters: ['noValue'] },
       name: { label: gettext('Name'), filters: ['noName'] },
       type: { label: gettext('Type'), filters: ['noValue'] },
+      spec: { label: gettext('Spec') },
       created_at: { label: gettext('Created'), filters: ['simpleDate'] },
       updated_at: { label: gettext('Updated'), filters: ['simpleDate'] }
     };

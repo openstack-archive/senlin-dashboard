@@ -18,9 +18,10 @@
 
   describe('horizon.cluster.clusters.actions.create.service', function() {
 
-    var service, $scope, $q, modal, senlinAPI, policyAPI;
+    var service, $scope, $q, modal, basePath, workflow, senlinAPI, policyAPI;
     var createClusterResponse = {
       data: {
+        id: "9874",
         name: "test_cluster",
         profile_id: "1234",
         min_size: 0,
@@ -43,6 +44,8 @@
       senlinAPI = $injector.get('horizon.app.core.openstack-service-api.senlin');
       policyAPI = $injector.get('horizon.app.core.openstack-service-api.policy');
       modal = $injector.get('horizon.framework.widgets.form.ModalFormService');
+      basePath = $injector.get('horizon.app.core.clusters.basePath');
+      workflow = $injector.get('horizon.cluster.clusters.actions.workflow');
       service = $injector.get('horizon.cluster.clusters.actions.create.service');
     }));
 
@@ -56,27 +59,21 @@
         deferredGetProfiles.resolve(createClusterResponse);
         spyOn(senlinAPI, 'getProfiles').and.returnValue(deferredGetProfiles.promise);
 
+        spyOn(workflow, 'init').and.callThrough();
+
         service.initAction();
         service.perform();
         $scope.$apply();
 
+        expect(workflow.init).toHaveBeenCalled();
+
+        var modalArgs = workflow.init.calls.mostRecent().args;
+        expect(modalArgs[0]).toEqual('create');
+        expect(modalArgs[1]).toEqual('Create Cluster');
+        expect(modalArgs[2]).toEqual('Create');
+        expect(modalArgs[3]).toEqual(basePath + 'actions/create/cluster.help.html');
+
         expect(modal.open).toHaveBeenCalled();
-        expect(service.getModel(), createClusterResponse.data);
-      });
-
-      it('should call senlin.createCluster', function() {
-        var deferred = $q.defer();
-        deferred.resolve(true);
-        spyOn(modal, "open").and.returnValue(deferred.promise);
-
-        var deferredCreateCluster = $q.defer();
-        deferredCreateCluster.resolve(createClusterResponse);
-        spyOn(senlinAPI, 'createCluster').and.returnValue(deferredCreateCluster.promise);
-
-        service.perform();
-        $scope.$apply();
-
-        expect(senlinAPI.createCluster).toHaveBeenCalled();
       });
     });
 

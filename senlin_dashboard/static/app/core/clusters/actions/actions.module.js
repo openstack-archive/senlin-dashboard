@@ -33,6 +33,7 @@
     'horizon.cluster.clusters.actions.create.service',
     'horizon.cluster.clusters.actions.manage-policy.service',
     'horizon.cluster.clusters.actions.delete.service',
+    'horizon.cluster.clusters.actions.update.service',
     'horizon.app.core.clusters.resourceType'
   ];
 
@@ -41,6 +42,7 @@
     createClusterService,
     managePolicyService,
     deleteClusterService,
+    updateClusterService,
     clusterResourceType
   ) {
     var clusterResource = registry.getResourceType(clusterResourceType);
@@ -67,10 +69,19 @@
 
     clusterResource.itemActions
       .append({
+        id: 'updateClusterAction',
+        service: updateClusterService,
+        template: {
+          text: gettext('Update Cluster'),
+          type: 'row'
+        }
+      })
+      .append({
         id: 'managePolicyAction',
         service: managePolicyService,
         template: {
-          text: gettext('Manage Policies')
+          text: gettext('Manage Policies'),
+          type: 'row'
         }
       })
       .append({

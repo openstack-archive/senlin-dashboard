@@ -321,7 +321,9 @@ class Cluster(generic.View):
 
         The result is a cluster object.
         """
-        return senlin.cluster_get(request, cluster_id).to_dict()
+        cluster = senlin.cluster_get(request, cluster_id).to_dict()
+        cluster["metadata"] = api_utils.convert_to_yaml(cluster["metadata"])
+        return cluster
 
     @rest_utils.ajax()
     def delete(self, request, cluster_id):
@@ -330,6 +332,20 @@ class Cluster(generic.View):
         DELETE http://localhost/api/senlin/clusters/cc758c90-3d98-4ea1-af44-aab405c9c915  # noqa
         """
         senlin.cluster_delete(request, cluster_id)
+
+    @rest_utils.ajax(data_required=True)
+    def put(self, request, cluster_id):
+        """Update a Node.
+
+        Returns the Node object on success.
+        """
+        params = request.DATA
+        params["metadata"] = api_utils.load_yaml(params.get("metadata"))
+        updated_cluster = senlin.cluster_update(
+            request, cluster_id, **params)
+        return rest_utils.CreatedResponse(
+            '/api/senlin/clusters/%s' % updated_cluster.id,
+            updated_cluster.to_dict())
 
 
 @urls.register

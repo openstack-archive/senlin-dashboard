@@ -1,6 +1,4 @@
 /**
- * Copyright 2016 NEC Corporation
- *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
  * a copy of the License at
@@ -25,9 +23,9 @@
    */
   angular
     .module('horizon.cluster.clusters.actions')
-    .factory('horizon.cluster.clusters.actions.create.service', createService);
+    .factory('horizon.cluster.clusters.actions.update.service', updateService);
 
-  createService.$inject = [
+  updateService.$inject = [
     '$location',
     'horizon.app.core.clusters.basePath',
     'horizon.app.core.clusters.resourceType',
@@ -40,53 +38,67 @@
     'horizon.cluster.clusters.actions.workflow'
   ];
 
-  function createService(
+  function updateService(
     $location, basePath, resourceType, policy, senlin, actionResult, gettext,
     modal, toast, workflow
   ) {
 
     var message = {
-      success: gettext('Cluster %s was successfully created.')
+      success: gettext('Cluster %s was successfully updated.')
     };
 
     var service = {
-      initAction: initAction,
-      allowed: allowed,
-      perform: perform
+      perform: perform,
+      allowed: allowed
     };
 
     return service;
 
     //////////////
 
-    function initAction() {
-    }
-
-    function perform() {
+    function perform(selected) {
       // modal title, buttons
       var title, submitText, helpUrl;
-      title = gettext('Create Cluster');
-      submitText = gettext('Create');
-      helpUrl = basePath + 'actions/create/cluster.help.html';
+      title = gettext('Update Cluster');
+      submitText = gettext('Update');
+      helpUrl = basePath + 'actions/update/cluster.help.html';
 
-      var config = workflow.init('create', title, submitText, helpUrl);
+      var config = workflow.init('update', title, submitText, helpUrl);
+
+      // load current data
+      senlin.getCluster(selected.id).then(onLoad);
+      function onLoad(response) {
+        config.model.id = response.data.id;
+        config.model.name = response.data.name;
+        config.model.profile_id = response.data.profile_id;
+        config.model.min_size = response.data.min_size;
+        config.model.max_size = response.data.max_size;
+        config.model.desired_capacity = response.data.desired_capacity;
+        config.model.timeout = response.data.timeout;
+        config.model.metadata = response.data.metadata;
+      }
+
       return modal.open(config).then(submit);
     }
 
     function allowed() {
-      return policy.ifAllowed({ rules: [['cluster', 'clusters:create']] });
+      return policy.ifAllowed({ rules: [['cluster', 'clusters:update']] });
     }
 
     function submit(context) {
+      var id = context.model.id;
       delete context.model.id;
-      return senlin.createCluster(context.model, true).then(success, true);
+      delete context.model.min_size;
+      delete context.model.max_size;
+      delete context.model.desired_capacity;
+      return senlin.updateCluster(id, context.model, true).then(success, true);
     }
 
     function success(response) {
       toast.add('success', interpolate(message.success, [response.data.id]));
       var result = actionResult.getActionResult()
-                   .created(resourceType, response.data.id);
-      if (result.result.failed.length === 0 && result.result.created.length > 0) {
+                   .updated(resourceType, response.data.id);
+      if (result.result.failed.length === 0 && result.result.updated.length > 0) {
         $location.path("/cluster");
       } else {
         return result.result;

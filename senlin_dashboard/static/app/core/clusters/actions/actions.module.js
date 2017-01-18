@@ -32,6 +32,7 @@
     'horizon.framework.conf.resource-type-registry.service',
     'horizon.cluster.clusters.actions.create.service',
     'horizon.cluster.clusters.actions.manage-policy.service',
+    'horizon.cluster.clusters.actions.delete.service',
     'horizon.app.core.clusters.resourceType'
   ];
 
@@ -39,11 +40,12 @@
     registry,
     createClusterService,
     managePolicyService,
+    deleteClusterService,
     clusterResourceType
   ) {
-    var resourceType = registry.getResourceType(clusterResourceType);
+    var clusterResource = registry.getResourceType(clusterResourceType);
 
-    resourceType.globalActions
+    clusterResource.globalActions
       .append({
         id: 'createClusterAction',
         service: createClusterService,
@@ -53,14 +55,31 @@
         }
       });
 
-    resourceType.itemActions
+    clusterResource.batchActions
+      .append({
+        id: 'batchDeleteClusterAction',
+        service: deleteClusterService,
+        template: {
+          type: 'delete-selected',
+          text: gettext('Delete Clusters')
+        }
+      });
+
+    clusterResource.itemActions
       .append({
         id: 'managePolicyAction',
         service: managePolicyService,
         template: {
           text: gettext('Manage Policies')
         }
+      })
+      .append({
+        id: 'deleteClusterAction',
+        service: deleteClusterService,
+        template: {
+          text: gettext('Delete Cluster'),
+          type: 'delete'
+        }
       });
   }
-
 })();

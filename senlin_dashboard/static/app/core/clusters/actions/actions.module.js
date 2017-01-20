@@ -31,12 +31,14 @@
   registerClusterActions.$inject = [
     'horizon.framework.conf.resource-type-registry.service',
     'horizon.cluster.clusters.actions.create.service',
+    'horizon.cluster.clusters.actions.manage-policy.service',
     'horizon.app.core.clusters.resourceType'
   ];
 
   function registerClusterActions(
     registry,
     createClusterService,
+    managePolicyService,
     clusterResourceType
   ) {
     var resourceType = registry.getResourceType(clusterResourceType);
@@ -48,6 +50,15 @@
         template: {
           text: gettext('Create Cluster'),
           type: 'create'
+        }
+      });
+
+    resourceType.itemActions
+      .append({
+        id: 'managePolicyAction',
+        service: managePolicyService,
+        template: {
+          text: gettext('Manage Policies')
         }
       });
   }

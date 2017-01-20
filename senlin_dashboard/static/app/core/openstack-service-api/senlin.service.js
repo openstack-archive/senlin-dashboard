@@ -54,7 +54,9 @@
       getClusters: getClusters,
       getPolicy: getPolicy,
       getPolicies: getPolicies,
-      deletePolicy: deletePolicy
+      deletePolicy: deletePolicy,
+      getClusterPolicies: getClusterPolicies,
+      updateClusterPolicies: updateClusterPolicies
     };
 
     return service;
@@ -381,6 +383,39 @@
     }
 
     // Policies
+
+    /*
+     * @name getClusterPolicies
+     * @description
+     * Get policies of a single cluster by ID.
+     */
+    function getClusterPolicies(id) {
+      return apiService.get('/api/senlin/clusters/' + id + '/policy')
+        .error(function () {
+          var msg = gettext('Unable to retrieve the policies of the cluster with id: %(id)s.');
+          toastService.add('error', interpolate(msg, {id: id}, true));
+        });
+    }
+
+    /**
+     * @name updateClusterPolicies
+     * @description
+     * Update policies for the cluster
+     *
+     * @param {String} id
+     * ID of the cluster to be updated
+     * @param {Object} params
+     * JSON object to attach policies.
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     * @returns {Object} The result of the API call
+     */
+    function updateClusterPolicies(id, params, suppressError) {
+      var promise = apiService.put('/api/senlin/clusters/' + id + '/policy' , params);
+      return suppressError ? promise : promise.error(function() {
+        toastService.add('error', gettext('Unable to update policies of the cluster'));
+      });
+    }
 
     /*
      * @name getPolicies

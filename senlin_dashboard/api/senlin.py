@@ -273,7 +273,6 @@ def policy_list(request, sort_dir='desc', sort_key='created_at',
     if paginate:
         policies, has_more_data, has_prev_data = api_utils.update_pagination(
             policies_iter, request_size, page_size, marker, reversed_order)
-
     else:
         policies = list(policies_iter)
 

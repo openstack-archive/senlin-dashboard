@@ -1,0 +1,17 @@
+<table st-table="row.policies"
+       class="table table-condensed table-rsp server-group-details">
+  <thead>
+    <tr>
+      <th st-sort="id" st-sort-default translate>ID</th>
+      <th st-sort="type" translate>Type</th>
+      <th st-sort="created_at" translate>Create At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{$ row.id | noValue $}</td>
+      <td>{$ row.type | noValue $}</td>
+      <td>{$ row.created_at | simpleDate $}</td>
+    </tr>
+  </tbody>
+</table>

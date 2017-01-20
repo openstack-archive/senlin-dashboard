@@ -154,7 +154,7 @@ class ClustersTest(test.TestCase):
         policies = self.policies.list()
         cluster_policies = policies[:1]
         api.senlin.policy_list(
-            IsA(http.HttpRequest)).AndReturn(policies)
+            IsA(http.HttpRequest)).AndReturn([policies, False, False])
         api.senlin.cluster_policy_list(
             IsA(http.HttpRequest), u'123456', {}).AndReturn(cluster_policies)
         api.senlin.cluster_policy_list(

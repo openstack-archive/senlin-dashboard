@@ -33,6 +33,7 @@
 
     beforeEach(module('horizon.framework'));
     beforeEach(module('horizon.app.core'));
+    beforeEach(module('horizon.cluster'));
     beforeEach(module('horizon.cluster.clusters.actions'));
 
     beforeEach(inject(function($injector, _$rootScope_, _$q_) {

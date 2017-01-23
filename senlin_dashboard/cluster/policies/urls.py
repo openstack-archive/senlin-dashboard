@@ -10,16 +10,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from django.conf import settings
 from django.conf.urls import url  # noqa
+from django.utils.translation import ugettext_lazy as _
 
-from senlin_dashboard.cluster.policies import views
+from horizon.browsers import views
+from senlin_dashboard.cluster.policies import views as legacyView
 
-
-urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^create/$', views.CreateView.as_view(), name='create'),
-    url(r'^(?P<policy_id>[^/]+)/$',
-        views.DetailView.as_view(), name='detail'),
-    url(r'^(?P<policy_id>[^/]+)/update/$',
-        views.UpdateView.as_view(), name='update'),
-]
+if settings.ANGULAR_FEATURES.get('policies_panel', False):
+    title = _("Policies")
+    urlpatterns = [
+        url('', views.AngularIndexView.as_view(title=title), name='index'),
+    ]
+else:
+    urlpatterns = [
+        url(r'^$', legacyView.IndexView.as_view(), name='index'),
+        url(r'^create/$', legacyView.CreateView.as_view(), name='create'),
+        url(r'^(?P<policy_id>[^/]+)/$',
+            legacyView.DetailView.as_view(), name='detail'),
+        url(r'^(?P<policy_id>[^/]+)/update/$',
+            legacyView.UpdateView.as_view(), name='update'),
+    ]

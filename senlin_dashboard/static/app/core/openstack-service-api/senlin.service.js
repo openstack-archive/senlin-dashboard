@@ -51,8 +51,8 @@
       getReceiver: getReceiver,
       deleteReceiver: deleteReceiver,
       getCluster: getCluster,
-      getClusters: getClusters
-
+      getClusters: getClusters,
+      getPolicies: getPolicies
     };
 
     return service;
@@ -377,5 +377,20 @@
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
     }
+    // Policies
+
+    /*
+     * @name getPolicies
+     * @description
+     * Get a list of policies.
+     */
+    function getPolicies(params) {
+      var config = params ? {params: params} : {};
+      return apiService.get('/api/senlin/policies/', config)
+        .error(function () {
+          toastService.add('error', gettext('Unable to retrieve the policies.'));
+        });
+    }
+
   }
 })();

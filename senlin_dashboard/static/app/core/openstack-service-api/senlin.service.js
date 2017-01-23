@@ -53,7 +53,8 @@
       getCluster: getCluster,
       getClusters: getClusters,
       getPolicy: getPolicy,
-      getPolicies: getPolicies
+      getPolicies: getPolicies,
+      deletePolicy: deletePolicy
     };
 
     return service;
@@ -405,6 +406,28 @@
           var msg = gettext('Unable to retrieve the policy with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
+    }
+
+    /**
+     * @name deletePolicy
+     * @description
+     * Deletes single Policy by ID.
+     *
+     * @param {string} policyId
+     * The Id of the policy to delete.
+     *
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     *
+     * @returns {Object} The result of the API call
+     */
+    function deletePolicy(policyId, suppressError) {
+      var promise = apiService.delete('/api/senlin/policies/' + policyId + '/');
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to delete the policy with id: %(id)s.');
+        toastService.add('error', interpolate(msg, { id: policyId }, true));
+      });
     }
   }
 })();

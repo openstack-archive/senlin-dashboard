@@ -26,7 +26,8 @@
   angular
     .module('horizon.cluster.policies', [
       'ngRoute',
-      'horizon.cluster.policies.details'
+      'horizon.cluster.policies.details',
+      'horizon.cluster.policies.actions'
     ])
     .constant('horizon.app.core.policies.resourceType', 'OS::Senlin::Policy')
     .run(run)

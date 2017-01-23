@@ -364,3 +364,11 @@ class Policy(generic.View):
         policy = senlin.policy_get(request, policy_id).to_dict()
         policy["spec"] = api_utils.convert_to_yaml(policy["spec"])
         return policy
+
+    @rest_utils.ajax()
+    def delete(self, request, policy_id):
+        """Delete a specific policy
+
+        DELETE http://localhost/api/senlin/policies/cc758c90-3d98-4ea1-af44-aab405c9c915  # noqa
+        """
+        senlin.policy_delete(request, policy_id)

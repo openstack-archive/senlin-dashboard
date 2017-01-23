@@ -119,6 +119,13 @@
         path: '/api/senlin/policies/666/',
         error: 'Unable to retrieve the policy with id: 666.',
         testInput: [666]
+      },
+      {
+        func: 'deletePolicy',
+        method: 'delete',
+        path: '/api/senlin/policies/666/',
+        error: 'Unable to delete the policy with id: 666.',
+        testInput: [666]
       }
     ];
 
@@ -138,6 +145,11 @@
     it('supresses the error if instructed for deleteProfile', function() {
       spyOn(apiService, 'delete').and.returnValue("promise");
       expect(service.deleteProfile("whatever", true)).toBe("promise");
+    });
+
+    it('supresses the error if instructed for deletePolicy', function() {
+      spyOn(apiService, 'delete').and.returnValue("promise");
+      expect(service.deletePolicy("whatever", true)).toBe("promise");
     });
 
   });

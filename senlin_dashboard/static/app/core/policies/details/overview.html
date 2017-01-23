@@ -1,0 +1,15 @@
+<div ng-controller="PolicyOverviewController as ctrl">
+  <div class="row">
+    <div class="col-md-12 detail">
+      <h3 translate>Policy</h3>
+      <hr>
+      <hz-resource-property-list
+        resource-type-name="OS::Senlin::Policy"
+        cls="dl-horizontal"
+        item="ctrl.policy"
+        property-groups="[['id', 'name', 'created_at', 'updated_at'],
+                          ['type', 'spec']]">
+      </hz-resource-property-list>
+    </div>
+  </div>
+</div>

@@ -52,6 +52,7 @@
       deleteReceiver: deleteReceiver,
       getCluster: getCluster,
       getClusters: getClusters,
+      getPolicy: getPolicy,
       getPolicies: getPolicies
     };
 
@@ -377,6 +378,7 @@
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
     }
+
     // Policies
 
     /*
@@ -392,5 +394,17 @@
         });
     }
 
+    /*
+     * @name getPolicy
+     * @description
+     * Get a single policy by ID.
+     */
+    function getPolicy(id) {
+      return apiService.get('/api/senlin/policies/' + id + '/')
+        .error(function () {
+          var msg = gettext('Unable to retrieve the policy with id: %(id)s.');
+          toastService.add('error', interpolate(msg, {id: id}, true));
+        });
+    }
   }
 })();

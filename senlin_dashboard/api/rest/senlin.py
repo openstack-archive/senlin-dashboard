@@ -343,3 +343,24 @@ class Policies(generic.View):
             'has_more_data': has_more_data,
             'has_prev_data': has_prev_data,
         }
+
+
+@urls.register
+class Policy(generic.View):
+    """API for Senlin policy."""
+
+    url_regex = r'senlin/policies/(?P<policy_id>[^/]+)/$'
+
+    @rest_utils.ajax()
+    def get(self, request, policy_id):
+        """Get a single policy's details with the policy id.
+
+        The following get parameters may be passed in the GET
+
+        :param policy_id: the id of the policy
+
+        The result is a policy object.
+        """
+        policy = senlin.policy_get(request, policy_id).to_dict()
+        policy["spec"] = api_utils.convert_to_yaml(policy["spec"])
+        return policy

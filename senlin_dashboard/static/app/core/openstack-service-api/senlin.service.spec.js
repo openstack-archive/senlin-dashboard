@@ -104,6 +104,21 @@
         path: '/api/senlin/events/666/',
         error: 'Unable to retrieve the events with id: 666.',
         testInput: [666]
+      },
+      {
+        func: 'getPolicies',
+        method: 'get',
+        path: '/api/senlin/policies/',
+        data: { params: 'config' },
+        error: 'Unable to retrieve the policies.',
+        testInput: [ 'config' ]
+      },
+      {
+        func: 'getPolicy',
+        method: 'get',
+        path: '/api/senlin/policies/666/',
+        error: 'Unable to retrieve the policy with id: 666.',
+        testInput: [666]
       }
     ];
 

@@ -32,8 +32,31 @@
    */
   function policiesService(senlin) {
     return {
+      getDetailsPath: getDetailsPath,
+      getPolicyPromise: getPolicyPromise,
       getPoliciesPromise: getPoliciesPromise
     };
+
+    /*
+     * @ngdoc function
+     * @name getDetailsPath
+     * @param item {Object} - The policy object
+     * @description
+     * Returns the relative path to the details view.
+     */
+    function getDetailsPath(item) {
+      return 'project/ngdetails/OS::Senlin::Policy/' + item.id;
+    }
+
+    /*
+     * @ngdoc function
+     * @name getPolicyPromise
+     * @description
+     * Given an id, returns a promise for the policy data.
+     */
+    function getPolicyPromise(identifier) {
+      return senlin.getPolicy(identifier);
+    }
 
     /*
      * @ngdoc function

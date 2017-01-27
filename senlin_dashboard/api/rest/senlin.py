@@ -351,6 +351,14 @@ class Cluster(generic.View):
         """
         return senlin.cluster_get(request, cluster_id).to_dict()
 
+    @rest_utils.ajax()
+    def delete(self, request, cluster_id):
+        """Delete a specific cluster
+
+        DELETE http://localhost/api/senlin/clusters/cc758c90-3d98-4ea1-af44-aab405c9c915  # noqa
+        """
+        senlin.cluster_delete(request, cluster_id)
+
 
 @urls.register
 class Policies(generic.View):

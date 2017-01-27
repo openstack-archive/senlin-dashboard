@@ -36,6 +36,7 @@
   function senlinAPI(apiService, toastService) {
     var service = {
       createCluster: createCluster,
+      deleteCluster: deleteCluster,
       createProfile: createProfile,
       updateProfile: updateProfile,
       deleteProfile: deleteProfile,
@@ -403,6 +404,28 @@
       return suppressError ? promise : promise.error(function() {
         var msg = gettext('Unable to create the cluster with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
+      });
+    }
+
+    /**
+     * @name deleteCluster
+     * @description
+     * Deletes single Cluster by ID.
+     *
+     * @param {string} clusterId
+     * The Id of the cluster to delete.
+     *
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     *
+     * @returns {Object} The result of the API call
+     */
+    function deleteCluster(clusterId, suppressError) {
+      var promise = apiService.delete('/api/senlin/clusters/' + clusterId + '/');
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to delete the cluster with id: %(id)s.');
+        toastService.add('error', interpolate(msg, { id: clusterId }, true));
       });
     }
 

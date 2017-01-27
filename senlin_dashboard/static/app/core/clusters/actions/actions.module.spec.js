@@ -21,4 +21,26 @@
     });
   });
 
+  describe('cluster actions module', function() {
+    var registry;
+    beforeEach(module('horizon.app.core'));
+    beforeEach(module('horizon.cluster'));
+    beforeEach(inject(function($injector) {
+      registry = $injector.get('horizon.framework.conf.resource-type-registry.service');
+    }));
+
+    it('registers Delete as a batch action', function() {
+      var actions = registry.getResourceType('OS::Senlin::Cluster').batchActions;
+      expect(actionHasId(actions, 'batchDeleteClusterAction')).toBe(true);
+    });
+
+    function actionHasId(list, value) {
+      return list.filter(matchesId).length === 1;
+      function matchesId(action) {
+        if (action.id === value) {
+          return true;
+        }
+      }
+    }
+  });
 })();

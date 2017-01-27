@@ -1,0 +1,16 @@
+---
+prelude: >
+    AngularJS-based panels are implemented. These new
+    panels have most of functions in exist Django-based
+    panels. Users can switch to AngularJS-based panels by
+    editing settings in
+    ``_59_toggle_angular_senlin_dashboard.py`` .
+features:
+  - >
+    Five panels, profiles, nodes, clusters, policies and
+    receivers, are implemented as AngularJS-based. These
+    panels uses recent Horizon framework features, e.g.
+    angular-json-schema, common "views" for AngularJS-based
+    plugin, initAction instead initScope, and so on. Also
+    these source codes are tested with Jasmine and Eslint
+    to ensure its quality.

@@ -144,6 +144,13 @@ def cluster_create(request, **params):
     return Cluster(cluster)
 
 
+def cluster_update(request, cluster_id, **params):
+    """Update cluster"""
+    cluster = senlinclient(request).get_cluster(cluster_id)
+    updated = senlinclient(request).update_cluster(cluster, **params)
+    return Cluster(updated)
+
+
 def cluster_check(request, cluster, params=None):
     """Check a Cluster's Health Status."""
     if not params:

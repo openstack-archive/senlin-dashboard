@@ -36,6 +36,7 @@
   function senlinAPI(apiService, toastService) {
     var service = {
       createCluster: createCluster,
+      updateCluster: updateCluster,
       deleteCluster: deleteCluster,
       createProfile: createProfile,
       updateProfile: updateProfile,
@@ -403,6 +404,28 @@
 
       return suppressError ? promise : promise.error(function() {
         var msg = gettext('Unable to create the cluster with name: %(name)s');
+        toastService.add('error', interpolate(msg, { name: params.name }, true));
+      });
+    }
+
+    /**
+      * @name updateCluster
+      * @description
+      * Update a Cluster.
+      *
+      * @param {Object} id
+      * Cluster ID to update.
+      * @param {Object} params
+      * JSON object to update a cluster like name.
+      * @param {boolean} suppressError
+      * If passed in, this will not show the default error handling
+      * @returns {Object} The result of the API call
+      */
+    function updateCluster(id, params, suppressError) {
+      var promise = apiService.put('/api/senlin/clusters/' + id + '/', params);
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to update the cluster with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
     }

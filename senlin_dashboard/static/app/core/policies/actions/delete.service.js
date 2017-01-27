@@ -56,7 +56,6 @@
     var notAllowedMessage = gettext("You are not allowed to delete policies: %s");
 
     var service = {
-      initAction: initAction,
       allowed: allowed,
       perform: perform
     };
@@ -65,13 +64,10 @@
 
     //////////////
 
-    function initAction() {
-      context = { };
-    }
-
     function perform(items, newScope) {
       scope = newScope;
       var policies = angular.isArray(items) ? items : [items];
+      context = { };
       context.labels = labelize(policies.length);
       context.deleteEntity = deletePolicy;
       return $qExtensions.allSettled(policies.map(checkPermission)).then(afterCheck);

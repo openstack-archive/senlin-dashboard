@@ -61,7 +61,6 @@
 
         spyOn(workflow, 'init').and.callThrough();
 
-        service.initAction();
         service.perform();
         $scope.$apply();
 

@@ -48,7 +48,6 @@
     };
 
     var service = {
-      initAction: initAction,
       perform: perform,
       allowed: allowed
     };
@@ -56,9 +55,6 @@
     return service;
 
     //////////////
-
-    function initAction() {
-    }
 
     function perform() {
       // modal title, buttons

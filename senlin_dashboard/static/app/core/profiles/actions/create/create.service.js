@@ -45,13 +45,11 @@
     model, resourceType, createWorkflow
   ) {
 
-    var scope;
     var message = {
       success: gettext('Profile %s was successfully created.')
     };
 
     var service = {
-      initScope: initScope,
       perform: perform,
       allowed: allowed
     };
@@ -60,15 +58,9 @@
 
     //////////////
 
-    function initScope($scope) {
-      scope = $scope;
+    function perform(selected, scope) {
       scope.workflow = createWorkflow;
       scope.model = model;
-      scope.$on('$destroy', function() {
-      });
-    }
-
-    function perform(selected) {
       scope.model.init();
       scope.model.actionType = 'create';
       scope.selected = selected;

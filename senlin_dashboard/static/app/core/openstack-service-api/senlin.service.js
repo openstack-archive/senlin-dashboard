@@ -55,6 +55,8 @@
       getClusters: getClusters,
       getPolicy: getPolicy,
       getPolicies: getPolicies,
+      createPolicy: createPolicy,
+      updatePolicy: updatePolicy,
       deletePolicy: deletePolicy,
       getClusterPolicies: getClusterPolicies,
       updateClusterPolicies: updateClusterPolicies
@@ -463,6 +465,48 @@
           var msg = gettext('Unable to retrieve the policy with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
+    }
+
+    /**
+     * @name createPolicy
+     * @description
+     * Create new Policy.
+     *
+     * @param {Object} params
+     * JSON object to create new policy like name and spec.
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     * @returns {Object} The result of the API call
+     */
+    function createPolicy(params, suppressError) {
+      var promise = apiService.post('/api/senlin/policies/', params);
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to create the policy with name: %(name)s');
+        toastService.add('error', interpolate(msg, { name: params.name }, true));
+      });
+    }
+
+    /**
+      * @name updatePolicy
+      * @description
+      * Update a Policy.
+      *
+      * @param {Object} id
+      * Policy ID to update.
+      * @param {Object} params
+      * JSON object to update a policy like name.
+      * @param {boolean} suppressError
+      * If passed in, this will not show the default error handling
+      * @returns {Object} The result of the API call
+      */
+    function updatePolicy(id, params, suppressError) {
+      var promise = apiService.put('/api/senlin/policies/' + id + '/', params);
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to update the policy with name: %(name)s');
+        toastService.add('error', interpolate(msg, { name: params.name }, true));
+      });
     }
 
     /**

@@ -18,6 +18,7 @@ from openstack_dashboard.api.rest import utils as rest_utils
 from senlin_dashboard.api import senlin
 from senlin_dashboard.api import utils as api_utils
 from senlin_dashboard.cluster.nodes import forms as node_forms
+from senlin_dashboard.cluster.policies import forms as policy_forms
 from senlin_dashboard.cluster.profiles import forms
 from senlin_dashboard.cluster.receivers import forms as receiver_forms
 
@@ -372,6 +373,23 @@ class Policies(generic.View):
             'has_prev_data': has_prev_data,
         }
 
+    @rest_utils.ajax(data_required=True)
+    def post(self, request):
+        """Create a new Policy.
+
+        Returns the new Policy object on success.
+        """
+        request_param = request.DATA
+        params = policy_forms._populate_policy_params(
+            request_param.get("name"),
+            request_param.get("spec"),
+            request_param.get("cooldown"),
+            request_param.get("level"))
+        new_policy = senlin.policy_create(request, **params)
+        return rest_utils.CreatedResponse(
+            '/api/senlin/policies/%s' % new_policy.id,
+            new_policy.to_dict())
+
 
 @urls.register
 class Policy(generic.View):
@@ -400,6 +418,25 @@ class Policy(generic.View):
         DELETE http://localhost/api/senlin/policies/cc758c90-3d98-4ea1-af44-aab405c9c915  # noqa
         """
         senlin.policy_delete(request, policy_id)
+
+    @rest_utils.ajax(data_required=True)
+    def put(self, request, policy_id):
+        """Update a Policy.
+
+        Returns the Policy object on success.
+        """
+        request_param = request.DATA
+        params = policy_forms._populate_policy_params(
+            request_param.get("name"),
+            None, None, None)
+        params.pop('spec')
+        params.pop('cooldown')
+        params.pop('level')
+        updated_policy = senlin.policy_update(
+            request, policy_id, **params)
+        return rest_utils.CreatedResponse(
+            '/api/senlin/policies/%s' % updated_policy.id,
+            updated_policy.to_dict())
 
 
 @urls.register

@@ -33,6 +33,23 @@ DETAIL_URL = "horizon:cluster:policies:detail"
 UPDATE_URL = "horizon:cluster:policies:update"
 
 
+def _populate_policy_params(name, spec, cooldown, level):
+    if not spec:
+        spec_dict = {}
+    else:
+        try:
+            spec_dict = yaml.load(spec)
+        except Exception as ex:
+            raise Exception(_('The specified spec is not a valid '
+                              'YAML: %s') % six.text_type(ex))
+    params = {"name": name,
+              "spec": spec_dict,
+              "cooldown": cooldown,
+              "level": level}
+
+    return params
+
+
 class CreatePolicyForm(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Name"))
     spec = forms.CharField(

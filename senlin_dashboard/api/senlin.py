@@ -279,16 +279,17 @@ def policy_list(request, sort_dir='desc', sort_key='created_at',
     return [Policy(p) for p in policies], has_more_data, has_prev_data
 
 
-def policy_create(request, params):
+def policy_create(request, **params):
     """Create a policy."""
     policy = senlinclient(request).create_policy(**params)
     return Policy(policy)
 
 
-def policy_update(request, policy, params):
+def policy_update(request, policy, **params):
     """Update policy."""
-    policy = senlinclient(request).update_policy(policy, **params)
-    return Policy(policy)
+    policy = senlinclient(request).get_policy(policy)
+    updated = senlinclient(request).update_policy(policy, **params)
+    return Policy(updated)
 
 
 def policy_delete(request, policy):

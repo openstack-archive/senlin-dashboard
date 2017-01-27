@@ -30,6 +30,24 @@ from senlin_dashboard.api import senlin
 INDEX_URL = "horizon:cluster:receivers:index"
 
 
+def _populate_receiver_params(name, type_name, cluster_id, action, params):
+    if not params:
+        params_dict = {}
+    else:
+        try:
+            params_dict = yaml.load(params)
+        except Exception as ex:
+            raise Exception(_('The specified params is not a valid '
+                              'YAML: %s') % six.text_type(ex))
+    params = {"name": name,
+              "type": type_name,
+              "cluster_id": cluster_id,
+              "action": action,
+              "params": params_dict}
+
+    return params
+
+
 class CreateReceiverForm(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Name"))
     cluster_id = forms.ThemableChoiceField(

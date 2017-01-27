@@ -49,6 +49,7 @@
       getEvents: getEvents,
       getReceivers: getReceivers,
       getReceiver: getReceiver,
+      createReceiver: createReceiver,
       deleteReceiver: deleteReceiver,
       getCluster: getCluster,
       getClusters: getClusters,
@@ -218,6 +219,27 @@
           var msg = gettext('Unable to retrieve the receiver with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
+    }
+
+    /**
+     * @name createReceiver
+     * @description
+     * Create new Receiver.
+     *
+     * @param {Object} params
+     * JSON object to create new receiver like name, type, cluster_id, action
+     * and params.
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     * @returns {Object} The result of the API call
+     */
+    function createReceiver(params, suppressError) {
+      var promise = apiService.post('/api/senlin/receivers/', params);
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to create the receiver with name: %(name)s');
+        toastService.add('error', interpolate(msg, { name: params.name }, true));
+      });
     }
 
     /**

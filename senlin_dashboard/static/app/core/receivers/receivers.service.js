@@ -66,7 +66,17 @@
      * receivers.  This is used in displaying lists of Receivers.
      */
     function getReceiversPromise(params) {
-      return senlin.getReceivers(params);
+      return senlin.getReceivers(params).then(modifyResponse);
+    }
+
+    function modifyResponse(response) {
+      return {data: {items: response.data.items.map(modifyItem)}};
+
+      function modifyItem(item) {
+        var timestamp = item.updated_at ? item.updated_at : item.created_at;
+        item.trackBy = item.id + timestamp;
+        return item;
+      }
     }
   }
 })();

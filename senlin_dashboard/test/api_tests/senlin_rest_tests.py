@@ -22,12 +22,33 @@ class SenlinRestTestCase(test.TestCase):
     # Receiver
     #
 
+    _receivers = [
+        {
+            'id': '1',
+            'name': 'test-receiver1',
+            'type': 'webhook',
+            'cluster_id': 'c1',
+            'action': 'CLUSTER_SCALE_OUT',
+            'params': None,
+            'channel': None
+        },
+        {
+            'id': '2',
+            'name': 'test-receiver2',
+            'type': 'message',
+            'cluster_id': None,
+            'action': None,
+            'params': None,
+            'channel': None
+        },
+    ]
+
     @mock.patch.object(senlin, 'senlin')
     def test_receivers_get(self, client):
         request = self.mock_rest_request(**{'GET': {}})
         client.receiver_list.return_value = ([
-            mock.Mock(**{'to_dict.return_value': {'id': 'one'}}),
-            mock.Mock(**{'to_dict.return_value': {'id': 'two'}}),
+            mock.Mock(**{'to_dict.return_value': self._receivers[0]}),
+            mock.Mock(**{'to_dict.return_value': self._receivers[1]}),
         ], False, True)
 
         response = senlin.Receivers().get(request)
@@ -39,15 +60,15 @@ class SenlinRestTestCase(test.TestCase):
     @mock.patch.object(senlin, 'senlin')
     def test_receiver_get_single(self, client):
         request = self.mock_rest_request()
-        client.receiver_get.return_value.to_dict.return_value = {
-            'name': 'test-receiver'}
+        client.receiver_get.return_value.to_dict.return_value = \
+            self._receivers[0]
 
         response = senlin.Receiver().get(request, '1')
         self.assertStatusCode(response, 200)
-        self.assertEqual('test-receiver', response.json['name'])
+        self.assertEqual('test-receiver1', response.json['name'])
 
     @mock.patch.object(senlin, 'senlin')
     def test_receiver_delete(self, client):
         request = self.mock_rest_request()
-        senlin.Receiver().delete(request, "1")
-        client.receiver_delete.assert_called_once_with(request, "1")
+        senlin.Receiver().delete(request, '1')
+        client.receiver_delete.assert_called_once_with(request, '1')

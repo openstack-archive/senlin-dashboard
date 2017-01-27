@@ -70,12 +70,19 @@ class ReceiversTest(test.TestCase):
             'action': 'CLUSTER_SCALE_IN',
             'params': ''
         }
+        formdata = {
+            'name': 'test-receiver',
+            'type': 'webhook',
+            'cluster_id': '123456',
+            'action': 'CLUSTER_SCALE_IN',
+            'params': ''
+        }
 
         api.senlin.cluster_list(
             IsA(http.HttpRequest)).AndReturn((clusters, False, False))
         api.senlin.receiver_create(
-            IsA(http.HttpRequest), data).AndReturn(receiver)
+            IsA(http.HttpRequest), **data).AndReturn(receiver)
         self.mox.ReplayAll()
 
-        res = self.client.post(CREATE_URL, data)
+        res = self.client.post(CREATE_URL, formdata)
         self.assertNoFormErrors(res)

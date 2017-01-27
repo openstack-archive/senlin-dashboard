@@ -110,7 +110,7 @@ class SenlinApiTests(test.APITestCase):
         senlinclient.receivers.return_value = receivers
 
         ret_val, _more, _prev = api.senlin.receiver_list(self.request)
-        for receiver in ret_val:
+        for receiver in ret_val[0]:
             self.assertIsInstance(receiver, api.senlin.Receiver)
 
         senlinclient.receivers.assert_called_once_with(**params)

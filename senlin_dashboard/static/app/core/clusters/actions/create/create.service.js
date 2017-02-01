@@ -75,7 +75,7 @@
 
     function submit(context) {
       delete context.model.id;
-      return senlin.createCluster(context.model, true).then(success, true);
+      return senlin.createCluster(context.model, false).then(success, true);
     }
 
     function success(response) {

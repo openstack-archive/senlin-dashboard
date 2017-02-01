@@ -75,7 +75,7 @@
 
     function submit(context) {
       delete context.model.id;
-      return senlin.createNode(context.model, true).then(success, true);
+      return senlin.createNode(context.model, false).then(success, true);
     }
 
     function success(response) {

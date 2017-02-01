@@ -91,7 +91,7 @@
       delete context.model.min_size;
       delete context.model.max_size;
       delete context.model.desired_capacity;
-      return senlin.updateCluster(id, context.model, true).then(success, true);
+      return senlin.updateCluster(id, context.model, false).then(success, true);
     }
 
     function success(response) {

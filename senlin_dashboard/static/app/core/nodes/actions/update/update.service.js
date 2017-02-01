@@ -89,7 +89,7 @@
       var id = context.model.id;
       delete context.model.id;
       delete context.model.cluster_id;
-      return senlin.updateNode(id, context.model, true).then(success, true);
+      return senlin.updateNode(id, context.model, false).then(success, true);
     }
 
     function success(response) {

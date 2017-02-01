@@ -85,18 +85,7 @@
 
       beforeEach(function() {
         spyOn(deleteModalService, 'open').and.callThrough();
-        service.initScope($scope, labelize);
       });
-
-      function labelize(count) {
-        return {
-          title: ngettext('title', 'titles', count),
-          message: ngettext('message', 'messages', count),
-          submit: ngettext('submit', 'submits', count),
-          success: ngettext('success', 'successes', count),
-          error: ngettext('error', 'errors', count)
-        };
-      }
 
       it('should open the delete modal and show correct labels', testSingleObject);
 

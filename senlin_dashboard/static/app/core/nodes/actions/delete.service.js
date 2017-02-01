@@ -56,7 +56,6 @@
     var notAllowedMessage = gettext("You are not allowed to delete nodes: %s");
 
     var service = {
-      initAction: initAction,
       allowed: allowed,
       perform: perform
     };
@@ -65,13 +64,10 @@
 
     //////////////
 
-    function initAction() {
-      context = { };
-    }
-
     function perform(items, newScope) {
       scope = newScope;
       var nodes = angular.isArray(items) ? items : [items];
+      context = { };
       context.labels = labelize(nodes.length);
       context.deleteEntity = deleteNode;
       return $qExtensions.allSettled(nodes.map(checkPermission)).then(afterCheck);

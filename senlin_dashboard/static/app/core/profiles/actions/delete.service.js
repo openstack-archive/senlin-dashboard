@@ -56,7 +56,6 @@
     var notAllowedMessage = gettext("You are not allowed to delete profiles: %s");
 
     var service = {
-      initScope: initScope,
       allowed: allowed,
       perform: perform
     };
@@ -65,13 +64,10 @@
 
     //////////////
 
-    function initScope(newScope) {
+    function perform(items, newScope) {
       scope = newScope;
-      context = { };
-    }
-
-    function perform(items) {
       var profiles = angular.isArray(items) ? items : [items];
+      context = { };
       context.labels = labelize(profiles.length);
       context.deleteEntity = deleteProfile;
       return $qExtensions.allSettled(profiles.map(checkPermission)).then(afterCheck);

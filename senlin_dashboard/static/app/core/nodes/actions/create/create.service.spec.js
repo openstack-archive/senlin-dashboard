@@ -66,7 +66,6 @@
     });
 
     it('should initialize workflow', function() {
-      service.initAction();
       service.perform(selected, $scope);
 
       expect(workflow.init).toHaveBeenCalled();

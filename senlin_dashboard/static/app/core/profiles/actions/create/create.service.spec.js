@@ -37,6 +37,8 @@
         };
       }
     };
+    var profile = {name: 'test profile'};
+
     ///////////////////////
 
     beforeEach(module('horizon.framework'));
@@ -60,9 +62,7 @@
       it('open the modal with the correct parameters', function() {
         spyOn(wizardModalService, 'modal').and.callThrough();
 
-        var profile = {name: 'test profile'};
-        service.initScope($scope);
-        service.perform(profile);
+        service.perform(profile, $scope);
 
         expect(wizardModalService.modal).toHaveBeenCalled();
         var modalArgs = wizardModalService.modal.calls.argsFor(0)[0];
@@ -79,8 +79,7 @@
         spyOn(senlinAPI, 'createProfile').and.callThrough();
         spyOn(wizardModalService, 'modal').and.callThrough();
 
-        service.initScope($scope);
-        service.perform();
+        service.perform(profile, $scope);
 
         model.newProfileSpec = postProfile;
 

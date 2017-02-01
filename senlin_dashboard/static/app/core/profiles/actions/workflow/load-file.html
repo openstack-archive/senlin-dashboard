@@ -1,0 +1,7 @@
+<div ng-controller="horizon.cluster.profiles.actions.workflow.loadFileController as ctrl">
+  <div class="form-group">
+    <label class="control-label" for="loadFile" translate>Load Spec from File</label>
+    <input id="loadFile" name="loadFile" type="file"
+           ng-model="ctrl.filename" on-file-change="ctrl.changeFile">
+  </div>
+</div>

@@ -30,19 +30,20 @@
   createService.$inject = [
     '$location',
     'horizon.app.core.openstack-service-api.policy',
+    'horizon.app.core.openstack-service-api.senlin',
+    'horizon.app.core.profiles.basePath',
+    'horizon.app.core.profiles.resourceType',
     'horizon.framework.util.actions.action-result.service',
     'horizon.framework.util.i18n.gettext',
     'horizon.framework.util.q.extensions',
-    'horizon.framework.widgets.modal.wizard-modal.service',
+    'horizon.framework.widgets.form.ModalFormService',
     'horizon.framework.widgets.toast.service',
-    'horizon.cluster.profiles.actions.create.model',
-    'horizon.app.core.profiles.resourceType',
-    'horizon.cluster.profiles.actions.create.service.workflow'
+    'horizon.cluster.profiles.actions.workflow'
   ];
 
   function createService(
-    $location, policy, actionResult, gettext, $qExtensions, wizardModalService, toast,
-    model, resourceType, createWorkflow
+    $location, policy, senlin, basePath, resourceType, actionResult, gettext,
+    $qExtensions, modal, toast, workflow
   ) {
 
     var message = {
@@ -59,24 +60,34 @@
     //////////////
 
     function perform(selected, scope) {
-      scope.workflow = createWorkflow;
-      scope.model = model;
-      scope.model.init();
-      scope.model.actionType = 'create';
-      scope.selected = selected;
-      return wizardModalService.modal({
-        scope: scope,
-        workflow: createWorkflow,
-        submit: submit
-      }).result;
+      // modal title, button, help
+      var title, submitText, helpUrl;
+      title = gettext('Create Profile');
+      submitText = gettext('Create');
+      helpUrl = basePath + 'actions/create/profile.help.html';
+
+      var config = workflow.init('create', title, submitText, helpUrl, scope);
+      return modal.open(config).then(submit);
     }
 
     function allowed() {
-      return $qExtensions.booleanAsPromise(true);
+      return policy.ifAllowed({ rules: [['cluster', 'profile:create']] });
     }
 
-    function submit() {
-      return model.setProfile().then(success, true);
+    function submit(context) {
+      context.model = cleanNullProperties(context.model);
+      return senlin.createProfile(context.model, false).then(success, true);
+    }
+
+    function cleanNullProperties(model) {
+      // Initially clean fields that don't have any value.
+      // Not only "null", blank too.
+      for (var key in model) {
+        if (model.hasOwnProperty(key) && model[key] === null || model[key] === "") {
+          delete model[key];
+        }
+      }
+      return model;
     }
 
     function success(response) {

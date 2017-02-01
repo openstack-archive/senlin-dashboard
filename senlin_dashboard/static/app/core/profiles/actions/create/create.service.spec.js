@@ -18,26 +18,18 @@
 
   describe('horizon.cluster.profiles.actions.create.service', function() {
 
-    var model, service, $scope, workflow;
-    var wizardModalService = {
-      modal: function () {
-        return {
-          result: angular.noop
-        };
+    var service, $scope, $q, deferred, senlin, workflow;
+    var model = {
+      id: 1
+    };
+    var modal = {
+      open: function (config) {
+        config.model = model;
+        deferred = $q.defer();
+        deferred.resolve(config);
+        return deferred.promise;
       }
     };
-    var senlinAPI = {
-      createProfile: function(profile) {
-        return {
-          then: function(callback) {
-            var newProfile = profile;
-            newProfile.id = '1234';
-            callback({data: profile});
-          }
-        };
-      }
-    };
-    var profile = {name: 'test profile'};
 
     ///////////////////////
 
@@ -46,63 +38,43 @@
     beforeEach(module('horizon.cluster.profiles'));
 
     beforeEach(module(function($provide) {
-      //$provide.value('horizon.cluster.profiles.actions.create.model', model);
-      $provide.value('horizon.app.core.openstack-service-api.senlin', senlinAPI);
-      $provide.value('horizon.framework.widgets.modal.wizard-modal.service', wizardModalService);
+      $provide.value('horizon.framework.widgets.form.ModalFormService', modal);
     }));
 
-    beforeEach(inject(function($injector, _$rootScope_) {
+    beforeEach(inject(function($injector, _$rootScope_, _$q_) {
+      $q = _$q_;
       $scope = _$rootScope_.$new();
-      model = $injector.get('horizon.cluster.profiles.actions.create.model');
       service = $injector.get('horizon.cluster.profiles.actions.create.service');
-      workflow = $injector.get('horizon.cluster.profiles.actions.create.service.workflow');
+      senlin = $injector.get('horizon.app.core.openstack-service-api.senlin');
+      workflow = $injector.get('horizon.cluster.profiles.actions.workflow');
+      deferred = $q.defer();
+      deferred.resolve({data: {id: 1}});
+      spyOn(senlin, 'createProfile').and.returnValue(deferred.promise);
+      spyOn(modal, 'open').and.callThrough();
+      spyOn(workflow, 'init').and.returnValue({model: model});
     }));
 
-    describe('perform', function() {
-      it('open the modal with the correct parameters', function() {
-        spyOn(wizardModalService, 'modal').and.callThrough();
-
-        service.perform(profile, $scope);
-
-        expect(wizardModalService.modal).toHaveBeenCalled();
-        var modalArgs = wizardModalService.modal.calls.argsFor(0)[0];
-        expect(modalArgs.scope).toEqual($scope);
-        expect(modalArgs.workflow).toEqual(workflow);
-        expect(modalArgs.submit).toBeDefined();
-      });
-
-      it('create profile', function() {
-        var postProfile = { name: 'test', spec: 'spec', metadata: 'meta' };
-        var newProfile = angular.copy(postProfile);
-        newProfile.id = '1234';
-
-        spyOn(senlinAPI, 'createProfile').and.callThrough();
-        spyOn(wizardModalService, 'modal').and.callThrough();
-
-        service.perform(profile, $scope);
-
-        model.newProfileSpec = postProfile;
-
-        var modalArgs = wizardModalService.modal.calls.argsFor(0)[0];
-        modalArgs.submit();
-        $scope.$apply();
-
-        expect(senlinAPI.createProfile).toHaveBeenCalledWith(newProfile, true);
-      });
+    it('should check the policy if the user is allowed to create profile', function() {
+      var allowed = service.allowed();
+      expect(allowed).toBeTruthy();
     });
 
-    describe('allowed', function() {
-      it('should allow create profile', function() {
-        var allowed = service.allowed();
-        allowed.then(
-          function() {
-            expect(true).toBe(true);
-          },
-          function() {
-            expect(false).toBe(true);
-          });
-        $scope.$apply();
-      });
-    });
+    it('should initialize workflow and create profile', inject(function($timeout) {
+      service.perform(model, $scope);
+
+      expect(workflow.init).toHaveBeenCalled();
+
+      var modalArgs = workflow.init.calls.mostRecent().args;
+      expect(modalArgs[0]).toEqual('create');
+      expect(modalArgs[1]).toEqual('Create Profile');
+      expect(modalArgs[2]).toEqual('Create');
+
+      expect(modal.open).toHaveBeenCalled();
+
+      $timeout.flush();
+      $scope.$apply();
+
+      expect(senlin.createProfile).toHaveBeenCalled();
+    }));
   });
 })();

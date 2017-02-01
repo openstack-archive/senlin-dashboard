@@ -31,19 +31,19 @@
     '$location',
     'horizon.app.core.openstack-service-api.policy',
     'horizon.app.core.openstack-service-api.senlin',
+    'horizon.app.core.profiles.basePath',
     'horizon.app.core.profiles.resourceType',
     'horizon.framework.util.actions.action-result.service',
     'horizon.framework.util.i18n.gettext',
     'horizon.framework.util.q.extensions',
-    'horizon.framework.widgets.modal.wizard-modal.service',
+    'horizon.framework.widgets.form.ModalFormService',
     'horizon.framework.widgets.toast.service',
-    'horizon.cluster.profiles.actions.create.model',
-    'horizon.cluster.profiles.actions.update.service.workflow'
+    'horizon.cluster.profiles.actions.workflow'
   ];
 
   function updateService(
-    $location, policy, senlin, resourceType, actionResult, gettext, $qExtensions,
-    wizardModalService, toast, model, updateWorkflow
+    $location, policy, senlin, basePath, resourceType, actionResult, gettext,
+    $qExtensions, modal, toast, workflow
   ) {
 
     var message = {
@@ -60,23 +60,35 @@
     //////////////
 
     function perform(selected, scope) {
-      scope.model = model;
-      scope.model.init('update', selected.id);
+      // modal title, button, help
+      var title, submitText, helpUrl;
+      title = gettext('Update Profile');
+      submitText = gettext('Update');
+      helpUrl = basePath + 'actions/update/profile.help.html';
 
-      return wizardModalService.modal({
-        scope: scope,
-        workflow: updateWorkflow,
-        submit: submit,
-        data: scope.model
-      }).result;
+      var config = workflow.init('update', title, submitText, helpUrl, scope);
+
+      // load current data
+      senlin.getProfile(selected.id).then(onLoad);
+      function onLoad(response) {
+        config.model.id = response.data.id;
+        config.model.name = response.data.name;
+        config.model.spec = response.data.spec;
+        config.model.metadata = response.data.metadata;
+      }
+
+      return modal.open(config).then(submit);
     }
 
     function allowed() {
       return policy.ifAllowed({ rules: [['cluster', 'profiles:update']] });
     }
 
-    function submit() {
-      return model.setProfile().then(success, true);
+    function submit(context) {
+      var id = context.model.id;
+      delete context.model.id;
+      delete context.model.spec;
+      return senlin.updateProfile(id, context.model, false).then(success, true);
     }
 
     function success(response) {

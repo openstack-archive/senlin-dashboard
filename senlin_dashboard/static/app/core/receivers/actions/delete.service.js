@@ -22,6 +22,7 @@
   deleteReceiverService.$inject = [
     '$q',
     '$location',
+    'horizon.app.core.openstack-service-api.policy',
     'horizon.app.core.openstack-service-api.senlin',
     'horizon.framework.util.actions.action-result.service',
     'horizon.framework.util.i18n.gettext',
@@ -44,6 +45,7 @@
   function deleteReceiverService(
     $q,
     $location,
+    policyService,
     senlin,
     actionResultService,
     gettext,
@@ -74,7 +76,7 @@
     }
 
     function allowed() {
-      return $qExtensions.booleanAsPromise(true);
+      return policyService.ifAllowed({ rules: [['cluster', 'receivers:delete']] });
     }
 
     function checkPermission(receiver) {

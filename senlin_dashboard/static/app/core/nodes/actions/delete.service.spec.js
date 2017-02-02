@@ -17,7 +17,7 @@
 
   describe('horizon.cluster.nodes.actions.delete.service', function() {
 
-    var service, $scope, deferredModal;
+    var service, $scope, deferred, deferredModal;
 
     var deleteModalService = {
       open: function () {
@@ -37,11 +37,8 @@
 
     var policyAPI = {
       ifAllowed: function() {
-        return {
-          success: function(callback) {
-            callback({allowed: true});
-          }
-        };
+        deferred.resolve();
+        return deferred.promise;
       }
     };
 
@@ -63,6 +60,7 @@
     beforeEach(inject(function($injector, _$rootScope_, $q) {
       $scope = _$rootScope_.$new();
       service = $injector.get('horizon.cluster.nodes.actions.delete.service');
+      deferred = $q.defer();
       deferredModal = $q.defer();
     }));
 

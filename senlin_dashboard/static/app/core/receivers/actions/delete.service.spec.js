@@ -17,7 +17,7 @@
 
   describe('horizon.cluster.receivers.actions.delete.service', function() {
 
-    var service, $scope, deferredModal;
+    var service, $scope, deferred, deferredModal;
 
     var deleteModalService = {
       open: function () {
@@ -37,18 +37,15 @@
 
     var policyAPI = {
       ifAllowed: function() {
-        return {
-          success: function(callback) {
-            callback({allowed: true});
-          }
-        };
+        deferred.resolve();
+        return deferred.promise;
       }
     };
 
     beforeEach(module('horizon.cluster.receivers'));
 
-    beforeEach(module('horizon.framework'));
     beforeEach(module('horizon.app.core'));
+    beforeEach(module('horizon.framework'));
 
     beforeEach(module('horizon.framework.widgets.modal', function($provide) {
       $provide.value('horizon.framework.widgets.modal.deleteModalService', deleteModalService);
@@ -63,6 +60,7 @@
     beforeEach(inject(function($injector, _$rootScope_, $q) {
       $scope = _$rootScope_.$new();
       service = $injector.get('horizon.cluster.receivers.actions.delete.service');
+      deferred = $q.defer();
       deferredModal = $q.defer();
     }));
 
@@ -74,9 +72,10 @@
       };
 
       for (var index = 0; index < count; index++) {
-        var receivers = angular.copy(data);
-        receivers.id = index + 1;
-        Receivers.push(receivers);
+        var receiver = angular.copy(data);
+        receiver.id = index + 1;
+        receiver.name = receiver.name + 1;
+        Receivers.push(receiver);
       }
       return Receivers;
     }
@@ -91,7 +90,7 @@
 
       function testSingleObject() {
         var receivers = generateReceivers(1);
-        service.perform(receivers[0]);
+        service.perform(receivers[0], $scope);
         $scope.$apply();
 
         expect(deleteModalService.open).toHaveBeenCalled();
@@ -101,7 +100,7 @@
 
       function testDoubleObject() {
         var receivers = generateReceivers(2);
-        service.perform(receivers);
+        service.perform(receivers, $scope);
         $scope.$apply();
 
         expect(deleteModalService.open).toHaveBeenCalled();
@@ -113,7 +112,7 @@
         spyOn(senlinAPI, 'deleteReceiver');
         var receivers = generateReceivers(1);
         var receiver = receivers[0];
-        service.perform(receivers);
+        service.perform(receivers, $scope);
         $scope.$apply();
 
         var contextArg = deleteModalService.open.calls.argsFor(0)[2];

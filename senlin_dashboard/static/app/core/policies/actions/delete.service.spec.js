@@ -17,7 +17,7 @@
 
   describe('horizon.cluster.policies.actions.delete.service', function() {
 
-    var service, $scope, deferredModal;
+    var service, $scope, deferred, deferredModal;
 
     var deleteModalService = {
       open: function () {
@@ -37,11 +37,8 @@
 
     var policyAPI = {
       ifAllowed: function() {
-        return {
-          success: function(callback) {
-            callback({allowed: true});
-          }
-        };
+        deferred.resolve();
+        return deferred.promise;
       }
     };
 
@@ -63,6 +60,7 @@
     beforeEach(inject(function($injector, _$rootScope_, $q) {
       $scope = _$rootScope_.$new();
       service = $injector.get('horizon.cluster.policies.actions.delete.service');
+      deferred = $q.defer();
       deferredModal = $q.defer();
     }));
 
@@ -91,7 +89,7 @@
 
       function testSingleObject() {
         var policies = generatePolicies(1);
-        service.perform(policies[0]);
+        service.perform(policies[0], $scope);
         $scope.$apply();
 
         expect(deleteModalService.open).toHaveBeenCalled();
@@ -101,7 +99,7 @@
 
       function testDoubleObject() {
         var policies = generatePolicies(2);
-        service.perform(policies);
+        service.perform(policies, $scope);
         $scope.$apply();
 
         expect(deleteModalService.open).toHaveBeenCalled();
@@ -113,7 +111,7 @@
         spyOn(senlinAPI, 'deletePolicy');
         var policies = generatePolicies(1);
         var policy = policies[0];
-        service.perform(policies);
+        service.perform(policies, $scope);
         $scope.$apply();
 
         var contextArg = deleteModalService.open.calls.argsFor(0)[2];

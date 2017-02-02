@@ -87,6 +87,7 @@
               items: [
                 {
                   key: 'name',
+                  placeholder: gettext('Name of the cluster.'),
                   required: true
                 },
                 {
@@ -115,7 +116,8 @@
                 },
                 {
                   key: 'metadata',
-                  type: 'textarea'
+                  type: 'textarea',
+                  placeholder: gettext('Metadata of the cluster in YAML format.')
                 }
               ]
             },

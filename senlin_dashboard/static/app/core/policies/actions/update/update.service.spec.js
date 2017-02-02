@@ -18,23 +18,27 @@
   describe('horizon.cluster.policies.actions.update.service', function() {
 
     var service, $scope, $q, deferred, senlin;
-
-    var workflow = {
-      init: function (actionType, title, submitText) {
-        actionType = title = submitText;
-        return {then: angular.noop, dummy: actionType};
-      }
+    var selected = {
+      id: 1
     };
-
+    var model = {
+      id: 1,
+      name: ""
+    };
     var modal = {
-      open: function (config) {
+      open: function(config) {
+        config.model = model;
         deferred = $q.defer();
-        deferred.resolve(config.model);
+        deferred.resolve(config);
         return deferred.promise;
       }
     };
-
-    var selected = {id: 1};
+    var workflow = {
+      init: function (action, title) {
+        action = title;
+        return {model: model};
+      }
+    };
 
     ///////////////////
 
@@ -54,6 +58,7 @@
       senlin = $injector.get('horizon.app.core.openstack-service-api.senlin');
       deferred = $q.defer();
       deferred.resolve({data: {id: 1}});
+      spyOn(senlin, 'getPolicy').and.returnValue(deferred.promise);
       spyOn(senlin, 'updatePolicy').and.returnValue(deferred.promise);
       spyOn(workflow, 'init').and.callThrough();
       spyOn(modal, 'open').and.callThrough();
@@ -64,7 +69,7 @@
       expect(allowed).toBeTruthy();
     });
 
-    it('should initialize workflow', function() {
+    it('should initialize workflow and update policy', inject(function($timeout) {
       service.perform(selected, $scope);
 
       expect(workflow.init).toHaveBeenCalled();
@@ -75,6 +80,11 @@
       expect(modalArgs[2]).toEqual('Update');
 
       expect(modal.open).toHaveBeenCalled();
-    });
+
+      $timeout.flush();
+      $scope.$apply();
+
+      expect(senlin.updatePolicy).toHaveBeenCalled();
+    }));
   });
 })();

@@ -56,13 +56,13 @@
 
     //////////////
 
-    function perform() {
+    function perform(selected, scope) {
       // modal title, buttons
       var title, submitText;
       title = gettext('Create Policy');
       submitText = gettext('Create');
 
-      var config = workflow.init('create', title, submitText);
+      var config = workflow.init('create', title, submitText, scope);
       return modal.open(config).then(submit);
     }
 

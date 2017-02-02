@@ -37,7 +37,7 @@
       init: init
     };
 
-    function init(actionType, title, submitText) {
+    function init(actionType, title, submitText, scope) {
       var schema, form, model;
 
       // schema
@@ -71,9 +71,14 @@
                   required: true
                 },
                 {
+                  type: 'template',
+                  templateUrl: basePath + 'actions/workflow/load-file.html',
+                  condition: actionType === 'update'
+                },
+                {
                   key: 'spec',
                   type: 'textarea',
-                  placeholder: gettext('Spec of the policy in YAML format.'),
+                  placeholder: gettext('Load or specify spec of the policy in YAML format.'),
                   required: actionType === 'create',
                   readonly: actionType === 'update'
                 }
@@ -100,6 +105,8 @@
         form: form,
         model: model
       };
+
+      scope.model = model;
 
       return config;
     }

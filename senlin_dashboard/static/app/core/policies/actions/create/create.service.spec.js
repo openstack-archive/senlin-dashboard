@@ -17,24 +17,18 @@
 
   describe('horizon.cluster.policies.actions.create.service', function() {
 
-    var service, $scope, $q, deferred, senlin;
-
-    var workflow = {
-      init: function (actionType, title, submitText) {
-        actionType = title = submitText;
-        return {then: angular.noop, dummy: actionType};
-      }
+    var service, $scope, $q, deferred, senlin, workflow;
+    var model = {
+      id: 1
     };
-
     var modal = {
       open: function (config) {
+        config.model = model;
         deferred = $q.defer();
-        deferred.resolve(config.model);
+        deferred.resolve(config);
         return deferred.promise;
       }
     };
-
-    var selected = {id: 1};
 
     ///////////////////
 
@@ -44,7 +38,6 @@
 
     beforeEach(module(function($provide) {
       $provide.value('horizon.framework.widgets.form.ModalFormService', modal);
-      $provide.value('horizon.cluster.policies.actions.workflow', workflow);
     }));
 
     beforeEach(inject(function($injector, _$rootScope_, _$q_) {
@@ -52,11 +45,12 @@
       $scope = _$rootScope_.$new();
       service = $injector.get('horizon.cluster.policies.actions.create.service');
       senlin = $injector.get('horizon.app.core.openstack-service-api.senlin');
+      workflow = $injector.get('horizon.cluster.policies.actions.workflow');
       deferred = $q.defer();
       deferred.resolve({data: {id: 1}});
       spyOn(senlin, 'createPolicy').and.returnValue(deferred.promise);
-      spyOn(workflow, 'init').and.callThrough();
       spyOn(modal, 'open').and.callThrough();
+      spyOn(workflow, 'init').and.returnValue({model: model});
     }));
 
     it('should check the policy if the user is allowed to create policy', function() {
@@ -64,8 +58,8 @@
       expect(allowed).toBeTruthy();
     });
 
-    it('should initialize workflow', function() {
-      service.perform(selected, $scope);
+    it('should initialize workflow and create profile', inject(function($timeout) {
+      service.perform(model, $scope);
 
       expect(workflow.init).toHaveBeenCalled();
 
@@ -75,6 +69,11 @@
       expect(modalArgs[2]).toEqual('Create');
 
       expect(modal.open).toHaveBeenCalled();
-    });
+
+      $timeout.flush();
+      $scope.$apply();
+
+      expect(senlin.createPolicy).toHaveBeenCalled();
+    }));
   });
 })();

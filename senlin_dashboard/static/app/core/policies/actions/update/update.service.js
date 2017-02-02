@@ -56,13 +56,13 @@
 
     //////////////
 
-    function perform(selected) {
+    function perform(selected, scope) {
       // modal title, buttons
       var title, submitText;
       title = gettext('Update Policy');
       submitText = gettext('Update');
 
-      var config = workflow.init('update', title, submitText);
+      var config = workflow.init('update', title, submitText, scope);
 
       // load current data
       senlin.getPolicy(selected.id).then(onLoad);

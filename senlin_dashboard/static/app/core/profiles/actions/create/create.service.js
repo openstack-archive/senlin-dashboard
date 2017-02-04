@@ -91,7 +91,7 @@
     }
 
     function success(response) {
-      toast.add('success', interpolate(message.success, [response.data.id]));
+      toast.add('success', interpolate(message.success, [response.data.name]));
       var result = actionResult.getActionResult()
                    .created(resourceType, response.data.id);
       if (result.result.failed.length === 0 && result.result.created.length > 0) {

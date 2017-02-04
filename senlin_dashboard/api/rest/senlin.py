@@ -363,9 +363,9 @@ class Cluster(generic.View):
 
     @rest_utils.ajax(data_required=True)
     def put(self, request, cluster_id):
-        """Update a Node.
+        """Update a Cluster.
 
-        Returns the Node object on success.
+        Returns the Cluster object on success.
         """
         params = request.DATA
         params["metadata"] = api_utils.load_yaml(params.get("metadata"))

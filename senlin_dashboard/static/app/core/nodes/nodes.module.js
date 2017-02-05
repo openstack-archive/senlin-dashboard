@@ -30,6 +30,16 @@
       'horizon.cluster.nodes.actions'
     ])
     .constant('horizon.app.core.nodes.resourceType', 'OS::Senlin::Node')
+    .constant('horizon.app.core.nodes.statuses', {
+      INIT: gettext('INIT'),
+      ACTIVE: gettext('ACTIVE'),
+      ERROR: gettext('ERROR'),
+      WARNING: gettext('WARNING'),
+      CREATING: gettext('CREATING'),
+      UPDATING: gettext('UPDATING'),
+      DELETING: gettext('DELETING'),
+      RECOVERING: gettext('RECOVERING')
+    })
     .run(run)
     .config(config);
 
@@ -37,15 +47,16 @@
     'horizon.app.core.openstack-service-api.senlin',
     'horizon.app.core.nodes.basePath',
     'horizon.app.core.nodes.resourceType',
+    'horizon.app.core.nodes.statuses',
     'horizon.cluster.nodes.service',
     'horizon.framework.conf.resource-type-registry.service'
   ];
 
-  function run(senlin, basePath, nodeResourceType, nodeService, registry) {
+  function run(senlin, basePath, nodeResourceType, statuses, nodeService, registry) {
     registry.getResourceType(nodeResourceType)
       .setNames(gettext('Node'), gettext('Nodes'))
       .setSummaryTemplateUrl(basePath + 'details/drawer.html')
-      .setProperties(nodeProperties())
+      .setProperties(nodeProperties(statuses))
       .setListFunction(nodeService.getNodesPromise)
       .tableColumns
       .append({
@@ -116,7 +127,7 @@
       });
   }
 
-  function nodeProperties() {
+  function nodeProperties(statuses) {
     return {
       id: { label: gettext('ID'), filters: ['noValue'] },
       name: { label: gettext('Name'), filters: ['noName'] },
@@ -124,7 +135,7 @@
       physical_id: { label: gettext('Physical ID'), filters: ['noValue'] },
       role: { label: gettext('Role'), filters: ['noValue'] },
       cluster_id: { label: gettext('Cluster ID'), filters: ['noValue'] },
-      status: { label: gettext('Status'), filters: ['noValue'] },
+      status: { label: gettext('Status'), values: statuses, filters: ['noValue'] },
       status_reason: { label: gettext('Status Reason'), filters: ['noValue'] },
       metadata: { label: gettext('Metadata'), filters: [] },
       created_at: { label: gettext('Created'), filters: ['simpleDate'] },

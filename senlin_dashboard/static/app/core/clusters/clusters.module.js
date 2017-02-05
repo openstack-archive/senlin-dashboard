@@ -30,6 +30,19 @@
       'horizon.cluster.clusters.details'
     ])
     .constant('horizon.app.core.clusters.resourceType', 'OS::Senlin::Cluster')
+    .constant('horizon.app.core.clusters.statuses', {
+      INIT: gettext('INIT'),
+      ACTIVE: gettext('ACTIVE'),
+      ERROR: gettext('ERROR'),
+      CRITICAL: gettext('CRITICAL'),
+      WARNING: gettext('WARNING'),
+      CREATING: gettext('CREATING'),
+      UPDATING: gettext('UPDATING'),
+      DELETING: gettext('DELETING'),
+      RESIZING: gettext('RESIZING'),
+      CHECKING: gettext('CHECKING'),
+      RECOVERING: gettext('RECOVERING')
+    })
     .run(run)
     .config(config);
 
@@ -37,14 +50,15 @@
     'horizon.framework.conf.resource-type-registry.service',
     'horizon.cluster.clusters.service',
     'horizon.app.core.clusters.basePath',
-    'horizon.app.core.clusters.resourceType'
+    'horizon.app.core.clusters.resourceType',
+    'horizon.app.core.clusters.statuses'
   ];
 
-  function run(registry, clusterService, basePath, clusterResourceType) {
+  function run(registry, clusterService, basePath, clusterResourceType, statuses) {
     registry.getResourceType(clusterResourceType)
       .setNames(gettext('Cluster'), gettext('Clusters'))
       .setSummaryTemplateUrl(basePath + 'details/drawer.html')
-      .setProperties(clusterProperties())
+      .setProperties(clusterProperties(statuses))
       .setListFunction(clusterService.getClustersPromise)
       .tableColumns
       .append({
@@ -76,11 +90,11 @@
       });
   }
 
-  function clusterProperties() {
+  function clusterProperties(statuses) {
     return {
       id: { label: gettext('ID'), filters: ['noValue']},
       name: { label: gettext('Name'), filters: ['noName']},
-      status: { label: gettext('Status'), filters: ['noValue']},
+      status: { label: gettext('Status'), values: statuses, filters: ['noValue']},
       status_reason: { label: gettext('Status Reason')},
       profile_name: { label: gettext('Profile Name')},
       created_at: { label: gettext('Created'), filters: ['simpleDate']},

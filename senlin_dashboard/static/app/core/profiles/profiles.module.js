@@ -55,7 +55,7 @@
         urlFunction: profileService.getDetailsPath
       })
       .append({
-        id: 'type_name',
+        id: 'type',
         priority: 1
       })
       .append({
@@ -85,7 +85,7 @@
     return {
       id: { label: gettext('ID'), filters: ['noValue'] },
       name: { label: gettext('Name'), filters: ['noName'] },
-      type_name: { label: gettext('Type'), filters: ['noValue'] },
+      type: { label: gettext('Type'), filters: ['noValue'] },
       spec: { label: gettext('Spec')},
       metadata: { label: gettext('Metadata')},
       created_at: { label: gettext('Created'), filters: ['simpleDate'] },

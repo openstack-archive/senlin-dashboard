@@ -4,4 +4,4 @@ Senlin Policy File
 
 Enable senlin policy::
 
-    $ cp senlin_dashboard/conf/senlin_policy.json horizon/openstack_dashboard/conf
+    $ cp senlin_dashboard/conf/senlin_policy.json openstack-dashboard/openstack_dashboard/conf

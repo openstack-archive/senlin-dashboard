@@ -17,25 +17,26 @@
   "use strict";
 
   describe('Cluster service', function() {
-    var service, $scope;
+    var service, $scope, detailRoute;
     beforeEach(module('horizon.app.core'));
     beforeEach(module('horizon.cluster'));
 
     beforeEach(inject(function($injector, _$rootScope_) {
       service = $injector.get('horizon.cluster.clusters.service');
+      detailRoute = $injector.get('horizon.app.core.detailRoute');
       $scope = _$rootScope_.$new();
     }));
 
     it("getDetailsClusterPath creates urls using the item's ID", function() {
       var myItem = {id: "666"};
       expect(service.getDetailsClusterPath(myItem)).toBe(
-        'project/ngdetails/OS::Senlin::Cluster/666');
+        detailRoute + 'OS::Senlin::Cluster/666');
     });
 
     it("getDetailsProfilePath creates urls using the item's ID", function() {
       var myItem = {profile_id: "666"};
       expect(service.getDetailsProfilePath(myItem)).toBe(
-        'project/ngdetails/OS::Senlin::Profile/666');
+        detailRoute + 'OS::Senlin::Profile/666');
     });
 
     describe('getClusterPromise', function() {

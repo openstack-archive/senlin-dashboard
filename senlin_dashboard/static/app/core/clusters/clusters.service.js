@@ -20,6 +20,7 @@
     .factory('horizon.cluster.clusters.service', clusterService);
 
   clusterService.$inject = [
+    'horizon.app.core.detailRoute',
     'horizon.app.core.openstack-service-api.senlin'
   ];
 
@@ -31,7 +32,7 @@
    * This service provides functions that are used through
    * the Clusters features.
    */
-  function clusterService(senlin) {
+  function clusterService(detailRoute, senlin) {
     return {
       getDetailsClusterPath: getDetailsClusterPath,
       getDetailsProfilePath: getDetailsProfilePath,
@@ -47,7 +48,7 @@
      * Returns the relative path to the details view.
      */
     function getDetailsClusterPath(item) {
-      return 'project/ngdetails/OS::Senlin::Cluster/' + item.id;
+      return detailRoute + 'OS::Senlin::Cluster/' + item.id;
     }
 
     /*
@@ -58,7 +59,7 @@
      * Returns the relative path to the details view.
      */
     function getDetailsProfilePath(item) {
-      return 'project/ngdetails/OS::Senlin::Profile/' + item.profile_id;
+      return detailRoute + 'OS::Senlin::Profile/' + item.profile_id;
     }
 
     /*

@@ -19,6 +19,7 @@
     .factory('horizon.cluster.receivers.service', receiversService);
 
   receiversService.$inject = [
+    'horizon.app.core.detailRoute',
     'horizon.app.core.openstack-service-api.senlin'
   ];
 
@@ -30,7 +31,7 @@
    * This service provides functions that are used through
    * the Receivers features.
    */
-  function receiversService(senlin) {
+  function receiversService(detailRoute, senlin) {
     return {
       getDetailsPath: getDetailsPath,
       getReceiverPromise: getReceiverPromise,
@@ -45,7 +46,7 @@
      * Returns the relative path to the details view.
      */
     function getDetailsPath(item) {
-      return 'project/ngdetails/OS::Senlin::Receiver/' + item.id;
+      return detailRoute + 'OS::Senlin::Receiver/' + item.id;
     }
 
     /*

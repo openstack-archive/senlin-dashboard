@@ -19,6 +19,7 @@
     .factory('horizon.cluster.policies.service', policiesService);
 
   policiesService.$inject = [
+    'horizon.app.core.detailRoute',
     'horizon.app.core.openstack-service-api.senlin'
   ];
 
@@ -30,7 +31,7 @@
    * This service provides functions that are used through
    * the policies features.
    */
-  function policiesService(senlin) {
+  function policiesService(detailRoute, senlin) {
     return {
       getDetailsPath: getDetailsPath,
       getPolicyPromise: getPolicyPromise,
@@ -45,7 +46,7 @@
      * Returns the relative path to the details view.
      */
     function getDetailsPath(item) {
-      return 'project/ngdetails/OS::Senlin::Policy/' + item.id;
+      return detailRoute + 'OS::Senlin::Policy/' + item.id;
     }
 
     /*

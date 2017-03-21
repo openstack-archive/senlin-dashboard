@@ -20,6 +20,7 @@
     .factory('horizon.cluster.profiles.service', profileService);
 
   profileService.$inject = [
+    'horizon.app.core.detailRoute',
     'horizon.app.core.openstack-service-api.senlin'
   ];
 
@@ -31,7 +32,7 @@
    * This service provides functions that are used through
    * the Profiles features.
    */
-  function profileService(senlin) {
+  function profileService(detailRoute, senlin) {
     return {
       getDetailsPath: getDetailsPath,
       getProfilePromise: getProfilePromise,
@@ -46,7 +47,7 @@
      * Returns the relative path to the details view.
      */
     function getDetailsPath(item) {
-      return 'project/ngdetails/OS::Senlin::Profile/' + item.id;
+      return detailRoute + 'OS::Senlin::Profile/' + item.id;
     }
 
     /*

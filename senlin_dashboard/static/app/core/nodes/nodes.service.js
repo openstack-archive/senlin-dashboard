@@ -19,6 +19,7 @@
     .factory('horizon.cluster.nodes.service', nodesService);
 
   nodesService.$inject = [
+    'horizon.app.core.detailRoute',
     'horizon.app.core.openstack-service-api.senlin'
   ];
 
@@ -30,7 +31,7 @@
    * This service provides functions that are used through
    * the Nodes features.
    */
-  function nodesService(senlin) {
+  function nodesService(detailRoute, senlin) {
     return {
       getDetailsPath: getDetailsPath,
       getNodePromise: getNodePromise,
@@ -45,7 +46,7 @@
      * Returns the relative path to the details view.
      */
     function getDetailsPath(item) {
-      return 'project/ngdetails/OS::Senlin::Node/' + item.id;
+      return detailRoute + 'OS::Senlin::Node/' + item.id;
     }
 
     /*

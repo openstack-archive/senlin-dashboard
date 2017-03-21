@@ -17,18 +17,19 @@
   "use strict";
 
   describe('profile service', function() {
-    var service, $scope;
+    var service, $scope, detailRoute;
     beforeEach(module('horizon.app.core'));
     beforeEach(module('horizon.cluster'));
 
     beforeEach(inject(function($injector, _$rootScope_) {
       service = $injector.get('horizon.cluster.profiles.service');
+      detailRoute = $injector.get('horizon.app.core.detailRoute');
       $scope = _$rootScope_.$new();
     }));
 
     it("getDetailsPath creates urls using the item's ID", function() {
       var myItem = {id: "666"};
-      expect(service.getDetailsPath(myItem)).toBe('project/ngdetails/OS::Senlin::Profile/666');
+      expect(service.getDetailsPath(myItem)).toBe(detailRoute + 'OS::Senlin::Profile/666');
     });
 
     describe('getProfilePromise', function() {

@@ -12,7 +12,7 @@
 
 import yaml
 
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse
 from django import http
 
 from mox3.mox import IsA  # noqa
@@ -20,9 +20,9 @@ from mox3.mox import IsA  # noqa
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
-INDEX_URL = reverse_lazy('horizon:cluster:policies:index')
-CREATE_URL = reverse_lazy('horizon:cluster:policies:create')
-DETAIL_URL = reverse_lazy('horizon:cluster:policies:detail', args=[u'1'])
+INDEX_URL = reverse('horizon:cluster:policies:index')
+CREATE_URL = reverse('horizon:cluster:policies:create')
+DETAIL_URL = reverse('horizon:cluster:policies:detail', args=[u'1'])
 
 
 class PoliciesTest(test.TestCase):

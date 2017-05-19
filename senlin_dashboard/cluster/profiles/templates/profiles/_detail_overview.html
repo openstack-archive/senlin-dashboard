@@ -12,10 +12,6 @@
     <dd>{{ profile.type }}</dd>
     <dt>{% trans "Spec" %}</dt>
     <dd>{{ profile.profile_spec|force_escape|nbsp|linebreaksbr }}</dd>
-    {% if profile.permission %}
-    <dt>{% trans "Permission" %}</dt>
-    <dd>{{ profile.permission }}</dd>
-    {% endif %}
     <dt>{% trans "Created" context "Created time" %}</dt>
     <dd>{{ profile.created_at|parse_isotime }}</dd>
     {% if profile.updated_at %}

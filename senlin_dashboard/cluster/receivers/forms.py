@@ -35,7 +35,7 @@ def _populate_receiver_params(name, type_name, cluster_id, action, params):
         params_dict = {}
     else:
         try:
-            params_dict = yaml.load(params)
+            params_dict = yaml.safe_load(params)
         except Exception as ex:
             raise Exception(_('The specified params is not a valid '
                               'YAML: %s') % six.text_type(ex))
@@ -83,7 +83,7 @@ class CreateReceiverForm(forms.SelfHandlingForm):
 
     def handle(self, request, data):
         try:
-            params = yaml.load(data.get("params"))
+            params = yaml.safe_load(data.get("params"))
         except Exception as ex:
             raise ValidationError(_('The parameters is not a valid '
                                     'YAML formatted: %s') % six.text_type(ex))

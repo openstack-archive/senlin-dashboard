@@ -78,14 +78,14 @@ class PoliciesTest(test.TestCase):
 
         formdata = {
             'name': 'test-policy',
-            'spec': yaml.load(spec_yaml),
+            'spec': yaml.safe_load(spec_yaml),
             'cooldown': 0,
             'level': 0
         }
 
         args = {
             'name': 'test-policy',
-            'spec': yaml.load(spec_yaml),
+            'spec': yaml.safe_load(spec_yaml),
             'cooldown': 0,
             'level': 0
         }

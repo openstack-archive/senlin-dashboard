@@ -29,7 +29,7 @@ def _populate_node_params(name, profile_id, cluster_id, role, metadata):
         metadata_dict = {}
     else:
         try:
-            metadata_dict = yaml.load(metadata)
+            metadata_dict = yaml.safe_load(metadata)
         except Exception as ex:
             raise Exception(_('The specified metadata is not a valid '
                               'YAML: %s') % six.text_type(ex))

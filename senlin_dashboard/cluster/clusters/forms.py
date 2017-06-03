@@ -77,7 +77,7 @@ class CreateForm(forms.SelfHandlingForm):
                 metadata = {}
             else:
                 try:
-                    metadata = yaml.load(data['metadata'])
+                    metadata = yaml.safe_load(data['metadata'])
                 except Exception as ex:
                     raise Exception(_('The specified metadata is not a valid '
                                       'YAML format: %s') % six.text_type(ex))

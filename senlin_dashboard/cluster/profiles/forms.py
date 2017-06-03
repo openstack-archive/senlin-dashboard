@@ -41,7 +41,7 @@ def _populate_profile_params(name, spec, metadata, id=None):
         spec_dict = None
     else:
         try:
-            spec_dict = yaml.load(spec)
+            spec_dict = yaml.safe_load(spec)
         except Exception as ex:
             raise ValidationError(_('The specified file is not a valid '
                                     'YAML file: %s') % six.text_type(ex))
@@ -53,7 +53,7 @@ def _populate_profile_params(name, spec, metadata, id=None):
         metadata_dict = {}
     else:
         try:
-            metadata_dict = yaml.load(metadata)
+            metadata_dict = yaml.safe_load(metadata)
         except Exception as ex:
             raise ValidationError(_('The specified file is not a valid '
                                     'YAML file: %s') % six.text_type(ex))

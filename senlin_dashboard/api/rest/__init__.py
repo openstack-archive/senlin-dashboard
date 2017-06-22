@@ -15,4 +15,4 @@ Javascript code.
 """
 
 # import REST API modules here
-from senlin_dashboard.api.rest import senlin  # noqa
+from senlin_dashboard.api.rest import senlin  # noqa: F401

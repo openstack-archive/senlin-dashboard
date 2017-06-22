@@ -3,6 +3,7 @@
 *.py[cod]
 *.sw[op]
 *.sqlite3
+*nose_results.html
 
 .DS_Store
 .DS_STORE

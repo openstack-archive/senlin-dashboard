@@ -11,7 +11,7 @@
 # limitations under the License.
 
 from django.conf import settings
-from django.conf.urls import url  # noqa
+from django.conf.urls import url
 from django.utils.translation import ugettext_lazy as _
 
 from horizon.browsers import views

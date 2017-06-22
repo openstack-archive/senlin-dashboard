@@ -10,8 +10,8 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from horizon.test.settings import *  # noqa
-from openstack_dashboard.test.settings import *  # noqa
+from horizon.test.settings import *  # noqa: F403,H303
+from openstack_dashboard.test.settings import *  # noqa: F403,H303
 
 INSTALLED_APPS = list(INSTALLED_APPS)
 INSTALLED_APPS.append('senlin_dashboard.cluster')

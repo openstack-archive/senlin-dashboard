@@ -15,7 +15,7 @@
 from django.core.urlresolvers import reverse
 from django import http
 
-from mox3.mox import IsA  # noqa
+from mox3.mox import IsA
 
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test

@@ -19,7 +19,7 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import exceptions
 from horizon import forms
 from horizon import messages
-from horizon.utils.memoized import memoized  # noqa
+from horizon.utils.memoized import memoized  # noqa: F401
 
 from senlin_dashboard.api import senlin
 

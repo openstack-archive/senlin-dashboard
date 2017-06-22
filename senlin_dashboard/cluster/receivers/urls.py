@@ -11,12 +11,12 @@
 # limitations under the License.
 
 from django.conf import settings
-from django.conf.urls import url  # noqa
+from django.conf.urls import url
 from django.utils.translation import ugettext_lazy as _
 
 from horizon.browsers.views import AngularIndexView
 
-from senlin_dashboard.api import rest  # noqa
+from senlin_dashboard.api import rest  # noqa: F401
 from senlin_dashboard.cluster.receivers import views as legacyViews
 
 

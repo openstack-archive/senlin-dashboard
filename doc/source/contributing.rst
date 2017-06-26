@@ -18,8 +18,8 @@ signed OpenStack's contributor's agreement.
 
 .. seealso::
 
-   * http://docs.openstack.org/infra/manual/developers.html
-   * http://wiki.openstack.org/CLA
+   * https://docs.openstack.org/infra/manual/developers.html
+   * https://wiki.openstack.org/wiki/How_To_Contribute#Contributors_License_Agreement
 
 LaunchPad Project
 -----------------
@@ -33,7 +33,7 @@ authentication.
    * https://launchpad.net/senlin-dashboard
 
 Project Hosting Details
--------------------------
+-----------------------
 
 Bug tracker
     http://launchpad.net/senlin-dashboard

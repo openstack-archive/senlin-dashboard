@@ -12,7 +12,9 @@
 # limitations under the License.
 
 import os
+import subprocess
 import sys
+import warnings
 
 sys.path.insert(0, os.path.abspath('../..'))
 # -- General configuration ----------------------------------------------------
@@ -22,7 +24,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
-    'oslosphinx',
+    'openstackdocstheme',
 ]
 
 # Autodoc generation is a bit aggressive and a nuisance when doing heavy
@@ -53,9 +55,24 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages. Major themes that come with
 # Sphinx are currently 'default' and 'sphinxdoc'.
-# html_theme_path = ["."]
-# html_theme = '_theme'
 # html_static_path = []
+html_theme = 'openstackdocs'
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = '%sdoc' % project
+
+# If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
+# using the given strftime format.
+# html_last_updated_fmt = '%b %d, %Y'
+git_cmd = ["git", "log", "--pretty=format:'%ad, commit %h'", "--date=local",
+           "-n1"]
+try:
+    html_last_updated_fmt = subprocess.check_output(git_cmd).decode('utf-8')
+except Exception:
+    warnings.warn('Cannot get last updated time from git repository. '
+                  'Not setting "html_last_updated_fmt".')
+
+# -- Options for openstackdocstheme -------------------------------------------
+repository_name = 'openstack/senlin-dashboard'
+bug_project = 'senlin-dashboard'
+bug_tag = ''

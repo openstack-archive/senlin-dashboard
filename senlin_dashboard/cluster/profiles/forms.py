@@ -125,7 +125,7 @@ class CreateProfileForm(forms.SelfHandlingForm):
         )
 
         try:
-            profile = senlin.profile_create(request, opts)
+            profile = senlin.profile_create(request, **opts)
             messages.success(request,
                              _('Your profile %s has been created.') %
                              opts['name'])

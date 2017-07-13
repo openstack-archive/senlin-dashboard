@@ -1,5 +1,3 @@
-.. _contributing:
-
 ================================
 Contributing to Senlin Dashboard
 ================================
@@ -32,19 +30,7 @@ authentication.
    * https://launchpad.net
    * https://launchpad.net/senlin-dashboard
 
-Project Hosting Details
------------------------
+.. include:: hosts.rst
 
-Bug tracker
-    http://launchpad.net/senlin-dashboard
-
-Mailing list (prefix subjects with ``[senlin-dashboard]`` for faster responses)
-    http://lists.openstack.org/cgi-bin/mailman/listinfo/openstack-dev
-
-Code Hosting
-    https://git.openstack.org/cgit/openstack/senlin-dashboard
-
-Code Review
-    https://review.openstack.org/#/q/status:open+project:openstack/senlin-dashboard,n,z
-
+.. include:: develop.rst
 

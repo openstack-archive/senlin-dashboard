@@ -2,17 +2,21 @@
 Welcome to Senlin Dashboard's documentation!
 ============================================
 
-Contents:
+User Documentation
+------------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-   readme
-   contributing
+   install/index
+   configuration/index
+   Release Notes <https://docs.openstack.org/releasenotes/senlin-dashboard>
 
-Indices and tables
-==================
+Contributor Guide
+-----------------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. toctree::
+   :glob:
+   :maxdepth: 2
+
+   contributor/index

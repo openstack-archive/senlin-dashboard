@@ -82,7 +82,7 @@ class CreateForm(forms.SelfHandlingForm):
                                            data['role'],
                                            data['metadata'])
 
-            node = senlin.node_create(request, params)
+            node = senlin.node_create(request, **params)
             msg = _('Creating node "%s" successfully') % data['name']
             messages.info(request, msg)
             return node

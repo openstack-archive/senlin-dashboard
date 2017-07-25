@@ -1,0 +1,13 @@
+---
+upgrade:
+  - >
+    Use only tox for test and remove run_tests.sh that is
+    no longer used.
+  - >
+    Support python 3.5.
+  - >
+    To remove "project/ngdetails/" hard coded in the path
+    of the details view, use "horizon.app.core.detailRoute".
+  - >
+    Switch theme for documentation from oslosphinx to
+    openstackdocstheme.

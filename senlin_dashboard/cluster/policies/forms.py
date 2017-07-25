@@ -86,7 +86,7 @@ class CreatePolicyForm(forms.SelfHandlingForm):
         }
 
         try:
-            policy = senlin.policy_create(request, args)
+            policy = senlin.policy_create(request, **args)
             messages.success(request,
                              _('Your policy %s has been created.') %
                              args['name'])

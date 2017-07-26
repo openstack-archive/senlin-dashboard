@@ -90,7 +90,7 @@ class CreateReceiverForm(forms.SelfHandlingForm):
         data["params"] = params
 
         try:
-            receiver = senlin.receiver_create(request, data)
+            receiver = senlin.receiver_create(request, **data)
             messages.success(
                 request,
                 _('Your receiver %s has been created successfully.') %

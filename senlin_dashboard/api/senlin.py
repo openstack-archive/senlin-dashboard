@@ -165,6 +165,16 @@ def cluster_recover(request, cluster, params=None):
     senlinclient(request).recover_cluster(cluster, **params)
 
 
+def cluster_scale_in(request, cluster, count=None):
+    """Scale in a Cluster"""
+    senlinclient(request).cluster_scale_in(cluster, count)
+
+
+def cluster_scale_out(request, cluster, count=None):
+    """Scale out a Cluster"""
+    senlinclient(request).cluster_scale_out(cluster, count)
+
+
 def cluster_delete(request, cluster):
     """Delete cluster."""
     senlinclient(request).delete_cluster(cluster)

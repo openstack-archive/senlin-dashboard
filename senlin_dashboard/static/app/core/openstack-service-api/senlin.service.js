@@ -38,6 +38,7 @@
       createCluster: createCluster,
       updateCluster: updateCluster,
       deleteCluster: deleteCluster,
+      scaleCluster: scaleCluster,
       createProfile: createProfile,
       updateProfile: updateProfile,
       deleteProfile: deleteProfile,
@@ -476,7 +477,39 @@
       });
     }
 
-    // Policies
+    /**
+     * @name scaleCluster
+     * @description
+     * Scale a Cluster.
+     *
+     * @param {Object} id
+     * Cluster ID to scale.
+     * @param {Object} name
+     * Cluster name to scale.
+     * @param {Object} scale
+     * Direction of scale. 'in' or 'out'.
+     * @param {Object} count
+     * Count to scale-in a cluster.
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     * @returns {Object} The result of the API call
+     */
+    function scaleCluster(id, name, scale, count, suppressError) {
+      var promise = apiService.put(
+        '/api/senlin/clusters/' + id + '/scale-' + scale,
+        {count: count});
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to scale-%(scale)s the cluster with name: %(name)s');
+        var scaleMsg;
+        if (scale === 'in') {
+          scaleMsg = gettext('in');
+        } else {
+          scaleMsg = gettext('out');
+        }
+        toastService.add('error', interpolate(msg, { scale: scaleMsg, name: name }, true));
+      });
+    }
 
     /*
      * @name getClusterPolicies
@@ -510,6 +543,8 @@
         toastService.add('error', gettext('Unable to update policies of the cluster'));
       });
     }
+
+    // Policies
 
     /*
      * @name getPolicies

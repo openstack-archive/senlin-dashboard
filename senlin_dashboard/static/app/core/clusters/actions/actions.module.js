@@ -34,6 +34,8 @@
     'horizon.cluster.clusters.actions.manage-policy.service',
     'horizon.cluster.clusters.actions.delete.service',
     'horizon.cluster.clusters.actions.update.service',
+    'horizon.cluster.clusters.actions.scale-in.service',
+    'horizon.cluster.clusters.actions.scale-out.service',
     'horizon.app.core.clusters.resourceType'
   ];
 
@@ -43,6 +45,8 @@
     managePolicyService,
     deleteClusterService,
     updateClusterService,
+    scaleInClusterService,
+    scaleOutClusterService,
     clusterResourceType
   ) {
     var clusterResource = registry.getResourceType(clusterResourceType);
@@ -81,6 +85,22 @@
         service: managePolicyService,
         template: {
           text: gettext('Manage Policies'),
+          type: 'row'
+        }
+      })
+      .append({
+        id: 'scaleInClusterAction',
+        service: scaleInClusterService,
+        template: {
+          text: gettext('Scale-in Cluster'),
+          type: 'row'
+        }
+      })
+      .append({
+        id: 'scaleOutClusterAction',
+        service: scaleOutClusterService,
+        template: {
+          text: gettext('Scale-out Cluster'),
           type: 'row'
         }
       })

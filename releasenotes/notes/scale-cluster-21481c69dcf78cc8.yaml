@@ -1,0 +1,7 @@
+---
+features:
+  - >
+    Scale-in and Scale-out actions for cluster added.
+    These actions are added as row action for each cluster
+    in Clusters table view. Although, this action is only
+    for Angularized clusters panel.

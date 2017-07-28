@@ -106,7 +106,7 @@ class UpdatePolicyForm(forms.SelfHandlingForm):
         params = {"name": data.get('name')}
 
         try:
-            senlin.policy_update(request, data.get('policy_id'), params)
+            senlin.policy_update(request, data.get('policy_id'), **params)
             messages.success(request,
                              _('Your policy %s has been updated.') %
                              params['name'])

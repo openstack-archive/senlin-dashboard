@@ -120,12 +120,13 @@ class UpdateNodeForm(forms.SelfHandlingForm):
     def handle(self, request, data):
         params = _populate_node_params(data['name'],
                                        data['profile_id'],
-                                       data['cluster_id'],
+                                       None,
                                        data['role'],
                                        data['metadata'])
 
+        del params['cluster_id']
         try:
-            node = senlin.node_update(request, data.get('node_id'), params)
+            node = senlin.node_update(request, data.get('node_id'), **params)
             messages.success(
                 request,
                 _('Your node %s update request'

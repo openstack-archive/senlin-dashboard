@@ -160,7 +160,7 @@ class UpdateProfileForm(forms.SelfHandlingForm):
             spec=None,
             metadata=data.get('metadata', {})
         )
-
+        del opts['spec']
         try:
             senlin.profile_update(request, data.get('profile_id'), **opts)
             messages.success(request,

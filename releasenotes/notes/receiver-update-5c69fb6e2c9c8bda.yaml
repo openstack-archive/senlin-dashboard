@@ -1,0 +1,6 @@
+---
+features:
+  - >
+    Update action for receiver is added. This action is added
+    as row action for each receiver in Receivers table view.
+    Although, this action is only for Angularized receivers panel.

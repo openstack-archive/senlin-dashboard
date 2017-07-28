@@ -471,6 +471,13 @@ def receiver_delete(request, receiver):
     senlinclient(request).delete_receiver(receiver)
 
 
+def receiver_update(request, receiver_id, **params):
+    """Update receiver"""
+    receiver = senlinclient(request).get_receiver(receiver_id)
+    updated = senlinclient(request).update_receiver(receiver, **params)
+    return Receiver(updated)
+
+
 def receiver_get(request, receiver):
     receiver = senlinclient(request).get_receiver(receiver)
     return Receiver(receiver)

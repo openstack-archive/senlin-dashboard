@@ -94,6 +94,27 @@ class Receiver(generic.View):
         receiver["channel"] = api_utils.convert_to_yaml(receiver["channel"])
         return receiver
 
+    @rest_utils.ajax(data_required=True)
+    def put(self, request, receiver_id):
+        """Update a Profile.
+
+        Returns the Profile object on success.
+        """
+        request_param = request.DATA
+        params = receiver_forms._populate_receiver_params(
+            request_param.get("name"),
+            None,
+            None,
+            request_param.get("action"),
+            request_param.get("params"))
+        del params['type']
+        del params['cluster_id']
+        updated_receiver = senlin.receiver_update(
+            request, receiver_id, **params)
+        return rest_utils.CreatedResponse(
+            '/api/senlin/receivers/%s' % updated_receiver.id,
+            updated_receiver.to_dict())
+
     @rest_utils.ajax()
     def delete(self, request, receiver_id):
         """Delete a specific receiver

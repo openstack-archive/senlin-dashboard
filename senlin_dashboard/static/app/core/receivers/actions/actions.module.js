@@ -30,16 +30,18 @@
 
   registerReceiverActions.$inject = [
     'horizon.framework.conf.resource-type-registry.service',
+    'horizon.app.core.receivers.resourceType',
     'horizon.cluster.receivers.actions.create.service',
-    'horizon.cluster.receivers.actions.delete.service',
-    'horizon.app.core.receivers.resourceType'
+    'horizon.cluster.receivers.actions.update.service',
+    'horizon.cluster.receivers.actions.delete.service'
   ];
 
   function registerReceiverActions(
     registry,
+    receiverResourceType,
     createReceiverService,
-    deleteReceiverService,
-    receiverResourceType
+    updateReceiverService,
+    deleteReceiverService
   ) {
     var receiverResource = registry.getResourceType(receiverResourceType);
 
@@ -53,23 +55,31 @@
         }
       });
 
+    receiverResource.batchActions
+    .append({
+      id: 'batchDeleteReceiverAction',
+      service: deleteReceiverService,
+      template: {
+        type: 'delete-selected',
+        text: gettext('Delete Receivers')
+      }
+    });
+
     receiverResource.itemActions
+      .append({
+        id: 'updateReceiverAction',
+        service: updateReceiverService,
+        template: {
+          text: gettext('Update Receiver'),
+          type: 'row'
+        }
+      })
       .append({
         id: 'deleteReceiverAction',
         service: deleteReceiverService,
         template: {
           text: gettext('Delete Receiver'),
           type: 'delete'
-        }
-      });
-
-    receiverResource.batchActions
-      .append({
-        id: 'batchDeleteReceiverAction',
-        service: deleteReceiverService,
-        template: {
-          type: 'delete-selected',
-          text: gettext('Delete Receivers')
         }
       });
   }

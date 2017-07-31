@@ -15,26 +15,30 @@
 (function() {
   'use strict';
 
-  describe('horizon.cluster.receivers.actions.create.service', function() {
+  describe('horizon.cluster.receivers.actions.update.service', function() {
 
     var service, $scope, $q, deferred, senlin;
-
-    var workflow = {
-      init: function (actionType, title, submitText, submitIcon, helpUrl) {
-        actionType = title = submitText = submitIcon = helpUrl;
-        return {then: angular.noop, dummy: actionType};
-      }
+    var selected = {
+      id: 1
     };
-
+    var model = {
+      id: 1,
+      name: ""
+    };
     var modal = {
-      open: function (config) {
+      open: function(config) {
+        config.model = model;
         deferred = $q.defer();
-        deferred.resolve(config.model);
+        deferred.resolve(config);
         return deferred.promise;
       }
     };
-
-    var selected = {id: 1};
+    var workflow = {
+      init: function (action, title) {
+        action = title;
+        return {model: model};
+      }
+    };
 
     ///////////////////
 
@@ -43,39 +47,44 @@
     beforeEach(module('horizon.cluster.receivers'));
 
     beforeEach(module(function($provide) {
-      $provide.value('horizon.framework.widgets.form.ModalFormService', modal);
       $provide.value('horizon.cluster.receivers.actions.workflow', workflow);
+      $provide.value('horizon.framework.widgets.form.ModalFormService', modal);
     }));
 
     beforeEach(inject(function($injector, _$rootScope_, _$q_) {
       $q = _$q_;
       $scope = _$rootScope_.$new();
-      service = $injector.get('horizon.cluster.receivers.actions.create.service');
+      service = $injector.get('horizon.cluster.receivers.actions.update.service');
       senlin = $injector.get('horizon.app.core.openstack-service-api.senlin');
       deferred = $q.defer();
       deferred.resolve({data: {id: 1}});
-      spyOn(senlin, 'createReceiver').and.returnValue(deferred.promise);
+      spyOn(senlin, 'getReceiver').and.returnValue(deferred.promise);
+      spyOn(senlin, 'updateReceiver').and.returnValue(deferred.promise);
       spyOn(workflow, 'init').and.callThrough();
       spyOn(modal, 'open').and.callThrough();
     }));
 
-    it('should check the policy if the user is allowed to create receiver', function() {
+    it('should check the policy if the user is allowed to update Receiver', function() {
       var allowed = service.allowed();
       expect(allowed).toBeTruthy();
     });
 
-    it('should initialize workflow', function() {
+    it('should initialize workflow and update Receiver', inject(function($timeout) {
       service.perform(selected, $scope);
 
       expect(workflow.init).toHaveBeenCalled();
 
       var modalArgs = workflow.init.calls.mostRecent().args;
-      expect(modalArgs[0]).toEqual('create');
-      expect(modalArgs[1]).toEqual('Create Receiver');
-      expect(modalArgs[2]).toEqual('Create');
-      expect(modalArgs[3]).toEqual('fa fa-check');
+      expect(modalArgs[0]).toEqual('update');
+      expect(modalArgs[1]).toEqual('Update Receiver');
+      expect(modalArgs[2]).toEqual('Update');
 
       expect(modal.open).toHaveBeenCalled();
-    });
+
+      $timeout.flush();
+      $scope.$apply();
+
+      expect(senlin.updateReceiver).toHaveBeenCalled();
+    }));
   });
 })();

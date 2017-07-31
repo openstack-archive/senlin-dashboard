@@ -29,16 +29,18 @@
 
   workflow.$inject = [
     'horizon.app.core.openstack-service-api.senlin',
+    'horizon.app.core.receivers.basePath',
     'horizon.framework.util.i18n.gettext'
   ];
 
-  function workflow(senlin, gettext) {
+  function workflow(senlin, basePath, gettext) {
     var workflow = {
       init: init
     };
 
-    function init(actionType, title, submitText, submitIcon, helpUrl) {
+    function init(actionType, title, submitText) {
       var schema, form, model;
+      var helpUrl = basePath + 'actions/receiver.help.html';
 
       // schema
       schema = {
@@ -92,7 +94,8 @@
                     {value: 'webhook', name: gettext('Webhook')},
                     {value: 'message', name: gettext('Message')}
                   ],
-                  required: true
+                  required: true,
+                  readonly: actionType === 'update'
                 },
                 {
                   key: 'cluster_id',
@@ -100,7 +103,8 @@
                   titleMap: [
                     {value: '', name: gettext('Select cluster for the receiver.')}
                   ],
-                  required: "model.type === 'webhook' || model.type === ''"
+                  required: "model.type === 'webhook' || model.type === ''",
+                  readonly: actionType === 'update'
                 },
                 {
                   key: 'action',

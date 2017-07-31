@@ -52,6 +52,7 @@
       getReceivers: getReceivers,
       getReceiver: getReceiver,
       createReceiver: createReceiver,
+      updateReceiver: updateReceiver,
       deleteReceiver: deleteReceiver,
       getCluster: getCluster,
       getClusters: getClusters,
@@ -242,6 +243,28 @@
 
       return suppressError ? promise : promise.error(function() {
         var msg = gettext('Unable to create the receiver with name: %(name)s');
+        toastService.add('error', interpolate(msg, { name: params.name }, true));
+      });
+    }
+
+    /**
+     * @name updateReceiver
+     * @description
+     * Update a Receiver.
+     *
+     * @param {Object} id
+     * Receiver ID to update.
+     * @param {Object} params
+     * JSON object to update a receiver like name, action and param.
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     * @returns {Object} The result of the API call
+     */
+    function updateReceiver(id, params, suppressError) {
+      var promise = apiService.put('/api/senlin/receivers/' + id + '/', params);
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to update the receiver with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
     }

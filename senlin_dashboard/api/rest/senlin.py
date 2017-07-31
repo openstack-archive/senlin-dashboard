@@ -398,6 +398,78 @@ class Cluster(generic.View):
 
 
 @urls.register
+class ClusterActions(generic.View):
+    """API for Senlin cluster."""
+
+    url_regex = r'senlin/clusters/(?P<cluster_id>[^/]+)/(?P<action>[^/]+)$'
+
+    @rest_utils.ajax()
+    def get(self, request, cluster_id, action):
+        if action == "policy":
+            """Get policies of a single cluster with the cluster id.
+
+            The following get parameters may be passed in the GET
+
+            :param cluster_id: the id of the cluster
+
+            The result is a cluster object.
+            """
+            policies = senlin.cluster_policy_list(request, cluster_id, {})
+
+            return {
+                'items': [p.to_dict() for p in policies],
+            }
+        elif action == "":
+            return None
+
+    @rest_utils.ajax(data_required=True)
+    def put(self, request, cluster_id, action):
+        if action == "policy":
+            """Update policies for the cluster."""
+            params = request.DATA
+
+            new_attach_ids = params["ids"]
+            old_attached = senlin.cluster_policy_list(request, cluster_id, {})
+
+            # Extract policies should be detached and execute
+            for policy in old_attached:
+                should_detach = True
+                for new_id in new_attach_ids:
+                    if new_id == policy.policy_id:
+                        # This policy is already attached.
+                        should_detach = False
+                        break
+                if should_detach:
+                    # If policy is not exist in new policies,
+                    # it should be removed
+                    senlin.cluster_detach_policy(
+                        request, cluster_id, policy.policy_id)
+
+            # Extract policies should be attached and execute
+            for new_id in new_attach_ids:
+                should_attach = True
+                for policy in old_attached:
+                    if new_id == policy.policy_id:
+                        # This policy is already attached.
+                        should_attach = False
+                        break
+                if should_attach:
+                    # If policy is not exist in old policies,
+                    # it should be added
+                    senlin.cluster_attach_policy(request, cluster_id,
+                                                 new_id, {})
+
+            return rest_utils.CreatedResponse(
+                '/api/senlin/clusters/%s/policy' % cluster_id)
+        elif action == "scale-in":
+            count = request.DATA.get("count") or None
+            return senlin.cluster_scale_in(request, cluster_id, count)
+        elif action == "scale-out":
+            count = request.DATA.get("count") or None
+            return senlin.cluster_scale_out(request, cluster_id, count)
+
+
+@urls.register
 class Policies(generic.View):
     """API for Senlin policies."""
 
@@ -482,62 +554,3 @@ class Policy(generic.View):
         return rest_utils.CreatedResponse(
             '/api/senlin/policies/%s' % updated_policy.id,
             updated_policy.to_dict())
-
-
-@urls.register
-class ClusterPolicies(generic.View):
-    """API for Senlin cluster."""
-
-    url_regex = r'senlin/clusters/(?P<cluster_id>[^/]+)/policy$'
-
-    @rest_utils.ajax()
-    def get(self, request, cluster_id):
-        """Get policies of a single cluster with the cluster id.
-
-        The following get parameters may be passed in the GET
-
-        :param cluster_id: the id of the cluster
-
-        The result is a cluster object.
-        """
-        policies = senlin.cluster_policy_list(request, cluster_id, {})
-
-        return {
-            'items': [p.to_dict() for p in policies],
-        }
-
-    @rest_utils.ajax(data_required=True)
-    def put(self, request, cluster_id):
-        """Update policies for the cluster."""
-        params = request.DATA
-
-        new_attach_ids = params["ids"]
-        old_attached = senlin.cluster_policy_list(request, cluster_id, {})
-
-        # Extract policies should be detached and execute
-        for policy in old_attached:
-            should_detach = True
-            for new_id in new_attach_ids:
-                if new_id == policy.policy_id:
-                    # This policy is already attached.
-                    should_detach = False
-                    break
-            if should_detach:
-                # If policy is not exist in new policies, it should be removed
-                senlin.cluster_detach_policy(
-                    request, cluster_id, policy.policy_id)
-
-        # Extract policies should be attached and execute
-        for new_id in new_attach_ids:
-            should_attach = True
-            for policy in old_attached:
-                if new_id == policy.policy_id:
-                    # This policy is already attached.
-                    should_attach = False
-                    break
-            if should_attach:
-                # If policy is not exist in old policies, it should be added
-                senlin.cluster_attach_policy(request, cluster_id, new_id, {})
-
-        return rest_utils.CreatedResponse(
-            '/api/senlin/clusters/%s/policy' % cluster_id)

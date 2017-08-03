@@ -11,6 +11,8 @@ Devstack Installation
     [[local|localrc]]
     #Enable senlin
     enable_plugin senlin https://git.openstack.org/openstack/senlin
+    #Enable senlin-dashboard
+    enable_plugin senlin-dashboard https://git.openstack.org/openstack/senlin-dashboard
 
 3. Run ``stack.sh``::
 

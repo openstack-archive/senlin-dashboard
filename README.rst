@@ -2,7 +2,7 @@
 Team and repository tags
 ========================
 
-.. image:: https://governance.openstack.org/badges/senlin-dashboard.svg
+.. image:: https://governance.openstack.org/tc/badges/senlin-dashboard.svg
     :target: https://governance.openstack.org/reference/tags/index.html
 
 .. Change things from this point on

@@ -14,6 +14,9 @@ Devstack Installation
     #Enable senlin-dashboard
     enable_plugin senlin-dashboard https://git.openstack.org/openstack/senlin-dashboard
 
+Please see the link： https://docs.openstack.org/senlin/latest/install/index.html
+for more detail about setting Senlin Server.
+
 3. Run ``stack.sh``::
 
     $ ./stack.sh

@@ -15,7 +15,6 @@
 .pydevproject
 .selenium_log
 .tox
-.venv
 
 AUTHORS
 ChangeLog

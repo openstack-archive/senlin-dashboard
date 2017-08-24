@@ -2,9 +2,9 @@
 # Shu Muto <shu-mutou@rf.jp.nec.com>, 2017. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: Senlin Dashboard Release Notes 0.6.1\n"
+"Project-Id-Version: Senlin Dashboard Release Notes 0.7.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-07 01:30+0000\n"
+"POT-Creation-Date: 2017-08-24 03:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,9 +20,6 @@ msgstr "0.4.0"
 
 msgid "0.6.0"
 msgstr "0.6.0"
-
-msgid "0.6.0-39"
-msgstr "0.6.0-39"
 
 msgid ""
 "AngularJS-based panels are implemented. These new panels have most of "

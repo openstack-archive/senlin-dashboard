@@ -4,11 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Senlin Dashboard Release Notes 0.7.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-24 03:12+0000\n"
+"POT-Creation-Date: 2017-08-24 12:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-07 06:56+0000\n"
+"PO-Revision-Date: 2017-08-25 05:52+0000\n"
 "Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -20,6 +20,9 @@ msgstr "0.4.0"
 
 msgid "0.6.0"
 msgstr "0.6.0"
+
+msgid "0.7.0"
+msgstr "0.7.0"
 
 msgid ""
 "AngularJS-based panels are implemented. These new panels have most of "
@@ -74,6 +77,9 @@ msgstr "Ocata バージョンのリリースノート"
 
 msgid "Paginated list for node objects."
 msgstr "ノードオブジェクトのページ送り付きリスト。"
+
+msgid "Pike Series Release Notes"
+msgstr "Pike バージョンのリリースノート"
 
 msgid "Prelude"
 msgstr "紹介"

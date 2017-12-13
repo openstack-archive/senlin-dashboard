@@ -19,37 +19,31 @@
 
   /**
    * @ngdoc controller
-   * @name horizon.cluster.policies.actions.workflow.loadFileController
+   * @name horizon.cluster.profiles.actions.workflow.loadSpecController
    * @ngController
    *
    * @description
-   * Controller for the loading file
+   * Controller for the loading spec file
    */
   angular
-    .module('horizon.cluster.policies.actions')
-    .controller('horizon.cluster.policies.actions.workflow.loadFileController',
-      loadFileController);
+    .module('horizon.cluster.profiles.actions')
+    .controller('horizon.cluster.profiles.actions.workflow.loadSpecController',
+      loadSpecController);
 
-  loadFileController.$inject = [
+  loadSpecController.$inject = [
     '$scope'
   ];
 
-  function loadFileController($scope) {
+  function loadSpecController($scope) {
     var ctrl = this;
-    ctrl.filename = "";
-    ctrl.changeFile = changeFile;
+    ctrl.title = $scope.schema.properties.spec.title;
+    ctrl.spec = "";
+    ctrl.onSpecChange = onSpecChange;
 
     ////
 
-    function changeFile(files) {
-      if (files.length) {
-        var reader = new FileReader();
-        reader.onload = function() {
-          $scope.model.spec = reader.result;
-          $scope.$emit('schemaFormRedraw');
-        };
-        reader.readAsText(files[0]);
-      }
+    function onSpecChange(spec) {
+      $scope.model.spec = spec;
     }
   }
 })();

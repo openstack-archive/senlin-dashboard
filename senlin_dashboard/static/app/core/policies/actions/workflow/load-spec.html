@@ -1,0 +1,9 @@
+<div ng-controller="horizon.cluster.policies.actions.workflow.loadSpecController as ctrl">
+  <load-edit title="{$ ctrl.title $}"
+             model="ctrl.spec"
+             max-bytes="{$ 16 * 1024 $}"
+             key="spec"
+             rows=8 required="true"
+             on-textarea-change="ctrl.onSpecChange(textContent)">
+  </load-edit>
+</div>

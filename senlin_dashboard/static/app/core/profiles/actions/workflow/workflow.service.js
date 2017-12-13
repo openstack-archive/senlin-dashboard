@@ -76,14 +76,13 @@
                 },
                 {
                   type: 'template',
-                  templateUrl: basePath + 'actions/workflow/load-file.html',
+                  templateUrl: basePath + 'actions/workflow/load-spec.html',
                   condition: actionType === 'update'
                 },
                 {
                   key: 'spec',
                   type: 'textarea',
-                  placeholder: gettext('Load or specify spec of the profile in YAML format.'),
-                  required: actionType === 'create',
+                  condition: actionType === 'create',
                   readonly: actionType === 'update'
                 },
                 {

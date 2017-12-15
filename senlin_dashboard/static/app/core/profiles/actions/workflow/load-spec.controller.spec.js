@@ -14,29 +14,35 @@
 
 (function() {
   'use strict';
-  describe('horizon.cluster.profiles.actions.workflow.loadFileController', function() {
-    var controller, $scope;
+  describe('horizon.cluster.profiles.actions.workflow.loadSpecController', function() {
+    var ctrl, $scope;
 
     beforeEach(module('horizon.framework'));
     beforeEach(module('horizon.app.core.openstack-service-api'));
     beforeEach(module('horizon.cluster.profiles.actions'));
 
-    beforeEach(inject(function ($injector, _$rootScope_) {
+    beforeEach(inject(function ($controller, _$rootScope_) {
       $scope = _$rootScope_.$new();
+      $scope.schema = {
+        properties: {
+          spec: {
+            title: "title"
+          }
+        }
+      };
       $scope.model = {
         spec: ''
       };
-      controller = $injector.get('$controller');
-      controller(
-        'horizon.cluster.profiles.actions.workflow.loadFileController',
+      ctrl = $controller(
+        'horizon.cluster.profiles.actions.workflow.loadSpecController',
         {
           $scope: $scope
         });
     }));
 
-    it('should scope is changed by load spec yaml file', function() {
+    it('should title is set', function() {
       $scope.$apply();
-      expect($scope.model.spec).toBe('');
+      expect(ctrl.title).toBe('title');
     });
   });
 })();

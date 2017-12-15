@@ -44,7 +44,7 @@
     it('should be create workflow config for create', function() {
       var config = testInitWorkflow('create', 'Create Profile', 'Create');
       expect(config.form[0].items[0].items[1].condition).toEqual(false);
-      expect(config.form[0].items[0].items[2].required).toEqual(true);
+      expect(config.form[0].items[0].items[2].condition).toEqual(true);
     });
 
     it('should be create workflow config for update', function() {

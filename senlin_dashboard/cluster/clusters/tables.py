@@ -88,7 +88,7 @@ class RecoverCluster(tables.BatchAction):
 
     def allowed(self, request, datum):
         if datum:
-            return datum.status == "ERROR"
+            return datum.status == "ERROR" or datum.status == "WARNING"
         else:
             return True
 

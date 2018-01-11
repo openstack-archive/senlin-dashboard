@@ -105,9 +105,11 @@
       deleteModalResult.fail.forEach(function markFailed(item) {
         actionResult.failed(policiesResourceType, getEntity(item).id);
       });
-      if (actionResult.result.failed.length === 0 &&
-          actionResult.result.deleted.length > 0) {
-        $location.path('/cluster/policies');
+      var indexPath = '/cluster/policies';
+      var currentPath = $location.path();
+      if (actionResult.result.failed.length === 0 && actionResult.result.deleted.length > 0 &&
+          currentPath !== indexPath) {
+        $location.path(indexPath);
       } else {
         return actionResult.result;
       }

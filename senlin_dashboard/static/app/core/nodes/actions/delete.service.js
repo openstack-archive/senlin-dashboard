@@ -103,8 +103,11 @@
       deleteModalResult.fail.forEach(function markFailed(item) {
         result.failed(nodesResourceType, getEntity(item).id);
       });
-      if (result.result.failed.length === 0 && result.result.deleted.length > 0) {
-        $location.path('/cluster/nodes');
+      var indexPath = '/cluster/nodes';
+      var currentPath = $location.path();
+      if (result.result.failed.length === 0 && result.result.deleted.length > 0 &&
+          currentPath !== indexPath) {
+        $location.path(indexPath);
       } else {
         return result.result;
       }

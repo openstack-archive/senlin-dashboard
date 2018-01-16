@@ -17,7 +17,7 @@ from horizon.utils import memoized
 
 from openstack_dashboard.api import base
 from senlin_dashboard.api import utils as api_utils
-from senlinclient import client as senlin_client
+from senlinclient.v1 import client as senlin_client
 
 USER_AGENT = 'python-senlinclient'
 
@@ -80,7 +80,6 @@ class Receiver(base.APIResourceWrapper):
 
 @memoized.memoized
 def senlinclient(request):
-    api_version = "1"
     kwargs = {
         'auth_url': getattr(settings, 'OPENSTACK_KEYSTONE_URL'),
         'token': request.user.token.id,
@@ -88,7 +87,7 @@ def senlinclient(request):
         'project_id': request.user.tenant_id,
         'auth_plugin': 'token',
     }
-    return senlin_client.Client(api_version, {}, USER_AGENT, **kwargs)
+    return senlin_client.Client(**kwargs)
 
 
 def _populate_request_size_and_page_size(request, paginate=False):

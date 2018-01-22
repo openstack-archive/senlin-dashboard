@@ -86,6 +86,7 @@ def senlinclient(request):
         'user_id': request.user.id,
         'project_id': request.user.tenant_id,
         'auth_plugin': 'token',
+        'region_name': request.user.services_region
     }
     return senlin_client.Client(**kwargs)
 

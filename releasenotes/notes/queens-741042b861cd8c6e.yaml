@@ -1,0 +1,31 @@
+---
+features:
+  - >
+    Added region support.
+  - >
+    The load-edit directive is used. The Spec field on Profile creation
+    dialog and Policy creation dialog use load-edit directive newly
+    added into Horizon.
+  - >
+    Switched to OSC module. Previously the client module for senlin API
+    have been used from senlin command module. Now the senlin command
+    module has retired and the client module for OpenStack Client is
+    used to call senlin API.
+  - >
+    Added the region support for Keystone V3.
+fixes:
+  - >
+    [`bug/1733833 <https://bugs.launchpad.net/senlin-dashboard/+bug/1733833>`_]
+    Fixed showing node list in Nodes tab of a cluster failed for
+    Dango-based panel.
+  - >
+    [`bug/1742599 <https://bugs.launchpad.net/senlin-dashboard/+bug/1742599>`_]
+    Fixed issue the deleted item is selected again with batch delete.
+    Items recently deleted with batch action had been shown in deletion
+    confirmation dialog when execute the batch delete action again.
+    And this had caused the conflict error due to trying to delete
+    unexisting item.
+  - >
+    [`bug/1742091 <https://bugs.launchpad.net/senlin-dashboard/+bug/1742091>`_]
+    Fixed being able not to recover a cluster in warning status.
+

@@ -60,6 +60,6 @@ def load_yaml(data):
         try:
             loaded_data = yaml.safe_load(data)
         except Exception as ex:
-            raise Exception(_('The specified inpu is not a valid '
+            raise Exception(_('The specified input is not a valid '
                               'YAML format: %s') % six.text_type(ex))
     return loaded_data

@@ -1,0 +1,785 @@
+# Frank Kloeker <eumel@arcor.de>, 2018. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: senlin-dashboard VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2018-02-10 14:50+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-02-10 04:06+0000\n"
+"Last-Translator: Frank Kloeker <eumel@arcor.de>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Zanata 3.9.6\n"
+
+msgid ""
+"A policy is a set of rules that can be checked and/or enforced when an "
+"Action is performed on a Cluster."
+msgstr ""
+"Eine Richtlinie ist eine Gruppe von Regeln, die überprüft und/oder erzwungen "
+"werden können, wenn eine Aktion für einen Cluster ausgeführt wird."
+
+msgid "A profile encodes the information needed for node creation."
+msgstr ""
+"Ein Profil codiert die Informationen, die für die Node-Erstellung benötigt "
+"werden."
+
+msgid "ACTIVE"
+msgstr "AKTIV"
+
+msgid "Action"
+msgstr "Aktion"
+
+msgid "An arbitrary human-readable name."
+msgstr "Ein beliebiger, von Menschen lesbarer Name."
+
+msgid "CHECKING"
+msgstr "ÜBERPRÜFEN"
+
+msgid "CREATING"
+msgstr "ERSTELLEN"
+
+msgid "CRITICAL"
+msgstr "KRITISCH"
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "Cluster"
+msgstr "Cluster"
+
+#, python-format
+msgid "Cluster %s was successfully created."
+msgstr "Cluster %s wurde erfolgreich erstellt."
+
+#, python-format
+msgid "Cluster %s was successfully updated."
+msgstr "Cluster %s wurde erfolgreich aktualisiert."
+
+msgid "Cluster ID"
+msgstr "Cluster-ID"
+
+msgid "Cluster Name"
+msgstr "Clustername"
+
+msgid "Cluster creation timeout in seconds."
+msgstr "Zeitlimit für die Clustererstellung in Sekunden"
+
+msgid "Cluster for this node."
+msgstr "Cluster für diesen Knoten"
+
+#, python-format
+msgid "Cluster scale-in %s was successfully accepted."
+msgstr "Cluster-Skalierung %s wurde erfolgreich akzeptiert."
+
+#, python-format
+msgid "Cluster scale-out %s was successfully accepted."
+msgstr "Cluster Scale-Out %s wurde erfolgreich akzeptiert."
+
+msgid "Clusters"
+msgstr "Cluster"
+
+msgid "Confirm Delete Cluster"
+msgid_plural "Confirm Delete Clusters"
+msgstr[0] "Bestätigen Cluster löschen"
+msgstr[1] "Bestätigen Cluster löschen"
+
+msgid "Confirm Delete Node"
+msgid_plural "Confirm Delete Nodes"
+msgstr[0] "Bestätigen Knoten löschen"
+msgstr[1] "Bestätigen Knoten löschen"
+
+msgid "Confirm Delete Policy"
+msgid_plural "Confirm Delete Policies"
+msgstr[0] "Bestätigen Richtlinie löschen"
+msgstr[1] "Bestätigen Richtlinien löschen"
+
+msgid "Confirm Delete Profile"
+msgid_plural "Confirm Delete Profiles"
+msgstr[0] "Bestätigen Profil löschen"
+msgstr[1] "Bestätigen Profile löschen"
+
+msgid "Confirm Delete Receiver"
+msgid_plural "Confirm Delete Receivers"
+msgstr[0] "Bestätigen Empfänger löschen"
+msgstr[1] "Bestätigen Empfänger löschen"
+
+msgid "Create"
+msgstr "Erstellen"
+
+msgid "Create At"
+msgstr "Erstellen  um"
+
+msgid "Create Cluster"
+msgstr "Cluster erstellen"
+
+msgid "Create Node"
+msgstr "Knoten erstellen"
+
+msgid "Create Policy"
+msgstr "Richtlinie erstellen"
+
+msgid "Create Profile"
+msgstr "Profil erstellen"
+
+msgid "Create Receiver"
+msgstr "Empfänger erstellen"
+
+msgid "Created"
+msgstr "Erstellt"
+
+msgid "DELETING"
+msgstr "LÖSCHEN"
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Cluster löschen"
+msgstr[1] "Cluster löschen"
+
+msgid "Delete Clusters"
+msgstr "Löschen Sie Cluster"
+
+msgid "Delete Node"
+msgid_plural "Delete Nodes"
+msgstr[0] "Knoten löschen"
+msgstr[1] "Knoten löschen"
+
+msgid "Delete Nodes"
+msgstr "Löschen Sie Knoten"
+
+msgid "Delete Policies"
+msgstr "Richtlinien löschen"
+
+msgid "Delete Policy"
+msgid_plural "Delete Policies"
+msgstr[0] "Richtlinie löschen"
+msgstr[1] "Richtlinien löschen"
+
+msgid "Delete Profile"
+msgid_plural "Delete Profiles"
+msgstr[0] "Profil löschen"
+msgstr[1] "Profile löschen"
+
+msgid "Delete Profiles"
+msgstr "Löschen Sie Profile"
+
+msgid "Delete Receiver"
+msgid_plural "Delete Receivers"
+msgstr[0] "Empfänger löschen"
+msgstr[1] "Empfänger löschen"
+
+msgid "Delete Receivers"
+msgstr "Empfänger löschen"
+
+#, python-format
+msgid "Deleted Cluster: %s."
+msgid_plural "Deleted Clusters: %s."
+msgstr[0] "Gelöschter Cluster: %s."
+msgstr[1] "Gelöschte Cluster: %s."
+
+#, python-format
+msgid "Deleted Node: %s."
+msgid_plural "Deleted Nodes: %s."
+msgstr[0] "Gelöschter Knoten: %s."
+msgstr[1] "Gelöschte Knoten: %s."
+
+#, python-format
+msgid "Deleted Policy: %s."
+msgid_plural "Deleted Policies: %s."
+msgstr[0] "Gelöschte Richtlinie: %s."
+msgstr[1] "Gelöschte Richtlinien: %s."
+
+#, python-format
+msgid "Deleted Profile: %s."
+msgid_plural "Deleted Profiles: %s."
+msgstr[0] "Gelöschtes Profil: %s."
+msgstr[1] "Gelöschte Profile: %s."
+
+#, python-format
+msgid "Deleted Receiver: %s."
+msgid_plural "Deleted Receivers: %s."
+msgstr[0] "Gelöschter Empfänger: %s."
+msgstr[1] "Gelöschte Empfänger: %s."
+
+msgid "Desired Capacity"
+msgstr "Gewünschte Kapazität"
+
+msgid "Desired capacity of the cluster. Default to 0."
+msgstr "Gewünschte Kapazität des Clusters Standard auf 0."
+
+msgid "ERROR"
+msgstr "ERROR"
+
+msgid "Event"
+msgstr "Ereignis"
+
+msgid "Events"
+msgstr "Ereignisse"
+
+msgid "Generated"
+msgstr "Generiert"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "INIT"
+msgstr "INIT"
+
+msgid "Load Spec from File"
+msgstr "Laden Sie Spec aus Datei"
+
+msgid "Load the spec yaml file and set to spec below."
+msgstr ""
+"Laden Sie die Spezifikationsdatei und legen Sie die Spezifikation fest."
+
+msgid "Manage Policies"
+msgstr "Richtlinien verwalten"
+
+msgid "Max Size"
+msgstr "Maximale Größe"
+
+msgid "Max size of the cluster. Default to -1 means unlimited."
+msgstr "Maximale Größe des Clusters Standard auf -1 bedeutet unbegrenzt."
+
+msgid "Message"
+msgstr "Nachricht"
+
+msgid "Metadata"
+msgstr "Metadaten"
+
+msgid "Metadata of the cluster in YAML format."
+msgstr "Metadaten des Clusters im YAML-Format."
+
+msgid "Metadata of the node in YAML format."
+msgstr "Metadaten des Knotens im YAML-Format."
+
+msgid "Metadata of the profile in YAML format."
+msgstr "Metadaten des Profils im YAML-Format."
+
+msgid "Min Size"
+msgstr "Min. Größe"
+
+msgid "Min size of the cluster. Default to 0."
+msgstr "Mindestgröße des Clusters Standard auf 0."
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Name of the cluster."
+msgstr "Name des Clusters"
+
+msgid "Name of the node."
+msgstr "Name des Knotens"
+
+msgid "Name of the policy."
+msgstr "Name der Richtlinie"
+
+msgid "Name of the profile."
+msgstr "Name des Profils"
+
+msgid "Name of the receiver."
+msgstr "Name des Empfängers"
+
+msgid "Name or ID of the targeted action to be triggered."
+msgstr "Name oder ID der Zielaktion, die ausgelöst werden soll."
+
+msgid "New timeout (in seconds) value for the cluster."
+msgstr "Neuer Timeout-Wert (in Sekunden) für den Cluster"
+
+msgid "Node"
+msgstr "Knoten"
+
+#, python-format
+msgid "Node %s was successfully created."
+msgstr "Knoten %s wurde erfolgreich erstellt."
+
+#, python-format
+msgid "Node %s was successfully updated."
+msgstr "Knoten %s wurde erfolgreich aktualisiert."
+
+msgid "Node Count"
+msgstr "Knotenzahl"
+
+msgid "Nodes"
+msgstr "Knoten"
+
+msgid "Object ID"
+msgstr "Objekt Identifikation"
+
+msgid "Object Name"
+msgstr "Objektname"
+
+msgid "Overview"
+msgstr "Überblick"
+
+msgid "Parameters"
+msgstr "Parameter"
+
+msgid "Parameters of the receiver in YAML format."
+msgstr "Parameter des Empfängers im YAML-Format."
+
+msgid "Params"
+msgstr "Parameter"
+
+msgid "Physical ID"
+msgstr "Physische ID"
+
+msgid "Policies"
+msgstr "Richtlinien"
+
+msgid "Policies for the cluster."
+msgstr "Richtlinien für den Cluster"
+
+msgid "Policies on the cluster were successfully updated."
+msgstr "Richtlinien auf dem Cluster wurden erfolgreich aktualisiert."
+
+msgid "Policy"
+msgstr "Richtlinie"
+
+#, python-format
+msgid "Policy %s was successfully created."
+msgstr "Die Richtlinie %s wurde erfolgreich erstellt."
+
+#, python-format
+msgid "Policy %s was successfully updated."
+msgstr "Die Richtlinie %s wurde erfolgreich aktualisiert."
+
+msgid "Policy Spec Examples"
+msgstr "Richtlinienspezifikationsbeispiele"
+
+msgid "Profile"
+msgstr "Profil"
+
+#, python-format
+msgid "Profile %s was successfully created."
+msgstr "Das Profil %s wurde erfolgreich erstellt."
+
+#, python-format
+msgid "Profile %s was successfully updated."
+msgstr "Das Profil %s wurde erfolgreich aktualisiert."
+
+msgid "Profile Name"
+msgstr "Profilname"
+
+msgid "Profile Spec Examples"
+msgstr "Profilspezifikationsbeispiele"
+
+msgid "Profile used for this cluster."
+msgstr "Profil, das für diesen Cluster verwendet wird."
+
+msgid "Profile used for this node."
+msgstr "Profil, das für diesen Knoten verwendet wird."
+
+msgid "Profiles"
+msgstr "Profile"
+
+msgid "RECOVERING"
+msgstr "WIEDERHERSTELLEN"
+
+msgid "RESIZING"
+msgstr "RESISIERUNG"
+
+msgid "Receiver"
+msgstr "Empfänger"
+
+#, python-format
+msgid "Receiver %s was successfully created."
+msgstr "Empfänger %s wurde erfolgreich erstellt."
+
+#, python-format
+msgid "Receiver %s was successfully updated."
+msgstr "Empfänger %s wurde erfolgreich aktualisiert."
+
+msgid "Receivers"
+msgstr "Empfänger"
+
+msgid "Role"
+msgstr "Rolle"
+
+msgid "Role for this node in the cluster."
+msgstr "Rolle für diesen Knoten im Cluster"
+
+msgid "Role for this node in the specific cluster."
+msgstr "Rolle für diesen Knoten im spezifischen Cluster"
+
+msgid "Scale In the Cluster"
+msgstr "Im Cluster skalieren"
+
+msgid "Scale Out the Cluster"
+msgstr "Scale den Cluster aus"
+
+msgid "Scale-In"
+msgstr "Scale-In"
+
+msgid "Scale-Out"
+msgstr "Skalierung"
+
+msgid "Scale-in Cluster"
+msgstr "Cluster skalieren"
+
+msgid "Scale-out Cluster"
+msgstr "Scale-out-Cluster"
+
+msgid "Select action for the receiver."
+msgstr "Wählen Sie eine Aktion für den Empfänger."
+
+msgid "Select cluster for the node."
+msgstr "Wählen Sie Cluster für den Knoten aus."
+
+msgid "Select cluster for the receiver."
+msgstr "Wählen Sie Cluster für den Empfänger."
+
+msgid "Select policies from the available policies below."
+msgstr ""
+"Wählen Sie die Richtlinien aus den folgenden verfügbaren Richtlinien aus."
+
+msgid "Select profile for the cluster."
+msgstr "Wählen Sie das Profil für den Cluster aus."
+
+msgid "Select profile for the node."
+msgstr "Wählen Sie das Profil für den Knoten aus."
+
+msgid "Select the policy to apply to the cluster."
+msgstr ""
+"Wählen Sie die Richtlinie aus, die auf den Cluster angewendet werden soll."
+
+msgid "Select type for the receiver."
+msgstr "Wählen Sie den Typ für den Empfänger."
+
+msgid "Spec"
+msgstr "Spez"
+
+msgid "Specify node count for scale-in."
+msgstr "Geben Sie die Anzahl der Knoten für das Skalieren an."
+
+msgid "Specify node count for scale-out."
+msgstr "Geben Sie die Anzahl der Knoten für das Scale-Out an."
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status Reason"
+msgstr "Status Grund"
+
+msgid "Targeted cluster for this receiver."
+msgstr "Ziel-Cluster für diesen Empfänger."
+
+msgid "The informations needed for cluster creation"
+msgstr "Die Informationen, die für die Cluster-Erstellung benötigt werden"
+
+msgid "The informations needed for node creation."
+msgstr "Die Informationen, die für die Knotenerstellung benötigt werden."
+
+msgid "The metadata yaml used to create the node."
+msgstr "Die Metadaten, die zum Erstellen des Knotens verwendet werden."
+
+msgid "The metadata yaml used to create the profile."
+msgstr "Die Metadaten, die zum Erstellen des Profils verwendet werden."
+
+msgid "The metadata yaml used to update the node."
+msgstr "Die Metadaten, die zum Aktualisieren des Knotens verwendet werden."
+
+msgid "The metadata yaml used to update the profile."
+msgstr "Die Metadaten, die zum Aktualisieren des Profils verwendet werden."
+
+msgid ""
+"The spec yaml used to create the policy. Edit loaded yaml from file using "
+"above 'Load Spec from File', or see samples from link below to write."
+msgstr ""
+"Die Spezifikation, die zum Erstellen der Richtlinie verwendet wurde. "
+"Bearbeiten Sie das geladene yaml aus der Datei, indem Sie 'Load Spec from "
+"File' verwenden, oder sieh Beispiele aus dem Link unten um zu schreiben."
+
+msgid ""
+"The spec yaml used to create the profile. Edit loaded yaml from file using "
+"above 'Load Spec from File', or see samples from link below to write."
+msgstr ""
+"Die Spezifikation, mit der das Profil erstellt wurde. Bearbeiten Sie das "
+"geladene yaml aus der Datei, indem Sie 'Load Spec from File' verwenden, oder "
+"sehen Sie die Beispiele aus dem Link unten."
+
+msgid "Timeout"
+msgstr "Auszeit"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Type of the receiver. Default to webhook"
+msgstr "Art des Empfängers. Standard für Webhook"
+
+msgid "UPDATING"
+msgstr "AKTUALISIERUNG"
+
+#, python-format
+msgid "Unable to create the cluster with name: %(name)s"
+msgstr "Der Cluster konnte nicht mit folgendem Namen erstellt werden: %(name)s"
+
+#, python-format
+msgid "Unable to create the node with name: %(name)s"
+msgstr "Der Knoten mit dem Namen kann nicht erstellt werden: %(name)s"
+
+#, python-format
+msgid "Unable to create the policy with name: %(name)s"
+msgstr ""
+"Die Richtlinie konnte nicht mit folgendem Namen erstellt werden: %(name)s"
+
+#, python-format
+msgid "Unable to create the profile with name: %(name)s"
+msgstr "Das Profil mit dem Namen kann nicht erstellt werden: %(name)s"
+
+#, python-format
+msgid "Unable to create the receiver with name: %(name)s"
+msgstr "Der Empfänger kann nicht mit folgendem Namen erstellt werden: %(name)s"
+
+#, python-format
+msgid "Unable to delete Cluster: %s."
+msgid_plural "Unable to delete Clusters: %s."
+msgstr[0] "Konnte Cluster nicht löschen: %s."
+msgstr[1] "Konnte Cluster nicht löschen: %s."
+
+#, python-format
+msgid "Unable to delete Node: %s."
+msgid_plural "Unable to delete Nodes: %s."
+msgstr[0] "Konnte Knoten nicht löschen: %s."
+msgstr[1] "Konnte Knoten nicht löschen: %s."
+
+#, python-format
+msgid "Unable to delete Policy: %s."
+msgid_plural "Unable to delete Policies: %s."
+msgstr[0] "Konnte Richtlinie nicht löschen: %s."
+msgstr[1] "Konnte Richtlinien nicht löschen: %s."
+
+#, python-format
+msgid "Unable to delete Profile: %s."
+msgid_plural "Unable to delete Profiles: %s."
+msgstr[0] "Konnte Profil nicht löschen: %s."
+msgstr[1] "Konnte Profile nicht löschen: %s."
+
+#, python-format
+msgid "Unable to delete Receiver: %s."
+msgid_plural "Unable to delete Receivers: %s."
+msgstr[0] "Konnte Empfänger nicht löschen: %s."
+msgstr[1] "Konnte Empfänger nicht löschen: %s."
+
+#, python-format
+msgid "Unable to delete the cluster with id: %(id)s."
+msgstr "Der Cluster mit ID: %(id)s konnte nicht gelöscht werden."
+
+#, python-format
+msgid "Unable to delete the node with id: %(id)s"
+msgstr "Der Knoten mit der ID %(id)s konnte nicht gelöscht werden"
+
+#, python-format
+msgid "Unable to delete the policy with id: %(id)s."
+msgstr "Die Richtlinie mit der ID: %(id)s konnte nicht gelöscht werden."
+
+#, python-format
+msgid "Unable to delete the profile with id: %(id)s."
+msgstr "Das Profil mit der ID %(id)s konnte nicht gelöscht werden."
+
+#, python-format
+msgid "Unable to delete the receiver with id: %(id)s."
+msgstr "Der Empfänger konnte nicht mit der ID: %(id)s gelöscht werden."
+
+#, python-format
+msgid "Unable to retrieve the cluster with id: %(id)s."
+msgstr "Der Cluster konnte nicht mit ID: %(id)s abgerufen werden."
+
+msgid "Unable to retrieve the clusters."
+msgstr "Die Cluster konnten nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve the events with id: %(id)s."
+msgstr "Die Ereignisse mit ID: %(id)s können nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve the node with id: %(id)s."
+msgstr "Der Knoten mit der ID %(id)s konnte nicht abgerufen werden."
+
+msgid "Unable to retrieve the nodes."
+msgstr "Die Knoten konnten nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve the policies of the cluster with id: %(id)s."
+msgstr ""
+"Die Richtlinien des Clusters mit ID: %(id)s können nicht abgerufen werden."
+
+msgid "Unable to retrieve the policies."
+msgstr "Die Richtlinien konnten nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve the policy with id: %(id)s."
+msgstr "Die Richtlinie mit ID:%(id)s konnte nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve the profile with id: %(id)s."
+msgstr "Das Profil mit der ID %(id)s konnte nicht abgerufen werden."
+
+msgid "Unable to retrieve the profiles."
+msgstr "Die Profile konnten nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve the receiver with id: %(id)s."
+msgstr "Der Empfänger konnte nicht mit ID: %(id)s abgerufen werden."
+
+msgid "Unable to retrieve the receivers."
+msgstr "Die Empfänger konnten nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to scale-%(scale)s the cluster with name: %(name)s"
+msgstr ""
+"%(scale)s-Skalierung des Clusters mit dem Namen %(name)s nicht möglich "
+
+msgid "Unable to update policies of the cluster"
+msgstr "Die Richtlinien des Clusters konnten nicht aktualisiert werden"
+
+#, python-format
+msgid "Unable to update the cluster with name: %(name)s"
+msgstr ""
+"Der Cluster konnte nicht mit folgendem Namen aktualisiert werden: %(name)s"
+
+#, python-format
+msgid "Unable to update the node with name: %(name)s"
+msgstr ""
+"Der Knoten konnte nicht mit dem folgenden Namen aktualisiert werden: %(name)s"
+
+#, python-format
+msgid "Unable to update the policy with name: %(name)s"
+msgstr ""
+"Die Richtlinie konnte nicht mit folgendem Namen aktualisiert werden: %(name)s"
+
+#, python-format
+msgid "Unable to update the profile with name: %(name)s"
+msgstr "Das Profil konnte nicht mit dem Namen aktualisiert werden: %(name)s"
+
+#, python-format
+msgid "Unable to update the receiver with name: %(name)s"
+msgstr ""
+"Der Empfänger kann nicht mit folgendem Namen aktualisiert werden: %(name)s"
+
+msgid "Update"
+msgstr "Aktualisieren"
+
+msgid "Update Cluster"
+msgstr "Cluster aktualisieren"
+
+msgid "Update Node"
+msgstr "Knoten aktualisieren"
+
+msgid "Update Policy"
+msgstr "Richtlinie aktualisieren"
+
+msgid "Update Profile"
+msgstr "Profil aktualisieren"
+
+msgid "Update Receiver"
+msgstr "Empfänger aktualisieren"
+
+msgid "Updated"
+msgstr "Aktualisiert"
+
+msgid "WARNING"
+msgstr "WARNUNG"
+
+msgid "Webhook"
+msgstr "Webhook"
+
+msgid "YAML formated metadata"
+msgstr "YAML formatierte Metadaten"
+
+msgid ""
+"YAML formatted parameters that will be passed to target action when the "
+"receiver is triggered."
+msgstr ""
+"YAML formatierte Parameter, die an die Zielaktion übergeben werden, wenn der "
+"Empfänger ausgelöst wird."
+
+#, python-format
+msgid "You are not allowed to delete clusters: %s"
+msgstr "Sie dürfen keine Cluster löschen: %s"
+
+#, python-format
+msgid "You are not allowed to delete nodes: %s"
+msgstr "Sie dürfen Knoten nicht löschen: %s"
+
+#, python-format
+msgid "You are not allowed to delete policies: %s"
+msgstr "Sie dürfen keine Richtlinien löschen: %s"
+
+#, python-format
+msgid "You are not allowed to delete profiles: %s"
+msgstr "Sie dürfen keine Profile löschen: %s"
+
+#, python-format
+msgid "You are not allowed to delete receivers: %s"
+msgstr "Sie dürfen Empfänger nicht löschen: %s"
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Cluster is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Clusters are not recoverable."
+msgstr[0] ""
+"Sie haben \"%s\" gewählt. Gelöschte Cluster können nicht wiederhergestellt "
+"werden."
+msgstr[1] ""
+"Sie haben \"%s\" gewählt. Gelöschte Cluster können nicht wiederhergestellt "
+"werden."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Node is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Nodes are not recoverable."
+msgstr[0] ""
+"Sie haben \"%s\" gewählt. Gelöschte Knoten können nicht wiederhergestellt "
+"werden."
+msgstr[1] ""
+"Sie haben \"%s\" gewählt. Gelöschte Knoten können nicht wiederhergestellt "
+"werden."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Policy is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Policies are not recoverable."
+msgstr[0] ""
+"Sie haben \"%s\" gewählt. Gelöschte Richtlinien können nicht "
+"wiederhergestellt werden."
+msgstr[1] ""
+"Sie haben \"%s\" gewählt. Gelöschte Richtlinien können nicht "
+"wiederhergestellt werden."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Profile is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Profiles are not recoverable."
+msgstr[0] ""
+"Sie haben \"%s\" gewählt. Gelöschte Profile können nicht wiederhergestellt "
+"werden."
+msgstr[1] ""
+"Sie haben \"%s\" gewählt. Gelöschte Profile können nicht wiederhergestellt "
+"werden."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Receiver is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Receivers are not recoverable."
+msgstr[0] ""
+"Sie haben \"%s\" gewählt. Gelöschte Empfänger können nicht wiederhergestellt "
+"werden."
+msgstr[1] ""
+"Sie haben \"%s\" gewählt. Gelöschte Empfänger können nicht wiederhergestellt "
+"werden."
+
+msgid "You may update the editable properties of your cluster here."
+msgstr ""
+"Sie können hier die bearbeitbaren Eigenschaften Ihres Clusters aktualisieren."
+
+msgid "You may update the editable properties of your node here."
+msgstr ""
+"Sie können hier die bearbeitbaren Eigenschaften Ihres Knotens aktualisieren."
+
+msgid "You may update the editable properties of your profile here."
+msgstr ""
+"Sie können hier die bearbeitbaren Eigenschaften Ihres Profils aktualisieren."
+
+msgid "in"
+msgstr "in"
+
+msgid "out"
+msgstr "aus"

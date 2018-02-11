@@ -1,0 +1,709 @@
+# Frank Kloeker <eumel@arcor.de>, 2018. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: senlin-dashboard VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2018-02-10 14:50+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-02-10 03:54+0000\n"
+"Last-Translator: Frank Kloeker <eumel@arcor.de>\n"
+"Language-Team: German\n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Zanata 3.9.6\n"
+
+msgid ""
+"A Receiver is used to prepare Senlin engine to react to external alarms or "
+"events so that a specific Action can be initiated on a senlin cluster "
+"automatically. For example, when workload on a cluster climbs high, a "
+"receiver can change the size of a specified cluster."
+msgstr ""
+"Ein Empfänger wird verwendet, um die Senlin-Engine darauf vorzubereiten, auf "
+"externe Alarme oder Ereignisse zu reagieren, so dass eine bestimmte Aktion "
+"automatisch auf einem Senlin-Cluster ausgelöst werden kann. Wenn "
+"beispielsweise die Auslastung eines Clusters hoch ist, kann ein Empfänger "
+"die Größe eines bestimmten Clusters ändern."
+
+msgid ""
+"A policy is a set of rules that can be checked and/or enforced when an "
+"Action is performed on a Cluster."
+msgstr ""
+"Eine Richtlinie ist eine Gruppe von Regeln, die überprüft und/oder erzwungen "
+"werden können, wenn eine Aktion für einen Cluster ausgeführt wird."
+
+msgid "A profile encodes the information needed for node creation."
+msgstr ""
+"Ein Profil codiert die Informationen, die für die Node-Erstellung benötigt "
+"werden."
+
+msgid "A spec file or yaml must be specified."
+msgstr "Eine Spezifikationsdatei oder ein yaml muss angegeben werden."
+
+msgctxt "Current status of a Cluster"
+msgid "ACTIVE"
+msgstr "AKTIV"
+
+msgctxt "Current status of a Node"
+msgid "ACTIVE"
+msgstr "AKTIV"
+
+msgctxt "Current status of the event"
+msgid "ACTIVE"
+msgstr "AKTIV"
+
+msgid "Action"
+msgstr "Aktion"
+
+msgid "Action ="
+msgstr "Aktion ="
+
+msgid ""
+"An integer between 0 and 100 representing the enforcement level. Default to "
+"0."
+msgstr ""
+"Eine Ganzzahl zwischen 0 und 100, die die Durchsetzungsebene darstellt. "
+"Standard auf 0."
+
+msgid ""
+"An integer indicating the cooldown seconds once the policy is effected. "
+"Default to 0."
+msgstr ""
+"Eine Ganzzahl, die die Abkühlungssekunden anzeigt, sobald die Richtlinie "
+"ausgeführt wurde. Standard auf 0."
+
+msgid "Attached Policies"
+msgstr "Angehängte Richtlinien"
+
+#, python-format
+msgid "Attaching policy %(policy)s to cluster %(cluster)s."
+msgstr "Anfügen der Richtlinie %(policy)s an Cluster %(cluster)s."
+
+msgid "Available Policies"
+msgstr "Verfügbare Richtlinien"
+
+msgctxt "Current status of a Cluster"
+msgid "CHECKING"
+msgstr "ÜBERPRÜFEN"
+
+msgctxt "Current status of a Cluster"
+msgid "CREATING"
+msgstr "ERSTELLEN"
+
+msgctxt "Current status of a Node"
+msgid "CREATING"
+msgstr "ERSTELLEN"
+
+msgctxt "Current status of the event"
+msgid "CREATING"
+msgstr "ERSTELLEN"
+
+msgctxt "Current status of a Cluster"
+msgid "CRITICAL"
+msgstr "KRITISCH"
+
+msgid "Can not specify both sepc file and yaml."
+msgstr ""
+"Kann nicht sowohl die Datei &quot;secp&quot; als auch &quot;yaml&quot; "
+"angeben."
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "Check Cluster"
+msgid_plural "Check Clusters"
+msgstr[0] "Überprüfe Cluster"
+msgstr[1] "Überprüfe Cluster"
+
+msgid "Check Node"
+msgid_plural "Check Nodes"
+msgstr[0] "Knoten überprüfen"
+msgstr[1] "Knoten überprüfen"
+
+msgid "Checked Cluster"
+msgid_plural "Checked Clusters"
+msgstr[0] "Cluster überprüft"
+msgstr[1] "Cluster überprüft"
+
+msgid "Checked Node"
+msgid_plural "Checked Nodes"
+msgstr[0] "Knoten überprüft"
+msgstr[1] "Knoten überprüft"
+
+msgid "Cluster"
+msgstr "Cluster"
+
+msgid "Cluster ID"
+msgstr "Cluster-ID"
+
+msgid "Cluster ID ="
+msgstr "Cluster-ID ="
+
+msgid "Cluster Name"
+msgstr "Clustername"
+
+msgid "Cluster Name ="
+msgstr "Clustername ="
+
+msgid "Cluster creation timeout in seconds."
+msgstr "Zeitlimit für die Clustererstellung in Sekunden"
+
+msgid "Cluster for this node."
+msgstr "Cluster für diesen Knoten"
+
+msgid ""
+"Cluster is the collection of cloud objects, e.g. Nova servers, Heat stacks, "
+"Cinder volumes, etc."
+msgstr ""
+"Cluster ist die Sammlung von Cloud-Objekten, zB Nova-Server, Heat-Stacks, "
+"Cinder-Volumes usw."
+
+msgid "Clusters"
+msgstr "Cluster"
+
+msgid "Cooldown"
+msgstr "Abkühlen"
+
+msgid "Create Cluster"
+msgstr "Cluster erstellen"
+
+msgid "Create Node"
+msgstr "Knoten erstellen"
+
+msgid "Create Policy"
+msgstr "Richtlinie erstellen"
+
+msgid "Create Profile"
+msgstr "Profil erstellen"
+
+msgid "Create Receiver"
+msgstr "Empfänger erstellen"
+
+msgid "Created"
+msgstr "Erstellt"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "Erstellt"
+
+#, python-format
+msgid "Creating cluster \"%s\" successfully"
+msgstr "Cluster '%s' erfolgreich erstellt"
+
+#, python-format
+msgid "Creating node \"%s\" successfully"
+msgstr "Knoten '%s' erfolgreich erstellen"
+
+msgctxt "Current status of the event"
+msgid "DELETED"
+msgstr "GELÖSCHT"
+
+msgctxt "Current status of a Cluster"
+msgid "DELETING"
+msgstr "LÖSCHEN"
+
+msgctxt "Current status of a Node"
+msgid "DELETING"
+msgstr "LÖSCHEN"
+
+msgctxt "Current status of the event"
+msgid "DELETING"
+msgstr "LÖSCHEN"
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Cluster löschen"
+msgstr[1] "Cluster löschen"
+
+msgid "Delete Node"
+msgid_plural "Delete Nodes"
+msgstr[0] "Lösche Knoten"
+msgstr[1] "Lösche Knoten"
+
+msgid "Delete Policy"
+msgid_plural "Delete Policies"
+msgstr[0] "Richtlinie löschen"
+msgstr[1] "Richtlinien löschen"
+
+msgid "Delete Profile"
+msgid_plural "Delete Profiles"
+msgstr[0] "Lösche Profil"
+msgstr[1] "Lösche Profile"
+
+msgid "Delete Receiver"
+msgid_plural "Delete Receivers"
+msgstr[0] "Lösche Empfänger"
+msgstr[1] "Lösche Empfänger"
+
+msgid "Deleted Policy"
+msgid_plural "Deleted Policies"
+msgstr[0] "Richtlinie gelöscht"
+msgstr[1] "Richtlinien gelöscht"
+
+msgid "Deleted Profile"
+msgid_plural "Deleted Profiles"
+msgstr[0] "Profil gelöscht"
+msgstr[1] "Profile gelöscht"
+
+msgid "Deleted Receiver"
+msgid_plural "Deleted Receivers"
+msgstr[0] "Empfänger gelöscht"
+msgstr[1] "Empfänger gelöscht"
+
+msgid "Description:"
+msgstr "Beschreibung:"
+
+msgid "Desired Capacity"
+msgstr "Gewünschte Kapazität"
+
+msgid "Desired capacity of the cluster. Default to 0."
+msgstr "Gewünschte Kapazität des Clusters Standard auf 0."
+
+msgid "Detach Policy"
+msgid_plural "Detach Policies"
+msgstr[0] "Richtlinie abhängen"
+msgstr[1] "Richtlinien abhängen"
+
+msgid "Detaching Policy"
+msgid_plural "Detaching Policies"
+msgstr[0] "Richtlinie wird abhängt"
+msgstr[1] "Richtlinien werden abhängt"
+
+msgctxt "Current status of a Cluster"
+msgid "ERROR"
+msgstr "ERROR"
+
+msgctxt "Current status of a Node"
+msgid "ERROR"
+msgstr "FEHLER"
+
+msgctxt "Current status of the event"
+msgid "ERROR"
+msgstr "FEHLER"
+
+msgid "Edit the name for the Policy."
+msgstr "Bearbeiten Sie den Namen für die Richtlinie."
+
+msgid "Enabled"
+msgstr "aktiviert"
+
+msgid "Event"
+msgstr "Ereignis"
+
+msgid "File"
+msgstr "Datei"
+
+msgid "Generated At"
+msgstr "Erzeugt bei"
+
+msgid "ID"
+msgstr "ID"
+
+msgctxt "Current status of a Cluster"
+msgid "INIT"
+msgstr "INIT"
+
+msgctxt "Current status of a Node"
+msgid "INIT"
+msgstr "INIT"
+
+msgctxt "Current status of the event"
+msgid "INIT"
+msgstr "INIT"
+
+msgid "Information"
+msgstr "Information"
+
+msgid "Level"
+msgstr "Niveau"
+
+msgid "Level ="
+msgstr "Stufe ="
+
+msgid "Manage Policies"
+msgstr "Richtlinien verwalten"
+
+msgid "Max Size"
+msgstr "Maximale Größe"
+
+msgid "Max size of the cluster. Default to -1, means unlimited."
+msgstr "Maximale Größe des Clusters Standard auf -1, bedeutet unbegrenzt."
+
+msgid "Metadata"
+msgstr "Metadaten"
+
+msgid "Min Size"
+msgstr "Min. Größe"
+
+msgid "Min size of the cluster. Default to 0."
+msgstr "Mindestgröße des Clusters Standard auf 0."
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Name or ID of the targeted action to be triggered."
+msgstr "Name oder ID der Zielaktion, die ausgelöst werden soll."
+
+msgid "Node Name"
+msgstr "Knotenname"
+
+msgid "Node Name ="
+msgstr "Knotenname ="
+
+msgid "Nodes"
+msgstr "Knoten"
+
+msgid ""
+"Nodes are the physical objects, which can belong to any cluster of the same "
+"profile type."
+msgstr ""
+"Knoten sind die physischen Objekte, die zu jedem Cluster desselben "
+"Profiltyps gehören können."
+
+msgid "Object ID"
+msgstr "Objekt Identifikation"
+
+msgid "Object Name"
+msgstr "Objektname"
+
+msgid "Overview"
+msgstr "Überblick"
+
+msgid "Parameters"
+msgstr "Parameter"
+
+msgid "Parent Cluster"
+msgstr "Übergeordnetes Cluster"
+
+msgid "Physical ID"
+msgstr "Physische ID"
+
+msgid "Policies"
+msgstr "Richtlinien"
+
+msgid "Policy Name ="
+msgstr "Richtlinienname ="
+
+msgid "Policy Spec Examples"
+msgstr "Richtlinienspezifikationsbeispiele"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Profile Name"
+msgstr "Profilname"
+
+msgid "Profile Name ="
+msgstr "Profilname ="
+
+msgid "Profile Spec Examples"
+msgstr "Profilspezifikationsbeispiele"
+
+msgid "Profile used for this node."
+msgstr "Profil, das für diesen Knoten verwendet wird."
+
+msgid "Profiles"
+msgstr "Profile"
+
+msgctxt "Current status of a Cluster"
+msgid "RECOVERING"
+msgstr "WIEDERHERSTELLEN"
+
+msgctxt "Current status of a Node"
+msgid "RECOVERING"
+msgstr "WIEDERHERSTELLEN"
+
+msgctxt "Current status of a Cluster"
+msgid "RESIZING"
+msgstr "RESISIERUNG"
+
+msgid "Receiver Name ="
+msgstr "Empfängername ="
+
+msgid "Receivers"
+msgstr "Empfänger"
+
+msgid "Recover Cluster"
+msgid_plural "Recover Clusters"
+msgstr[0] "Cluster wiederherstellen"
+msgstr[1] "Cluster wiederherstellen"
+
+msgid "Recover Node"
+msgid_plural "Recover Nodes"
+msgstr[0] "Knoten wiederherstellen"
+msgstr[1] "Knoten wiederherstellen"
+
+msgid "Recovered Cluster"
+msgid_plural "Recovered Clusters"
+msgstr[0] "Cluster wiederhergestellt"
+msgstr[1] "Cluster wiederhergestellt"
+
+msgid "Recovered Node"
+msgid_plural "Recovered Nodes"
+msgstr[0] "Knoten wiederhergestellt"
+msgstr[1] "Knoten wiederhergestellt"
+
+msgid "Role"
+msgstr "Rolle"
+
+msgid "Role for this node in the specific cluster."
+msgstr "Rolle für diesen Knoten im spezifischen Cluster"
+
+msgid "Scheduled deletion of Cluster"
+msgid_plural "Scheduled deletion of Clusters"
+msgstr[0] "Cluster löschen vorgemerkt"
+msgstr[1] "Cluster löschen vorgemerkt"
+
+msgid "Scheduled deletion of Node"
+msgid_plural "Scheduled deletion of Nodes"
+msgstr[0] "Knoten löschen vorgemerkt"
+msgstr[1] "Knoten löschen vorgemerkt"
+
+msgid "Select Cluster"
+msgstr "Wählen Sie Cluster"
+
+msgid "Select Policy"
+msgstr "Wählen Sie Richtlinie"
+
+msgid "Select Profile"
+msgstr "Wähle Profil"
+
+msgid "Select Type"
+msgstr "Art auswählen"
+
+msgid "Spec"
+msgstr "Spez"
+
+msgid "Spec File"
+msgstr "Spezifikationsdatei"
+
+msgid "Spec Source"
+msgstr "Spezifikationsquelle"
+
+msgid "Spec YAML"
+msgstr "Spezielles YAML"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status ="
+msgstr "Status ="
+
+msgid "Status Reason"
+msgstr "Status Grund"
+
+msgid "Targeted cluster for this receiver."
+msgstr "Gezielter Cluster für diesen Empfänger."
+
+#, python-format
+msgid "The parameters is not a valid YAML formatted: %s"
+msgstr "Die Parameter sind kein gültiges YAML-Format: %s"
+
+msgid "The spec file used to create the profile."
+msgstr "Die Spezifikationsdatei, die zum Erstellen des Profils verwendet wird."
+
+msgid "The spec yaml used to create the policy."
+msgstr "Die Spezifikation, die zum Erstellen der Richtlinie verwendet wurde."
+
+msgid "The spec yaml used to create the profile."
+msgstr "Die Spezifikation, mit der das Profil erstellt wurde."
+
+#, python-format
+msgid "The specified data is not a valid YAML data: %s"
+msgstr "Die angegebenen Daten sind keine gültigen YAML-Daten: %s"
+
+#, python-format
+msgid "The specified file is not a valid YAML file: %s"
+msgstr "Die angegebene Datei ist keine gültige YAML-Datei: %s"
+
+#, python-format
+msgid "The specified inpu is not a valid YAML format: %s"
+msgstr "Das angegebene Inpu ist kein gültiges YAML-Format: %s"
+
+#, python-format
+msgid "The specified metadata is not a valid YAML format: %s"
+msgstr "Die angegebenen Metadaten sind kein gültiges YAML-Format: %s"
+
+#, python-format
+msgid "The specified metadata is not a valid YAML: %s"
+msgstr "Die angegebenen Metadaten sind keine gültige YAML: %s"
+
+#, python-format
+msgid "The specified params is not a valid YAML: %s"
+msgstr "Die angegebenen Parameter sind keine gültige YAML: %s"
+
+#, python-format
+msgid "The specified spec is not a valid YAML: %s"
+msgstr "Die angegebene Spezifikation ist kein gültiges YAML: %s"
+
+msgid "Timeout"
+msgstr "Auszeit"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "Type ="
+msgstr "Typ ="
+
+msgid "Type of the receiver to create. Default to webhook"
+msgstr "Art des zu erstellenden Empfängers. Standard für Webhook"
+
+msgctxt "Current status of a Cluster"
+msgid "UPDATING"
+msgstr "AKTUALISIEREN"
+
+msgctxt "Current status of a Node"
+msgid "UPDATING"
+msgstr "AKTUALISIEREN"
+
+msgctxt "Current status of the event"
+msgid "UPDATING"
+msgstr "AKTUALISIEREN"
+
+msgid "Unable to attach policy."
+msgstr "Die Richtlinie konnte nicht angehängt werden."
+
+msgid "Unable to create cluster."
+msgstr "Der Cluster konnte nicht erstellt werden."
+
+msgid "Unable to create new policy"
+msgstr "Es konnte keine neue Richtlinie erstellt werden"
+
+msgid "Unable to create new profile"
+msgstr "Es konnte kein neues Profil erstellt werden"
+
+msgid "Unable to create new receiver"
+msgstr "Es konnte kein neuer Empfänger erstellt werden"
+
+msgid "Unable to create node."
+msgstr "Der Knoten konnte nicht erstellt werden."
+
+msgid "Unable to retrieve cluster."
+msgstr "Der Cluster konnte nicht abgerufen werden."
+
+msgid "Unable to retrieve clusters."
+msgstr "Cluster kann nicht abgerufen werden."
+
+msgid "Unable to retrieve node event list."
+msgstr "Die Knotenereignisliste konnte nicht abgerufen werden."
+
+msgid "Unable to retrieve node."
+msgstr "Knoten konnte nicht abgerufen werden."
+
+msgid "Unable to retrieve nodes from cluster."
+msgstr "Der Knoten konnte nicht vom Cluster abgerufen werden."
+
+msgid "Unable to retrieve nodes."
+msgstr "Knoten konnte nicht abgerufen werden."
+
+msgid "Unable to retrieve policies."
+msgstr "Die Richtlinien konnten nicht abgerufen werden."
+
+msgid "Unable to retrieve policy."
+msgstr "Die Richtlinie konnte nicht abgerufen werden."
+
+msgid "Unable to retrieve profile."
+msgstr "Das Profil konnte nicht abgerufen werden."
+
+msgid "Unable to retrieve profiles."
+msgstr "Es konnten keine Profile abgerufen werden."
+
+msgid "Unable to retrieve receiver."
+msgstr "Der Empfänger konnte nicht abgerufen werden."
+
+msgid "Unable to retrieve receivers."
+msgstr "Receiver konnte nicht abgerufen werden."
+
+msgid "Unable to update node."
+msgstr "Der Knoten konnte nicht aktualisiert werden."
+
+msgid "Unable to update policy"
+msgstr "Die Richtlinie konnte nicht aktualisiert werden"
+
+msgid "Unable to update profile"
+msgstr "Das Profil konnte nicht aktualisiert werden"
+
+msgid "Update Node"
+msgstr "Knoten aktualisieren"
+
+msgid "Update Policy"
+msgstr "Richtlinie aktualisieren"
+
+msgid "Update Profile"
+msgstr "Profil aktualisieren"
+
+msgid "Update the spec of a profile is not allowed"
+msgstr "Aktualisieren Sie die Spezifikation eines Profils ist nicht erlaubt"
+
+msgid "Updated"
+msgstr "Aktualisiert"
+
+msgctxt "Updated time"
+msgid "Updated"
+msgstr "Aktualisiert"
+
+msgctxt "Current status of a Cluster"
+msgid "WARNING"
+msgstr "WARNUNG"
+
+msgctxt "Current status of a Node"
+msgid "WARNING"
+msgstr "WARNUNG"
+
+msgctxt "Current status of the event"
+msgid "WARNING"
+msgstr "WARNUNG"
+
+msgid "Whether the policy should be enabled once attached. Default to enabled."
+msgstr "Ob die Richtlinie einmal aktiviert werden soll. Standard ist aktiviert"
+
+msgid "YAML"
+msgstr "YAML"
+
+msgid "YAML formated metadata"
+msgstr "YAML formatierte Metadaten"
+
+msgid "YAML formatted metadata."
+msgstr "YAML-formatierte Metadaten"
+
+msgid ""
+"YAML formatted parameters that will be passed to target action when the "
+"receiver is triggered."
+msgstr ""
+"YAML formatierte Parameter, die an die Zielaktion übergeben werden, wenn der "
+"Empfänger ausgelöst wird."
+
+msgid "You may update the editable properties of your node here."
+msgstr ""
+"Sie können hier die bearbeitbaren Eigenschaften Ihres Knotens aktualisieren."
+
+msgid "You may update the editable properties of your profile here."
+msgstr ""
+"Sie können hier die bearbeitbaren Eigenschaften Ihres Profils aktualisieren."
+
+#, python-format
+msgid "Your node %s update request has been accepted for processing."
+msgstr ""
+"Die Aktualisierungsanforderung Ihres Knotens %s wurde zur Verarbeitung "
+"akzeptiert."
+
+#, python-format
+msgid "Your policy %s has been created."
+msgstr "Ihre Richtlinie %s wurde erstellt."
+
+#, python-format
+msgid "Your policy %s has been updated."
+msgstr "Ihre Richtlinie %s wurde aktualisiert."
+
+#, python-format
+msgid "Your profile %s has been created."
+msgstr "Ihr Profil %s wurde erstellt."
+
+#, python-format
+msgid "Your profile %s has been updated."
+msgstr "Ihr Profil %s wurde aktualisiert."
+
+#, python-format
+msgid "Your receiver %s has been created successfully."
+msgstr "Ihr Empfänger %s wurde erfolgreich erstellt."

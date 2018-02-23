@@ -139,13 +139,13 @@ def cluster_list(request, sort_dir='desc', sort_key='created_at',
 
 
 def cluster_create(request, **params):
-    """Create cluster."""
+    """Create a cluster."""
     cluster = senlinclient(request).create_cluster(**params)
     return Cluster(cluster)
 
 
 def cluster_update(request, cluster_id, **params):
-    """Update cluster"""
+    """Update a cluster"""
     cluster = senlinclient(request).get_cluster(cluster_id)
     updated = senlinclient(request).update_cluster(cluster, **params)
     return Cluster(updated)
@@ -238,26 +238,26 @@ def profile_list(request, sort_dir='desc', sort_key='created_at',
 
 
 def profile_get(request, profile):
-    """Returns profile."""
+    """Returns a profile."""
     profile = senlinclient(request).get_profile(profile)
     return Profile(profile)
 
 
 def profile_create(request, **params):
-    """Create profile."""
+    """Create a profile."""
     profile = senlinclient(request).create_profile(**params)
     return Profile(profile)
 
 
 def profile_update(request, profile_id, **params):
-    """Update profile."""
+    """Update a profile."""
     profile = senlinclient(request).get_profile(profile_id)
     updated_profile = senlinclient(request).update_profile(profile, **params)
     return Profile(updated_profile)
 
 
 def profile_delete(request, profile):
-    """Delete profile."""
+    """Delete a profile."""
     senlinclient(request).delete_profile(profile)
 
 
@@ -303,7 +303,7 @@ def policy_create(request, **params):
 
 
 def policy_update(request, policy, **params):
-    """Update policy."""
+    """Update a policy."""
     policy = senlinclient(request).get_policy(policy)
     updated = senlinclient(request).update_policy(policy, **params)
     return Policy(updated)
@@ -315,7 +315,7 @@ def policy_delete(request, policy):
 
 
 def policy_get(request, policy):
-    """Returns policy."""
+    """Returns a policy."""
     policy = senlinclient(request).get_policy(policy)
     return Policy(policy)
 
@@ -363,13 +363,13 @@ def node_list(request, sort_dir='desc', sort_key='name',
 
 
 def node_create(request, **params):
-    """Create node."""
+    """Create a node."""
     node = senlinclient(request).create_node(**params)
     return Node(node)
 
 
 def node_check(request, node, params=None):
-    """Check node's health status."""
+    """Check a node's health status."""
     if not params:
         params = {}
     senlinclient(request).check_node(node, **params)
@@ -383,18 +383,18 @@ def node_recover(request, node, params=None):
 
 
 def node_delete(request, node):
-    """Delete node."""
+    """Delete a node."""
     senlinclient(request).delete_node(node)
 
 
 def node_get(request, node):
-    """Returns node."""
+    """Returns a node."""
     node = senlinclient(request).get_node(node)
     return Node(node)
 
 
 def node_update(request, node_id, **params):
-    """Update node"""
+    """Update a node"""
     node = senlinclient(request).get_node(node_id)
     updated = senlinclient(request).update_node(node, **params)
     return Node(updated)
@@ -471,23 +471,24 @@ def receiver_list(request, sort_dir='desc', sort_key='created_at',
 
 
 def receiver_create(request, **params):
-    """Create receiver"""
+    """Create a receiver"""
     receiver = senlinclient(request).create_receiver(**params)
     return Receiver(receiver)
 
 
 def receiver_delete(request, receiver):
-    """Delete receiver."""
+    """Delete a receiver."""
     senlinclient(request).delete_receiver(receiver)
 
 
 def receiver_update(request, receiver_id, **params):
-    """Update receiver"""
+    """Update a receiver"""
     receiver = senlinclient(request).get_receiver(receiver_id)
     updated = senlinclient(request).update_receiver(receiver, **params)
     return Receiver(updated)
 
 
 def receiver_get(request, receiver):
+    """Returns a receiver."""
     receiver = senlinclient(request).get_receiver(receiver)
     return Receiver(receiver)

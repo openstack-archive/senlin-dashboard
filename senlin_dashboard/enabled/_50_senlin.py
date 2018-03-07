@@ -17,7 +17,7 @@ ADD_INSTALLED_APPS = [
     'senlin_dashboard',
     'senlin_dashboard.cluster'
 ]
-DEFAULT = True
+DEFAULT = False
 AUTO_DISCOVER_STATIC_FILES = True
 ADD_ANGULAR_MODULES = ['horizon.cluster']
 ADD_SCSS_FILES = [

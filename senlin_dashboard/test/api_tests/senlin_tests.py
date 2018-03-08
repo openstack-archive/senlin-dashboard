@@ -60,7 +60,7 @@ class SenlinApiTests(test.APITestCase):
         senlinclient.policies = mock.Mock()
         senlinclient.policies.return_value = policies
 
-        ret_val, False, False = api.senlin.policy_list(self.request)
+        ret_val, _more, _prev = api.senlin.policy_list(self.request)
         for policy in ret_val:
             self.assertIsInstance(policy, api.senlin.Policy)
 
@@ -110,7 +110,7 @@ class SenlinApiTests(test.APITestCase):
         senlinclient.receivers.return_value = receivers
 
         ret_val, _more, _prev = api.senlin.receiver_list(self.request)
-        for receiver in ret_val[0]:
+        for receiver in ret_val:
             self.assertIsInstance(receiver, api.senlin.Receiver)
 
         senlinclient.receivers.assert_called_once_with(**params)

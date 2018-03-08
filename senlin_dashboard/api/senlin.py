@@ -15,6 +15,7 @@ from django.conf import settings
 from horizon.utils import functions as utils
 from horizon.utils import memoized
 
+from keystoneauth1.identity import generic
 from openstack_dashboard.api import base
 from senlin_dashboard.api import utils as api_utils
 from senlinclient.v1 import client as senlin_client
@@ -80,15 +81,13 @@ class Receiver(base.APIResourceWrapper):
 
 @memoized.memoized
 def senlinclient(request):
-    kwargs = {
-        'auth_url': getattr(settings, 'OPENSTACK_KEYSTONE_URL'),
-        'token': request.user.token.id,
-        'user_id': request.user.id,
-        'project_id': request.user.tenant_id,
-        'auth_plugin': 'token',
-        'region_name': request.user.services_region
-    }
-    return senlin_client.Client(**kwargs)
+    auth = generic.Token(
+        auth_url=getattr(settings, 'OPENSTACK_KEYSTONE_URL'),
+        token=request.user.token.id,
+        project_id=request.user.tenant_id
+    )
+    return senlin_client.Client(authenticator=auth,
+                                region_name=request.user.services_region)
 
 
 def _populate_request_size_and_page_size(request, paginate=False):

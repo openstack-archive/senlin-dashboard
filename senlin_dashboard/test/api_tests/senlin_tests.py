@@ -15,6 +15,9 @@ import mock
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
 
+from openstack_dashboard.test import helpers
+from senlinclient.v1 import client as senlin_client
+
 
 class SenlinApiTests(test.APITestCase):
 
@@ -114,3 +117,9 @@ class SenlinApiTests(test.APITestCase):
             self.assertIsInstance(receiver, api.senlin.Receiver)
 
         senlinclient.receivers.assert_called_once_with(**params)
+
+
+class SenlinApiClientTests(test.SenlinTestsMixin, helpers.APITestCase):
+    def test_senlinclient(self):
+        senlinclient = api.senlin.senlinclient(self.request)
+        self.assertIsInstance(senlinclient, senlin_client.Client)

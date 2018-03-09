@@ -174,6 +174,11 @@ def cluster_scale_out(request, cluster, count=None):
     senlinclient(request).cluster_scale_out(cluster, count)
 
 
+def cluster_resize(request, cluster, **params):
+    """Resize a Cluster"""
+    senlinclient(request).cluster_resize(cluster, **params)
+
+
 def cluster_delete(request, cluster):
     """Delete cluster."""
     senlinclient(request).delete_cluster(cluster)

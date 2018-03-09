@@ -39,6 +39,7 @@
       updateCluster: updateCluster,
       deleteCluster: deleteCluster,
       scaleCluster: scaleCluster,
+      resizeCluster: resizeCluster,
       createProfile: createProfile,
       updateProfile: updateProfile,
       deleteProfile: deleteProfile,
@@ -508,6 +509,31 @@
           scaleMsg = gettext('out');
         }
         toastService.add('error', interpolate(msg, { scale: scaleMsg, name: name }, true));
+      });
+    }
+
+    /**
+     * @name resizeCluster
+     * @description
+     * Scale a Cluster.
+     *
+     * @param {Object} id
+     * Cluster ID to scale.
+     * @param {Object} name
+     * Cluster name to scale.
+     * @param {Object} params
+     * Parameters to resize.
+     * @param {boolean} suppressError
+     * If passed in, this will not show the default error handling
+     * @returns {Object} The result of the API call
+     */
+    function resizeCluster(id, name, params, suppressError) {
+      var promise = apiService.put(
+        '/api/senlin/clusters/' + id + '/resize', params);
+
+      return suppressError ? promise : promise.error(function() {
+        var msg = gettext('Unable to resize the cluster with name: %(name)s');
+        toastService.add('error', interpolate(msg, { name: name }, true));
       });
     }
 

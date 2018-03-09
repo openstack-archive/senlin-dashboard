@@ -36,6 +36,7 @@
     'horizon.cluster.clusters.actions.update.service',
     'horizon.cluster.clusters.actions.scale-in.service',
     'horizon.cluster.clusters.actions.scale-out.service',
+    'horizon.cluster.clusters.actions.resize.service',
     'horizon.app.core.clusters.resourceType'
   ];
 
@@ -47,6 +48,7 @@
     updateClusterService,
     scaleInClusterService,
     scaleOutClusterService,
+    resizeClusterService,
     clusterResourceType
   ) {
     var clusterResource = registry.getResourceType(clusterResourceType);
@@ -101,6 +103,14 @@
         service: scaleOutClusterService,
         template: {
           text: gettext('Scale-out Cluster'),
+          type: 'row'
+        }
+      })
+      .append({
+        id: 'resizeClusterAction',
+        service: resizeClusterService,
+        template: {
+          text: gettext('Resize Cluster'),
           type: 'row'
         }
       })

@@ -15,3 +15,13 @@ from openstack_dashboard.test.settings import *  # noqa: F403,H303
 
 INSTALLED_APPS = list(INSTALLED_APPS)
 INSTALLED_APPS.append('senlin_dashboard.cluster')
+
+# NOTE(shu-mutou): For Django-based panels. This should be remove when
+# deprecated Django-based panels are removed.
+ANGULAR_FEATURES.update({
+    'profiles_panel': False,
+    'nodes_panel': False,
+    'clusters_panel': False,
+    'policies_panel': False,
+    'receivers_panel': False
+})

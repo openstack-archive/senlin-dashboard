@@ -20,7 +20,7 @@ from senlin_dashboard.api import rest  # noqa: F401
 from senlin_dashboard.cluster.receivers import views as legacyViews
 
 
-if settings.ANGULAR_FEATURES.get('receivers_panel'):
+if settings.ANGULAR_FEATURES.get('receivers_panel', True):
     title = _("Receivers")
     urlpatterns = [
         url(r'^$', AngularIndexView.as_view(title=title), name='index'),

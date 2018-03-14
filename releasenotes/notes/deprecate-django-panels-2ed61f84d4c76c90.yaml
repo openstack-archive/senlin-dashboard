@@ -1,0 +1,15 @@
+---
+prelude: >
+    Angular-based panels are as default.
+upgrade:
+  - |
+    Angular-based panels are as default. So ``_59_toggle_angular_senlin_dashboard.py``
+    in ``openstack_dashboard/local/local_settings.d/`` is not needed
+    for enabling Angular-based panels. Conversely to use Django-based
+    panels, operators need to use ``_59_toggle_angular_senlin_dashboard.py``
+    and set ``False`` for each panels, e.g ``'profiles_panel': False,``.
+deprecations:
+  - |
+    Angular-based panels are made as default. New features will not be
+    added into Django-based panels anymore. And Django-based panels
+    will be removed after S cycle or later.

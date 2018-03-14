@@ -18,7 +18,7 @@ from horizon.browsers.views import AngularIndexView
 from senlin_dashboard.cluster.profiles import views as legacyViews
 
 
-if settings.ANGULAR_FEATURES.get('profiles_panel'):
+if settings.ANGULAR_FEATURES.get('profiles_panel', True):
     title = _("Profiles")
     urlpatterns = [
         url(r'^(?P<profile_id>[^/]+)/$',

@@ -19,7 +19,7 @@ from horizon.browsers.views import AngularIndexView
 from senlin_dashboard.cluster.clusters import views as legacyViews
 
 
-if settings.ANGULAR_FEATURES.get('clusters_panel'):
+if settings.ANGULAR_FEATURES.get('clusters_panel', True):
     title = _("Clusters")
     urlpatterns = [
         url('', AngularIndexView.as_view(title=title), name='index'),

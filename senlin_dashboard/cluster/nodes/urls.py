@@ -17,7 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 from horizon.browsers import views
 from senlin_dashboard.cluster.nodes import views as legacyView
 
-if settings.ANGULAR_FEATURES.get('nodes_panel'):
+if settings.ANGULAR_FEATURES.get('nodes_panel', True):
     title = _("Nodes")
     urlpatterns = [
         url('', views.AngularIndexView.as_view(title=title), name='index'),

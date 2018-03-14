@@ -467,6 +467,9 @@ class ClusterActions(generic.View):
         elif action == "scale-out":
             count = request.DATA.get("count") or None
             return senlin.cluster_scale_out(request, cluster_id, count)
+        elif action == "resize":
+            params = request.DATA
+            return senlin.cluster_resize(request, cluster_id, **params)
 
 
 @urls.register

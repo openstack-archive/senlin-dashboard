@@ -1,0 +1,6 @@
+---
+features:
+  - |
+    Resize action for cluster is added. This action is added
+    as row action for each cluster in Clusters table view.
+    Although, this action is only for Angularized clusters panel.

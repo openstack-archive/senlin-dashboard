@@ -1,0 +1,507 @@
+# Jaewook Oh <kyle.oh95@gmail.com>, 2018. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: senlin-dashboard VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2018-03-14 07:30+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-03-17 07:33+0000\n"
+"Last-Translator: Jaewook Oh <kyle.oh95@gmail.com>\n"
+"Language-Team: Korean (South Korea)\n"
+"Language: ko_KR\n"
+"X-Generator: Zanata 4.3.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid "A spec file or yaml must be specified."
+msgstr "스펙 파일 또는 스펙 YAML을 지정해야 합니다."
+
+msgctxt "Current status of a Cluster"
+msgid "ACTIVE"
+msgstr "ACTIVE"
+
+msgctxt "Current status of the event"
+msgid "ACTIVE"
+msgstr "ACTIVE"
+
+msgid "Action"
+msgstr "Action"
+
+msgid ""
+"An integer between 0 and 100 representing the enforcement level. Default to "
+"0."
+msgstr ""
+"0 부터 100까지의 정수는 enforcement level을 표현합니다. 기본값은 0입니다."
+
+msgid "Attached Policies"
+msgstr "연결된 정책"
+
+#, fuzzy, python-format
+msgid "Attaching policy %(policy)s to cluster %(cluster)s."
+msgstr "정책 %(policy) 를 클러스터 %(cluster) 에 연결합니다."
+
+msgid "Available Policies"
+msgstr "이용 가능한 정책"
+
+msgctxt "Current status of a Cluster"
+msgid "CHECKING"
+msgstr "CHECKING"
+
+msgctxt "Current status of a Cluster"
+msgid "CREATING"
+msgstr "CREATING"
+
+msgctxt "Current status of the event"
+msgid "CREATING"
+msgstr "CREATING"
+
+msgctxt "Current status of a Cluster"
+msgid "CRITICAL"
+msgstr "CRITICAL"
+
+msgid "Can not specify both sepc file and yaml."
+msgstr "스펙 파일과 스펙 YAML을 모두 지정할 수 없습니다."
+
+msgid "Check Cluster"
+msgid_plural "Check Clusters"
+msgstr[0] "클러스터 확인"
+
+msgid "Check Node"
+msgid_plural "Check Nodes"
+msgstr[0] "노드 확인"
+
+msgid "Checked Cluster"
+msgid_plural "Checked Clusters"
+msgstr[0] "클러스터 확인됨"
+
+msgid "Checked Node"
+msgid_plural "Checked Nodes"
+msgstr[0] "노드 확인됨"
+
+msgid "Cluster"
+msgstr "클러스터"
+
+msgid "Cluster ID"
+msgstr "클러스터 ID"
+
+msgid "Cluster ID ="
+msgstr "클러스터 ID ="
+
+msgid "Cluster Name"
+msgstr "클러스터 이름"
+
+msgid "Cluster Name ="
+msgstr "클러스터 이름 ="
+
+msgid "Cluster creation timeout in seconds."
+msgstr "클러스터 생성 제한 시간 (초)."
+
+msgid "Cluster for this node."
+msgstr "이 노드를 위한 클러스터"
+
+msgid ""
+"Cluster is the collection of cloud objects, e.g. Nova servers, Heat stacks, "
+"Cinder volumes, etc."
+msgstr ""
+"클러스터는 클라우드 오브젝트의 모음입니다, 예. Nova servers, Heat stacks, "
+"Cinder volumes, 등."
+
+msgid "Clusters"
+msgstr "클러스터"
+
+msgid "Create Cluster"
+msgstr "클러스터 생성"
+
+msgid "Create Policy"
+msgstr "정책 생성"
+
+msgid "Create Profile"
+msgstr "프로파일 생성"
+
+msgid "Created"
+msgstr "생성됨"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "생성됨"
+
+#, python-format
+msgid "Creating cluster \"%s\" successfully"
+msgstr "클러스터 \"%s\"가 성공적으로 생성되었습니다."
+
+#, python-format
+msgid "Creating node \"%s\" successfully"
+msgstr "노드 \"%s\" 이(가) 성공적으로 생성되었습니다."
+
+msgctxt "Current status of the event"
+msgid "DELETED"
+msgstr "DELETED"
+
+msgctxt "Current status of a Cluster"
+msgid "DELETING"
+msgstr "DELETING"
+
+msgctxt "Current status of the event"
+msgid "DELETING"
+msgstr "DELETING"
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "클러스터 삭제"
+
+msgid "Delete Node"
+msgid_plural "Delete Nodes"
+msgstr[0] "노드 삭제"
+
+msgid "Delete Policy"
+msgid_plural "Delete Policies"
+msgstr[0] "정책 삭제"
+
+msgid "Delete Profile"
+msgid_plural "Delete Profiles"
+msgstr[0] "프로파일 삭제"
+
+msgid "Deleted Policy"
+msgid_plural "Deleted Policies"
+msgstr[0] "정책 삭제됨"
+
+msgid "Deleted Profile"
+msgid_plural "Deleted Profiles"
+msgstr[0] "프로파일 삭제됨"
+
+msgid "Description:"
+msgstr "설명:"
+
+msgid "Desired Capacity"
+msgstr "클러스터에 필요한 용량입니다."
+
+msgid "Desired capacity of the cluster. Default to 0."
+msgstr "클러스터에 필요한 용량입니다. 기본값은 0입니다."
+
+msgid "Detach Policy"
+msgid_plural "Detach Policies"
+msgstr[0] "정책 연결 해제"
+
+msgid "Detaching Policy"
+msgid_plural "Detaching Policies"
+msgstr[0] "정책 연결 해제 중"
+
+msgctxt "Current status of a Cluster"
+msgid "ERROR"
+msgstr "ERROR"
+
+msgctxt "Current status of the event"
+msgid "ERROR"
+msgstr "ERROR"
+
+msgid "Enabled"
+msgstr "활성화됨"
+
+msgid "Event"
+msgstr "Event"
+
+msgid "Generated At"
+msgstr "Generated At"
+
+msgid "ID"
+msgstr "ID"
+
+msgctxt "Current status of a Cluster"
+msgid "INIT"
+msgstr "INIT"
+
+msgctxt "Current status of the event"
+msgid "INIT"
+msgstr "INIT"
+
+msgid "Information"
+msgstr "정보"
+
+msgid "Level"
+msgstr "레벨"
+
+msgid "Level ="
+msgstr "레벨 ="
+
+msgid "Manage Policies"
+msgstr "정책 관리"
+
+msgid "Max Size"
+msgstr "최대 크기 (바이트)"
+
+msgid "Max size of the cluster. Default to -1, means unlimited."
+msgstr "클러스터의 최대 자원 수입니다. 기본값은 -1으로, 무제한을 나타냅니다."
+
+msgid "Metadata"
+msgstr "메타데이터"
+
+msgid "Min Size"
+msgstr "최소 크기 (바이트)"
+
+msgid "Min size of the cluster. Default to 0."
+msgstr "클러스터의 최소 크기입니다. 기본값은 0 입니다."
+
+msgid "Name"
+msgstr "이름"
+
+msgid "Node Name"
+msgstr "노드 명칭"
+
+msgid "Node Name ="
+msgstr "노드 명칭 ="
+
+msgid "Nodes"
+msgstr "노드"
+
+msgid ""
+"Nodes are the physical objects, which can belong to any cluster of the same "
+"profile type."
+msgstr ""
+"노드는 같은 프로파일 타입의 어느 클러스터에도 속할 수 있는 물리 오브젝트입니"
+"다."
+
+msgid "Object ID"
+msgstr "Object ID"
+
+msgid "Object Name"
+msgstr "Object Name"
+
+msgid "Overview"
+msgstr "개요"
+
+msgid "Parent Cluster"
+msgstr "부모 클러스터"
+
+msgid "Physical ID"
+msgstr "물리 ID"
+
+msgid "Policies"
+msgstr "정책"
+
+msgid "Policy Name ="
+msgstr "정책 이름 = "
+
+msgid "Profile"
+msgstr "프로필"
+
+msgid "Profile Name"
+msgstr "프로필 이름"
+
+msgid "Profile Name ="
+msgstr "프로필 이름 ="
+
+msgid "Profile used for this node."
+msgstr "이 노드에 사용된 프로파일"
+
+msgid "Profiles"
+msgstr "프로파일"
+
+msgctxt "Current status of a Cluster"
+msgid "RECOVERING"
+msgstr "RECOVERING"
+
+msgctxt "Current status of a Cluster"
+msgid "RESIZING"
+msgstr "RESIZING"
+
+msgid "Recover Cluster"
+msgid_plural "Recover Clusters"
+msgstr[0] "클러스터 복구"
+
+msgid "Recover Node"
+msgid_plural "Recover Nodes"
+msgstr[0] "노드 복구"
+
+msgid "Recovered Cluster"
+msgid_plural "Recovered Clusters"
+msgstr[0] "클러스터 복구됨"
+
+msgid "Recovered Node"
+msgid_plural "Recovered Nodes"
+msgstr[0] "노드 복구됨"
+
+msgid "Role"
+msgstr "역할"
+
+msgid "Role for this node in the specific cluster."
+msgstr "입력된 클러스터 내에서 이 노드를 위한 역할"
+
+msgid "Scheduled deletion of Cluster"
+msgid_plural "Scheduled deletion of Clusters"
+msgstr[0] "클러스터 예약 삭제"
+
+msgid "Scheduled deletion of Node"
+msgid_plural "Scheduled deletion of Nodes"
+msgstr[0] "노드 삭제 예약"
+
+msgid "Select Cluster"
+msgstr "클러스터 선택"
+
+msgid "Select Policy"
+msgstr "정책을 선택합니다."
+
+msgid "Select Profile"
+msgstr "프로필 선택"
+
+msgid "Spec"
+msgstr "사양"
+
+msgid "Spec File"
+msgstr "스펙 파일"
+
+msgid "Spec YAML"
+msgstr "스펙 YAML"
+
+msgid "Status"
+msgstr "상태"
+
+msgid "Status ="
+msgstr "상태 ="
+
+msgid "Status Reason"
+msgstr "상태 원인"
+
+msgid "The spec file used to create the profile."
+msgstr "프로파일을 생성하기 위한 스펙 파일"
+
+msgid "The spec yaml used to create the profile."
+msgstr "프로파일을 생성하기 위한 스펙 YAML"
+
+#, python-format
+msgid "The specified data is not a valid YAML data: %s"
+msgstr "입력한 데이터가 유효한 YAML 데이터가 아닙니다: %s"
+
+#, python-format
+msgid "The specified input is not a valid YAML format: %s"
+msgstr "입력한 값이 YAML 포멧에 맞지 않습니다: %s"
+
+#, python-format
+msgid "The specified metadata is not a valid YAML format: %s"
+msgstr "입력한 메타데이터가 YAML 포맷에 맞지 않습니다: %s"
+
+#, python-format
+msgid "The specified metadata is not a valid YAML: %s"
+msgstr "입력한 메타데이터가 유효한 YAML이 아닙니다: %s"
+
+#, python-format
+msgid "The specified spec is not a valid YAML: %s"
+msgstr "입력한 스펙이 YAML 포맷에 맞지 않습니다: %s"
+
+msgid "Timeout"
+msgstr "제한시간"
+
+msgid "Type"
+msgstr "타입"
+
+msgid "Type ="
+msgstr "타입 = "
+
+msgctxt "Current status of a Cluster"
+msgid "UPDATING"
+msgstr "UPDATING"
+
+msgctxt "Current status of the event"
+msgid "UPDATING"
+msgstr "UPDATING"
+
+msgid "Unable to attach policy."
+msgstr "정책을 연결할 수 없습니다."
+
+msgid "Unable to create cluster."
+msgstr "클러스터를 생성할 수 없습니다."
+
+msgid "Unable to create new policy"
+msgstr "새로운 정책을 생성할 수 없습니다."
+
+msgid "Unable to create new profile"
+msgstr "새로운 프로파일을 생성할 수 없습니다."
+
+msgid "Unable to create node."
+msgstr "노드를 생성할 수 없습니다."
+
+msgid "Unable to retrieve cluster."
+msgstr "클러스터를 가져올 수 없습니다."
+
+msgid "Unable to retrieve clusters."
+msgstr "클러스터를 가져올 수 없습니다."
+
+msgid "Unable to retrieve node event list."
+msgstr "노드 이벤트 목록을 찾지 못했습니다."
+
+msgid "Unable to retrieve node."
+msgstr "노드를 찾을 수 없습니다."
+
+msgid "Unable to retrieve nodes from cluster."
+msgstr "클러스터로부터 노드를 가져올 수 없습니다."
+
+msgid "Unable to retrieve nodes."
+msgstr "노드를 찾을 수 없습니다."
+
+msgid "Unable to retrieve profile."
+msgstr "프로파일을 찾을 수 없습니다."
+
+msgid "Unable to retrieve profiles."
+msgstr "프로파일을 찾을 수 없습니다."
+
+msgid "Unable to update policy"
+msgstr "정책을 업데이트할 수 없습니다."
+
+msgid "Unable to update profile"
+msgstr "프로파일을 업데이트할 수 없습니다."
+
+msgid "Update Node"
+msgstr "노드 업데이트"
+
+msgid "Update Policy"
+msgstr "정책 업데이트"
+
+msgid "Update Profile"
+msgstr "프로파일 업데이트"
+
+msgid "Update the spec of a profile is not allowed"
+msgstr "프로파일의 스펙을 업데이트하는 것은 허용되지 않습니다."
+
+msgid "Updated"
+msgstr "업데이트됨"
+
+msgctxt "Updated time"
+msgid "Updated"
+msgstr "업데이트됨"
+
+msgctxt "Current status of a Cluster"
+msgid "WARNING"
+msgstr "WARNING"
+
+msgid "Whether the policy should be enabled once attached. Default to enabled."
+msgstr ""
+"연결되었을 때 이 정책이 활성화되어야 하는지 여부입니다. 기본값은 활성화된 상"
+"태입니다."
+
+msgid "YAML"
+msgstr "YAML"
+
+msgid "YAML formated metadata"
+msgstr "YAML 형식의 메타데이터"
+
+msgid "YAML formatted metadata."
+msgstr "YAML 형식의 메타데이터"
+
+msgid "You may update the editable properties of your node here."
+msgstr "여기서 노드의 편집 가능한 속성을 업데이트할 수 있습니다."
+
+#, python-format
+msgid "Your policy %s has been created."
+msgstr "정책 %s 이(가) 생성되었습니다."
+
+#, python-format
+msgid "Your policy %s has been updated."
+msgstr "새로운 정책 %s 이(가) 업데이트 되었습니다."
+
+#, python-format
+msgid "Your profile %s has been created."
+msgstr "프로파일 %s 이(가) 생성되었습니다."
+
+#, python-format
+msgid "Your profile %s has been updated."
+msgstr "프로파일 %s 이(가) 업데이트되었습니다."

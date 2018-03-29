@@ -18,6 +18,8 @@ Senlin Management Dashboard
 Project Hosting
 ---------------
 
+- Documentation: https://docs.openstack.org/senlin-dashboard/latest/
+- Release notes: https://docs.openstack.org/releasenotes/senlin-dashboard/
 - Blueprints: https://blueprints.launchpad.net/senlin-dashboard
 - Bugs: https://bugs.launchpad.net/senlin-dashboard
 

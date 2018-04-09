@@ -45,7 +45,7 @@ class Profile(base.APIResourceWrapper):
 
     # Attribute mapping. All of original codes are using 'type' and
     # it's correct. Thus, this is to avoid changing these codes.
-    _attrs_map = {'type': 'type_name'}
+    _attrs_map = {'type': 'type_name', 'type_name': 'type'}
 
     def __getattr__(self, attr):
         try:

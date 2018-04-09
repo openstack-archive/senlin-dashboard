@@ -56,6 +56,7 @@
     registry.getResourceType(nodeResourceType)
       .setNames(gettext('Node'), gettext('Nodes'))
       .setSummaryTemplateUrl(basePath + 'details/drawer.html')
+      .setDefaultIndexUrl('/cluster/nodes/')
       .setProperties(nodeProperties(statuses))
       .setListFunction(nodeService.getNodesPromise)
       .tableColumns

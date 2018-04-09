@@ -45,6 +45,7 @@
     registry.getResourceType(profileResourceType)
       .setNames(gettext('Profile'), gettext('Profiles'))
       .setSummaryTemplateUrl(basePath + 'details/drawer.html')
+      .setDefaultIndexUrl('/cluster/profiles/')
       .setProperties(profileProperties())
       .setListFunction(profileService.getProfilesPromise)
       .tableColumns

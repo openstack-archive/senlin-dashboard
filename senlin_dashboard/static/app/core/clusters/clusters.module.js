@@ -58,6 +58,7 @@
     registry.getResourceType(clusterResourceType)
       .setNames(gettext('Cluster'), gettext('Clusters'))
       .setSummaryTemplateUrl(basePath + 'details/drawer.html')
+      .setDefaultIndexUrl('/cluster/')
       .setProperties(clusterProperties(statuses))
       .setListFunction(clusterService.getClustersPromise)
       .tableColumns

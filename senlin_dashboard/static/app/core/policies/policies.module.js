@@ -44,6 +44,7 @@
     registry.getResourceType(policyResourceType)
       .setNames(gettext('Policy'), gettext('Policies'))
       .setSummaryTemplateUrl(basePath + 'details/drawer.html')
+      .setDefaultIndexUrl('/cluster/policies/')
       .setProperties(policyProperties())
       .setListFunction(policyService.getPoliciesPromise)
       .tableColumns

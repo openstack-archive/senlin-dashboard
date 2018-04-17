@@ -44,6 +44,7 @@
     registry.getResourceType(receiverResourceType)
       .setNames(gettext('Receiver'), gettext('Receivers'))
       .setSummaryTemplateUrl(basePath + 'details/drawer.html')
+      .setDefaultIndexUrl('/cluster/receivers/')
       .setProperties(receiverProperties())
       .setListFunction(receiverService.getReceiversPromise)
       .tableColumns

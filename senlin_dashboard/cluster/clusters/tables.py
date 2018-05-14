@@ -10,9 +10,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from django.core.urlresolvers import reverse
-from django.core.urlresolvers import reverse_lazy
 from django.template import defaultfilters
+from django.urls import reverse
+from django.urls import reverse_lazy
 from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy

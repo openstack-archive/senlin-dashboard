@@ -31,10 +31,14 @@ class SenlinTestsMixin(object):
 
 
 class TestCase(SenlinTestsMixin, helpers.TestCase):
+    use_mox = True
     pass
 
 
 class APITestCase(SenlinTestsMixin, helpers.APITestCase):
+
+    use_mox = True
+
     def setUp(self):
         super(APITestCase, self).setUp()
 

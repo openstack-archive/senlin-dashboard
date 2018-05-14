@@ -1,0 +1,682 @@
+# suhartono <cloudsuhartono@gmail.com>, 2018. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: senlin-dashboard VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2018-05-14 06:40+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-05-11 03:07+0000\n"
+"Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
+"Language-Team: Indonesian\n"
+"Language: id\n"
+"X-Generator: Zanata 4.3.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid ""
+"A Receiver is used to prepare Senlin engine to react to external alarms or "
+"events so that a specific Action can be initiated on a senlin cluster "
+"automatically. For example, when workload on a cluster climbs high, a "
+"receiver can change the size of a specified cluster."
+msgstr ""
+"Receiver (penerima) digunakan untuk menyiapkan mesin Senlin untuk bereaksi "
+"terhadap alarm atau acara eksternal sehingga Aksi tertentu dapat dimulai "
+"pada gugus senlin secara otomatis. Misalnya, ketika beban kerja pada gugus "
+"menanjak tinggi, penerima dapat mengubah ukuran kluster yang ditentukan."
+
+msgid ""
+"A policy is a set of rules that can be checked and/or enforced when an "
+"Action is performed on a Cluster."
+msgstr ""
+"Kebijakan adalah seperangkat aturan yang dapat diperiksa dan / atau "
+"diberlakukan ketika suatu Action dilakukan pada Cluster."
+
+msgid "A profile encodes the information needed for node creation."
+msgstr "Profil mengkodekan informasi yang dibutuhkan untuk pembuatan node."
+
+msgid "A spec file or yaml must be specified."
+msgstr "File spec atau yaml harus ditentukan."
+
+msgctxt "Current status of a Cluster"
+msgid "ACTIVE"
+msgstr "ACTIVE"
+
+msgctxt "Current status of a Node"
+msgid "ACTIVE"
+msgstr "ACTIVE"
+
+msgctxt "Current status of the event"
+msgid "ACTIVE"
+msgstr "ACTIVE"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "Action ="
+msgstr "Action ="
+
+msgid ""
+"An integer between 0 and 100 representing the enforcement level. Default to "
+"0."
+msgstr ""
+"Bilangan integer antara 0 dan 100 mewakili tingkat pelaksanaan. Default ke 0."
+
+msgid ""
+"An integer indicating the cooldown seconds once the policy is effected. "
+"Default to 0."
+msgstr ""
+"Bilangan integer menunjukkan detik cooldown setelah kebijakan tersebut "
+"dilakukan. Default ke 0."
+
+msgid "Attached Policies"
+msgstr "Kebijakan Terlampir"
+
+#, python-format
+msgid "Attaching policy %(policy)s to cluster %(cluster)s."
+msgstr "Melampirkan policy %(policy)s ke cluster %(cluster)s."
+
+msgid "Available Policies"
+msgstr "Kebijakan yang Tersedia"
+
+msgctxt "Current status of a Cluster"
+msgid "CHECKING"
+msgstr "CHECKING"
+
+msgctxt "Current status of a Cluster"
+msgid "CREATING"
+msgstr "CREATING"
+
+msgctxt "Current status of a Node"
+msgid "CREATING"
+msgstr "CREATING"
+
+msgctxt "Current status of the event"
+msgid "CREATING"
+msgstr "CREATING"
+
+msgctxt "Current status of a Cluster"
+msgid "CRITICAL"
+msgstr "CRITICAL"
+
+msgid "Can not specify both sepc file and yaml."
+msgstr "Tidak dapat menentukan file spec dan yaml."
+
+msgid "Channel"
+msgstr "Channel"
+
+msgid "Check Cluster"
+msgid_plural "Check Clusters"
+msgstr[0] "Check Cluster"
+
+msgid "Check Node"
+msgid_plural "Check Nodes"
+msgstr[0] "Check Node"
+
+msgid "Checked Cluster"
+msgid_plural "Checked Clusters"
+msgstr[0] "Checked Cluster"
+
+msgid "Checked Node"
+msgid_plural "Checked Nodes"
+msgstr[0] "Checked Node"
+
+msgid "Cluster"
+msgstr "Cluster"
+
+msgid "Cluster ID"
+msgstr "Cluster ID"
+
+msgid "Cluster ID ="
+msgstr "Cluster ID ="
+
+msgid "Cluster Name"
+msgstr "Cluster Name"
+
+msgid "Cluster Name ="
+msgstr "Cluster Name ="
+
+msgid "Cluster creation timeout in seconds."
+msgstr "Batas waktu pembuatan kluster dalam hitungan detik."
+
+msgid "Cluster for this node."
+msgstr "Kluster untuk node ini."
+
+msgid ""
+"Cluster is the collection of cloud objects, e.g. Nova servers, Heat stacks, "
+"Cinder volumes, etc."
+msgstr ""
+"Cluster adalah kumpulan objek cloud, mis. Nova servers, Heat stacks, Cinder "
+"volumes, dll."
+
+msgid "Clusters"
+msgstr "Cluster"
+
+msgid "Cooldown"
+msgstr "Cooldown"
+
+msgid "Create Cluster"
+msgstr "Buat Cluster"
+
+msgid "Create Node"
+msgstr "Buat Node"
+
+msgid "Create Policy"
+msgstr "Buat Kebijakan"
+
+msgid "Create Profile"
+msgstr "Buat profil"
+
+msgid "Create Receiver"
+msgstr "Buat Penerima"
+
+msgid "Created"
+msgstr "Dibuat"
+
+msgctxt "Created time"
+msgid "Created"
+msgstr "Dibuat"
+
+#, python-format
+msgid "Creating cluster \"%s\" successfully"
+msgstr "Membuat kluster \"%s\" berhasil"
+
+#, python-format
+msgid "Creating node \"%s\" successfully"
+msgstr "Membuat node \"%s\" berhasil"
+
+msgctxt "Current status of the event"
+msgid "DELETED"
+msgstr "DELETED"
+
+msgctxt "Current status of a Cluster"
+msgid "DELETING"
+msgstr "DELETING"
+
+msgctxt "Current status of a Node"
+msgid "DELETING"
+msgstr "DELETING"
+
+msgctxt "Current status of the event"
+msgid "DELETING"
+msgstr "DELETING"
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Delete Cluster"
+
+msgid "Delete Node"
+msgid_plural "Delete Nodes"
+msgstr[0] "Delete Node"
+
+msgid "Delete Policy"
+msgid_plural "Delete Policies"
+msgstr[0] "Delete Policy"
+
+msgid "Delete Profile"
+msgid_plural "Delete Profiles"
+msgstr[0] "Delete Profile"
+
+msgid "Delete Receiver"
+msgid_plural "Delete Receivers"
+msgstr[0] "Delete Receiver"
+
+msgid "Deleted Policy"
+msgid_plural "Deleted Policies"
+msgstr[0] "Deleted Policy"
+
+msgid "Deleted Profile"
+msgid_plural "Deleted Profiles"
+msgstr[0] "Deleted Profile"
+
+msgid "Deleted Receiver"
+msgid_plural "Deleted Receivers"
+msgstr[0] "Deleted Receiver"
+
+msgid "Description:"
+msgstr "Deskripsi:"
+
+msgid "Desired Capacity"
+msgstr "Desired Capacity"
+
+msgid "Desired capacity of the cluster. Default to 0."
+msgstr "Desired Capacity klaster. Default ke 0."
+
+msgid "Detach Policy"
+msgid_plural "Detach Policies"
+msgstr[0] "Detach Policy"
+
+msgid "Detaching Policy"
+msgid_plural "Detaching Policies"
+msgstr[0] "Detaching Policy"
+
+msgctxt "Current status of a Cluster"
+msgid "ERROR"
+msgstr "ERROR"
+
+msgctxt "Current status of a Node"
+msgid "ERROR"
+msgstr "ERROR"
+
+msgctxt "Current status of the event"
+msgid "ERROR"
+msgstr "ERROR"
+
+msgid "Edit the name for the Policy."
+msgstr "Edit nama untuk Kebijakan."
+
+msgid "Enabled"
+msgstr "Diaktifkan"
+
+msgid "Event"
+msgstr "Event"
+
+msgid "File"
+msgstr "File"
+
+msgid "Generated At"
+msgstr "Generated At"
+
+msgid "ID"
+msgstr "ID"
+
+msgctxt "Current status of a Cluster"
+msgid "INIT"
+msgstr "INIT"
+
+msgctxt "Current status of a Node"
+msgid "INIT"
+msgstr "INIT"
+
+msgctxt "Current status of the event"
+msgid "INIT"
+msgstr "INIT"
+
+msgid "Information"
+msgstr "Informasi"
+
+msgid "Level"
+msgstr "Tingkat"
+
+msgid "Level ="
+msgstr "Level ="
+
+msgid "Manage Policies"
+msgstr "Kelola Kebijakan"
+
+msgid "Max Size"
+msgstr "Max Size"
+
+msgid "Max size of the cluster. Default to -1, means unlimited."
+msgstr "Max Size klaster. Default ke -1, berarti tidak terbatas."
+
+msgid "Metadata"
+msgstr "Metadata"
+
+msgid "Min Size"
+msgstr "Min Size"
+
+msgid "Min size of the cluster. Default to 0."
+msgstr "Min Size klaster. Default ke 0."
+
+msgid "Name"
+msgstr "Nama"
+
+msgid "Name or ID of the targeted action to be triggered."
+msgstr "Nama atau ID dari aksi yang ditargetkan untuk dipicu."
+
+msgid "Node Name"
+msgstr "Nama Node"
+
+msgid "Node Name ="
+msgstr "Node Name ="
+
+msgid "Nodes"
+msgstr "Nodes"
+
+msgid ""
+"Nodes are the physical objects, which can belong to any cluster of the same "
+"profile type."
+msgstr ""
+"Nodes adalah objek fisik, yang dapat menjadi bagian dari jenis profil yang "
+"sama."
+
+msgid "Object ID"
+msgstr "Object ID"
+
+msgid "Object Name"
+msgstr "Object Name"
+
+msgid "Overview"
+msgstr "Ikhtisar"
+
+msgid "Parameters"
+msgstr "Parameters"
+
+msgid "Parent Cluster"
+msgstr "Parent Cluster"
+
+msgid "Physical ID"
+msgstr "Physical ID"
+
+msgid "Policies"
+msgstr "Policies"
+
+msgid "Policy Name ="
+msgstr "Policy Name ="
+
+msgid "Policy Spec Examples"
+msgstr "Policy Spec Examples"
+
+msgid "Profile"
+msgstr "Profile"
+
+msgid "Profile Name"
+msgstr "Nama profil"
+
+msgid "Profile Name ="
+msgstr "Profile Name ="
+
+msgid "Profile Spec Examples"
+msgstr "Contoh Spec Profil"
+
+msgid "Profile used for this node."
+msgstr "Profil yang digunakan untuk node ini."
+
+msgid "Profiles"
+msgstr "Profil"
+
+msgctxt "Current status of a Cluster"
+msgid "RECOVERING"
+msgstr "RECOVERING"
+
+msgctxt "Current status of a Node"
+msgid "RECOVERING"
+msgstr "RECOVERING"
+
+msgctxt "Current status of a Cluster"
+msgid "RESIZING"
+msgstr "RESIZING"
+
+msgid "Receiver Name ="
+msgstr "Receiver Name ="
+
+msgid "Receivers"
+msgstr "Penerima"
+
+msgid "Recover Cluster"
+msgid_plural "Recover Clusters"
+msgstr[0] "Recover Cluster"
+
+msgid "Recover Node"
+msgid_plural "Recover Nodes"
+msgstr[0] "Recover Node"
+
+msgid "Recovered Cluster"
+msgid_plural "Recovered Clusters"
+msgstr[0] "Recovered Cluster"
+
+msgid "Recovered Node"
+msgid_plural "Recovered Nodes"
+msgstr[0] "Recovered Node"
+
+msgid "Role"
+msgstr "Peran"
+
+msgid "Role for this node in the specific cluster."
+msgstr "Peran untuk node ini di kluster tertentu."
+
+msgid "Scheduled deletion of Cluster"
+msgid_plural "Scheduled deletion of Clusters"
+msgstr[0] "Scheduled deletion of Cluster"
+
+msgid "Scheduled deletion of Node"
+msgid_plural "Scheduled deletion of Nodes"
+msgstr[0] "Scheduled deletion of Node"
+
+msgid "Select Cluster"
+msgstr "Pilih Kluster"
+
+msgid "Select Policy"
+msgstr "Select Policy"
+
+msgid "Select Profile"
+msgstr "Pilih Profil"
+
+msgid "Select Type"
+msgstr "Pilih tipe"
+
+msgid "Spec"
+msgstr "Spec"
+
+msgid "Spec File"
+msgstr "Spec File"
+
+msgid "Spec Source"
+msgstr "Spec Source"
+
+msgid "Spec YAML"
+msgstr "Spec YAML"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status ="
+msgstr "Status ="
+
+msgid "Status Reason"
+msgstr "Alasan Status"
+
+msgid "Targeted cluster for this receiver."
+msgstr "Kelompok sasaran untuk penerima ini."
+
+#, python-format
+msgid "The parameters is not a valid YAML formatted: %s"
+msgstr "Parameter bukan format YAML yang valid: %s"
+
+msgid "The spec file used to create the profile."
+msgstr "File spesifikasi yang digunakan untuk membuat profil."
+
+msgid "The spec yaml used to create the policy."
+msgstr "Spec yaml digunakan untuk membuat kebijakan."
+
+msgid "The spec yaml used to create the profile."
+msgstr "Spec yaml digunakan untuk membuat profil."
+
+#, python-format
+msgid "The specified data is not a valid YAML data: %s"
+msgstr "Data yang ditentukan bukan data YAML yang valid: %s"
+
+#, python-format
+msgid "The specified file is not a valid YAML file: %s"
+msgstr "File yang ditentukan bukan file YAML yang valid: %s"
+
+#, python-format
+msgid "The specified input is not a valid YAML format: %s"
+msgstr "Masukan yang ditentukan bukan format YAML yang valid: %s"
+
+#, python-format
+msgid "The specified metadata is not a valid YAML format: %s"
+msgstr "Metadata yang ditentukan bukan format YAML yang valid: %s"
+
+#, python-format
+msgid "The specified metadata is not a valid YAML: %s"
+msgstr "Metadata yang ditentukan bukan YAML yang valid: %s"
+
+#, python-format
+msgid "The specified params is not a valid YAML: %s"
+msgstr "Params yang ditentukan bukan YAML yang valid: %s"
+
+#, python-format
+msgid "The specified spec is not a valid YAML: %s"
+msgstr "Spesifikasi yang ditentukan bukan YAML yang valid: %s"
+
+msgid "Timeout"
+msgstr "Timeout"
+
+msgid "Type"
+msgstr "Type"
+
+msgid "Type ="
+msgstr "Type ="
+
+msgid "Type of the receiver to create. Default to webhook"
+msgstr "Tipe penerima untuk membuat. Default ke webhook"
+
+msgctxt "Current status of a Cluster"
+msgid "UPDATING"
+msgstr "UPDATING"
+
+msgctxt "Current status of a Node"
+msgid "UPDATING"
+msgstr "UPDATING"
+
+msgctxt "Current status of the event"
+msgid "UPDATING"
+msgstr "UPDATING"
+
+msgid "Unable to attach policy."
+msgstr "Tidak dapat melampirkan kebijakan."
+
+msgid "Unable to create cluster."
+msgstr "Tidak dapat membuat kluster."
+
+msgid "Unable to create new policy"
+msgstr "Tidak dapat membuat kebijakan baru"
+
+msgid "Unable to create new profile"
+msgstr "Tidak dapat membuat profil baru"
+
+msgid "Unable to create new receiver"
+msgstr "Tidak dapat membuat penerima baru"
+
+msgid "Unable to create node."
+msgstr "Tidak dapat membuat node."
+
+msgid "Unable to retrieve cluster."
+msgstr "Tidak dapat mengambil kluster."
+
+msgid "Unable to retrieve clusters."
+msgstr "Tidak dapat mengambil kluster."
+
+msgid "Unable to retrieve node event list."
+msgstr "Tidak dapat mengambil node event list."
+
+msgid "Unable to retrieve node."
+msgstr "Tidak dapat mengambil simpul."
+
+msgid "Unable to retrieve nodes from cluster."
+msgstr "Tidak dapat mengambil node dari kluster."
+
+msgid "Unable to retrieve nodes."
+msgstr "Tidak dapat mengambil node."
+
+msgid "Unable to retrieve policies."
+msgstr "Tidak dapat mengambil kebijakan."
+
+msgid "Unable to retrieve policy."
+msgstr "Tidak dapat mengambil kebijakan."
+
+msgid "Unable to retrieve profile."
+msgstr "Tidak dapat mengambil profil."
+
+msgid "Unable to retrieve profiles."
+msgstr "Tidak dapat mengambil profil."
+
+msgid "Unable to retrieve receiver."
+msgstr "Tidak dapat mengambil penerima."
+
+msgid "Unable to retrieve receivers."
+msgstr "Tidak dapat mengambil penerima."
+
+msgid "Unable to update node."
+msgstr "Tidak dapat memperbarui node."
+
+msgid "Unable to update policy"
+msgstr "Tidak dapat memperbarui kebijakan"
+
+msgid "Unable to update profile"
+msgstr "Tidak dapat memperbarui profil"
+
+msgid "Update Node"
+msgstr "Memperbarui Node"
+
+msgid "Update Policy"
+msgstr "Perbarui Kebijakan"
+
+msgid "Update Profile"
+msgstr "Memperbaharui profil"
+
+msgid "Update the spec of a profile is not allowed"
+msgstr "Perbarui spec profil tidak diizinkan"
+
+msgid "Updated"
+msgstr "Diperbarui"
+
+msgctxt "Updated time"
+msgid "Updated"
+msgstr "Diperbarui"
+
+msgctxt "Current status of a Cluster"
+msgid "WARNING"
+msgstr "WARNING"
+
+msgctxt "Current status of a Node"
+msgid "WARNING"
+msgstr "WARNING"
+
+msgctxt "Current status of the event"
+msgid "WARNING"
+msgstr "WARNING"
+
+msgid "Whether the policy should be enabled once attached. Default to enabled."
+msgstr ""
+"Apakah kebijakan harus diaktifkan setelah dilampirkan. Default untuk "
+"diaktifkan."
+
+msgid "YAML"
+msgstr "YAML"
+
+msgid "YAML formated metadata"
+msgstr "YAML membentuk metadata"
+
+msgid "YAML formatted metadata."
+msgstr "Metadata yang diformat YAML."
+
+msgid ""
+"YAML formatted parameters that will be passed to target action when the "
+"receiver is triggered."
+msgstr ""
+"Parameter yang diformat YAML yang akan diteruskan ke aksi target ketika "
+"penerima dipicu."
+
+msgid "You may update the editable properties of your node here."
+msgstr "Anda dapat memperbarui properti node Anda yang dapat diedit di sini."
+
+msgid "You may update the editable properties of your profile here."
+msgstr ""
+"Anda dapat memperbarui properti yang dapat diedit dari profil Anda di sini."
+
+#, python-format
+msgid "Your node %s update request has been accepted for processing."
+msgstr "Permintaan pembaruan %s node Anda telah diterima untuk diproses."
+
+#, python-format
+msgid "Your policy %s has been created."
+msgstr "Kebijakan Anda %s telah dibuat."
+
+#, python-format
+msgid "Your policy %s has been updated."
+msgstr "Kebijakan Anda %s telah diperbarui."
+
+#, python-format
+msgid "Your profile %s has been created."
+msgstr "Profil Anda %s telah dibuat."
+
+#, python-format
+msgid "Your profile %s has been updated."
+msgstr "Profil Anda %s telah diperbarui."
+
+#, python-format
+msgid "Your receiver %s has been created successfully."
+msgstr "Penerima Anda %s telah berhasil dibuat."

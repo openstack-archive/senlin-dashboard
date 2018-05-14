@@ -34,3 +34,4 @@ authentication.
 
 .. include:: develop.rst
 
+.. include:: api.rst

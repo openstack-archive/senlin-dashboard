@@ -14,16 +14,29 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('../..'))
+import django
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.abspath(os.path.join(BASE_DIR, "..", ".."))
+
+sys.path.insert(0, ROOT)
+
+# This is required for ReadTheDocs.org, but isn't a bad idea anyway.
+os.environ.setdefault('DJANGO_SETTINGS_MODULE',
+                      'senlin_dashboard.test.settings')
+django.setup()
+
 # -- General configuration ----------------------------------------------------
 
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.intersphinx',
-    'openstackdocstheme',
-]
+# Add any Sphinx extension module names here, as strings.
+# They can be extensions coming with Sphinx (named 'sphinx.ext.*')
+# or your custom ones.
+extensions = ['sphinx.ext.todo',
+              'sphinx.ext.coverage',
+              'sphinx.ext.viewcode',
+              'sphinxcontrib.apidoc',
+              'openstackdocstheme',
+              ]
 
 # Autodoc generation is a bit aggressive and a nuisance when doing heavy
 # text edit cycles.
@@ -39,6 +52,10 @@ master_doc = 'index'
 project = u'senlin-dashboard'
 copyright = u'2015, OpenStack Foundation'
 
+# List of patterns, relative to source directory, that match files and
+# directories to ignore when looking for source files.
+exclude_patterns = ['**/#*', '**~', '**/#*#']
+
 # If true, '()' will be appended to :func: etc. cross-reference text.
 add_function_parentheses = True
 
@@ -48,6 +65,13 @@ add_module_names = True
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
+
+# sphinxcontrib-apidoc
+apidoc_module_dir = '../../senlin_dashboard'
+apidoc_output_dir = 'contributor/api'
+apidoc_excluded_paths = [
+    'test',
+]
 
 # -- Options for HTML output --------------------------------------------------
 

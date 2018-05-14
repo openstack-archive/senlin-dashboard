@@ -23,7 +23,7 @@ cover
 coverage.xml
 dist
 doc/build/
-doc/source/sourcecode
+doc/source/contributor/api/
 horizon.egg-info
 node_modules
 nosetests.xml

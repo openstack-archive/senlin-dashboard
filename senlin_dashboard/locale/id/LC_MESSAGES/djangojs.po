@@ -1,0 +1,811 @@
+# suhartono <cloudsuhartono@gmail.com>, 2018. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: senlin-dashboard VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2018-05-14 06:40+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2018-05-12 12:43+0000\n"
+"Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
+"Language-Team: Indonesian\n"
+"Language: id\n"
+"X-Generator: Zanata 4.3.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid ""
+"A policy is a set of rules that can be checked and/or enforced when an "
+"Action is performed on a Cluster."
+msgstr ""
+"Kebijakan adalah seperangkat aturan yang dapat diperiksa dan / atau "
+"diberlakukan ketika suatu Action dilakukan pada Cluster."
+
+msgid "A profile encodes the information needed for node creation."
+msgstr "Profil mengkodekan informasi yang dibutuhkan untuk pembuatan node."
+
+msgid "ACTIVE"
+msgstr "ACTIVE"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "Adjustment"
+msgstr "Pengaturan"
+
+msgid ""
+"Adjustment: A positive integer meaning the number of nodes to add, or a "
+"negative integer indicating the number of nodes to remove. And this can not "
+"be zero."
+msgstr ""
+"Adjustment (penyesuaian): Bilangan bulat positif yang berarti jumlah node "
+"untuk ditambahkan, atau bilangan bulat negatif yang menunjukkan jumlah node "
+"yang akan dihapus. Dan ini tidak bisa nol."
+
+msgid "An arbitrary human-readable name."
+msgstr "Nama yang dapat dibaca manusia secara acak."
+
+msgid ""
+"An integer specifying the number of nodes for adjustment when \"Percentage\" "
+"is specified for \"Type\"."
+msgstr ""
+"Bilangan integer yang menentukan jumlah node untuk penyesuaian ketika "
+"\"Percentage\"  ditentukan untuk \"Type\"."
+
+msgid "CHECKING"
+msgstr "CHECKING"
+
+msgid "CREATING"
+msgstr "CREATING"
+
+msgid "CRITICAL"
+msgstr "CRITICAL"
+
+msgid "Capacity"
+msgstr "Kapasitas"
+
+msgid "Capacity: The desired number of nodes of the cluster."
+msgstr "Capacity (kapasitas): Jumlah kluster node yang diinginkan."
+
+msgid "Channel"
+msgstr "Channel"
+
+msgid "Cluster"
+msgstr "Kluster"
+
+#, python-format
+msgid "Cluster %s was successfully created."
+msgstr "Kluster %s berhasil dibuat."
+
+#, python-format
+msgid "Cluster %s was successfully updated."
+msgstr "Cluster %s berhasil diperbarui."
+
+msgid "Cluster ID"
+msgstr "Cluster ID"
+
+msgid "Cluster Name"
+msgstr "Cluster Name (nama klaster)"
+
+msgid "Cluster creation timeout in seconds."
+msgstr "Batas waktu pembuatan kluster dalam hitungan detik."
+
+msgid "Cluster for this node."
+msgstr "Klaster untuk node ini."
+
+#, python-format
+msgid "Cluster resize %s was successfully accepted."
+msgstr "Kluster mengubah ukuran %s berhasil diterima."
+
+#, python-format
+msgid "Cluster scale-in %s was successfully accepted."
+msgstr "Skala-in cluster %s berhasil diterima."
+
+#, python-format
+msgid "Cluster scale-out %s was successfully accepted."
+msgstr "Kluster skala-out % s berhasil diterima."
+
+msgid "Clusters"
+msgstr "Kluster"
+
+msgid "Confirm Delete Cluster"
+msgid_plural "Confirm Delete Clusters"
+msgstr[0] "Confirm Delete Cluster"
+
+msgid "Confirm Delete Node"
+msgid_plural "Confirm Delete Nodes"
+msgstr[0] "Confirm Delete Node"
+
+msgid "Confirm Delete Policy"
+msgid_plural "Confirm Delete Policies"
+msgstr[0] "Confirm Delete Policy"
+
+msgid "Confirm Delete Profile"
+msgid_plural "Confirm Delete Profiles"
+msgstr[0] "Confirm Delete Profile"
+
+msgid "Confirm Delete Receiver"
+msgid_plural "Confirm Delete Receivers"
+msgstr[0] "Confirm Delete Receiver"
+
+msgid "Create"
+msgstr "Create (membuat)"
+
+msgid "Create At"
+msgstr "Create At (buat di)"
+
+msgid "Create Cluster"
+msgstr "Create Cluster"
+
+msgid "Create Node"
+msgstr "Create Node"
+
+msgid "Create Policy"
+msgstr "Buat Kebijakan"
+
+msgid "Create Profile"
+msgstr "Buat Profil"
+
+msgid "Create Receiver"
+msgstr "Buat Penerima"
+
+msgid "Created"
+msgstr "Created"
+
+msgid "DELETING"
+msgstr "DELETING"
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "Delete Cluster"
+
+msgid "Delete Clusters"
+msgstr "Delete Clusters"
+
+msgid "Delete Node"
+msgid_plural "Delete Nodes"
+msgstr[0] "Delete Node"
+
+msgid "Delete Nodes"
+msgstr "Hapus Node"
+
+msgid "Delete Policies"
+msgstr "Hapus Kebijakan"
+
+msgid "Delete Policy"
+msgid_plural "Delete Policies"
+msgstr[0] "Delete Policy"
+
+msgid "Delete Profile"
+msgid_plural "Delete Profiles"
+msgstr[0] "Delete Profile"
+
+msgid "Delete Profiles"
+msgstr "Hapus Profil"
+
+msgid "Delete Receiver"
+msgid_plural "Delete Receivers"
+msgstr[0] "Delete Receiver"
+
+msgid "Delete Receivers"
+msgstr "Hapus Penerima"
+
+#, python-format
+msgid "Deleted Cluster: %s."
+msgid_plural "Deleted Clusters: %s."
+msgstr[0] "Deleted Cluster: %s."
+
+#, python-format
+msgid "Deleted Node: %s."
+msgid_plural "Deleted Nodes: %s."
+msgstr[0] "Deleted Node: %s."
+
+#, python-format
+msgid "Deleted Policy: %s."
+msgid_plural "Deleted Policies: %s."
+msgstr[0] "Deleted Policy: %s."
+
+#, python-format
+msgid "Deleted Profile: %s."
+msgid_plural "Deleted Profiles: %s."
+msgstr[0] "Deleted Profile: %s."
+
+#, python-format
+msgid "Deleted Receiver: %s."
+msgid_plural "Deleted Receivers: %s."
+msgstr[0] "Deleted Receiver: %s."
+
+msgid "Desired Capacity"
+msgstr "Kapasitas yang diinginkan"
+
+msgid "Desired capacity of the cluster. Default to 0."
+msgstr "Kapasitas cluster yang diinginkan. Default ke 0."
+
+msgid "ERROR"
+msgstr "ERROR"
+
+msgid "Event"
+msgstr "Event"
+
+msgid "Events"
+msgstr "Events"
+
+msgid "Generated"
+msgstr "Generated"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "INIT"
+msgstr "INIT"
+
+msgid "Load Spec from File"
+msgstr "Muat Spec dari File"
+
+msgid "Load the spec yaml file and set to spec below."
+msgstr "Muat file yaml spec dan atur ke spec di bawah ini."
+
+msgid "Manage Policies"
+msgstr "Kelola Kebijakan"
+
+msgid "Max Size"
+msgstr "Ukuran Maks"
+
+msgid "Max size of the cluster. Default to -1 means unlimited."
+msgstr "Ukuran maksimum klaster. Default ke -1 berarti tidak terbatas."
+
+msgid "Maximum Size"
+msgstr "Ukuran maksimum"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Metadata"
+msgstr "Metadata"
+
+msgid "Metadata of the cluster in YAML format."
+msgstr "Metadata dari cluster dalam format YAML."
+
+msgid "Metadata of the node in YAML format."
+msgstr "Metadata dari node dalam format YAML."
+
+msgid "Metadata of the profile in YAML format."
+msgstr "Metadata profil dalam format YAML."
+
+msgid "Min Size"
+msgstr "Ukuran Min"
+
+msgid "Min size of the cluster. Default to 0."
+msgstr "Ukuran min cluster. Default ke 0."
+
+msgid "Minimum Size"
+msgstr "Ukuran Minimum"
+
+msgid "Minimum Step"
+msgstr "Langkah Minimum"
+
+msgid "Name"
+msgstr "Name"
+
+msgid "Name of the cluster."
+msgstr "Nama klaster."
+
+msgid "Name of the node."
+msgstr "Nama node."
+
+msgid "Name of the policy."
+msgstr "Nama kebijakan."
+
+msgid "Name of the profile."
+msgstr "Nama profil."
+
+msgid "Name of the receiver."
+msgstr "Nama penerima."
+
+msgid "Name or ID of the targeted action to be triggered."
+msgstr "Nama atau ID dari aksi yang ditargetkan untuk dipicu."
+
+msgid "New lower bound of cluster size."
+msgstr "Batas bawah baru ukuran kluster."
+
+msgid "New timeout (in seconds) value for the cluster."
+msgstr "Nilai batas waktu baru (dalam detik) untuk kluster."
+
+msgid ""
+"New upper bound of cluster size. A value of -1 indicates no upper limit on "
+"cluster size."
+msgstr ""
+"Batas atas ukuran kluster baru. Nilai -1 menunjukkan tidak ada batas atas "
+"pada ukuran kluster."
+
+msgid "Node"
+msgstr "Node"
+
+#, python-format
+msgid "Node %s was successfully created."
+msgstr "Node %s berhasil dibuat."
+
+#, python-format
+msgid "Node %s was successfully updated."
+msgstr "Node %s berhasil diperbarui."
+
+msgid "Node Count"
+msgstr "Penghitungan Node"
+
+msgid "Nodes"
+msgstr "Nodes"
+
+msgid "Number"
+msgstr "Number"
+
+msgid "Object ID"
+msgstr "Object ID"
+
+msgid "Object Name"
+msgstr "Nama Objek"
+
+msgid "Overview"
+msgstr "Ikhtisar"
+
+msgid "Parameters"
+msgstr "Parameters"
+
+msgid "Parameters of the receiver in YAML format."
+msgstr "Parameter penerima dalam format YAML."
+
+msgid "Params"
+msgstr "Params"
+
+msgid "Percentage"
+msgstr "Persentase"
+
+msgid ""
+"Percentage: A value that is interpreted as the percentage of size "
+"adjustment. This value can be positive or negative. And this can not be zero."
+msgstr ""
+"Percentage (persentase): Nilai yang ditafsirkan sebagai persentase "
+"penyesuaian ukuran. Nilai ini bisa positif atau negatif. Dan ini tidak bisa "
+"nol."
+
+msgid "Physical ID"
+msgstr "Physical ID"
+
+msgid "Policies"
+msgstr "Kebijakan"
+
+msgid "Policies for the cluster."
+msgstr "Kebijakan untuk klaster."
+
+msgid "Policies on the cluster were successfully updated."
+msgstr "Kebijakan di kluster berhasil diperbarui."
+
+msgid "Policy"
+msgstr "Policy (kebijakan)"
+
+#, python-format
+msgid "Policy %s was successfully created."
+msgstr "Kebijakan %s berhasil dibuat."
+
+#, python-format
+msgid "Policy %s was successfully updated."
+msgstr "Kebijakan %s berhasil diperbarui."
+
+msgid "Policy Spec Examples"
+msgstr "Contoh Spec Kebijakan"
+
+msgid "Profile"
+msgstr "Profil"
+
+#, python-format
+msgid "Profile %s was successfully created."
+msgstr "Profil %s berhasil dibuat."
+
+#, python-format
+msgid "Profile %s was successfully updated."
+msgstr "Profil %s berhasil diperbarui."
+
+msgid "Profile Name"
+msgstr "Profile Name"
+
+msgid "Profile Spec Examples"
+msgstr "Contoh Spec Profil"
+
+msgid "Profile used for this cluster."
+msgstr "Profil digunakan untuk kluster ini."
+
+msgid "Profile used for this node."
+msgstr "Profil yang digunakan untuk node ini."
+
+msgid "Profiles"
+msgstr "Profil"
+
+msgid "RECOVERING"
+msgstr "RECOVERING"
+
+msgid "RESIZING"
+msgstr "RESIZING"
+
+msgid "Receiver"
+msgstr "Receiver (penerima)"
+
+#, python-format
+msgid "Receiver %s was successfully created."
+msgstr "Receiver %s berhasil dibuat."
+
+#, python-format
+msgid "Receiver %s was successfully updated."
+msgstr "Receiver %s berhasil diperbarui."
+
+msgid "Receivers"
+msgstr "Receivers"
+
+msgid "Resize"
+msgstr "Ubah ukuran"
+
+msgid "Resize Cluster"
+msgstr "Ubah Ukuran Kluster"
+
+msgid "Role"
+msgstr "Role"
+
+msgid "Role for this node in the cluster."
+msgstr "Peran untuk node ini di kluster."
+
+msgid "Role for this node in the specific cluster."
+msgstr "Peran untuk node ini di kluster spesifik."
+
+msgid "Scale In the Cluster"
+msgstr "Scale In Kluster"
+
+msgid "Scale Out the Cluster"
+msgstr "Scale Out Kluster"
+
+msgid "Scale-In"
+msgstr "Skale-In"
+
+msgid "Scale-Out"
+msgstr "SKale-Out"
+
+msgid "Scale-in Cluster"
+msgstr "Scale-in Cluster"
+
+msgid "Scale-out Cluster"
+msgstr "Scale-out Cluster"
+
+msgid "Select action for the receiver."
+msgstr "Pilih aksi untuk penerima."
+
+msgid "Select cluster for the node."
+msgstr "Pilih kluster untuk node."
+
+msgid "Select cluster for the receiver."
+msgstr "Pilih klaster untuk penerima."
+
+msgid "Select policies from the available policies below."
+msgstr "Pilih kebijakan dari kebijakan yang tersedia di bawah ini."
+
+msgid "Select profile for the cluster."
+msgstr "Pilih profil untuk kluster."
+
+msgid "Select profile for the node."
+msgstr "Pilih profil untuk node."
+
+msgid "Select the policy to apply to the cluster."
+msgstr "Pilih kebijakan untuk diterapkan ke kluster."
+
+msgid "Select type for resize."
+msgstr "Pilih tipe untuk mengubah ukuran."
+
+msgid "Select type for the receiver."
+msgstr "Pilih tipe untuk penerima."
+
+msgid "Spec"
+msgstr "Spec"
+
+msgid "Specify node count for scale-in."
+msgstr "Tentukan jumlah node untuk skala-in."
+
+msgid "Specify node count for scale-out."
+msgstr "Tentukan jumlah node untuk skala-out."
+
+msgid "Specify the number according to the type you selected as follows."
+msgstr "Tentukan nomor sesuai dengan tipe yang Anda pilih sebagai berikut."
+
+msgid ""
+"Specifying whether the resize should be performed on a best-effort basis "
+"when the new capacity may go beyond size constraints."
+msgstr ""
+"Menentukan apakah pengubahan ukuran harus dilakukan atas dasar upaya terbaik "
+"ketika kapasitas baru dapat melampaui batasan ukuran."
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status Reason"
+msgstr "Status Reason"
+
+msgid "Targeted cluster for this receiver."
+msgstr "Kelompok sasaran untuk penerima ini."
+
+msgid "The informations needed for cluster creation"
+msgstr "Informasi yang dibutuhkan untuk pembuatan klaster"
+
+msgid "The informations needed for node creation."
+msgstr "Informasi yang dibutuhkan untuk pembuatan node."
+
+msgid "The metadata yaml used to create the node."
+msgstr "Metadata yaml digunakan untuk membuat node."
+
+msgid "The metadata yaml used to create the profile."
+msgstr "Metadata yaml digunakan untuk membuat profil."
+
+msgid "The metadata yaml used to update the node."
+msgstr "Metadata yaml digunakan untuk memperbarui node."
+
+msgid "The metadata yaml used to update the profile."
+msgstr "Metadata yaml digunakan untuk memperbarui profil."
+
+msgid ""
+"The spec yaml used to create the policy. Edit loaded yaml from file using "
+"above 'Load Spec from File', or see samples from link below to write."
+msgstr ""
+"Spec yaml digunakan untuk membuat kebijakan. Edit yaml yang dimuat dari file "
+"menggunakan 'Load Spec from File' di atas, atau lihat contoh dari tautan di "
+"bawah untuk menulis."
+
+msgid ""
+"The spec yaml used to create the profile. Edit loaded yaml from file using "
+"above 'Load Spec from File', or see samples from link below to write."
+msgstr ""
+"Spec yaml digunakan untuk membuat profil. Edit yaml yang dimuat dari file "
+"menggunakan 'Load Spec from File' di atas, atau lihat contoh dari tautan di "
+"bawah untuk menulisnya."
+
+msgid "Timeout"
+msgstr "Timeout (batas waktu)"
+
+msgid "Type"
+msgstr "Tipe"
+
+msgid "Type of the receiver. Default to webhook"
+msgstr "Tipe penerima. Default ke webhook"
+
+msgid "UPDATING"
+msgstr "UPDATING"
+
+#, python-format
+msgid "Unable to create the cluster with name: %(name)s"
+msgstr "Tidak dapat membuat klaster dengan nama: %(name)s"
+
+#, python-format
+msgid "Unable to create the node with name: %(name)s"
+msgstr "Tidak dapat membuat node dengan nama: %(name)s"
+
+#, python-format
+msgid "Unable to create the policy with name: %(name)s"
+msgstr "Tidak dapat membuat kebijakan dengan nama: %(name)s"
+
+#, python-format
+msgid "Unable to create the profile with name: %(name)s"
+msgstr "Tidak dapat membuat profil dengan nama: %(name)s"
+
+#, python-format
+msgid "Unable to create the receiver with name: %(name)s"
+msgstr "Tidak dapat membuat penerima dengan nama: %(name)s"
+
+#, python-format
+msgid "Unable to delete Cluster: %s."
+msgid_plural "Unable to delete Clusters: %s."
+msgstr[0] "Unable to delete Cluster: %s."
+
+#, python-format
+msgid "Unable to delete Node: %s."
+msgid_plural "Unable to delete Nodes: %s."
+msgstr[0] "Unable to delete Node: %s."
+
+#, python-format
+msgid "Unable to delete Policy: %s."
+msgid_plural "Unable to delete Policies: %s."
+msgstr[0] "Unable to delete Policy: %s."
+
+#, python-format
+msgid "Unable to delete Profile: %s."
+msgid_plural "Unable to delete Profiles: %s."
+msgstr[0] "Unable to delete Profile: %s."
+
+#, python-format
+msgid "Unable to delete Receiver: %s."
+msgid_plural "Unable to delete Receivers: %s."
+msgstr[0] "Unable to delete Receiver: %s."
+
+#, python-format
+msgid "Unable to delete the cluster with id: %(id)s."
+msgstr "Tidak dapat menghapus klaster dengan id: %(id)s."
+
+#, python-format
+msgid "Unable to delete the node with id: %(id)s"
+msgstr "Tidak dapat menghapus node dengan id: %(id)s"
+
+#, python-format
+msgid "Unable to delete the policy with id: %(id)s."
+msgstr "Tidak dapat menghapus kebijakan dengan id: %(id)s."
+
+#, python-format
+msgid "Unable to delete the profile with id: %(id)s."
+msgstr "Tidak dapat menghapus profil dengan id: %(id)s."
+
+#, python-format
+msgid "Unable to delete the receiver with id: %(id)s."
+msgstr "Tidak dapat menghapus penerima dengan id: %(id)s."
+
+#, python-format
+msgid "Unable to resize the cluster with name: %(name)s"
+msgstr "Tidak dapat mengubah ukuran kluster dengan nama: %(name)s"
+
+#, python-format
+msgid "Unable to retrieve the cluster with id: %(id)s."
+msgstr "Tidak dapat mengambil kluster dengan id: %(id)s."
+
+msgid "Unable to retrieve the clusters."
+msgstr "Tidak dapat mengambil kluster."
+
+#, python-format
+msgid "Unable to retrieve the events with id: %(id)s."
+msgstr "Tidak dapat mengambil event dengan id: %(id)s."
+
+#, python-format
+msgid "Unable to retrieve the node with id: %(id)s."
+msgstr "Tidak dapat mengambil node dengan id: %(id)s."
+
+msgid "Unable to retrieve the nodes."
+msgstr "Tidak dapat mengambil node."
+
+#, python-format
+msgid "Unable to retrieve the policies of the cluster with id: %(id)s."
+msgstr "Tidak dapat mengambil kebijakan kluster dengan id: %(id)s."
+
+msgid "Unable to retrieve the policies."
+msgstr "Tidak dapat mengambil kebijakan."
+
+#, python-format
+msgid "Unable to retrieve the policy with id: %(id)s."
+msgstr "Tidak dapat mengambil kebijakan dengan id: %(id)s."
+
+#, python-format
+msgid "Unable to retrieve the profile with id: %(id)s."
+msgstr "Tidak dapat mengambil profil dengan id: %(id)s."
+
+msgid "Unable to retrieve the profiles."
+msgstr "Tidak dapat mengambil profil."
+
+#, python-format
+msgid "Unable to retrieve the receiver with id: %(id)s."
+msgstr "Tidak dapat mengambil penerima dengan id: %(id)s."
+
+msgid "Unable to retrieve the receivers."
+msgstr "Tidak dapat mengambil penerima (receiver)."
+
+#, python-format
+msgid "Unable to scale-%(scale)s the cluster with name: %(name)s"
+msgstr "Tidak dapat scale-%(scale)s klaster dengan name: %(name)s"
+
+msgid "Unable to update policies of the cluster"
+msgstr "Tidak dapat memperbarui kebijakan kluster"
+
+#, python-format
+msgid "Unable to update the cluster with name: %(name)s"
+msgstr "Tidak dapat memperbarui klaster dengan nama: %(name)s"
+
+#, python-format
+msgid "Unable to update the node with name: %(name)s"
+msgstr "Tidak dapat memperbarui node dengan nama: %(name)s"
+
+#, python-format
+msgid "Unable to update the policy with name: %(name)s"
+msgstr "Tidak dapat memperbarui kebijakan dengan nama: %(name)s"
+
+#, python-format
+msgid "Unable to update the profile with name: %(name)s"
+msgstr "Tidak dapat memperbarui profil dengan nama: %(name)s"
+
+#, python-format
+msgid "Unable to update the receiver with name: %(name)s"
+msgstr "Tidak dapat memperbarui penerima dengan nama: %(name)s"
+
+msgid "Update"
+msgstr "Memperbarui"
+
+msgid "Update Cluster"
+msgstr "Update Cluster"
+
+msgid "Update Node"
+msgstr "Perbarui Node"
+
+msgid "Update Policy"
+msgstr "Perbarui Kebijakan"
+
+msgid "Update Profile"
+msgstr "Memperbaharui Profil"
+
+msgid "Update Receiver"
+msgstr "Perbarui Penerima"
+
+msgid "Updated"
+msgstr "Updated"
+
+msgid "WARNING"
+msgstr "WARNING"
+
+msgid "Webhook"
+msgstr "Webhook"
+
+msgid "YAML formated metadata"
+msgstr "Metadata format YAML"
+
+msgid ""
+"YAML formatted parameters that will be passed to target action when the "
+"receiver is triggered."
+msgstr ""
+"Parameter yang diformat YAML yang akan diteruskan ke aksi target ketika "
+"penerima dipicu."
+
+#, python-format
+msgid "You are not allowed to delete clusters: %s"
+msgstr "Anda tidak diizinkan menghapus kluster: %s"
+
+#, python-format
+msgid "You are not allowed to delete nodes: %s"
+msgstr "Anda tidak diizinkan menghapus node: %s"
+
+#, python-format
+msgid "You are not allowed to delete policies: %s"
+msgstr "Anda tidak diizinkan untuk menghapus kebijakan:%s"
+
+#, python-format
+msgid "You are not allowed to delete profiles: %s"
+msgstr "Anda tidak diizinkan untuk menghapus profil: %s"
+
+#, python-format
+msgid "You are not allowed to delete receivers: %s"
+msgstr "Anda tidak diizinkan untuk menghapus receiver: %s"
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Cluster is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Clusters are not recoverable."
+msgstr[0] "You have selected \"%s\". Deleted Cluster is not recoverable."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Node is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Nodes are not recoverable."
+msgstr[0] "You have selected \"%s\". Deleted Node is not recoverable."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Policy is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Policies are not recoverable."
+msgstr[0] "You have selected \"%s\". Deleted Policy is not recoverable."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Profile is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Profiles are not recoverable."
+msgstr[0] "You have selected \"%s\". Deleted Profile is not recoverable."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Receiver is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Receivers are not recoverable."
+msgstr[0] "You have selected \"%s\". Deleted Receiver is not recoverable."
+
+msgid "You may update the editable properties of your cluster here."
+msgstr "Anda dapat memperbarui properti kluster yang dapat diedit di sini."
+
+msgid "You may update the editable properties of your node here."
+msgstr "Anda dapat memperbarui properti node Anda yang dapat diedit di sini."
+
+msgid "You may update the editable properties of your profile here."
+msgstr ""
+"Anda dapat memperbarui properti yang dapat diedit dari profil Anda di sini."
+
+msgid "in"
+msgstr "in"
+
+msgid "out"
+msgstr "out"

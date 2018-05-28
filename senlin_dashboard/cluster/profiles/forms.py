@@ -19,8 +19,8 @@ import yaml
 
 from senlinclient.common import utils
 
-from django.core.urlresolvers import reverse
 from django.forms import ValidationError
+from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions

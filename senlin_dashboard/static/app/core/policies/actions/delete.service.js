@@ -22,12 +22,14 @@
   deletePolicyService.$inject = [
     '$q',
     '$location',
+    '$rootScope',
     'horizon.app.core.openstack-service-api.policy',
     'horizon.app.core.openstack-service-api.senlin',
     'horizon.framework.util.actions.action-result.service',
     'horizon.framework.util.i18n.gettext',
     'horizon.framework.util.q.extensions',
     'horizon.framework.widgets.modal.deleteModalService',
+    'horizon.framework.widgets.table.events',
     'horizon.framework.widgets.toast.service',
     'horizon.app.core.policies.resourceType'
   ];
@@ -45,12 +47,14 @@
   function deletePolicyService(
     $q,
     $location,
+    $rootScope,
     policyService,
     senlin,
     actionResultService,
     gettext,
     $qExtensions,
     deleteModal,
+    tableEvents,
     toast,
     policiesResourceType
   ) {
@@ -111,6 +115,7 @@
           currentPath !== indexPath) {
         $location.path(indexPath);
       } else {
+        $rootScope.$broadcast(tableEvents.CLEAR_SELECTIONS);
         return actionResult.result;
       }
     }

@@ -12,10 +12,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from django import http
 from django.urls import reverse
-
-from mox3.mox import IsA
 
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
@@ -28,43 +25,49 @@ PROFILE_DETAIL_URL = reverse(
 
 class ProfilesTest(test.TestCase):
 
-    @test.create_stubs({api.senlin: ('profile_list',)})
+    @test.create_mocks({api.senlin: ('profile_list',)})
     def test_index(self):
         profiles = self.profiles.list()
+        """
         api.senlin.profile_list(
             IsA(http.HttpRequest)).AndReturn(profiles)
         self.mox.ReplayAll()
+        """
+        self.mock_profile_list.return_value = profiles
 
         res = self.client.get(PROFILE_INDEX_URL)
         self.assertContains(res, '<h1>Profiles</h1>')
         self.assertTemplateUsed(res, 'cluster/profiles/index.html')
         self.assertEqual(1, len(profiles))
+        self.mock_profile_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None, paginate=True,
+            reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('profile_list',)})
+    @test.create_mocks({api.senlin: ('profile_list',)})
     def test_index_profile_list_exception(self):
-        api.senlin.profile_list(
-            IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
-        self.mox.ReplayAll()
+        self.mock_profile_list.side_effect = self.exceptions.senlin
 
         res = self.client.get(PROFILE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/profiles/index.html')
         self.assertEqual(0, len(res.context['profiles_table'].data))
+        self.mock_profile_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None, paginate=True,
+            reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('profile_list',)})
+    @test.create_mocks({api.senlin: ('profile_list',)})
     def test_index_no_policy(self):
-        api.senlin.profile_list(
-            IsA(http.HttpRequest)).AndReturn([])
-        self.mox.ReplayAll()
+        self.mock_profile_list.return_value = []
 
         res = self.client.get(PROFILE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/profiles/index.html')
         self.assertContains(res, 'No items to display')
         self.assertEqual(0, len(res.context['profiles_table'].data))
+        self.mock_profile_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('profile_create',)})
+    @test.create_mocks({api.senlin: ('profile_create',)})
     def test_create_profile(self):
-        profile = self.profiles.list()[0]
-
         spec_yaml = \
             'type: os.nova.server\n'\
             'version: 1.0\n'\
@@ -90,20 +93,18 @@ class ProfilesTest(test.TestCase):
             'metadata': None
         }
 
-        api.senlin.profile_create(
-            IsA(http.HttpRequest), **opts).AndReturn(profile)
-        self.mox.ReplayAll()
+        self.mock_profile_create.return_value = opts
 
         res = self.client.post(PROFILE_CREATE_URL, formdata)
         self.assertNoFormErrors(res)
 
-    @test.create_stubs({api.senlin: ('profile_get',)})
+    @test.create_mocks({api.senlin: ('profile_get',)})
     def test_profile_detail(self):
         profile = self.profiles.list()[0]
-        api.senlin.profile_get(
-            IsA(http.HttpRequest), u'1').AndReturn(profile)
-        self.mox.ReplayAll()
+        self.mock_profile_get.return_value = profile
 
         res = self.client.get(PROFILE_DETAIL_URL)
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'test-profile')
+        self.mock_profile_get.assert_called_once_with(
+            test.IsHttpRequest(), u'1')

@@ -12,10 +12,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from django import http
 from django.urls import reverse
-
-from mox3.mox import IsA
 
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
@@ -29,44 +26,46 @@ NODE_DETAIL_URL = reverse(
 
 class NodesTest(test.TestCase):
 
-    @test.create_stubs({api.senlin: ('node_list',)})
+    @test.create_mocks({api.senlin: ('node_list',)})
     def test_index(self):
         nodes = self.nodes.list()
-        api.senlin.node_list(
-            IsA(http.HttpRequest)).AndReturn(nodes)
-        self.mox.ReplayAll()
+        self.mock_node_list.return_value = nodes
 
         res = self.client.get(NODE_INDEX_URL)
         self.assertContains(res, '<h1>Nodes</h1>')
         self.assertTemplateUsed(res, 'cluster/nodes/index.html')
         self.assertEqual(1, len(nodes))
+        self.mock_node_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('node_list',)})
+    @test.create_mocks({api.senlin: ('node_list',)})
     def test_index_node_list_exception(self):
-        api.senlin.node_list(
-            IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
-        self.mox.ReplayAll()
+        self.mock_node_list.side_effect = self.exceptions.senlin
 
         res = self.client.get(NODE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/nodes/index.html')
         self.assertEqual(0, len(res.context['nodes_table'].data))
+        self.mock_node_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('node_list',)})
+    @test.create_mocks({api.senlin: ('node_list',)})
     def test_index_no_node(self):
-        api.senlin.node_list(
-            IsA(http.HttpRequest)).AndReturn([])
-        self.mox.ReplayAll()
+        self.mock_node_list.return_value = []
 
         res = self.client.get(NODE_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/nodes/index.html')
         self.assertContains(res, 'No items to display')
         self.assertEqual(0, len(res.context['nodes_table'].data))
+        self.mock_node_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('node_create',
+    @test.create_mocks({api.senlin: ('node_create',
                                      'profile_list',
                                      'cluster_list')})
     def test_create_node(self):
-        node = self.nodes.list()[0]
         profiles = self.profiles.list()
         clusters = self.clusters.list()
 
@@ -78,41 +77,43 @@ class NodesTest(test.TestCase):
             'metadata': ''
         }
 
-        opts = formdata
-
-        api.senlin.profile_list(
-            IsA(http.HttpRequest)).AndReturn((profiles, False, False))
-        api.senlin.cluster_list(
-            IsA(http.HttpRequest)).AndReturn((clusters, False, False))
-        api.senlin.node_create(
-            IsA(http.HttpRequest), **opts).AndReturn(node)
-        self.mox.ReplayAll()
+        self.mock_profile_list.return_value = \
+            (profiles, False, False)
+        self.mock_cluster_list.return_value = \
+            (clusters, False, False)
+        self.mock_node_create.return_value = formdata
 
         res = self.client.post(NODE_CREATE_URL, formdata)
         self.assertNoFormErrors(res)
+        self.mock_profile_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_cluster_list.assert_called_once_with(
+            test.IsHttpRequest())
 
-    @test.create_stubs({api.senlin: ('node_get',)})
+    @test.create_mocks({api.senlin: ('node_get',)})
     def test_node_detail(self):
         node = self.nodes.list()[0]
-        api.senlin.node_get(
-            IsA(http.HttpRequest), u'123456').AndReturn(node)
-        self.mox.ReplayAll()
+        self.mock_node_get.return_value = node
 
         res = self.client.get(NODE_DETAIL_URL)
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'test-node')
+        self.mock_node_get.assert_called_once_with(
+            test.IsHttpRequest(), u'123456')
 
-    @test.create_stubs({api.senlin: ('event_list',
+    @test.create_mocks({api.senlin: ('event_list',
                                      'node_get')})
     def test_node_event(self):
         events = self.events.list()
         node = self.nodes.list()[0]
-        api.senlin.node_get(
-            IsA(http.HttpRequest), u'123456').AndReturn(node)
-        api.senlin.event_list(
-            IsA(http.HttpRequest)).AndReturn(events)
-        self.mox.ReplayAll()
+        self.mock_node_get.return_value = node
+        self.mock_event_list.return_value = events
 
         res = self.client.get(NODE_DETAIL_URL + '?tab=node_details__event')
         self.assertTemplateUsed(res, 'cluster/nodes/_detail_event.html')
         self.assertContains(res, '123456')
+        self.mock_node_get.assert_called_once_with(
+            test.IsHttpRequest(), u'123456')
+        self.mock_event_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={'obj_id': u'123456'},
+            marker=None, paginate=True, reversed_order=False)

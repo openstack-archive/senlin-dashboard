@@ -10,10 +10,7 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from django import http
 from django.urls import reverse
-
-from mox3.mox import IsA
 
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
@@ -24,45 +21,48 @@ CREATE_URL = reverse('horizon:cluster:receivers:create')
 
 class ReceiversTest(test.TestCase):
 
-    @test.create_stubs({api.senlin: ('receiver_list',)})
+    @test.create_mocks({api.senlin: ('receiver_list',)})
     def test_index(self):
         receivers = self.receivers.list()
-        api.senlin.receiver_list(
-            IsA(http.HttpRequest)).AndReturn(receivers)
-        self.mox.ReplayAll()
+        self.mock_receiver_list.return_value = receivers
 
         res = self.client.get(INDEX_URL)
         self.assertContains(res, '<h1>Receivers</h1>')
         self.assertTemplateUsed(res, 'cluster/receivers/index.html')
         self.assertEqual(1, len(receivers))
+        self.mock_receiver_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('receiver_list',)})
+    @test.create_mocks({api.senlin: ('receiver_list',)})
     def test_index_receiver_list_exception(self):
-        api.senlin.receiver_list(
-            IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
-        self.mox.ReplayAll()
+        self.mock_receiver_list.side_effect = (
+            self.exceptions.senlin)
 
         res = self.client.get(INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/receivers/index.html')
         self.assertEqual(0, len(res.context['receivers_table'].data))
         self.assertMessageCount(res, error=1)
+        self.mock_receiver_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('receiver_list',)})
+    @test.create_mocks({api.senlin: ('receiver_list',)})
     def test_index_no_receiver(self):
-        api.senlin.receiver_list(
-            IsA(http.HttpRequest)).AndReturn([])
-        self.mox.ReplayAll()
+        self.mock_receiver_list.return_value = []
 
         res = self.client.get(INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/receivers/index.html')
         self.assertContains(res, 'No items to display')
         self.assertEqual(0, len(res.context['receivers_table'].data))
+        self.mock_receiver_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('receiver_create',
+    @test.create_mocks({api.senlin: ('receiver_create',
                                      'cluster_list')})
     def test_create_receiver(self):
         clusters = self.clusters.list()
-        receiver = self.receivers.list()[0]
         data = {
             'name': 'test-receiver',
             'type': 'webhook',
@@ -78,11 +78,9 @@ class ReceiversTest(test.TestCase):
             'params': ''
         }
 
-        api.senlin.cluster_list(
-            IsA(http.HttpRequest)).AndReturn((clusters, False, False))
-        api.senlin.receiver_create(
-            IsA(http.HttpRequest), **data).AndReturn(receiver)
-        self.mox.ReplayAll()
+        self.mock_cluster_list.return_value = (
+            (clusters, False, False))
+        self.mock_receiver_create.return_value = data
 
         res = self.client.post(CREATE_URL, formdata)
         self.assertNoFormErrors(res)

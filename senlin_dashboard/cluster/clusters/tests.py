@@ -10,10 +10,9 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-from django import http
 from django.urls import reverse
 
-from mox3.mox import IsA
+import mock
 
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
@@ -30,44 +29,49 @@ CLUSTER_MANAGE_POLICIES_URL = reverse(
 
 class ClustersTest(test.TestCase):
 
-    @test.create_stubs({api.senlin: ('cluster_list',)})
+    @test.create_mocks({api.senlin: ('cluster_list',)})
     def test_index(self):
         clusters = self.clusters.list()
-        api.senlin.cluster_list(
-            IsA(http.HttpRequest)).AndReturn((clusters, False, False))
-        self.mox.ReplayAll()
+        self.mock_cluster_list.return_value = \
+            (clusters, False, False)
 
         res = self.client.get(CLUSTER_INDEX_URL)
         self.assertContains(res, '<h1>Clusters</h1>')
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
         self.assertEqual(1, len(clusters))
+        self.mock_cluster_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('cluster_list',)})
+    @test.create_mocks({api.senlin: ('cluster_list',)})
     def test_index_cluster_list_exception(self):
-        api.senlin.cluster_list(
-            IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
-        self.mox.ReplayAll()
+        self.mock_cluster_list.side_effect = \
+            self.exceptions.senlin
 
         res = self.client.get(CLUSTER_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
         self.assertEqual(0, len(res.context['clusters_table'].data))
         self.assertMessageCount(res, error=1)
+        self.mock_cluster_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('cluster_list',)})
+    @test.create_mocks({api.senlin: ('cluster_list',)})
     def test_index_no_cluster(self):
-        api.senlin.cluster_list(
-            IsA(http.HttpRequest)).AndReturn(([], False, False))
-        self.mox.ReplayAll()
+        self.mock_cluster_list.return_value = \
+            ([], False, False)
 
         res = self.client.get(CLUSTER_INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/clusters/index.html')
         self.assertContains(res, 'No items to display')
         self.assertEqual(0, len(res.context['clusters_table'].data))
+        self.mock_cluster_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('cluster_create',
+    @test.create_mocks({api.senlin: ('cluster_create',
                                      'profile_list',)})
     def test_create_node(self):
-        cluster = self.clusters.list()[0]
         profiles = self.profiles.list()
 
         formdata = {
@@ -83,84 +87,89 @@ class ClustersTest(test.TestCase):
 
         opts = formdata
 
-        api.senlin.profile_list(
-            IsA(http.HttpRequest)).AndReturn((profiles, False, False))
-        api.senlin.cluster_create(
-            IsA(http.HttpRequest), **opts).AndReturn(cluster)
-        self.mox.ReplayAll()
+        self.mock_profile_list.return_value = \
+            (profiles, False, False)
+        self.mock_cluster_create.return_value = opts
 
         res = self.client.post(CLUSTER_CREATE_URL, formdata)
         self.assertNoFormErrors(res)
 
-    @test.create_stubs({api.senlin: ('cluster_get',
+    @test.create_mocks({api.senlin: ('cluster_get',
                                      'cluster_policy_list')})
     def test_cluster_detail(self):
         policies = self.policies.list()
         cluster = self.clusters.list()[0]
-        api.senlin.cluster_get(
-            IsA(http.HttpRequest), u'123456').AndReturn(cluster)
-        api.senlin.cluster_policy_list(
-            IsA(http.HttpRequest), u'123456', {}).AndReturn(policies)
-        self.mox.ReplayAll()
+        self.mock_cluster_get.return_value = cluster
+        self.mock_cluster_policy_list.return_value = policies
 
         res = self.client.get(CLUSTER_DETAIL_URL)
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'test-cluster')
+        self.mock_cluster_get.assert_called_once_with(
+            test.IsHttpRequest(), u'123456')
+        self.mock_cluster_policy_list.assert_called_once_with(
+            test.IsHttpRequest(), u'123456', {})
 
-    @test.create_stubs({api.senlin: ('event_list',
+    @test.create_mocks({api.senlin: ('event_list',
                                      'cluster_get',
                                      'cluster_policy_list')})
     def test_cluster_event(self):
         cluster = self.clusters.list()[0]
         policies = self.policies.list()
         events = self.events.list()
-        api.senlin.cluster_get(
-            IsA(http.HttpRequest), u'123456').AndReturn(cluster)
-        api.senlin.event_list(
-            IsA(http.HttpRequest)).AndReturn(events)
-        api.senlin.cluster_policy_list(
-            IsA(http.HttpRequest), u'123456', {}).AndReturn(policies)
-        self.mox.ReplayAll()
+        self.mock_cluster_get.return_value = cluster
+        self.mock_event_list.return_value = events
+        self.mock_cluster_policy_list.return_value = policies
 
         res = self.client.get(
             CLUSTER_DETAIL_URL + '?tab=cluster_details__event')
         self.assertTemplateUsed(res, 'cluster/nodes/_detail_event.html')
         self.assertContains(res, '123456')
+        self.mock_cluster_get.assert_called_once_with(
+            test.IsHttpRequest(), u'123456')
+        self.mock_event_list.assert_called_once_with(
+            test.IsHttpRequest(),  filters={'obj_id': u'123456'},
+            marker=None, paginate=True, reversed_order=False)
+        self.mock_cluster_policy_list.assert_called_once_with(
+            test.IsHttpRequest(), u'123456', {})
 
-    @test.create_stubs({api.senlin: ('node_list',
+    @test.create_mocks({api.senlin: ('node_list',
                                      'cluster_get',
                                      'cluster_policy_list')})
     def test_cluster_nodes(self):
         policies = self.policies.list()
         cluster = self.clusters.list()[0]
         nodes = self.nodes.list()
-        api.senlin.cluster_get(
-            IsA(http.HttpRequest), u'123456').AndReturn(cluster)
-        api.senlin.node_list(
-            IsA(http.HttpRequest),
-            cluster_id=u'123456').AndReturn(nodes)
-        api.senlin.cluster_policy_list(
-            IsA(http.HttpRequest), u'123456', {}).AndReturn(policies)
-        self.mox.ReplayAll()
+        self.mock_cluster_get.return_value = cluster
+        self.mock_node_list.return_value = nodes
+        self.mock_cluster_policy_list.return_value = policies
 
         res = self.client.get(
             CLUSTER_DETAIL_URL + '?tab=cluster_details__nodes')
         self.assertTemplateUsed(res, 'cluster/clusters/_detail_nodes.html')
         self.assertContains(res, '123456')
+        self.mock_cluster_get.assert_called_once_with(
+            test.IsHttpRequest(), u'123456')
+        self.mock_node_list.assert_called_once_with(
+            test.IsHttpRequest(), cluster_id=u'123456')
+        self.mock_cluster_policy_list.assert_called_once_with(
+            test.IsHttpRequest(), u'123456', {})
 
-    @test.create_stubs({api.senlin: ('policy_list',
+    @test.create_mocks({api.senlin: ('policy_list',
                                      'cluster_policy_list')})
     def test_cluster_mamage_policies_index(self):
         policies = self.policies.list()
         cluster_policies = policies[:1]
-        api.senlin.policy_list(
-            IsA(http.HttpRequest)).AndReturn([policies, False, False])
-        api.senlin.cluster_policy_list(
-            IsA(http.HttpRequest), u'123456', {}).AndReturn(cluster_policies)
-        api.senlin.cluster_policy_list(
-            IsA(http.HttpRequest), u'123456', {}).AndReturn(cluster_policies)
-        self.mox.ReplayAll()
+        self.mock_policy_list.return_value = \
+            [policies, False, False]
+        self.mock_cluster_policy_list.side_effect = \
+            [cluster_policies, cluster_policies]
 
         res = self.client.get(CLUSTER_MANAGE_POLICIES_URL)
         self.assertTemplateUsed(res, 'cluster/clusters/manage_policies.html')
         self.assertContains(res, 'test-policy02')
+        self.mock_policy_list.assert_called_once_with(
+            test.IsHttpRequest())
+        self.mock_cluster_policy_list.assert_has_calls([
+            mock.call(test.IsHttpRequest(), u'123456', {}),
+            mock.call(test.IsHttpRequest(), u'123456', {})])

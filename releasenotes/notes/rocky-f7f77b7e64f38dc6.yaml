@@ -1,0 +1,30 @@
+---
+fixes:
+  - >
+    [`bug/1777545 <https://bugs.launchpad.net/senlin-dashboard/+bug/1777545>`_]
+    Fixed issue the deleted item is selected again with batch delete.
+    Item selections on table view for batch actions are not cleared
+    after execution of actions. To ensure to clear item selections,
+    `hzTable:clearSelection` event is emitted.
+  - >
+    [`bug/1746706 <https://bugs.launchpad.net/senlin-dashboard/+bug/1746706>`_]
+    Reproduced navigations when refreshing details view. Previously the fix
+    for [`bug/1681627 <https://bugs.launchpad.net/horizon/+bug/1681627>`_]
+    allowed us to reload or directly open Angular-based detail page (ngdetail),
+    but the navigation menu was not reproduced correctly.
+  - >
+    Fixed `type` for profile. Senlin API uses `type_name` for type, but
+    dashboard did not process `type_name`. So this issue caused error to
+    handle Profile object.
+  - >
+    [`bug/1754416 <https://bugs.launchpad.net/senlin-dashboard/+bug/1754416>`_]
+    `region_name` was not passed on when using the senlin-dashboard.
+    This makes the client always fallback on the first region. This issue was
+    fixed.
+  - >
+    [`bug/1754183 <https://bugs.launchpad.net/senlin-dashboard/+bug/1754183>`_]
+    Horizon by default sets the Project dashboard as default for non-admin
+    users. The _50_senlin.py file that comes with the Senlin dashboard also
+    has 'DEFAULT = True' set. Because 'cluster' comes before 'project'
+    alphabetically, this defaults all non-admin users to getting the cluster
+    dashboard on login. This issue was fixed.

@@ -12,10 +12,7 @@
 
 import yaml
 
-from django import http
 from django.urls import reverse
-
-from mox3.mox import IsA
 
 from senlin_dashboard import api
 from senlin_dashboard.test import helpers as test
@@ -27,44 +24,46 @@ DETAIL_URL = reverse('horizon:cluster:policies:detail', args=[u'1'])
 
 class PoliciesTest(test.TestCase):
 
-    @test.create_stubs({api.senlin: ('policy_list',)})
+    @test.create_mocks({api.senlin: ('policy_list',)})
     def test_index(self):
         policies = self.policies.list()
-        api.senlin.policy_list(
-            IsA(http.HttpRequest)).AndReturn(policies)
-        self.mox.ReplayAll()
+        self.mock_policy_list.return_value = policies
 
         res = self.client.get(INDEX_URL)
         self.assertContains(res, '<h1>Policies</h1>')
         self.assertTemplateUsed(res, 'cluster/policies/index.html')
         self.assertEqual(2, len(policies))
+        self.mock_policy_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('policy_list',)})
+    @test.create_mocks({api.senlin: ('policy_list',)})
     def test_index_policy_list_exception(self):
-        api.senlin.policy_list(
-            IsA(http.HttpRequest)).AndRaise(self.exceptions.senlin)
-        self.mox.ReplayAll()
+        self.mock_policy_list.side_effect = (
+            self.exceptions.senlin)
 
         res = self.client.get(INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/policies/index.html')
         self.assertEqual(0, len(res.context['policies_table'].data))
         self.assertMessageCount(res, error=1)
+        self.mock_policy_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('policy_list',)})
+    @test.create_mocks({api.senlin: ('policy_list',)})
     def test_index_no_policy(self):
-        api.senlin.policy_list(
-            IsA(http.HttpRequest)).AndReturn([])
-        self.mox.ReplayAll()
+        self.mock_policy_list.return_value = []
 
         res = self.client.get(INDEX_URL)
         self.assertTemplateUsed(res, 'cluster/policies/index.html')
         self.assertContains(res, 'No items to display')
         self.assertEqual(0, len(res.context['policies_table'].data))
+        self.mock_policy_list.assert_called_once_with(
+            test.IsHttpRequest(), filters={}, marker=None,
+            paginate=True, reversed_order=False)
 
-    @test.create_stubs({api.senlin: ('policy_create',)})
+    @test.create_mocks({api.senlin: ('policy_create',)})
     def test_create_policy(self):
-        policy = self.policies.list()[0]
-
         spec_yaml = """
         type: senlin.policy.deletion
         version: 1.0
@@ -90,20 +89,18 @@ class PoliciesTest(test.TestCase):
             'level': 0
         }
 
-        api.senlin.policy_create(
-            IsA(http.HttpRequest), **args).AndReturn(policy)
-        self.mox.ReplayAll()
+        self.mock_policy_create.return_value = args
 
         res = self.client.post(CREATE_URL, formdata)
         self.assertNoFormErrors(res)
 
-    @test.create_stubs({api.senlin: ('policy_get',)})
+    @test.create_mocks({api.senlin: ('policy_get',)})
     def test_policy_detail(self):
         policy = self.policies.list()[0]
-        api.senlin.policy_get(
-            IsA(http.HttpRequest), u'1').AndReturn(policy)
-        self.mox.ReplayAll()
+        self.mock_policy_get.return_value = policy
 
         res = self.client.get(DETAIL_URL)
         self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         self.assertContains(res, 'test-policy')
+        self.mock_policy_get.assert_called_once_with(
+            test.IsHttpRequest(), u'1')

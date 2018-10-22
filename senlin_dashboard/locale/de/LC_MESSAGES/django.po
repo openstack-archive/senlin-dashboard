@@ -1,6 +1,4 @@
-# Andi Chandler <andi@gowling.com>, 2016. #zanata
-# Andi Chandler <andi@gowling.com>, 2017. #zanata
-# Andi Chandler <andi@gowling.com>, 2018. #zanata
+# Frank Kloeker <eumel@arcor.de>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: senlin-dashboard VERSION\n"
@@ -9,12 +7,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-02-15 01:51+0000\n"
-"Last-Translator: Andi Chandler <andi@gowling.com>\n"
-"Language-Team: English (United Kingdom)\n"
-"Language: en_GB\n"
-"X-Generator: Zanata 4.3.3\n"
+"PO-Revision-Date: 2018-08-24 06:33+0000\n"
+"Last-Translator: Frank Kloeker <eumel@arcor.de>\n"
+"Language-Team: German\n"
+"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Zanata 4.3.3\n"
 
 msgid ""
 "A Receiver is used to prepare Senlin engine to react to external alarms or "
@@ -22,250 +20,255 @@ msgid ""
 "automatically. For example, when workload on a cluster climbs high, a "
 "receiver can change the size of a specified cluster."
 msgstr ""
-"A Receiver is used to prepare Senlin engine to react to external alarms or "
-"events so that a specific Action can be initiated on a Senlin cluster "
-"automatically. For example, when workload on a cluster climbs high, a "
-"receiver can change the size of a specified cluster."
+"Ein Empfänger wird verwendet, um die Senlin-Engine darauf vorzubereiten, auf "
+"externe Alarme oder Ereignisse zu reagieren, so dass eine bestimmte Aktion "
+"automatisch auf einem Senlin-Cluster ausgelöst werden kann. Wenn "
+"beispielsweise die Auslastung eines Clusters hoch ist, kann ein Empfänger "
+"die Größe eines bestimmten Clusters ändern."
 
 msgid ""
 "A policy is a set of rules that can be checked and/or enforced when an "
 "Action is performed on a Cluster."
 msgstr ""
-"A policy is a set of rules that can be checked and/or enforced when an "
-"Action is performed on a Cluster."
+"Eine Richtlinie ist eine Gruppe von Regeln, die überprüft und/oder erzwungen "
+"werden können, wenn eine Aktion für einen Cluster ausgeführt wird."
 
 msgid "A profile encodes the information needed for node creation."
-msgstr "A profile encodes the information needed for node creation."
+msgstr ""
+"Ein Profil codiert die Informationen, die für die Node-Erstellung benötigt "
+"werden."
 
 msgid "A spec file or yaml must be specified."
-msgstr "A spec file or YAML must be specified."
+msgstr "Eine Spezifikationsdatei oder ein yaml muss angegeben werden."
 
 msgctxt "Current status of a Cluster"
 msgid "ACTIVE"
-msgstr "ACTIVE"
+msgstr "AKTIV"
 
 msgctxt "Current status of a Node"
 msgid "ACTIVE"
-msgstr "ACTIVE"
+msgstr "AKTIV"
 
 msgctxt "Current status of the event"
 msgid "ACTIVE"
-msgstr "ACTIVE"
+msgstr "AKTIV"
 
 msgid "Action"
-msgstr "Action"
+msgstr "Aktion"
 
 msgid "Action ="
-msgstr "Action ="
+msgstr "Aktion ="
 
 msgid ""
 "An integer between 0 and 100 representing the enforcement level. Default to "
 "0."
 msgstr ""
-"An integer between 0 and 100 representing the enforcement level. Default to "
-"0."
+"Eine Ganzzahl zwischen 0 und 100, die die Durchsetzungsebene darstellt. "
+"Standard auf 0."
 
 msgid ""
 "An integer indicating the cooldown seconds once the policy is effected. "
 "Default to 0."
 msgstr ""
-"An integer indicating the cooldown seconds once the policy is effected. "
-"Default to 0."
+"Eine Ganzzahl, die die Abkühlungssekunden anzeigt, sobald die Richtlinie "
+"ausgeführt wurde. Standard auf 0."
 
 msgid "Attached Policies"
-msgstr "Attached Policies"
+msgstr "Angehängte Richtlinien"
 
 #, python-format
 msgid "Attaching policy %(policy)s to cluster %(cluster)s."
-msgstr "Attaching policy %(policy)s to cluster %(cluster)s."
+msgstr "Anfügen der Richtlinie %(policy)s an Cluster %(cluster)s."
 
 msgid "Available Policies"
-msgstr "Available Policies"
+msgstr "Verfügbare Richtlinien"
 
 msgctxt "Current status of a Cluster"
 msgid "CHECKING"
-msgstr "CHECKING"
+msgstr "ÜBERPRÜFEN"
 
 msgctxt "Current status of a Cluster"
 msgid "CREATING"
-msgstr "CREATING"
+msgstr "ERSTELLEN"
 
 msgctxt "Current status of a Node"
 msgid "CREATING"
-msgstr "CREATING"
+msgstr "ERSTELLEN"
 
 msgctxt "Current status of the event"
 msgid "CREATING"
-msgstr "CREATING"
+msgstr "ERSTELLEN"
 
 msgctxt "Current status of a Cluster"
 msgid "CRITICAL"
-msgstr "CRITICAL"
+msgstr "KRITISCH"
 
 msgid "Can not specify both sepc file and yaml."
-msgstr "Can not specify both spec file and YAML."
+msgstr ""
+"Kann nicht sowohl die Datei &quot;secp&quot; als auch &quot;yaml&quot; "
+"angeben."
 
 msgid "Channel"
-msgstr "Channel"
+msgstr "Kanal"
 
 msgid "Check Cluster"
 msgid_plural "Check Clusters"
-msgstr[0] "Check Cluster"
-msgstr[1] "Check Clusters"
+msgstr[0] "Überprüfe Cluster"
+msgstr[1] "Überprüfe Cluster"
 
 msgid "Check Node"
 msgid_plural "Check Nodes"
-msgstr[0] "Check Node"
-msgstr[1] "Check Nodes"
+msgstr[0] "Knoten überprüfen"
+msgstr[1] "Knoten überprüfen"
 
 msgid "Checked Cluster"
 msgid_plural "Checked Clusters"
-msgstr[0] "Checked Cluster"
-msgstr[1] "Checked Clusters"
+msgstr[0] "Cluster überprüft"
+msgstr[1] "Cluster überprüft"
 
 msgid "Checked Node"
 msgid_plural "Checked Nodes"
-msgstr[0] "Checked Node"
-msgstr[1] "Checked Nodes"
+msgstr[0] "Knoten überprüft"
+msgstr[1] "Knoten überprüft"
 
 msgid "Cluster"
 msgstr "Cluster"
 
 msgid "Cluster ID"
-msgstr "Cluster ID"
+msgstr "Cluster-ID"
 
 msgid "Cluster ID ="
-msgstr "Cluster ID ="
+msgstr "Cluster-ID ="
 
 msgid "Cluster Name"
-msgstr "Cluster Name"
+msgstr "Clustername"
 
 msgid "Cluster Name ="
-msgstr "Cluster Name ="
+msgstr "Clustername ="
 
 msgid "Cluster creation timeout in seconds."
-msgstr "Cluster creation timeout in seconds."
+msgstr "Zeitlimit für die Clustererstellung in Sekunden"
 
 msgid "Cluster for this node."
-msgstr "Cluster for this node."
+msgstr "Cluster für diesen Knoten"
 
 msgid ""
 "Cluster is the collection of cloud objects, e.g. Nova servers, Heat stacks, "
 "Cinder volumes, etc."
 msgstr ""
-"Cluster is the collection of cloud objects, e.g. Nova servers, Heat stacks, "
-"Cinder volumes, etc."
+"Cluster ist die Sammlung von Cloud-Objekten, zB Nova-Server, Heat-Stacks, "
+"Cinder-Volumes usw."
 
 msgid "Clusters"
-msgstr "Clusters"
+msgstr "Cluster"
 
 msgid "Cooldown"
-msgstr "Cooldown"
+msgstr "Abkühlen"
 
 msgid "Create Cluster"
-msgstr "Create Cluster"
+msgstr "Cluster erstellen"
 
 msgid "Create Node"
-msgstr "Create Node"
+msgstr "Knoten erstellen"
 
 msgid "Create Policy"
-msgstr "Create Policy"
+msgstr "Richtlinie erstellen"
 
 msgid "Create Profile"
-msgstr "Create Profile"
+msgstr "Profil erstellen"
 
 msgid "Create Receiver"
-msgstr "Create Receiver"
+msgstr "Empfänger erstellen"
 
 msgid "Created"
-msgstr "Created"
+msgstr "Erstellt"
 
 msgctxt "Created time"
 msgid "Created"
-msgstr "Created"
+msgstr "Erstellt"
 
 #, python-format
 msgid "Creating cluster \"%s\" successfully"
-msgstr "Creating cluster \"%s\" successfully"
+msgstr "Cluster '%s' erfolgreich erstellt"
 
 #, python-format
 msgid "Creating node \"%s\" successfully"
-msgstr "Creating node \"%s\" successfully"
+msgstr "Knoten '%s' erfolgreich erstellen"
 
 msgctxt "Current status of the event"
 msgid "DELETED"
-msgstr "DELETED"
+msgstr "GELÖSCHT"
 
 msgctxt "Current status of a Cluster"
 msgid "DELETING"
-msgstr "DELETING"
+msgstr "LÖSCHEN"
 
 msgctxt "Current status of a Node"
 msgid "DELETING"
-msgstr "DELETING"
+msgstr "LÖSCHEN"
 
 msgctxt "Current status of the event"
 msgid "DELETING"
-msgstr "DELETING"
+msgstr "LÖSCHEN"
 
 msgid "Delete Cluster"
 msgid_plural "Delete Clusters"
-msgstr[0] "Delete Cluster"
-msgstr[1] "Delete Clusters"
+msgstr[0] "Cluster löschen"
+msgstr[1] "Cluster löschen"
 
 msgid "Delete Node"
 msgid_plural "Delete Nodes"
-msgstr[0] "Delete Node"
-msgstr[1] "Delete Nodes"
+msgstr[0] "Lösche Knoten"
+msgstr[1] "Lösche Knoten"
 
 msgid "Delete Policy"
 msgid_plural "Delete Policies"
-msgstr[0] "Delete Policy"
-msgstr[1] "Delete Policies"
+msgstr[0] "Richtlinie löschen"
+msgstr[1] "Richtlinien löschen"
 
 msgid "Delete Profile"
 msgid_plural "Delete Profiles"
-msgstr[0] "Delete Profile"
-msgstr[1] "Delete Profiles"
+msgstr[0] "Lösche Profil"
+msgstr[1] "Lösche Profile"
 
 msgid "Delete Receiver"
 msgid_plural "Delete Receivers"
-msgstr[0] "Delete Receiver"
-msgstr[1] "Delete Receivers"
+msgstr[0] "Lösche Empfänger"
+msgstr[1] "Lösche Empfänger"
 
 msgid "Deleted Policy"
 msgid_plural "Deleted Policies"
-msgstr[0] "Deleted Policy"
-msgstr[1] "Deleted Policies"
+msgstr[0] "Richtlinie gelöscht"
+msgstr[1] "Richtlinien gelöscht"
 
 msgid "Deleted Profile"
 msgid_plural "Deleted Profiles"
-msgstr[0] "Deleted Profile"
-msgstr[1] "Deleted Profiles"
+msgstr[0] "Profil gelöscht"
+msgstr[1] "Profile gelöscht"
 
 msgid "Deleted Receiver"
 msgid_plural "Deleted Receivers"
-msgstr[0] "Deleted Receiver"
-msgstr[1] "Deleted Receivers"
+msgstr[0] "Empfänger gelöscht"
+msgstr[1] "Empfänger gelöscht"
 
 msgid "Description:"
-msgstr "Description:"
+msgstr "Beschreibung:"
 
 msgid "Desired Capacity"
-msgstr "Desired Capacity"
+msgstr "Gewünschte Kapazität"
 
 msgid "Desired capacity of the cluster. Default to 0."
-msgstr "Desired capacity of the cluster. Default to 0."
+msgstr "Gewünschte Kapazität des Clusters Standard auf 0."
 
 msgid "Detach Policy"
 msgid_plural "Detach Policies"
-msgstr[0] "Detach Policy"
-msgstr[1] "Detach Policies"
+msgstr[0] "Richtlinie abhängen"
+msgstr[1] "Richtlinien abhängen"
 
 msgid "Detaching Policy"
 msgid_plural "Detaching Policies"
-msgstr[0] "Detaching Policy"
-msgstr[1] "Detaching Policies"
+msgstr[0] "Richtlinie wird abhängt"
+msgstr[1] "Richtlinien werden abhängt"
 
 msgctxt "Current status of a Cluster"
 msgid "ERROR"
@@ -273,26 +276,26 @@ msgstr "ERROR"
 
 msgctxt "Current status of a Node"
 msgid "ERROR"
-msgstr "ERROR"
+msgstr "FEHLER"
 
 msgctxt "Current status of the event"
 msgid "ERROR"
-msgstr "ERROR"
+msgstr "FEHLER"
 
 msgid "Edit the name for the Policy."
-msgstr "Edit the name for the Policy."
+msgstr "Bearbeiten Sie den Namen für die Richtlinie."
 
 msgid "Enabled"
-msgstr "Enabled"
+msgstr "aktiviert"
 
 msgid "Event"
-msgstr "Event"
+msgstr "Ereignis"
 
 msgid "File"
-msgstr "File"
+msgstr "Datei"
 
 msgid "Generated At"
-msgstr "Generated At"
+msgstr "Erzeugt bei"
 
 msgid "ID"
 msgstr "ID"
@@ -313,173 +316,173 @@ msgid "Information"
 msgstr "Information"
 
 msgid "Level"
-msgstr "Level"
+msgstr "Niveau"
 
 msgid "Level ="
-msgstr "Level ="
+msgstr "Stufe ="
 
 msgid "Manage Policies"
-msgstr "Manage Policies"
+msgstr "Richtlinien verwalten"
 
 msgid "Max Size"
-msgstr "Max Size"
+msgstr "Maximale Größe"
 
 msgid "Max size of the cluster. Default to -1, means unlimited."
-msgstr "Max size of the cluster. Default to -1, means unlimited."
+msgstr "Maximale Größe des Clusters Standard auf -1, bedeutet unbegrenzt."
 
 msgid "Metadata"
-msgstr "Metadata"
+msgstr "Metadaten"
 
 msgid "Min Size"
-msgstr "Min Size"
+msgstr "Min. Größe"
 
 msgid "Min size of the cluster. Default to 0."
-msgstr "Min size of the cluster. Default to 0."
+msgstr "Mindestgröße des Clusters Standard auf 0."
 
 msgid "Name"
 msgstr "Name"
 
 msgid "Name or ID of the targeted action to be triggered."
-msgstr "Name or ID of the targeted action to be triggered."
+msgstr "Name oder ID der Zielaktion, die ausgelöst werden soll."
 
 msgid "Node Name"
-msgstr "Node Name"
+msgstr "Knotenname"
 
 msgid "Node Name ="
-msgstr "Node Name ="
+msgstr "Knotenname ="
 
 msgid "Nodes"
-msgstr "Nodes"
+msgstr "Knoten"
 
 msgid ""
 "Nodes are the physical objects, which can belong to any cluster of the same "
 "profile type."
 msgstr ""
-"Nodes are the physical objects, which can belong to any cluster of the same "
-"profile type."
+"Knoten sind die physischen Objekte, die zu jedem Cluster desselben "
+"Profiltyps gehören können."
 
 msgid "Object ID"
-msgstr "Object ID"
+msgstr "Objekt Identifikation"
 
 msgid "Object Name"
-msgstr "Object Name"
+msgstr "Objektname"
 
 msgid "Overview"
-msgstr "Overview"
+msgstr "Überblick"
 
 msgid "Parameters"
-msgstr "Parameters"
+msgstr "Parameter"
 
 msgid "Parent Cluster"
-msgstr "Parent Cluster"
+msgstr "Übergeordnetes Cluster"
 
 msgid "Physical ID"
-msgstr "Physical ID"
+msgstr "Physische ID"
 
 msgid "Policies"
-msgstr "Policies"
+msgstr "Richtlinien"
 
 msgid "Policy Name ="
-msgstr "Policy Name ="
+msgstr "Richtlinienname ="
 
 msgid "Policy Spec Examples"
-msgstr "Policy Spec Examples"
+msgstr "Richtlinienspezifikationsbeispiele"
 
 msgid "Profile"
-msgstr "Profile"
+msgstr "Profil"
 
 msgid "Profile Name"
-msgstr "Profile Name"
+msgstr "Profilname"
 
 msgid "Profile Name ="
-msgstr "Profile Name ="
+msgstr "Profilname ="
 
 msgid "Profile Spec Examples"
-msgstr "Profile Spec Examples"
+msgstr "Profilspezifikationsbeispiele"
 
 msgid "Profile used for this node."
-msgstr "Profile used for this node."
+msgstr "Profil, das für diesen Knoten verwendet wird."
 
 msgid "Profiles"
-msgstr "Profiles"
+msgstr "Profile"
 
 msgctxt "Current status of a Cluster"
 msgid "RECOVERING"
-msgstr "RECOVERING"
+msgstr "WIEDERHERSTELLEN"
 
 msgctxt "Current status of a Node"
 msgid "RECOVERING"
-msgstr "RECOVERING"
+msgstr "WIEDERHERSTELLEN"
 
 msgctxt "Current status of a Cluster"
 msgid "RESIZING"
-msgstr "RESIZING"
+msgstr "RESISIERUNG"
 
 msgid "Receiver Name ="
-msgstr "Receiver Name ="
+msgstr "Empfängername ="
 
 msgid "Receivers"
-msgstr "Receivers"
+msgstr "Empfänger"
 
 msgid "Recover Cluster"
 msgid_plural "Recover Clusters"
-msgstr[0] "Recover Cluster"
-msgstr[1] "Recover Clusters"
+msgstr[0] "Cluster wiederherstellen"
+msgstr[1] "Cluster wiederherstellen"
 
 msgid "Recover Node"
 msgid_plural "Recover Nodes"
-msgstr[0] "Recover Node"
-msgstr[1] "Recover Nodes"
+msgstr[0] "Knoten wiederherstellen"
+msgstr[1] "Knoten wiederherstellen"
 
 msgid "Recovered Cluster"
 msgid_plural "Recovered Clusters"
-msgstr[0] "Recovered Cluster"
-msgstr[1] "Recovered Clusters"
+msgstr[0] "Cluster wiederhergestellt"
+msgstr[1] "Cluster wiederhergestellt"
 
 msgid "Recovered Node"
 msgid_plural "Recovered Nodes"
-msgstr[0] "Recovered Node"
-msgstr[1] "Recovered Nodes"
+msgstr[0] "Knoten wiederhergestellt"
+msgstr[1] "Knoten wiederhergestellt"
 
 msgid "Role"
-msgstr "Role"
+msgstr "Rolle"
 
 msgid "Role for this node in the specific cluster."
-msgstr "Role for this node in the specific cluster."
+msgstr "Rolle für diesen Knoten im spezifischen Cluster"
 
 msgid "Scheduled deletion of Cluster"
 msgid_plural "Scheduled deletion of Clusters"
-msgstr[0] "Scheduled deletion of Cluster"
-msgstr[1] "Scheduled deletion of Clusters"
+msgstr[0] "Cluster löschen vorgemerkt"
+msgstr[1] "Cluster löschen vorgemerkt"
 
 msgid "Scheduled deletion of Node"
 msgid_plural "Scheduled deletion of Nodes"
-msgstr[0] "Scheduled deletion of Node"
-msgstr[1] "Scheduled deletion of Nodes"
+msgstr[0] "Knoten löschen vorgemerkt"
+msgstr[1] "Knoten löschen vorgemerkt"
 
 msgid "Select Cluster"
-msgstr "Select Cluster"
+msgstr "Wählen Sie Cluster"
 
 msgid "Select Policy"
-msgstr "Select Policy"
+msgstr "Wählen Sie Richtlinie"
 
 msgid "Select Profile"
-msgstr "Select Profile"
+msgstr "Wähle Profil"
 
 msgid "Select Type"
-msgstr "Select Type"
+msgstr "Art auswählen"
 
 msgid "Spec"
-msgstr "Spec"
+msgstr "Spez"
 
 msgid "Spec File"
-msgstr "Spec File"
+msgstr "Spezifikationsdatei"
 
 msgid "Spec Source"
-msgstr "Spec Source"
+msgstr "Spezifikationsquelle"
 
 msgid "Spec YAML"
-msgstr "Spec YAML"
+msgstr "Spezielles YAML"
 
 msgid "Status"
 msgstr "Status"
@@ -488,216 +491,219 @@ msgid "Status ="
 msgstr "Status ="
 
 msgid "Status Reason"
-msgstr "Status Reason"
+msgstr "Status Grund"
 
 msgid "Targeted cluster for this receiver."
-msgstr "Targeted cluster for this receiver."
+msgstr "Gezielter Cluster für diesen Empfänger."
 
 #, python-format
 msgid "The parameters is not a valid YAML formatted: %s"
-msgstr "The parameters is not a valid YAML formatted: %s"
+msgstr "Die Parameter sind kein gültiges YAML-Format: %s"
 
 msgid "The spec file used to create the profile."
-msgstr "The spec file used to create the profile."
+msgstr "Die Spezifikationsdatei, die zum Erstellen des Profils verwendet wird."
 
 msgid "The spec yaml used to create the policy."
-msgstr "The spec YAML used to create the policy."
+msgstr "Die Spezifikation, die zum Erstellen der Richtlinie verwendet wurde."
 
 msgid "The spec yaml used to create the profile."
-msgstr "The spec YAML used to create the profile."
+msgstr "Die Spezifikation, mit der das Profil erstellt wurde."
 
 #, python-format
 msgid "The specified data is not a valid YAML data: %s"
-msgstr "The specified data is not a valid YAML data: %s"
+msgstr "Die angegebenen Daten sind keine gültigen YAML-Daten: %s"
 
 #, python-format
 msgid "The specified file is not a valid YAML file: %s"
-msgstr "The specified file is not a valid YAML file: %s"
+msgstr "Die angegebene Datei ist keine gültige YAML-Datei: %s"
 
 #, python-format
 msgid "The specified input is not a valid YAML format: %s"
-msgstr "The specified input is not a valid YAML format: %s"
+msgstr "Die angegebene Eingabe ist kein gültiges YAML-Format: %s"
 
 #, python-format
 msgid "The specified metadata is not a valid YAML format: %s"
-msgstr "The specified metadata is not a valid YAML format: %s"
+msgstr "Die angegebenen Metadaten sind kein gültiges YAML-Format: %s"
 
 #, python-format
 msgid "The specified metadata is not a valid YAML: %s"
-msgstr "The specified metadata is not a valid YAML: %s"
+msgstr "Die angegebenen Metadaten sind keine gültige YAML: %s"
 
 #, python-format
 msgid "The specified params is not a valid YAML: %s"
-msgstr "The specified params is not a valid YAML: %s"
+msgstr "Die angegebenen Parameter sind keine gültige YAML: %s"
 
 #, python-format
 msgid "The specified spec is not a valid YAML: %s"
-msgstr "The specified spec is not a valid YAML: %s"
+msgstr "Die angegebene Spezifikation ist kein gültiges YAML: %s"
 
 msgid "Timeout"
-msgstr "Timeout"
+msgstr "Auszeit"
 
 msgid "Type"
-msgstr "Type"
+msgstr "Typ"
 
 msgid "Type ="
-msgstr "Type ="
+msgstr "Typ ="
 
 msgid "Type of the receiver to create. Default to webhook"
-msgstr "Type of the receiver to create. Default to webhook"
+msgstr "Art des zu erstellenden Empfängers. Standard für Webhook"
 
 msgctxt "Current status of a Cluster"
 msgid "UPDATING"
-msgstr "UPDATING"
+msgstr "AKTUALISIEREN"
 
 msgctxt "Current status of a Node"
 msgid "UPDATING"
-msgstr "UPDATING"
+msgstr "AKTUALISIEREN"
 
 msgctxt "Current status of the event"
 msgid "UPDATING"
-msgstr "UPDATING"
+msgstr "AKTUALISIEREN"
 
 msgid "Unable to attach policy."
-msgstr "Unable to attach policy."
+msgstr "Die Richtlinie konnte nicht angehängt werden."
 
 msgid "Unable to create cluster."
-msgstr "Unable to create cluster."
+msgstr "Der Cluster konnte nicht erstellt werden."
 
 msgid "Unable to create new policy"
-msgstr "Unable to create new policy"
+msgstr "Es konnte keine neue Richtlinie erstellt werden"
 
 msgid "Unable to create new profile"
-msgstr "Unable to create new profile"
+msgstr "Es konnte kein neues Profil erstellt werden"
 
 msgid "Unable to create new receiver"
-msgstr "Unable to create new receiver"
+msgstr "Es konnte kein neuer Empfänger erstellt werden"
 
 msgid "Unable to create node."
-msgstr "Unable to create node."
+msgstr "Der Knoten konnte nicht erstellt werden."
 
 msgid "Unable to retrieve cluster."
-msgstr "Unable to retrieve cluster."
+msgstr "Der Cluster konnte nicht abgerufen werden."
 
 msgid "Unable to retrieve clusters."
-msgstr "Unable to retrieve clusters."
+msgstr "Cluster kann nicht abgerufen werden."
 
 msgid "Unable to retrieve node event list."
-msgstr "Unable to retrieve node event list."
+msgstr "Die Knotenereignisliste konnte nicht abgerufen werden."
 
 msgid "Unable to retrieve node."
-msgstr "Unable to retrieve node."
+msgstr "Knoten konnte nicht abgerufen werden."
 
 msgid "Unable to retrieve nodes from cluster."
-msgstr "Unable to retrieve nodes from cluster."
+msgstr "Der Knoten konnte nicht vom Cluster abgerufen werden."
 
 msgid "Unable to retrieve nodes."
-msgstr "Unable to retrieve nodes."
+msgstr "Knoten konnte nicht abgerufen werden."
 
 msgid "Unable to retrieve policies."
-msgstr "Unable to retrieve policies."
+msgstr "Die Richtlinien konnten nicht abgerufen werden."
 
 msgid "Unable to retrieve policy."
-msgstr "Unable to retrieve policy."
+msgstr "Die Richtlinie konnte nicht abgerufen werden."
 
 msgid "Unable to retrieve profile."
-msgstr "Unable to retrieve profile."
+msgstr "Das Profil konnte nicht abgerufen werden."
 
 msgid "Unable to retrieve profiles."
-msgstr "Unable to retrieve profiles."
+msgstr "Es konnten keine Profile abgerufen werden."
 
 msgid "Unable to retrieve receiver."
-msgstr "Unable to retrieve receiver."
+msgstr "Der Empfänger konnte nicht abgerufen werden."
 
 msgid "Unable to retrieve receivers."
-msgstr "Unable to retrieve receivers."
+msgstr "Receiver konnte nicht abgerufen werden."
 
 msgid "Unable to update node."
-msgstr "Unable to update node."
+msgstr "Der Knoten konnte nicht aktualisiert werden."
 
 msgid "Unable to update policy"
-msgstr "Unable to update policy"
+msgstr "Die Richtlinie konnte nicht aktualisiert werden"
 
 msgid "Unable to update profile"
-msgstr "Unable to update profile"
+msgstr "Das Profil konnte nicht aktualisiert werden"
 
 msgid "Update Node"
-msgstr "Update Node"
+msgstr "Knoten aktualisieren"
 
 msgid "Update Policy"
-msgstr "Update Policy"
+msgstr "Richtlinie aktualisieren"
 
 msgid "Update Profile"
-msgstr "Update Profile"
+msgstr "Profil aktualisieren"
 
 msgid "Update the spec of a profile is not allowed"
-msgstr "Update the spec of a profile is not allowed"
+msgstr "Aktualisieren Sie die Spezifikation eines Profils ist nicht erlaubt"
 
 msgid "Updated"
-msgstr "Updated"
+msgstr "Aktualisiert"
 
 msgctxt "Updated time"
 msgid "Updated"
-msgstr "Updated"
+msgstr "Aktualisiert"
 
 msgctxt "Current status of a Cluster"
 msgid "WARNING"
-msgstr "WARNING"
+msgstr "WARNUNG"
 
 msgctxt "Current status of a Node"
 msgid "WARNING"
-msgstr "WARNING"
+msgstr "WARNUNG"
 
 msgctxt "Current status of the event"
 msgid "WARNING"
-msgstr "WARNING"
+msgstr "WARNUNG"
 
 msgid "Whether the policy should be enabled once attached. Default to enabled."
-msgstr ""
-"Whether the policy should be enabled once attached. Default to enabled."
+msgstr "Ob die Richtlinie einmal aktiviert werden soll. Standard ist aktiviert"
 
 msgid "YAML"
 msgstr "YAML"
 
 msgid "YAML formated metadata"
-msgstr "YAML formated metadata"
+msgstr "YAML formatierte Metadaten"
 
 msgid "YAML formatted metadata."
-msgstr "YAML formatted metadata."
+msgstr "YAML-formatierte Metadaten"
 
 msgid ""
 "YAML formatted parameters that will be passed to target action when the "
 "receiver is triggered."
 msgstr ""
-"YAML formatted parameters that will be passed to target action when the "
-"receiver is triggered."
+"YAML formatierte Parameter, die an die Zielaktion übergeben werden, wenn der "
+"Empfänger ausgelöst wird."
 
 msgid "You may update the editable properties of your node here."
-msgstr "You may update the editable properties of your node here."
+msgstr ""
+"Sie können hier die bearbeitbaren Eigenschaften Ihres Knotens aktualisieren."
 
 msgid "You may update the editable properties of your profile here."
-msgstr "You may update the editable properties of your profile here."
+msgstr ""
+"Sie können hier die bearbeitbaren Eigenschaften Ihres Profils aktualisieren."
 
 #, python-format
 msgid "Your node %s update request has been accepted for processing."
-msgstr "Your node %s update request has been accepted for processing."
+msgstr ""
+"Die Aktualisierungsanforderung Ihres Knotens %s wurde zur Verarbeitung "
+"akzeptiert."
 
 #, python-format
 msgid "Your policy %s has been created."
-msgstr "Your policy %s has been created."
+msgstr "Ihre Richtlinie %s wurde erstellt."
 
 #, python-format
 msgid "Your policy %s has been updated."
-msgstr "Your policy %s has been updated."
+msgstr "Ihre Richtlinie %s wurde aktualisiert."
 
 #, python-format
 msgid "Your profile %s has been created."
-msgstr "Your profile %s has been created."
+msgstr "Ihr Profil %s wurde erstellt."
 
 #, python-format
 msgid "Your profile %s has been updated."
-msgstr "Your profile %s has been updated."
+msgstr "Ihr Profil %s wurde aktualisiert."
 
 #, python-format
 msgid "Your receiver %s has been created successfully."
-msgstr "Your receiver %s has been created successfully."
+msgstr "Ihr Empfänger %s wurde erfolgreich erstellt."

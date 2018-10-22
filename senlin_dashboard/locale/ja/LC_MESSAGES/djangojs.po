@@ -1,18 +1,19 @@
-# Shu Muto <shu-mutou@rf.jp.nec.com>, 2016. #zanata
-# Shu Muto <shu-mutou@rf.jp.nec.com>, 2017. #zanata
+# Shu Muto <shu.mutow@gmail.com>, 2016. #zanata
+# Shu Muto <shu.mutow@gmail.com>, 2017. #zanata
+# Shu Muto <shu.mutow@gmail.com>, 2018. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: senlin-dashboard 0.6.1.dev48\n"
+"Project-Id-Version: senlin-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2017-07-31 03:02+0000\n"
+"POT-Creation-Date: 2018-10-16 19:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-07-31 04:52+0000\n"
-"Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
+"PO-Revision-Date: 2018-04-06 07:59+0000\n"
+"Last-Translator: Shu Muto <shu.mutow@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
-"X-Generator: Zanata 3.9.6\n"
+"X-Generator: Zanata 4.3.3\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 msgid ""
@@ -31,8 +32,24 @@ msgstr "稼働中"
 msgid "Action"
 msgstr "アクション"
 
+msgid "Adjustment"
+msgstr "調整"
+
+msgid ""
+"Adjustment: A positive integer meaning the number of nodes to add, or a "
+"negative integer indicating the number of nodes to remove. And this can not "
+"be zero."
+msgstr ""
+"調整: 正の整数は追加するノードの数を意味し、負の整数は削除するノードの数を示"
+"します。また、これは 0 にすることはできません。"
+
 msgid "An arbitrary human-readable name."
 msgstr "人間が読むことができる任意の名前。"
+
+msgid ""
+"An integer specifying the number of nodes for adjustment when \"Percentage\" "
+"is specified for \"Type\"."
+msgstr "種別にパーセンテージを指定した場合の調整ノード数を指定する整数。"
 
 msgid "CHECKING"
 msgstr "検査中"
@@ -42,6 +59,12 @@ msgstr "作成中"
 
 msgid "CRITICAL"
 msgstr "重要"
+
+msgid "Capacity"
+msgstr "容量"
+
+msgid "Capacity: The desired number of nodes of the cluster."
+msgstr "容量: クラスターに望ましいノードの数。"
 
 msgid "Channel"
 msgstr "チャンネル"
@@ -68,6 +91,10 @@ msgstr "クラスター作成のタイムアウト時間（秒単位）。"
 
 msgid "Cluster for this node."
 msgstr "このノードのクラスター"
+
+#, python-format
+msgid "Cluster resize %s was successfully accepted."
+msgstr "クラスター %s のリサイズが正常に受理されました。"
 
 #, python-format
 msgid "Cluster scale-in %s was successfully accepted."
@@ -214,12 +241,6 @@ msgstr "初期化"
 msgid "Load Spec from File"
 msgstr "ファイルからスペックを読み込む"
 
-msgid "Load or specify spec of the policy in YAML format."
-msgstr "ポリシーのスペックを YAML 形式で読み込むか入力してください。"
-
-msgid "Load or specify spec of the profile in YAML format."
-msgstr "プロファイルのスペックを YAML 形式で読み込むか入力してください。"
-
 msgid "Load the spec yaml file and set to spec below."
 msgstr "スペックの YAML ファイルを読み込んで、以下のスペックにセットします。"
 
@@ -231,6 +252,9 @@ msgstr "最大サイズ"
 
 msgid "Max size of the cluster. Default to -1 means unlimited."
 msgstr "クラスターの最大サイズです。デフォルトは -1 で、無制限を意味します。"
+
+msgid "Maximum Size"
+msgstr "最大サイズ"
 
 msgid "Message"
 msgstr "メッセージ"
@@ -253,6 +277,12 @@ msgstr "最小サイズ"
 msgid "Min size of the cluster. Default to 0."
 msgstr "クラスターの最小サイズです。デフォルトは 0 です。"
 
+msgid "Minimum Size"
+msgstr "最小サイズ"
+
+msgid "Minimum Step"
+msgstr "最小ステップ"
+
 msgid "Name"
 msgstr "名前"
 
@@ -274,8 +304,18 @@ msgstr "レシーバーの名前。"
 msgid "Name or ID of the targeted action to be triggered."
 msgstr "トリガーされるターゲットとなるアクションの名前または ID。"
 
+msgid "New lower bound of cluster size."
+msgstr "クラスターサイズの新しい下限。"
+
 msgid "New timeout (in seconds) value for the cluster."
 msgstr "クラスターの新しいタイムアウト値 (秒) 。"
+
+msgid ""
+"New upper bound of cluster size. A value of -1 indicates no upper limit on "
+"cluster size."
+msgstr ""
+"クラスターサイズの新しい上限。-1 はクラスターサイズに上限を設けないことを意味"
+"します。"
 
 msgid "Node"
 msgstr "ノード"
@@ -294,6 +334,9 @@ msgstr "ノードの数"
 msgid "Nodes"
 msgstr "ノード"
 
+msgid "Number"
+msgstr "数"
+
 msgid "Object ID"
 msgstr "オブジェクト ID"
 
@@ -311,6 +354,16 @@ msgstr "レシーバーのパラメーターを YAML 形式で入力してくだ
 
 msgid "Params"
 msgstr "パラメーター"
+
+msgid "Percentage"
+msgstr "パーセンテージ"
+
+msgid ""
+"Percentage: A value that is interpreted as the percentage of size "
+"adjustment. This value can be positive or negative. And this can not be zero."
+msgstr ""
+"パーセンテージ: サイズ調整のパーセンテージとして解釈される値。この値は正また"
+"は負の整数を指定できます。また、これは 0 にすることはできません。"
 
 msgid "Physical ID"
 msgstr "物理 ID"
@@ -384,6 +437,12 @@ msgstr "レシーバー %s が正常に更新されました。"
 msgid "Receivers"
 msgstr "レシーバー"
 
+msgid "Resize"
+msgstr "リサイズ"
+
+msgid "Resize Cluster"
+msgstr "クラスターのりサイズ"
+
 msgid "Role"
 msgstr "ロール"
 
@@ -432,6 +491,9 @@ msgstr "ノードのプロファイルを選択してください。"
 msgid "Select the policy to apply to the cluster."
 msgstr "クラスターに適用するポリシーを選択してください。"
 
+msgid "Select type for resize."
+msgstr "リサイズの方式を選択してください。"
+
 msgid "Select type for the receiver."
 msgstr "レシーバーの種別を選択してください。"
 
@@ -443,6 +505,16 @@ msgstr "スケールインするノードの数を指定してください。"
 
 msgid "Specify node count for scale-out."
 msgstr "スケールアウトするノードの数を指定してください。"
+
+msgid "Specify the number according to the type you selected as follows."
+msgstr "選択したタイプに応じて数を次のように指定します。"
+
+msgid ""
+"Specifying whether the resize should be performed on a best-effort basis "
+"when the new capacity may go beyond size constraints."
+msgstr ""
+"新しい容量がサイズの制約を超えた場合に、リサイズをベストエフォート方式で実行"
+"するかどうかを指定します。"
 
 msgid "Status"
 msgstr "ステータス"
@@ -563,6 +635,10 @@ msgstr "ID %(id)s のプロファイルを削除できません。"
 #, python-format
 msgid "Unable to delete the receiver with id: %(id)s."
 msgstr "ID %(id)s のレシーバーを削除できません。"
+
+#, python-format
+msgid "Unable to resize the cluster with name: %(name)s"
+msgstr "以下の名前のクラスターをリサイズできません: %(name)s"
 
 #, python-format
 msgid "Unable to retrieve the cluster with id: %(id)s."

@@ -1,16 +1,15 @@
 # Andreas Jaeger <jaegerandi@gmail.com>, 2016. #zanata
 # Shu Muto <shu.mutow@gmail.com>, 2016. #zanata
 # Shu Muto <shu.mutow@gmail.com>, 2017. #zanata
-# Shu Muto <shu.mutow@gmail.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: senlin-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-10-16 19:22+0000\n"
+"POT-Creation-Date: 2018-10-23 01:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-02-13 05:07+0000\n"
+"PO-Revision-Date: 2017-01-27 05:50+0000\n"
 "Last-Translator: Shu Muto <shu.mutow@gmail.com>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -492,10 +491,6 @@ msgstr "指定されたデータは、有効な YAML データではありませ
 #, python-format
 msgid "The specified file is not a valid YAML file: %s"
 msgstr "指定されたファイルは、有効な YAML ファイルではありません: %s"
-
-#, python-format
-msgid "The specified input is not a valid YAML format: %s"
-msgstr "指定された入力は有効な YAML 形式ではありません: %s"
 
 #, python-format
 msgid "The specified metadata is not a valid YAML format: %s"

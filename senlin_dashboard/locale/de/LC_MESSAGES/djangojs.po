@@ -3,11 +3,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: senlin-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-10-16 19:22+0000\n"
+"POT-Creation-Date: 2018-10-23 01:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-08-11 09:02+0000\n"
+"PO-Revision-Date: 2018-02-10 04:06+0000\n"
 "Last-Translator: Frank Kloeker <eumel@arcor.de>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -32,27 +32,8 @@ msgstr "AKTIV"
 msgid "Action"
 msgstr "Aktion"
 
-msgid "Adjustment"
-msgstr "Anpassung"
-
-msgid ""
-"Adjustment: A positive integer meaning the number of nodes to add, or a "
-"negative integer indicating the number of nodes to remove. And this can not "
-"be zero."
-msgstr ""
-"Anpassung: Eine positive Ganzzahl, die die Anzahl der hinzuzufügenden Knoten "
-"angibt, oder eine negative Ganzzahl, die die Anzahl der zu entfernenden "
-"Knoten angibt. Und das kann nicht Null sein."
-
 msgid "An arbitrary human-readable name."
 msgstr "Ein beliebiger, von Menschen lesbarer Name."
-
-msgid ""
-"An integer specifying the number of nodes for adjustment when \"Percentage\" "
-"is specified for \"Type\"."
-msgstr ""
-"Eine Ganzzahl, die die Anzahl der Knoten für die Anpassung angibt, wenn "
-"\"Prozentsatz\" für \"Typ\" angegeben ist."
 
 msgid "CHECKING"
 msgstr "ÜBERPRÜFEN"
@@ -62,12 +43,6 @@ msgstr "ERSTELLEN"
 
 msgid "CRITICAL"
 msgstr "KRITISCH"
-
-msgid "Capacity"
-msgstr "Kapazität"
-
-msgid "Capacity: The desired number of nodes of the cluster."
-msgstr "Kapazität: Die gewünschte Anzahl von Knoten des Clusters."
 
 msgid "Channel"
 msgstr "Kanal"
@@ -94,10 +69,6 @@ msgstr "Zeitlimit für die Clustererstellung in Sekunden"
 
 msgid "Cluster for this node."
 msgstr "Cluster für diesen Knoten"
-
-#, python-format
-msgid "Cluster resize %s was successfully accepted."
-msgstr "Cluster Größenänderung %s wurde erfolgreich akzeptiert."
 
 #, python-format
 msgid "Cluster scale-in %s was successfully accepted."
@@ -272,9 +243,6 @@ msgstr "Maximale Größe"
 msgid "Max size of the cluster. Default to -1 means unlimited."
 msgstr "Maximale Größe des Clusters Standard auf -1 bedeutet unbegrenzt."
 
-msgid "Maximum Size"
-msgstr "Maximale Grösse"
-
 msgid "Message"
 msgstr "Nachricht"
 
@@ -295,12 +263,6 @@ msgstr "Min. Größe"
 
 msgid "Min size of the cluster. Default to 0."
 msgstr "Mindestgröße des Clusters Standard auf 0."
-
-msgid "Minimum Size"
-msgstr "Minimale Grösse"
-
-msgid "Minimum Step"
-msgstr "Minimaler Schritt"
 
 msgid "Name"
 msgstr "Name"
@@ -323,18 +285,8 @@ msgstr "Name des Empfängers"
 msgid "Name or ID of the targeted action to be triggered."
 msgstr "Name oder ID der Zielaktion, die ausgelöst werden soll."
 
-msgid "New lower bound of cluster size."
-msgstr "Neue Untergrenze der Clustergröße"
-
 msgid "New timeout (in seconds) value for the cluster."
 msgstr "Neuer Timeout-Wert (in Sekunden) für den Cluster"
-
-msgid ""
-"New upper bound of cluster size. A value of -1 indicates no upper limit on "
-"cluster size."
-msgstr ""
-"Neue Obergrenze der Clustergröße Ein Wert von -1 gibt keine Obergrenze für "
-"die Clustergröße an."
 
 msgid "Node"
 msgstr "Knoten"
@@ -353,9 +305,6 @@ msgstr "Knotenzahl"
 msgid "Nodes"
 msgstr "Knoten"
 
-msgid "Number"
-msgstr "Zahl"
-
 msgid "Object ID"
 msgstr "Objekt Identifikation"
 
@@ -373,17 +322,6 @@ msgstr "Parameter des Empfängers im YAML-Format."
 
 msgid "Params"
 msgstr "Parameter"
-
-msgid "Percentage"
-msgstr "Fortschritt"
-
-msgid ""
-"Percentage: A value that is interpreted as the percentage of size "
-"adjustment. This value can be positive or negative. And this can not be zero."
-msgstr ""
-"Prozentsatz: Ein Wert, der als Prozentsatz der Größenanpassung interpretiert "
-"wird. Dieser Wert kann positiv oder negativ sein. Und das kann nicht Null "
-"sein."
 
 msgid "Physical ID"
 msgstr "Physische ID"
@@ -457,12 +395,6 @@ msgstr "Empfänger %s wurde erfolgreich aktualisiert."
 msgid "Receivers"
 msgstr "Empfänger"
 
-msgid "Resize"
-msgstr "Größe ändern"
-
-msgid "Resize Cluster"
-msgstr "Größe des Clusters ändern"
-
 msgid "Role"
 msgstr "Rolle"
 
@@ -513,9 +445,6 @@ msgid "Select the policy to apply to the cluster."
 msgstr ""
 "Wählen Sie die Richtlinie aus, die auf den Cluster angewendet werden soll."
 
-msgid "Select type for resize."
-msgstr "Wählen Sie den Typ der Gössenänderung."
-
 msgid "Select type for the receiver."
 msgstr "Wählen Sie den Typ für den Empfänger."
 
@@ -527,17 +456,6 @@ msgstr "Geben Sie die Anzahl der Knoten für das Skalieren an."
 
 msgid "Specify node count for scale-out."
 msgstr "Geben Sie die Anzahl der Knoten für das Scale-Out an."
-
-msgid "Specify the number according to the type you selected as follows."
-msgstr "Geben Sie die Nummer entsprechend dem ausgewählten Typ wie folgt ein."
-
-msgid ""
-"Specifying whether the resize should be performed on a best-effort basis "
-"when the new capacity may go beyond size constraints."
-msgstr ""
-"Angeben, ob die Größenänderung auf der Grundlage der besten Leistung "
-"durchgeführt werden soll, wenn die neue Kapazität über Größenbeschränkungen "
-"hinausgeht."
 
 msgid "Status"
 msgstr "Status"
@@ -664,12 +582,6 @@ msgstr "Das Profil mit der ID %(id)s konnte nicht gelöscht werden."
 #, python-format
 msgid "Unable to delete the receiver with id: %(id)s."
 msgstr "Der Empfänger konnte nicht mit der ID: %(id)s gelöscht werden."
-
-#, python-format
-msgid "Unable to resize the cluster with name: %(name)s"
-msgstr ""
-"Die Göße des  Cluster konnte nicht mit folgendem Namen geändert werden: "
-"%(name)s"
 
 #, python-format
 msgid "Unable to retrieve the cluster with id: %(id)s."

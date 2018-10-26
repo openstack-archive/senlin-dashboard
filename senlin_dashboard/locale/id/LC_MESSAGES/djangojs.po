@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: senlin-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-10-16 19:22+0000\n"
+"POT-Creation-Date: 2018-10-23 01:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,27 +30,8 @@ msgstr "ACTIVE"
 msgid "Action"
 msgstr "Action"
 
-msgid "Adjustment"
-msgstr "Pengaturan"
-
-msgid ""
-"Adjustment: A positive integer meaning the number of nodes to add, or a "
-"negative integer indicating the number of nodes to remove. And this can not "
-"be zero."
-msgstr ""
-"Adjustment (penyesuaian): Bilangan bulat positif yang berarti jumlah node "
-"untuk ditambahkan, atau bilangan bulat negatif yang menunjukkan jumlah node "
-"yang akan dihapus. Dan ini tidak bisa nol."
-
 msgid "An arbitrary human-readable name."
 msgstr "Nama yang dapat dibaca manusia secara acak."
-
-msgid ""
-"An integer specifying the number of nodes for adjustment when \"Percentage\" "
-"is specified for \"Type\"."
-msgstr ""
-"Bilangan integer yang menentukan jumlah node untuk penyesuaian ketika "
-"\"Percentage\"  ditentukan untuk \"Type\"."
 
 msgid "CHECKING"
 msgstr "CHECKING"
@@ -60,12 +41,6 @@ msgstr "CREATING"
 
 msgid "CRITICAL"
 msgstr "CRITICAL"
-
-msgid "Capacity"
-msgstr "Kapasitas"
-
-msgid "Capacity: The desired number of nodes of the cluster."
-msgstr "Capacity (kapasitas): Jumlah kluster node yang diinginkan."
 
 msgid "Channel"
 msgstr "Channel"
@@ -92,10 +67,6 @@ msgstr "Batas waktu pembuatan kluster dalam hitungan detik."
 
 msgid "Cluster for this node."
 msgstr "Klaster untuk node ini."
-
-#, python-format
-msgid "Cluster resize %s was successfully accepted."
-msgstr "Kluster mengubah ukuran %s berhasil diterima."
 
 #, python-format
 msgid "Cluster scale-in %s was successfully accepted."
@@ -254,9 +225,6 @@ msgstr "Ukuran Maks"
 msgid "Max size of the cluster. Default to -1 means unlimited."
 msgstr "Ukuran maksimum klaster. Default ke -1 berarti tidak terbatas."
 
-msgid "Maximum Size"
-msgstr "Ukuran maksimum"
-
 msgid "Message"
 msgstr "Message"
 
@@ -277,12 +245,6 @@ msgstr "Ukuran Min"
 
 msgid "Min size of the cluster. Default to 0."
 msgstr "Ukuran min cluster. Default ke 0."
-
-msgid "Minimum Size"
-msgstr "Ukuran Minimum"
-
-msgid "Minimum Step"
-msgstr "Langkah Minimum"
 
 msgid "Name"
 msgstr "Name"
@@ -305,18 +267,8 @@ msgstr "Nama penerima."
 msgid "Name or ID of the targeted action to be triggered."
 msgstr "Nama atau ID dari aksi yang ditargetkan untuk dipicu."
 
-msgid "New lower bound of cluster size."
-msgstr "Batas bawah baru ukuran kluster."
-
 msgid "New timeout (in seconds) value for the cluster."
 msgstr "Nilai batas waktu baru (dalam detik) untuk kluster."
-
-msgid ""
-"New upper bound of cluster size. A value of -1 indicates no upper limit on "
-"cluster size."
-msgstr ""
-"Batas atas ukuran kluster baru. Nilai -1 menunjukkan tidak ada batas atas "
-"pada ukuran kluster."
 
 msgid "Node"
 msgstr "Node"
@@ -335,9 +287,6 @@ msgstr "Penghitungan Node"
 msgid "Nodes"
 msgstr "Nodes"
 
-msgid "Number"
-msgstr "Number"
-
 msgid "Object ID"
 msgstr "Object ID"
 
@@ -355,17 +304,6 @@ msgstr "Parameter penerima dalam format YAML."
 
 msgid "Params"
 msgstr "Params"
-
-msgid "Percentage"
-msgstr "Persentase"
-
-msgid ""
-"Percentage: A value that is interpreted as the percentage of size "
-"adjustment. This value can be positive or negative. And this can not be zero."
-msgstr ""
-"Percentage (persentase): Nilai yang ditafsirkan sebagai persentase "
-"penyesuaian ukuran. Nilai ini bisa positif atau negatif. Dan ini tidak bisa "
-"nol."
 
 msgid "Physical ID"
 msgstr "Physical ID"
@@ -439,12 +377,6 @@ msgstr "Receiver %s berhasil diperbarui."
 msgid "Receivers"
 msgstr "Receivers"
 
-msgid "Resize"
-msgstr "Ubah ukuran"
-
-msgid "Resize Cluster"
-msgstr "Ubah Ukuran Kluster"
-
 msgid "Role"
 msgstr "Role"
 
@@ -493,9 +425,6 @@ msgstr "Pilih profil untuk node."
 msgid "Select the policy to apply to the cluster."
 msgstr "Pilih kebijakan untuk diterapkan ke kluster."
 
-msgid "Select type for resize."
-msgstr "Pilih tipe untuk mengubah ukuran."
-
 msgid "Select type for the receiver."
 msgstr "Pilih tipe untuk penerima."
 
@@ -507,16 +436,6 @@ msgstr "Tentukan jumlah node untuk skala-in."
 
 msgid "Specify node count for scale-out."
 msgstr "Tentukan jumlah node untuk skala-out."
-
-msgid "Specify the number according to the type you selected as follows."
-msgstr "Tentukan nomor sesuai dengan tipe yang Anda pilih sebagai berikut."
-
-msgid ""
-"Specifying whether the resize should be performed on a best-effort basis "
-"when the new capacity may go beyond size constraints."
-msgstr ""
-"Menentukan apakah pengubahan ukuran harus dilakukan atas dasar upaya terbaik "
-"ketika kapasitas baru dapat melampaui batasan ukuran."
 
 msgid "Status"
 msgstr "Status"
@@ -637,10 +556,6 @@ msgstr "Tidak dapat menghapus profil dengan id: %(id)s."
 #, python-format
 msgid "Unable to delete the receiver with id: %(id)s."
 msgstr "Tidak dapat menghapus penerima dengan id: %(id)s."
-
-#, python-format
-msgid "Unable to resize the cluster with name: %(name)s"
-msgstr "Tidak dapat mengubah ukuran kluster dengan nama: %(name)s"
 
 #, python-format
 msgid "Unable to retrieve the cluster with id: %(id)s."

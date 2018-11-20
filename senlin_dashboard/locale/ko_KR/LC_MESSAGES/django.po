@@ -1,23 +1,49 @@
 # Jaewook Oh <kyle.oh95@gmail.com>, 2018. #zanata
+# Taesung Oh <ts5516@naver.com>, 2018. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: senlin-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-03-14 07:30+0000\n"
+"POT-Creation-Date: 2018-10-18 23:55+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-03-17 07:33+0000\n"
-"Last-Translator: Jaewook Oh <kyle.oh95@gmail.com>\n"
+"PO-Revision-Date: 2018-11-20 04:12+0000\n"
+"Last-Translator: Taesung Oh <ts5516@naver.com>\n"
 "Language-Team: Korean (South Korea)\n"
 "Language: ko_KR\n"
 "X-Generator: Zanata 4.3.3\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
+msgid ""
+"A Receiver is used to prepare Senlin engine to react to external alarms or "
+"events so that a specific Action can be initiated on a senlin cluster "
+"automatically. For example, when workload on a cluster climbs high, a "
+"receiver can change the size of a specified cluster."
+msgstr ""
+"수신기는 Senlin 엔진이 외부 알람 또는 이벤트에 반응하도록 준비하기 위해 사용"
+"되며, 이를 통해 Senlin 클러스터에서 특정 작업이 자동으로 시작될 수 있습니다."
+"예를 들어 클러스터의 워크로드(작업량)가 높게 상승하면 수신기가 지정된 클러스"
+"터의 크기를 변경할 수 있습니다."
+
+msgid ""
+"A policy is a set of rules that can be checked and/or enforced when an "
+"Action is performed on a Cluster."
+msgstr ""
+"정책은 클러스터에서 작업을 수행할 때 확인하거나 적용할 수 있는 규칙 모음입니"
+"다."
+
+msgid "A profile encodes the information needed for node creation."
+msgstr "프로파일은 노드 생성에 필요한 정보를 인코딩합니다."
+
 msgid "A spec file or yaml must be specified."
 msgstr "스펙 파일 또는 스펙 YAML을 지정해야 합니다."
 
 msgctxt "Current status of a Cluster"
+msgid "ACTIVE"
+msgstr "ACTIVE"
+
+msgctxt "Current status of a Node"
 msgid "ACTIVE"
 msgstr "ACTIVE"
 
@@ -28,18 +54,28 @@ msgstr "ACTIVE"
 msgid "Action"
 msgstr "Action"
 
+msgid "Action ="
+msgstr "작업 = "
+
 msgid ""
 "An integer between 0 and 100 representing the enforcement level. Default to "
 "0."
 msgstr ""
 "0 부터 100까지의 정수는 enforcement level을 표현합니다. 기본값은 0입니다."
 
+msgid ""
+"An integer indicating the cooldown seconds once the policy is effected. "
+"Default to 0."
+msgstr ""
+"정책이 영향을 받은 후 몇 초 동안 대기 시간을 나타내는 정수입니다. 기본값은 0"
+"입니다."
+
 msgid "Attached Policies"
 msgstr "연결된 정책"
 
-#, fuzzy, python-format
+#, python-format
 msgid "Attaching policy %(policy)s to cluster %(cluster)s."
-msgstr "정책 %(policy) 를 클러스터 %(cluster) 에 연결합니다."
+msgstr "정책 %(policy)s 를 클러스터 %(cluster)s 에 연결합니다."
 
 msgid "Available Policies"
 msgstr "이용 가능한 정책"
@@ -49,6 +85,10 @@ msgid "CHECKING"
 msgstr "CHECKING"
 
 msgctxt "Current status of a Cluster"
+msgid "CREATING"
+msgstr "CREATING"
+
+msgctxt "Current status of a Node"
 msgid "CREATING"
 msgstr "CREATING"
 
@@ -62,6 +102,9 @@ msgstr "CRITICAL"
 
 msgid "Can not specify both sepc file and yaml."
 msgstr "스펙 파일과 스펙 YAML을 모두 지정할 수 없습니다."
+
+msgid "Channel"
+msgstr "채널"
 
 msgid "Check Cluster"
 msgid_plural "Check Clusters"
@@ -110,14 +153,23 @@ msgstr ""
 msgid "Clusters"
 msgstr "클러스터"
 
+msgid "Cooldown"
+msgstr "쿨다운"
+
 msgid "Create Cluster"
 msgstr "클러스터 생성"
+
+msgid "Create Node"
+msgstr "노드 생성"
 
 msgid "Create Policy"
 msgstr "정책 생성"
 
 msgid "Create Profile"
 msgstr "프로파일 생성"
+
+msgid "Create Receiver"
+msgstr "수신기 생성"
 
 msgid "Created"
 msgstr "생성됨"
@@ -142,6 +194,10 @@ msgctxt "Current status of a Cluster"
 msgid "DELETING"
 msgstr "DELETING"
 
+msgctxt "Current status of a Node"
+msgid "DELETING"
+msgstr "DELETING"
+
 msgctxt "Current status of the event"
 msgid "DELETING"
 msgstr "DELETING"
@@ -162,6 +218,13 @@ msgid "Delete Profile"
 msgid_plural "Delete Profiles"
 msgstr[0] "프로파일 삭제"
 
+msgid "Delete Receiver"
+msgid_plural "Delete Receivers"
+msgstr[0] ""
+"수신기 삭제\n"
+"\n"
+"수신기들 삭제"
+
 msgid "Deleted Policy"
 msgid_plural "Deleted Policies"
 msgstr[0] "정책 삭제됨"
@@ -169,6 +232,13 @@ msgstr[0] "정책 삭제됨"
 msgid "Deleted Profile"
 msgid_plural "Deleted Profiles"
 msgstr[0] "프로파일 삭제됨"
+
+msgid "Deleted Receiver"
+msgid_plural "Deleted Receivers"
+msgstr[0] ""
+"수신기 삭제됨\n"
+"\n"
+"수신기들 삭제됨"
 
 msgid "Description:"
 msgstr "설명:"
@@ -191,15 +261,25 @@ msgctxt "Current status of a Cluster"
 msgid "ERROR"
 msgstr "ERROR"
 
+msgctxt "Current status of a Node"
+msgid "ERROR"
+msgstr "ERROR"
+
 msgctxt "Current status of the event"
 msgid "ERROR"
 msgstr "ERROR"
+
+msgid "Edit the name for the Policy."
+msgstr "정책 이름을 편집합니다."
 
 msgid "Enabled"
 msgstr "활성화됨"
 
 msgid "Event"
 msgstr "Event"
+
+msgid "File"
+msgstr "파일"
 
 msgid "Generated At"
 msgstr "Generated At"
@@ -208,6 +288,10 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "Current status of a Cluster"
+msgid "INIT"
+msgstr "INIT"
+
+msgctxt "Current status of a Node"
 msgid "INIT"
 msgstr "INIT"
 
@@ -245,6 +329,9 @@ msgstr "클러스터의 최소 크기입니다. 기본값은 0 입니다."
 msgid "Name"
 msgstr "이름"
 
+msgid "Name or ID of the targeted action to be triggered."
+msgstr "트리거할 대상 작업의 이름 또는 ID."
+
 msgid "Node Name"
 msgstr "노드 명칭"
 
@@ -270,6 +357,9 @@ msgstr "Object Name"
 msgid "Overview"
 msgstr "개요"
 
+msgid "Parameters"
+msgstr "매개 변수"
+
 msgid "Parent Cluster"
 msgstr "부모 클러스터"
 
@@ -282,6 +372,9 @@ msgstr "정책"
 msgid "Policy Name ="
 msgstr "정책 이름 = "
 
+msgid "Policy Spec Examples"
+msgstr "정책 스펙 예시"
+
 msgid "Profile"
 msgstr "프로필"
 
@@ -290,6 +383,9 @@ msgstr "프로필 이름"
 
 msgid "Profile Name ="
 msgstr "프로필 이름 ="
+
+msgid "Profile Spec Examples"
+msgstr "프로파일 스펙 예시"
 
 msgid "Profile used for this node."
 msgstr "이 노드에 사용된 프로파일"
@@ -301,9 +397,19 @@ msgctxt "Current status of a Cluster"
 msgid "RECOVERING"
 msgstr "RECOVERING"
 
+msgctxt "Current status of a Node"
+msgid "RECOVERING"
+msgstr "RECOVERING"
+
 msgctxt "Current status of a Cluster"
 msgid "RESIZING"
 msgstr "RESIZING"
+
+msgid "Receiver Name ="
+msgstr "수신기 이름 = "
+
+msgid "Receivers"
+msgstr "수신기"
 
 msgid "Recover Cluster"
 msgid_plural "Recover Clusters"
@@ -344,11 +450,17 @@ msgstr "정책을 선택합니다."
 msgid "Select Profile"
 msgstr "프로필 선택"
 
+msgid "Select Type"
+msgstr "타입 선택"
+
 msgid "Spec"
 msgstr "사양"
 
 msgid "Spec File"
 msgstr "스펙 파일"
+
+msgid "Spec Source"
+msgstr "스펙 소스"
 
 msgid "Spec YAML"
 msgstr "스펙 YAML"
@@ -362,8 +474,18 @@ msgstr "상태 ="
 msgid "Status Reason"
 msgstr "상태 원인"
 
+msgid "Targeted cluster for this receiver."
+msgstr "이 수신기의 대상 클레스터"
+
+#, python-format
+msgid "The parameters is not a valid YAML formatted: %s"
+msgstr "매개 변수가 올바른 YAML 형식이 아닙니다: %s"
+
 msgid "The spec file used to create the profile."
 msgstr "프로파일을 생성하기 위한 스펙 파일"
+
+msgid "The spec yaml used to create the policy."
+msgstr "정책을 생성하는데 사용되는 YAML 스팩입니다."
 
 msgid "The spec yaml used to create the profile."
 msgstr "프로파일을 생성하기 위한 스펙 YAML"
@@ -371,6 +493,10 @@ msgstr "프로파일을 생성하기 위한 스펙 YAML"
 #, python-format
 msgid "The specified data is not a valid YAML data: %s"
 msgstr "입력한 데이터가 유효한 YAML 데이터가 아닙니다: %s"
+
+#, python-format
+msgid "The specified file is not a valid YAML file: %s"
+msgstr "지정한 파일이 올바른 YAML 파일이 아닙니다: %s"
 
 #, python-format
 msgid "The specified input is not a valid YAML format: %s"
@@ -385,6 +511,10 @@ msgid "The specified metadata is not a valid YAML: %s"
 msgstr "입력한 메타데이터가 유효한 YAML이 아닙니다: %s"
 
 #, python-format
+msgid "The specified params is not a valid YAML: %s"
+msgstr "지정된 매개 변수는 유효한 YAML: %s이(가) 아닙니다."
+
+#, python-format
 msgid "The specified spec is not a valid YAML: %s"
 msgstr "입력한 스펙이 YAML 포맷에 맞지 않습니다: %s"
 
@@ -397,7 +527,14 @@ msgstr "타입"
 msgid "Type ="
 msgstr "타입 = "
 
+msgid "Type of the receiver to create. Default to webhook"
+msgstr "생성할 수신기의 유형입니다. 기본값은 웹후크입니다."
+
 msgctxt "Current status of a Cluster"
+msgid "UPDATING"
+msgstr "UPDATING"
+
+msgctxt "Current status of a Node"
 msgid "UPDATING"
 msgstr "UPDATING"
 
@@ -416,6 +553,9 @@ msgstr "새로운 정책을 생성할 수 없습니다."
 
 msgid "Unable to create new profile"
 msgstr "새로운 프로파일을 생성할 수 없습니다."
+
+msgid "Unable to create new receiver"
+msgstr "새로운 수신기를 생성할 수 없습니다."
 
 msgid "Unable to create node."
 msgstr "노드를 생성할 수 없습니다."
@@ -438,11 +578,26 @@ msgstr "클러스터로부터 노드를 가져올 수 없습니다."
 msgid "Unable to retrieve nodes."
 msgstr "노드를 찾을 수 없습니다."
 
+msgid "Unable to retrieve policies."
+msgstr "정책을 검색할 수 없습니다."
+
+msgid "Unable to retrieve policy."
+msgstr "정책을 검색할 수 없습니다."
+
 msgid "Unable to retrieve profile."
 msgstr "프로파일을 찾을 수 없습니다."
 
 msgid "Unable to retrieve profiles."
 msgstr "프로파일을 찾을 수 없습니다."
+
+msgid "Unable to retrieve receiver."
+msgstr "수신기를 검색할 수 없습니다."
+
+msgid "Unable to retrieve receivers."
+msgstr "수신기를 검색할 수 없습니다."
+
+msgid "Unable to update node."
+msgstr "노드를 업데이트할 수 없습니다."
 
 msgid "Unable to update policy"
 msgstr "정책을 업데이트할 수 없습니다."
@@ -473,6 +628,14 @@ msgctxt "Current status of a Cluster"
 msgid "WARNING"
 msgstr "WARNING"
 
+msgctxt "Current status of a Node"
+msgid "WARNING"
+msgstr "WARNING"
+
+msgctxt "Current status of the event"
+msgid "WARNING"
+msgstr "WARNING"
+
 msgid "Whether the policy should be enabled once attached. Default to enabled."
 msgstr ""
 "연결되었을 때 이 정책이 활성화되어야 하는지 여부입니다. 기본값은 활성화된 상"
@@ -487,8 +650,20 @@ msgstr "YAML 형식의 메타데이터"
 msgid "YAML formatted metadata."
 msgstr "YAML 형식의 메타데이터"
 
+msgid ""
+"YAML formatted parameters that will be passed to target action when the "
+"receiver is triggered."
+msgstr "YAML 형식 매개 변수는 수신기가 트리거될 때 대상 작업으로 전달됩니다."
+
 msgid "You may update the editable properties of your node here."
 msgstr "여기서 노드의 편집 가능한 속성을 업데이트할 수 있습니다."
+
+msgid "You may update the editable properties of your profile here."
+msgstr "여기서 프로필의 편집 가능한 속성을 업데이트할 수 있습니다."
+
+#, python-format
+msgid "Your node %s update request has been accepted for processing."
+msgstr "노드 %s 업데이트 요청이 처리용으로 수락되었습니다."
 
 #, python-format
 msgid "Your policy %s has been created."
@@ -505,3 +680,7 @@ msgstr "프로파일 %s 이(가) 생성되었습니다."
 #, python-format
 msgid "Your profile %s has been updated."
 msgstr "프로파일 %s 이(가) 업데이트되었습니다."
+
+#, python-format
+msgid "Your receiver %s has been created successfully."
+msgstr "수신기 %s(이)가 성공적으로 생성되었습니다."

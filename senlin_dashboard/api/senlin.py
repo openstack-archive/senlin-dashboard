@@ -16,6 +16,7 @@ from horizon.utils import functions as utils
 from horizon.utils import memoized
 
 from keystoneauth1.identity import generic
+from keystoneauth1 import session as ks_session
 from openstack_dashboard.api import base
 from senlin_dashboard.api import utils as api_utils
 from senlinclient.v1 import client as senlin_client
@@ -86,7 +87,8 @@ def senlinclient(request):
         token=request.user.token.id,
         project_id=request.user.tenant_id
     )
-    return senlin_client.Client(authenticator=auth,
+    session = ks_session.Session(auth=auth)
+    return senlin_client.Client(session=session,
                                 region_name=request.user.services_region)
 
 

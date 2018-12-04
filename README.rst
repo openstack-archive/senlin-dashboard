@@ -28,7 +28,7 @@ Mailing list
 
 Use ``[senlin-dashboard]`` prefix in subjects with for faster responses
 
-- http://lists.openstack.org/cgi-bin/mailman/listinfo/openstack-dev
+- http://lists.openstack.org/cgi-bin/mailman/listinfo/openstack-discuss
 
 Code Hosting
 ------------

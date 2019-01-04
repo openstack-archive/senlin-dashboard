@@ -128,7 +128,7 @@ class ClustersTest(test.TestCase):
         self.mock_cluster_get.assert_called_once_with(
             test.IsHttpRequest(), u'123456')
         self.mock_event_list.assert_called_once_with(
-            test.IsHttpRequest(),  filters={'obj_id': u'123456'},
+            test.IsHttpRequest(), filters={'obj_id': u'123456'},
             marker=None, paginate=True, reversed_order=False)
         self.mock_cluster_policy_list.assert_called_once_with(
             test.IsHttpRequest(), u'123456', {})

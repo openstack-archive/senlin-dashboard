@@ -1,0 +1,5 @@
+---
+fixes:
+  - |
+    [`bug 1805740 <https://bugs.launchpad.net/senlin/+bug/1805740>`_]
+    Fixed senlin dashboard to work with latest openstacksdk version.

@@ -1,0 +1,6 @@
+---
+fixes:
+  - |
+    [`bug 1817803 <https://bugs.launchpad.net/senlin/+bug/1817803>`_]
+    Fixed profile create to pass in the correct encoding type during form
+    submission.

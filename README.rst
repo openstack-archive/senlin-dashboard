@@ -33,12 +33,12 @@ Use ``[senlin-dashboard]`` prefix in subjects with for faster responses
 Code Hosting
 ------------
 
-- https://git.openstack.org/cgit/openstack/senlin-dashboard
+- https://opendev.org/openstack/senlin-dashboard
 
 Code Review
 -----------
 
-- https://review.openstack.org/#/q/status:open+project:openstack/senlin-dashboard,n,z
+- https://review.opendev.org/#/q/status:open+project:openstack/senlin-dashboard,n,z
 
 .. inclusion-end-marker-hosts
 
@@ -56,7 +56,7 @@ in the Horizon documentation.
 
 1. Clone the Senlin Dashboard repository::
 
-    $ git clone https://git.openstack.org/openstack/senlin-dashboard
+    $ git clone https://opendev.org/openstack/senlin-dashboard
 
 2. Copy the ``_50_senlin.py`` file from ``senlin_dashboard/enabled/_50_senlin.py``
    file to ``horizon/openstack_dashboard/local/enabled`` directory. Example,
@@ -81,16 +81,16 @@ Devstack Installation
 
 1. Download DevStack::
 
-    $ git clone https://git.openstack.org/openstack-dev/devstack
+    $ git clone https://opendev.org/openstack/devstack
     $ cd devstack
 
 2. Add following repo as external repositories into your ``local.conf`` file::
 
     [[local|localrc]]
     #Enable senlin
-    enable_plugin senlin https://git.openstack.org/openstack/senlin
+    enable_plugin senlin https://opendev.org/openstack/senlin
     #Enable senlin-dashboard
-    enable_plugin senlin-dashboard https://git.openstack.org/openstack/senlin-dashboard
+    enable_plugin senlin-dashboard https://opendev.org/openstack/senlin-dashboard
 
    Please see the link: https://docs.openstack.org/senlin/latest/install/index.html
    for more detail about setting Senlin Server.

@@ -57,10 +57,10 @@ class IndexView(tables.DataTableView):
                 paginate=True,
                 reversed_order=reversed_order,
                 filters=filters)
-        except Exception:
+        except Exception as e:
             self._prev = self._more = False
             policies = []
-            msg = _('Unable to retrieve policies.')
+            msg = _('Unable to retrieve policies: %s') % e
             exceptions.handle(self.request, msg)
         return policies
 
@@ -90,8 +90,8 @@ class DetailView(tabs.TabView):
             policy = senlin.policy_get(self.request, policy_id)
             policy.policy_spec = yaml.safe_dump(policy.spec,
                                                 default_flow_style=False)
-        except Exception:
-            msg = _("Unable to retrieve policy.")
+        except Exception as e:
+            msg = _("Unable to retrieve policy: %s") % e
             url = reverse_lazy(policies_forms.INDEX_URL)
             exceptions.handle(self.request, msg, redirect=url)
         return policy
@@ -129,8 +129,8 @@ class UpdateView(forms.ModalFormView):
             policy = senlin.policy_get(self.request, policy_id)
             policy_dict = {"policy_id": policy_id,
                            "name": policy.name}
-        except Exception:
-            msg = _("Unable to retrieve policy.")
+        except Exception as e:
+            msg = _("Unable to retrieve policy: %s") % e
             url = reverse_lazy(policies_forms.INDEX_URL)
             exceptions.handle(self.request, msg, redirect=url)
         return policy_dict

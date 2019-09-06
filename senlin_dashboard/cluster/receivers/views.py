@@ -55,10 +55,10 @@ class IndexView(tables.DataTableView):
                 paginate=True,
                 reversed_order=reversed_order,
                 filters=filters)
-        except Exception:
+        except Exception as e:
             self._prev = self._more = False
             receivers = []
-            msg = _('Unable to retrieve receivers.')
+            msg = _('Unable to retrieve receivers: %s') % e
             exceptions.handle(self.request, msg)
         return receivers
 
@@ -87,8 +87,8 @@ class DetailView(tabs.TabView):
             # Get initial receiver information
             receiver_id = self.kwargs["receiver_id"]
             receiver = senlin.receiver_get(self.request, receiver_id)
-        except Exception:
-            msg = _("Unable to retrieve receiver.")
+        except Exception as e:
+            msg = _("Unable to retrieve receiver: %s") % e
             url = reverse_lazy("horizon:cluster:receivers:index")
             exceptions.handle(self.request, msg, redirect=url)
         return receiver

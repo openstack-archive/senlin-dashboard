@@ -87,10 +87,10 @@ class CreateForm(forms.SelfHandlingForm):
             msg = _('Creating cluster "%s" successfully') % data['name']
             messages.success(request, msg)
             return cluster
-        except Exception:
+        except Exception as e:
             redirect = reverse(INDEX_URL)
             exceptions.handle(request,
-                              _("Unable to create cluster."),
+                              _("Unable to create cluster: %s") % e,
                               redirect=redirect)
 
 
@@ -125,8 +125,8 @@ class ManagePoliciesForm(forms.SelfHandlingForm):
                                        "cluster": data['cluster_id']}
             messages.success(request, msg)
             return attach
-        except Exception:
+        except Exception as e:
             redirect = reverse(INDEX_URL)
             exceptions.handle(request,
-                              _("Unable to attach policy."),
+                              _("Unable to attach policy: %s") % e,
                               redirect=redirect)

@@ -1,0 +1,10 @@
+---
+upgrade:
+  - >
+    Switched nodejs4-jobs to nodejs10.
+  - >
+    Dropped the py35 testing.
+  - >
+    Switched to the new canonical constraints URL on master.
+  - >
+    Added Python3 Train unit tests.

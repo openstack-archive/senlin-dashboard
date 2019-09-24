@@ -4,11 +4,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: senlin-dashboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-12 00:09+0000\n"
+"POT-Creation-Date: 2019-09-20 19:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-07-17 03:50+0000\n"
+"PO-Revision-Date: 2019-09-23 05:13+0000\n"
 "Last-Translator: suhartono <cloudsuhartono@gmail.com>\n"
 "Language-Team: Indonesian\n"
 "Language: id\n"
@@ -17,6 +17,9 @@ msgstr ""
 
 msgid "0.10.0"
 msgstr "0.10.0"
+
+msgid "0.10.1-8"
+msgstr "0.10.1-8"
 
 msgid "0.4.0"
 msgstr "0.4.0"
@@ -29,6 +32,9 @@ msgstr "0.7.0"
 
 msgid "0.9.0"
 msgstr "0.9.0"
+
+msgid "Added Python3 Train unit tests."
+msgstr "Menambahkan tes unit Python3 Train."
 
 msgid "Added region support."
 msgstr "Ditambahkan dukungan wilayah."
@@ -81,6 +87,9 @@ msgstr "Catatan Rilis Seri Saat Ini"
 
 msgid "Deprecation Notes"
 msgstr "Catatan Deprekasi"
+
+msgid "Dropped the py35 testing."
+msgstr "Menjatuhkan pengujian py35."
 
 msgid ""
 "Five panels, profiles, nodes, clusters, policies and receivers, are "
@@ -163,6 +172,9 @@ msgstr "Mendukung python 3.5."
 msgid "Switch theme for documentation from oslosphinx to openstackdocstheme."
 msgstr "Ganti tema untuk dokumentasi dari oslosphinx ke openstackdocstheme."
 
+msgid "Switched nodejs4-jobs to nodejs10."
+msgstr "Pindah nodejs4-jobs ke nodejs10."
+
 msgid ""
 "Switched to OSC module. Previously the client module for senlin API have "
 "been used from senlin command module. Now the senlin command module has "
@@ -173,6 +185,9 @@ msgstr ""
 "digunakan dari modul perintah senlin. Sekarang modul perintah senlin telah "
 "pensiun dan modul klien untuk OpenStack Client digunakan untuk memanggil "
 "Senlin API."
+
+msgid "Switched to the new canonical constraints URL on master."
+msgstr "Beralih ke URL batasan canonical baru pada master."
 
 msgid ""
 "The load-edit directive is used. The Spec field on Profile creation dialog "

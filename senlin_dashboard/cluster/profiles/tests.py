@@ -83,7 +83,7 @@ class ProfilesTest(test.TestCase):
             'name': 'test-profile',
             'source_type': 'yaml',
             'spec_yaml': spec_yaml,
-            'metadata': None
+            'metadata': ''
         }
 
         opts = {

@@ -1,19 +1,26 @@
 # Andi Chandler <andi@gowling.com>, 2017. #zanata
 # Andi Chandler <andi@gowling.com>, 2018. #zanata
+# Andi Chandler <andi@gowling.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: senlin-dashboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-09 10:03+0000\n"
+"POT-Creation-Date: 2019-11-26 05:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-08-09 12:02+0000\n"
+"PO-Revision-Date: 2019-11-14 11:32+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom)\n"
 "Language: en_GB\n"
 "X-Generator: Zanata 4.3.3\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+msgid "0.10.0"
+msgstr "0.10.0"
+
+msgid "0.11.0"
+msgstr "0.11.0"
 
 msgid "0.4.0"
 msgstr "0.4.0"
@@ -26,6 +33,9 @@ msgstr "0.7.0"
 
 msgid "0.9.0"
 msgstr "0.9.0"
+
+msgid "Added Python3 Train unit tests."
+msgstr "Added Python3 Train unit tests."
 
 msgid "Added region support."
 msgstr "Added region support."
@@ -77,6 +87,9 @@ msgstr "Current Series Release Notes"
 
 msgid "Deprecation Notes"
 msgstr "Deprecation Notes"
+
+msgid "Dropped the py35 testing."
+msgstr "Dropped the py35 testing."
 
 msgid ""
 "Five panels, profiles, nodes, clusters, policies and receivers, are "
@@ -148,11 +161,17 @@ msgstr ""
 msgid "Senlin Dashboard Release Notes"
 msgstr "Senlin Dashboard Release Notes"
 
+msgid "Stein Series Release Notes"
+msgstr "Stein Series Release Notes"
+
 msgid "Support python 3.5."
 msgstr "Support python 3.5."
 
 msgid "Switch theme for documentation from oslosphinx to openstackdocstheme."
 msgstr "Switch theme for documentation from oslosphinx to openstackdocstheme."
+
+msgid "Switched nodejs4-jobs to nodejs10."
+msgstr "Switched nodejs4-jobs to nodejs10."
 
 msgid ""
 "Switched to OSC module. Previously the client module for senlin API have "
@@ -164,6 +183,9 @@ msgstr ""
 "been used from Senlin command module. Now the Senlin command module has "
 "retired and the client module for OpenStack Client is used to call Senlin "
 "API."
+
+msgid "Switched to the new canonical constraints URL on master."
+msgstr "Switched to the new canonical constraints URL on master."
 
 msgid ""
 "The load-edit directive is used. The Spec field on Profile creation dialog "
@@ -179,6 +201,9 @@ msgid ""
 msgstr ""
 "To remove \"project/ngdetails/\" hard coded in the path of the details view, "
 "use \"horizon.app.core.detailRoute\"."
+
+msgid "Train Series Release Notes"
+msgstr "Train Series Release Notes"
 
 msgid ""
 "Update action for receiver is added. This action is added as row action for "
@@ -207,6 +232,20 @@ msgstr ""
 "cluster is added. This action is added as row action for each cluster in "
 "Clusters table view. Although, this action is only for Angularised clusters "
 "panel."
+
+msgid ""
+"[`bug 1805740 <https://bugs.launchpad.net/senlin/+bug/1805740>`_] Fixed "
+"senlin dashboard to work with latest openstacksdk version."
+msgstr ""
+"[`bug 1805740 <https://bugs.launchpad.net/senlin/+bug/1805740>`_] Fixed "
+"Senlin dashboard to work with latest openstacksdk version."
+
+msgid ""
+"[`bug 1817803 <https://bugs.launchpad.net/senlin/+bug/1817803>`_] Fixed "
+"profile create to pass in the correct encoding type during form submission."
+msgstr ""
+"[`bug 1817803 <https://bugs.launchpad.net/senlin/+bug/1817803>`_] Fixed "
+"profile create to pass in the correct encoding type during form submission."
 
 msgid ""
 "[`bug/1733833 <https://bugs.launchpad.net/senlin-dashboard/+bug/1733833>`_] "

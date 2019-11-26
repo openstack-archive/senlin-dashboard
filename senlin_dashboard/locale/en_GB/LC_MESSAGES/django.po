@@ -1,15 +1,16 @@
 # Andi Chandler <andi@gowling.com>, 2016. #zanata
 # Andi Chandler <andi@gowling.com>, 2017. #zanata
 # Andi Chandler <andi@gowling.com>, 2018. #zanata
+# Andi Chandler <andi@gowling.com>, 2019. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: senlin-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2018-02-26 11:55+0000\n"
+"POT-Creation-Date: 2019-11-26 05:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-02-15 01:51+0000\n"
+"PO-Revision-Date: 2019-11-14 11:32+0000\n"
 "Last-Translator: Andi Chandler <andi@gowling.com>\n"
 "Language-Team: English (United Kingdom)\n"
 "Language: en_GB\n"
@@ -558,47 +559,58 @@ msgctxt "Current status of the event"
 msgid "UPDATING"
 msgstr "UPDATING"
 
-msgid "Unable to attach policy."
-msgstr "Unable to attach policy."
+#, python-format
+msgid "Unable to attach policy: %s"
+msgstr "Unable to attach policy: %s"
 
-msgid "Unable to create cluster."
-msgstr "Unable to create cluster."
+#, python-format
+msgid "Unable to create cluster: %s"
+msgstr "Unable to create cluster: %s"
 
-msgid "Unable to create new policy"
-msgstr "Unable to create new policy"
+#, python-format
+msgid "Unable to create new policy: %s"
+msgstr "Unable to create new policy: %s"
 
 msgid "Unable to create new profile"
 msgstr "Unable to create new profile"
 
-msgid "Unable to create new receiver"
-msgstr "Unable to create new receiver"
+#, python-format
+msgid "Unable to create new receiver: %s"
+msgstr "Unable to create new receiver: %s"
 
-msgid "Unable to create node."
-msgstr "Unable to create node."
+#, python-format
+msgid "Unable to create node: %s"
+msgstr "Unable to create node: %s"
 
-msgid "Unable to retrieve cluster."
-msgstr "Unable to retrieve cluster."
+#, python-format
+msgid "Unable to retrieve cluster: %s"
+msgstr "Unable to retrieve cluster: %s"
 
-msgid "Unable to retrieve clusters."
-msgstr "Unable to retrieve clusters."
+#, python-format
+msgid "Unable to retrieve clusters: %s"
+msgstr "Unable to retrieve clusters: %s"
 
 msgid "Unable to retrieve node event list."
 msgstr "Unable to retrieve node event list."
 
-msgid "Unable to retrieve node."
-msgstr "Unable to retrieve node."
+#, python-format
+msgid "Unable to retrieve node: %s"
+msgstr "Unable to retrieve node: %s"
 
 msgid "Unable to retrieve nodes from cluster."
 msgstr "Unable to retrieve nodes from cluster."
 
-msgid "Unable to retrieve nodes."
-msgstr "Unable to retrieve nodes."
+#, python-format
+msgid "Unable to retrieve nodes: %s"
+msgstr "Unable to retrieve nodes: %s"
 
-msgid "Unable to retrieve policies."
-msgstr "Unable to retrieve policies."
+#, python-format
+msgid "Unable to retrieve policies: %s"
+msgstr "Unable to retrieve policies: %s"
 
-msgid "Unable to retrieve policy."
-msgstr "Unable to retrieve policy."
+#, python-format
+msgid "Unable to retrieve policy: %s"
+msgstr "Unable to retrieve policy: %s"
 
 msgid "Unable to retrieve profile."
 msgstr "Unable to retrieve profile."
@@ -606,17 +618,21 @@ msgstr "Unable to retrieve profile."
 msgid "Unable to retrieve profiles."
 msgstr "Unable to retrieve profiles."
 
-msgid "Unable to retrieve receiver."
-msgstr "Unable to retrieve receiver."
+#, python-format
+msgid "Unable to retrieve receiver: %s"
+msgstr "Unable to retrieve receiver: %s"
 
-msgid "Unable to retrieve receivers."
-msgstr "Unable to retrieve receivers."
+#, python-format
+msgid "Unable to retrieve receivers: %s"
+msgstr "Unable to retrieve receivers: %s"
 
-msgid "Unable to update node."
-msgstr "Unable to update node."
+#, python-format
+msgid "Unable to update node: %s"
+msgstr "Unable to update node: %s"
 
-msgid "Unable to update policy"
-msgstr "Unable to update policy"
+#, python-format
+msgid "Unable to update policy: %s"
+msgstr "Unable to update policy: %s"
 
 msgid "Unable to update profile"
 msgstr "Unable to update profile"

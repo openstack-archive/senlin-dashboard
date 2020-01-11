@@ -10,7 +10,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import six
 import yaml
 
 from django.urls import reverse
@@ -32,7 +31,7 @@ def _populate_node_params(name, profile_id, cluster_id, role, metadata):
             metadata_dict = yaml.safe_load(metadata)
         except Exception as ex:
             raise Exception(_('The specified metadata is not a valid '
-                              'YAML: %s') % six.text_type(ex))
+                              'YAML: %s') % ex)
     params = {"name": name,
               "profile_id": profile_id,
               "cluster_id": cluster_id,

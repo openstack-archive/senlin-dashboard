@@ -14,7 +14,6 @@
 Views for managing profiles.
 """
 
-import six
 import yaml
 
 from senlinclient.common import utils
@@ -44,7 +43,7 @@ def _populate_profile_params(name, spec, metadata, id=None):
             spec_dict = yaml.safe_load(spec)
         except Exception as ex:
             raise ValidationError(_('The specified file is not a valid '
-                                    'YAML file: %s') % six.text_type(ex))
+                                    'YAML file: %s') % ex)
         type_name = spec_dict['type']
         if type_name == 'os.heat.stack':
             spec_dict['properties'] = utils.process_stack_spec(
@@ -56,7 +55,7 @@ def _populate_profile_params(name, spec, metadata, id=None):
             metadata_dict = yaml.safe_load(metadata)
         except Exception as ex:
             raise ValidationError(_('The specified file is not a valid '
-                                    'YAML file: %s') % six.text_type(ex))
+                                    'YAML file: %s') % ex)
     params = {"name": name,
               "spec": spec_dict,
               "metadata": metadata_dict}

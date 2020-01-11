@@ -10,7 +10,6 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import six
 import yaml
 
 from django.urls import reverse
@@ -80,7 +79,7 @@ class CreateForm(forms.SelfHandlingForm):
                     metadata = yaml.safe_load(data['metadata'])
                 except Exception as ex:
                     raise Exception(_('The specified metadata is not a valid '
-                                      'YAML format: %s') % six.text_type(ex))
+                                      'YAML format: %s') % ex)
             data['metadata'] = metadata
 
             cluster = senlin.cluster_create(request, **data)

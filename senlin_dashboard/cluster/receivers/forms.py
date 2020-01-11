@@ -14,7 +14,6 @@
 Forms for managing receivers.
 """
 
-import six
 import yaml
 
 from django.forms import ValidationError
@@ -38,7 +37,7 @@ def _populate_receiver_params(name, type_name, cluster_id, action, params):
             params_dict = yaml.safe_load(params)
         except Exception as ex:
             raise Exception(_('The specified params is not a valid '
-                              'YAML: %s') % six.text_type(ex))
+                              'YAML: %s') % ex)
     params = {"name": name,
               "type": type_name,
               "cluster_id": cluster_id,
@@ -86,7 +85,7 @@ class CreateReceiverForm(forms.SelfHandlingForm):
             params = yaml.safe_load(data.get("params"))
         except Exception as ex:
             raise ValidationError(_('The parameters is not a valid '
-                                    'YAML formatted: %s') % six.text_type(ex))
+                                    'YAML formatted: %s') % ex)
         data["params"] = params
 
         try:

@@ -11,7 +11,6 @@
 # under the License.
 
 import itertools
-import six
 import yaml
 
 from django.utils.translation import ugettext_lazy as _
@@ -61,5 +60,5 @@ def load_yaml(data):
             loaded_data = yaml.safe_load(data)
         except Exception as ex:
             raise Exception(_('The specified input is not a valid '
-                              'YAML format: %s') % six.text_type(ex))
+                              'YAML format: %s') % ex)
     return loaded_data

@@ -14,7 +14,6 @@
 Forms for managing policies.
 """
 
-import six
 import yaml
 
 from django.forms import ValidationError
@@ -41,7 +40,7 @@ def _populate_policy_params(name, spec, cooldown, level):
             spec_dict = yaml.safe_load(spec)
         except Exception as ex:
             raise Exception(_('The specified spec is not a valid '
-                              'YAML: %s') % six.text_type(ex))
+                              'YAML: %s') % ex)
     params = {"name": name,
               "spec": spec_dict,
               "cooldown": cooldown,
@@ -77,7 +76,7 @@ class CreatePolicyForm(forms.SelfHandlingForm):
             policy_spec = yaml.safe_load(data.get('spec'))
         except Exception as ex:
             raise Exception(_('The specified data is not a valid '
-                              'YAML data: %s') % six.text_type(ex))
+                              'YAML data: %s') % ex)
         args = {
             'name': data.get('name'),
             'spec': policy_spec,

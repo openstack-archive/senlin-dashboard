@@ -1,14 +1,15 @@
 # Frank Kloeker <eumel@arcor.de>, 2018. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2019. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2020. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: senlin-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2019-11-26 05:00+0000\n"
+"POT-Creation-Date: 2020-01-08 15:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-11-17 05:04+0000\n"
+"PO-Revision-Date: 2020-01-16 04:08+0000\n"
 "Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
@@ -563,6 +564,10 @@ msgid "UPDATING"
 msgstr "AKTUALISIEREN"
 
 #, python-format
+msgid "Unable to attach policy: %s"
+msgstr "Nicht möglich Policy hinzuzufügen: %s"
+
+#, python-format
 msgid "Unable to create cluster: %s"
 msgstr "Cluster kann nicht erstellt werden: %s"
 
@@ -616,6 +621,14 @@ msgstr "Das Profil konnte nicht abgerufen werden."
 
 msgid "Unable to retrieve profiles."
 msgstr "Es konnten keine Profile abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve receiver: %s"
+msgstr "Der Empfänger konnte nicht abgerufen werden: %s"
+
+#, python-format
+msgid "Unable to retrieve receivers: %s"
+msgstr "Die Empfänger konnten nicht abgerufen werden: %s"
 
 #, python-format
 msgid "Unable to update node: %s"

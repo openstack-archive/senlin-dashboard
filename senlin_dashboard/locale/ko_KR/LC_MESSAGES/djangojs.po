@@ -1,0 +1,807 @@
+# Jaewook Oh <kyle.oh95@gmail.com>, 2018. #zanata
+# Ian Y. Choi <ianyrchoi@gmail.com>, 2020. #zanata
+msgid ""
+msgstr ""
+"Project-Id-Version: senlin-dashboard VERSION\n"
+"Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
+"POT-Creation-Date: 2020-04-27 00:11+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2020-05-05 11:20+0000\n"
+"Last-Translator: Ian Y. Choi <ianyrchoi@gmail.com>\n"
+"Language-Team: Korean (South Korea)\n"
+"Language: ko_KR\n"
+"X-Generator: Zanata 4.3.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+msgid ""
+"A policy is a set of rules that can be checked and/or enforced when an "
+"Action is performed on a Cluster."
+msgstr ""
+"정책은 클러스터에서 작업을 수행할 때 확인하거나 적용할 수 있는 규칙 모음입니"
+"다."
+
+msgid "A profile encodes the information needed for node creation."
+msgstr "프로필은 노드 생성에 필요한 정보를 인코딩합니다."
+
+msgid "ACTIVE"
+msgstr "ACTIVE"
+
+msgid "Action"
+msgstr "동작"
+
+msgid "Adjustment"
+msgstr "조정"
+
+msgid ""
+"Adjustment: A positive integer meaning the number of nodes to add, or a "
+"negative integer indicating the number of nodes to remove. And this can not "
+"be zero."
+msgstr ""
+"조정(Adjustment): 추가할 노드 수를 나타내는 양의 정수 또는 제거할 노드 수를 "
+"나타내는 음의 정수. 이 수는  0이 될 수 없습니다."
+
+msgid "An arbitrary human-readable name."
+msgstr "사람이 읽을 수 있는 임의의 이름"
+
+msgid ""
+"An integer specifying the number of nodes for adjustment when \"Percentage\" "
+"is specified for \"Type\"."
+msgstr ""
+"\"백분율(Percentage)\"이 \"타입(Type)\"에 대해 지정된 경우 조정할 노드 수를 "
+"지정하는 정수."
+
+msgid "CHECKING"
+msgstr "CHECKING"
+
+msgid "CREATING"
+msgstr "CREATING"
+
+msgid "CRITICAL"
+msgstr "CRITICAL"
+
+msgid "Capacity"
+msgstr "용량"
+
+msgid "Capacity: The desired number of nodes of the cluster."
+msgstr "용량(Capacity): 원하는 클러스터 노드 수"
+
+msgid "Channel"
+msgstr "채널"
+
+msgid "Cluster"
+msgstr "클러스터"
+
+#, python-format
+msgid "Cluster %s was successfully created."
+msgstr "클러스터 %s 를 성공적으로 생성하였습니다."
+
+#, python-format
+msgid "Cluster %s was successfully updated."
+msgstr "클러스터 %s 가 성공적으로 업데이트 되었습니다."
+
+msgid "Cluster ID"
+msgstr "클러스터 ID"
+
+msgid "Cluster Name"
+msgstr "클러스터 이름"
+
+msgid "Cluster creation timeout in seconds."
+msgstr "클러스터 생성 시간 초과(초)"
+
+msgid "Cluster for this node."
+msgstr "이 노드를 위한 클러스터"
+
+#, python-format
+msgid "Cluster resize %s was successfully accepted."
+msgstr "클러스터 크기 조정 %s 가 성공적으로 승인되었습니다."
+
+#, python-format
+msgid "Cluster scale-in %s was successfully accepted."
+msgstr "클러스터 scale-in %s가 성공적으로 승인되었습니다."
+
+#, python-format
+msgid "Cluster scale-out %s was successfully accepted."
+msgstr "클러스터 scale-out %s 가 성공적으로 승인되었습니다."
+
+msgid "Clusters"
+msgstr "클러스터"
+
+msgid "Confirm Delete Cluster"
+msgid_plural "Confirm Delete Clusters"
+msgstr[0] "클러스터 삭제 확인"
+
+msgid "Confirm Delete Node"
+msgid_plural "Confirm Delete Nodes"
+msgstr[0] "노드 삭제 확인"
+
+msgid "Confirm Delete Policy"
+msgid_plural "Confirm Delete Policies"
+msgstr[0] "정책 삭제 확인"
+
+msgid "Confirm Delete Profile"
+msgid_plural "Confirm Delete Profiles"
+msgstr[0] "프로필 삭제 확인"
+
+msgid "Confirm Delete Receiver"
+msgid_plural "Confirm Delete Receivers"
+msgstr[0] "리시버 삭제 확인"
+
+msgid "Create"
+msgstr "생성"
+
+msgid "Create At"
+msgstr "작성 위치"
+
+msgid "Create Cluster"
+msgstr "클러스터 생성"
+
+msgid "Create Node"
+msgstr "노드 생성"
+
+msgid "Create Policy"
+msgstr "정책 생성"
+
+msgid "Create Profile"
+msgstr "프로필 생성"
+
+msgid "Create Receiver"
+msgstr "리시버 생성"
+
+msgid "Created"
+msgstr "생성됨"
+
+msgid "DELETING"
+msgstr "DELETING"
+
+msgid "Delete Cluster"
+msgid_plural "Delete Clusters"
+msgstr[0] "클러스터 삭제"
+
+msgid "Delete Clusters"
+msgstr "클러스터 삭제"
+
+msgid "Delete Node"
+msgid_plural "Delete Nodes"
+msgstr[0] "노드 삭제"
+
+msgid "Delete Nodes"
+msgstr "노드 삭제"
+
+msgid "Delete Policies"
+msgstr "정책 삭제"
+
+msgid "Delete Policy"
+msgid_plural "Delete Policies"
+msgstr[0] "정책 삭제"
+
+msgid "Delete Profile"
+msgid_plural "Delete Profiles"
+msgstr[0] "프로필 삭제"
+
+msgid "Delete Profiles"
+msgstr "프로필 삭제"
+
+msgid "Delete Receiver"
+msgid_plural "Delete Receivers"
+msgstr[0] "리시버 삭제"
+
+msgid "Delete Receivers"
+msgstr "리시버 삭제"
+
+#, python-format
+msgid "Deleted Cluster: %s."
+msgid_plural "Deleted Clusters: %s."
+msgstr[0] "클러스터 삭제됨: %s."
+
+#, python-format
+msgid "Deleted Node: %s."
+msgid_plural "Deleted Nodes: %s."
+msgstr[0] "\"%s\"을(를) 선택했습니다. 삭제된 노드는 복구할 수 없습니다."
+
+#, python-format
+msgid "Deleted Policy: %s."
+msgid_plural "Deleted Policies: %s."
+msgstr[0] "정책 삭제됨: %s"
+
+#, python-format
+msgid "Deleted Profile: %s."
+msgid_plural "Deleted Profiles: %s."
+msgstr[0] "프로필 삭제됨: %s"
+
+#, python-format
+msgid "Deleted Receiver: %s."
+msgid_plural "Deleted Receivers: %s."
+msgstr[0] "리시버 삭제됨: %s"
+
+msgid "Desired Capacity"
+msgstr "클러스터에 필요한 용량입니다."
+
+msgid "Desired capacity of the cluster. Default to 0."
+msgstr "클러스터에 필요한 용량입니다. 기본값은 0입니다."
+
+msgid "ERROR"
+msgstr "ERROR"
+
+msgid "Event"
+msgstr "이벤트"
+
+msgid "Events"
+msgstr "이벤트"
+
+msgid "Generated"
+msgstr "생성됨"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "INIT"
+msgstr "INIT"
+
+msgid "Load Spec from File"
+msgstr "파일에서 스펙 읽어오기"
+
+msgid "Load the spec yaml file and set to spec below."
+msgstr "스펙 yaml 파일을 읽어오고 아래 사양으로 설정합니다."
+
+msgid "Manage Policies"
+msgstr "정책 관리"
+
+msgid "Max Size"
+msgstr "최대 크기 (바이트)"
+
+msgid "Max size of the cluster. Default to -1 means unlimited."
+msgstr "클러스터의 최대 자원 수입니다. -1은 무제한을 나타냅니다."
+
+msgid "Maximum Size"
+msgstr "최대 크기"
+
+msgid "Message"
+msgstr "메시지"
+
+msgid "Metadata"
+msgstr "메타데이터"
+
+msgid "Metadata of the cluster in YAML format."
+msgstr "YAML 형식의 클러스터 메타데이터."
+
+msgid "Metadata of the node in YAML format."
+msgstr "YAML형식 노드의 메타데이터"
+
+msgid "Metadata of the profile in YAML format."
+msgstr "YAML형식 프로필의 메타데이터"
+
+msgid "Min Size"
+msgstr "최소 크기 (바이트)"
+
+msgid "Min size of the cluster. Default to 0."
+msgstr "클러스터의 최소 크기입니다. 기본값은 0 입니다."
+
+msgid "Minimum Size"
+msgstr "최소 크기"
+
+msgid "Minimum Step"
+msgstr "최소 단계"
+
+msgid "Name"
+msgstr "이름"
+
+msgid "Name of the cluster."
+msgstr "클러스터 이름"
+
+msgid "Name of the node."
+msgstr "노드의 이름"
+
+msgid "Name of the policy."
+msgstr "정책의 이름"
+
+msgid "Name of the profile."
+msgstr "프로필의 이름"
+
+msgid "Name of the receiver."
+msgstr "리시버의 이름"
+
+msgid "Name or ID of the targeted action to be triggered."
+msgstr "트리거할 대상 작업의 이름 또는 ID"
+
+msgid "New lower bound of cluster size."
+msgstr "클래스터 크기의 새 하한(lower bound)"
+
+msgid "New timeout (in seconds) value for the cluster."
+msgstr "클러스터의 새 시간 초과 값(초)"
+
+msgid ""
+"New upper bound of cluster size. A value of -1 indicates no upper limit on "
+"cluster size."
+msgstr ""
+"클러스터 크기의 새 상한(upper bound). -1인 값은 클러스터 크기에 상한이 없음"
+"을 나타냅니다."
+
+msgid "Node"
+msgstr "노드"
+
+#, python-format
+msgid "Node %s was successfully created."
+msgstr "노드 %s가 성공적으로 생성되었습니다."
+
+#, python-format
+msgid "Node %s was successfully updated."
+msgstr "노드 %s가 성공적으로 업데이트되었습니다."
+
+msgid "Node Count"
+msgstr "노드 수"
+
+msgid "Nodes"
+msgstr "노드"
+
+msgid "Number"
+msgstr "숫자"
+
+msgid "Object ID"
+msgstr "오브젝트 ID"
+
+msgid "Object Name"
+msgstr "오브젝트 이름"
+
+msgid "Overview"
+msgstr "개요"
+
+msgid "Parameters"
+msgstr "매개변수"
+
+msgid "Parameters of the receiver in YAML format."
+msgstr "YAML 형식의 수신 매개변수"
+
+msgid "Params"
+msgstr "매개 변수"
+
+msgid "Percentage"
+msgstr "백분율"
+
+msgid ""
+"Percentage: A value that is interpreted as the percentage of size "
+"adjustment. This value can be positive or negative. And this can not be zero."
+msgstr ""
+"백분율(Percentage): 크기 조정 비율로 해석되는 값. 이 값은 양수 또는 음수일 "
+"수 있습니다. 그리고 0이 될 수 없습니다."
+
+msgid "Physical ID"
+msgstr "물리 ID"
+
+msgid "Policies"
+msgstr "정책"
+
+msgid "Policies for the cluster."
+msgstr "클러스터에 대한 정책"
+
+msgid "Policies on the cluster were successfully updated."
+msgstr "클러스터의 정책이 성공적으로 업데이트되었습니다."
+
+msgid "Policy"
+msgstr "정책"
+
+#, python-format
+msgid "Policy %s was successfully created."
+msgstr "정책 %s을 성공적으로 생성하였습니다."
+
+#, python-format
+msgid "Policy %s was successfully updated."
+msgstr "정책 %s을 성공적으로 업데이트하였습니다."
+
+msgid "Policy Spec Examples"
+msgstr "정책 스펙 예시"
+
+msgid "Profile"
+msgstr "프로필"
+
+#, python-format
+msgid "Profile %s was successfully created."
+msgstr "프로필 %s가 성공적으로 생성되었습니다."
+
+#, python-format
+msgid "Profile %s was successfully updated."
+msgstr "프로필 %s 성공적으로 업데이트 되었습니다."
+
+msgid "Profile Name"
+msgstr "프로필 이름"
+
+msgid "Profile Spec Examples"
+msgstr "프로필 스펙 예시"
+
+msgid "Profile used for this cluster."
+msgstr "이 클러스터에 사용된 프로필."
+
+msgid "Profile used for this node."
+msgstr "이 노드에 사용된 프로필"
+
+msgid "Profiles"
+msgstr "프로필"
+
+msgid "RECOVERING"
+msgstr "RECOVERING"
+
+msgid "RESIZING"
+msgstr "RESIZING"
+
+msgid "Receiver"
+msgstr "리시버"
+
+#, python-format
+msgid "Receiver %s was successfully created."
+msgstr "리시버 %s 를 성공적으로 생성하였습니다."
+
+#, python-format
+msgid "Receiver %s was successfully updated."
+msgstr "리시버 %s를 성공적으로 업데이트 하였습니다."
+
+msgid "Receivers"
+msgstr "리시버"
+
+msgid "Resize"
+msgstr "크기 조정"
+
+msgid "Resize Cluster"
+msgstr "클러스터 크기 조정"
+
+msgid "Role"
+msgstr "역할"
+
+msgid "Role for this node in the cluster."
+msgstr "클러스터 안의 노드에 대한 역할"
+
+msgid "Role for this node in the specific cluster."
+msgstr "입력된 클러스터 내에서 이 노드를 위한 역할"
+
+msgid "Scale In the Cluster"
+msgstr "클러스터 Scale In"
+
+msgid "Scale Out the Cluster"
+msgstr "클러스터 Scale Out"
+
+msgid "Scale-In"
+msgstr "Scale-In"
+
+msgid "Scale-Out"
+msgstr "Scale-out(같은 수준의 장비를 여러 개로 늘림)"
+
+msgid "Scale-in Cluster"
+msgstr "Scale-in 클러스터"
+
+msgid "Scale-out Cluster"
+msgstr "Scale-out 클러스터"
+
+msgid "Select action for the receiver."
+msgstr "이 리시버에 대한 작업을 선택하세요."
+
+msgid "Select cluster for the node."
+msgstr "노드에 대한 클러스터를 선택하세요."
+
+msgid "Select cluster for the receiver."
+msgstr "이 리시버에 대한 클러스터를 선택하세요."
+
+msgid "Select policies from the available policies below."
+msgstr "아래 사용 가능한 정책들에서 정책을 선택하세요."
+
+msgid "Select profile for the cluster."
+msgstr "클러스터에 대한 프로필을 선택하세요."
+
+msgid "Select profile for the node."
+msgstr "노드에 대한 프로필을 선택하세요."
+
+msgid "Select the policy to apply to the cluster."
+msgstr "클러스터에 적용할 정책을 선택합니다."
+
+msgid "Select type for resize."
+msgstr "크기를 조정할 타입을 선택합니다."
+
+msgid "Select type for the receiver."
+msgstr "리시버의 타입을 선택하세요."
+
+msgid "Spec"
+msgstr "사양"
+
+msgid "Specify node count for scale-in."
+msgstr "Scale-in 할 노드 수를 지정합니다."
+
+msgid "Specify node count for scale-out."
+msgstr "Scale-out할 노드 수를 지정합니다."
+
+msgid "Specify the number according to the type you selected as follows."
+msgstr "선택한 유형에 따라 다음과 같이 번호를 지정합니다."
+
+msgid ""
+"Specifying whether the resize should be performed on a best-effort basis "
+"when the new capacity may go beyond size constraints."
+msgstr ""
+"새 용량이 크기 제한을 초과할 수 있는 경우 크기 조정을 최선으로 수행할지 여부"
+"를 지정합니다."
+
+msgid "Status"
+msgstr "상태"
+
+msgid "Status Reason"
+msgstr "상태 원인"
+
+msgid "Targeted cluster for this receiver."
+msgstr "이 리시버의 대상 클레스터"
+
+msgid "The informations needed for cluster creation"
+msgstr "클러스터 생성을 위한 정보"
+
+msgid "The informations needed for node creation."
+msgstr "노드 생성에 필요한 정보"
+
+msgid "The metadata yaml used to create the node."
+msgstr "노드를 생성하는 데 사용되는 메타데이터 yaml"
+
+msgid "The metadata yaml used to create the profile."
+msgstr "메타데이터 YAML은 프로필을 생성하는 데 사용됩니다."
+
+msgid "The metadata yaml used to update the node."
+msgstr "노드를 업데이트하는 데 사용되는 메타데이터 yaml"
+
+msgid "The metadata yaml used to update the profile."
+msgstr "프로필을 업데이트하는 데 사용되는 메타데이터 yaml"
+
+msgid ""
+"The spec yaml used to create the policy. Edit loaded yaml from file using "
+"above 'Load Spec from File', or see samples from link below to write."
+msgstr ""
+"정책을 생성하는 데 사용되는 스펙입니다. 위의 '파일에서 스펙 읽어오기'를 사용"
+"하여 파일에서 불러온 yaml을 편집하거나 아래 링크에서 샘플을 참조하여 작성하세"
+"요."
+
+msgid ""
+"The spec yaml used to create the profile. Edit loaded yaml from file using "
+"above 'Load Spec from File', or see samples from link below to write."
+msgstr ""
+"정책을 생성하는 데 사용되는 프로필입니다. 위의 '파일에서 스펙 읽어오기'를 사"
+"용하여 파일에서 불러온 yaml을 편집하거나 아래 링크에서 샘플을 참조하여 작성하"
+"세요."
+
+msgid "Timeout"
+msgstr "제한시간"
+
+msgid "Type"
+msgstr "타입"
+
+msgid "Type of the receiver. Default to webhook"
+msgstr "리시버의 유형. 기본값은 웹후크입니다."
+
+msgid "UPDATING"
+msgstr "UPDATING"
+
+#, python-format
+msgid "Unable to create the cluster with name: %(name)s"
+msgstr "%(name)s의 이름을 가진 클러스터를 생성할 수 없습니다."
+
+#, python-format
+msgid "Unable to create the node with name: %(name)s"
+msgstr "%(name)s의 이름이 있는 노드를 생성할 수 없습니다."
+
+#, python-format
+msgid "Unable to create the policy with name: %(name)s"
+msgstr "%(name)s의 이름을 가진 정책을 생성할 수 없습니다."
+
+#, python-format
+msgid "Unable to create the profile with name: %(name)s"
+msgstr "%(name)s의 이름이 있는 프로필을 생성할 수 없습니다."
+
+#, python-format
+msgid "Unable to create the receiver with name: %(name)s"
+msgstr "%(name)s의 이름이 있는 리시버를 생성할 수 없습니다."
+
+#, python-format
+msgid "Unable to delete Cluster: %s."
+msgid_plural "Unable to delete Clusters: %s."
+msgstr[0] "클러스터를 삭제할 수 없습니다: %s."
+
+#, python-format
+msgid "Unable to delete Node: %s."
+msgid_plural "Unable to delete Nodes: %s."
+msgstr[0] "삭제할 수 없는 노드: %s"
+
+#, python-format
+msgid "Unable to delete Policy: %s."
+msgid_plural "Unable to delete Policies: %s."
+msgstr[0] "정책을 삭제할 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to delete Profile: %s."
+msgid_plural "Unable to delete Profiles: %s."
+msgstr[0] "프로필을 삭제할 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to delete Receiver: %s."
+msgid_plural "Unable to delete Receivers: %s."
+msgstr[0] "리시버를 삭제할 수 없습니다: %s"
+
+#, python-format
+msgid "Unable to delete the cluster with id: %(id)s."
+msgstr "%(id)s의 ID를 가진 클러스터를 삭제할 수 없습니다."
+
+#, python-format
+msgid "Unable to delete the node with id: %(id)s"
+msgstr "%(id)s의 ID가 있는 노드를 삭제할 수 없습니다."
+
+#, python-format
+msgid "Unable to delete the policy with id: %(id)s."
+msgstr "%(id)s의 ID를 가진 정책을 삭제할 수 없습니다."
+
+#, python-format
+msgid "Unable to delete the profile with id: %(id)s."
+msgstr "%(id)s의 ID가 있는 프로필을 삭제할 수 없습니다."
+
+#, python-format
+msgid "Unable to delete the receiver with id: %(id)s."
+msgstr "%(id)s의 ID가 있는 리시버를 삭제할 수 없습니다."
+
+#, python-format
+msgid "Unable to resize the cluster with name: %(name)s"
+msgstr "%(name)s의 이름을 가진 클러스터 크기 조정을 할 수 없습니다."
+
+#, python-format
+msgid "Unable to retrieve the cluster with id: %(id)s."
+msgstr "%(id)s의 ID를 가진 클러스터를 가져올 수 없습니다."
+
+msgid "Unable to retrieve the clusters."
+msgstr "클러스터를 가져올 수 없습니다."
+
+#, python-format
+msgid "Unable to retrieve the events with id: %(id)s."
+msgstr "%(id)s의 ID가 있는 이벤트를 가져올 수 없습니다."
+
+#, python-format
+msgid "Unable to retrieve the node with id: %(id)s."
+msgstr "%(id)s의 ID가 있는 노드를 가져올 수 없습니다."
+
+msgid "Unable to retrieve the nodes."
+msgstr "노드를 가져올 수 없습니다."
+
+#, python-format
+msgid "Unable to retrieve the policies of the cluster with id: %(id)s."
+msgstr "%(id)s의 ID를 가진 클러스터의 정책을 가져올 수 없습니다."
+
+msgid "Unable to retrieve the policies."
+msgstr "정책을 가져올 수 없습니다."
+
+#, python-format
+msgid "Unable to retrieve the policy with id: %(id)s."
+msgstr "%(id)s 의 ID를 가진 정책을 가져올 수 없습니다."
+
+#, python-format
+msgid "Unable to retrieve the profile with id: %(id)s."
+msgstr "%(id)s의 ID가 있는 프로필을 가져올 수 없습니다."
+
+msgid "Unable to retrieve the profiles."
+msgstr "프로필을 가져올 수 없습니다."
+
+#, python-format
+msgid "Unable to retrieve the receiver with id: %(id)s."
+msgstr "%(id)s의 ID가 있는 리시버를 가져올 수 없습니다."
+
+msgid "Unable to retrieve the receivers."
+msgstr "리시버를 가져올 수 없습니다."
+
+#, python-format
+msgid "Unable to scale-%(scale)s the cluster with name: %(name)s"
+msgstr "%(name)s의 이름을 가진 클러스터를 scale-%(scale)s할 수 없습니다."
+
+msgid "Unable to update policies of the cluster"
+msgstr "클러스터의 정책을 업데이트할 수 없습니다."
+
+#, python-format
+msgid "Unable to update the cluster with name: %(name)s"
+msgstr "%(name)s의 이름을 가진 클러스터를 없데이트할 수 없습니다."
+
+#, python-format
+msgid "Unable to update the node with name: %(name)s"
+msgstr "%(name)s의 이름이 있는 노드를 업데이트할 수 없습니다."
+
+#, python-format
+msgid "Unable to update the policy with name: %(name)s"
+msgstr "%(name)s의 이름을 가진 정책을 업데이트할 수 없습니다."
+
+#, python-format
+msgid "Unable to update the profile with name: %(name)s"
+msgstr "%(name)s의 이름이 있는 프로필을 업데이트할 수 없습니다."
+
+#, python-format
+msgid "Unable to update the receiver with name: %(name)s"
+msgstr "%(name)s의 이름이 있는 리시버를 업데이트할 수 없습니다."
+
+msgid "Update"
+msgstr "업데이트"
+
+msgid "Update Cluster"
+msgstr "클러스터 업데이트"
+
+msgid "Update Node"
+msgstr "노드 업데이트"
+
+msgid "Update Policy"
+msgstr "정책 업데이트"
+
+msgid "Update Profile"
+msgstr "프로필 업데이트"
+
+msgid "Update Receiver"
+msgstr "리시버 업데이트"
+
+msgid "Updated"
+msgstr "업데이트됨"
+
+msgid "WARNING"
+msgstr "WARNING"
+
+msgid "Webhook"
+msgstr "웹후크"
+
+msgid "YAML formated metadata"
+msgstr "YAML 형식의 메타데이터"
+
+msgid ""
+"YAML formatted parameters that will be passed to target action when the "
+"receiver is triggered."
+msgstr "YAML 형식 매개 변수는 리시버가 트리거될 때 대상 작업으로 전달됩니다."
+
+#, python-format
+msgid "You are not allowed to delete clusters: %s"
+msgstr "클러스터 삭제가 허용되어 있지 않습니다: %s"
+
+#, python-format
+msgid "You are not allowed to delete nodes: %s"
+msgstr "노드를 삭제하도록 허용되지 않았습니다: %s"
+
+#, python-format
+msgid "You are not allowed to delete policies: %s"
+msgstr "이 정책을 삭제하도록 허용되지 않았습니다: %s"
+
+#, python-format
+msgid "You are not allowed to delete profiles: %s"
+msgstr "이 프로필을 삭제하도록 허용되지 않았습니다: %s"
+
+#, python-format
+msgid "You are not allowed to delete receivers: %s"
+msgstr "리시버를 삭제하도록 허용되지 않았습니다: %s"
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Cluster is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Clusters are not recoverable."
+msgstr[0] "\"%s\"를 선택했습니다. 삭제된 클러스터는 복구할 수 없습니다."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Node is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Nodes are not recoverable."
+msgstr[0] "\"%s\"을(를) 선택했습니다. 삭제된 노드는 복구할 수 없습니다."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Policy is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Policies are not recoverable."
+msgstr[0] "\"%s\" 를 선택했습니다. 삭제된 정책은 복구할 수 없습니다."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Profile is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Profiles are not recoverable."
+msgstr[0] "\"%s\"를 선택했습니다. 삭제된 프로필은 복구할 수 없습니다."
+
+#, python-format
+msgid "You have selected \"%s\". Deleted Receiver is not recoverable."
+msgid_plural "You have selected \"%s\". Deleted Receivers are not recoverable."
+msgstr[0] "\"%s\"를 선택했습니다. 삭제된 리시버는 복구할 수 없습니다."
+
+msgid "You may update the editable properties of your cluster here."
+msgstr "여기에서 클러스터의 편집 가능한 속성을 업데이트할 수 있습니다."
+
+msgid "You may update the editable properties of your node here."
+msgstr "여기서 노드의 편집 가능한 속성을 업데이트할 수 있습니다."
+
+msgid "You may update the editable properties of your profile here."
+msgstr "여기서 프로필의 편집 가능한 속성을 업데이트할 수 있습니다"
+
+msgid "in"
+msgstr "in"
+
+msgid "out"
+msgstr "out"

@@ -64,7 +64,7 @@ add_function_parentheses = True
 add_module_names = True
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = 'native'
 
 # sphinxcontrib-apidoc
 apidoc_module_dir = '../../senlin_dashboard'
@@ -83,10 +83,8 @@ html_theme = 'openstackdocs'
 # Output file base name for HTML help builder.
 htmlhelp_basename = '%sdoc' % project
 
-# Must set this variable to include year, month, day, hours, and minutes.
-html_last_updated_fmt = '%Y-%m-%d %H:%M'
-
 # -- Options for openstackdocstheme -------------------------------------------
-repository_name = 'openstack/senlin-dashboard'
-bug_project = 'senlin-dashboard'
-bug_tag = ''
+openstackdocs_repo_name = 'openstack/senlin-dashboard'
+openstackdocs_auto_name = False
+openstackdocs_bug_project = 'senlin-dashboard'
+openstackdocs_bug_tag = ''

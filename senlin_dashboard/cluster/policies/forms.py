@@ -90,9 +90,9 @@ class CreatePolicyForm(forms.SelfHandlingForm):
                              _('Your policy %s has been created.') %
                              args['name'])
             return policy
-        except Exception as e:
+        except Exception:
             redirect = reverse(INDEX_URL)
-            msg = _('Unable to create new policy: %s') % e
+            msg = _('Unable to create new policy.')
             exceptions.handle(request, msg, redirect=redirect)
             return False
 
@@ -113,8 +113,8 @@ class UpdatePolicyForm(forms.SelfHandlingForm):
         except ValidationError as e:
             self.api_error(e.messages[0])
             return False
-        except Exception as e:
+        except Exception:
             redirect = reverse(INDEX_URL)
-            msg = _('Unable to update policy: %s') % e
+            msg = _('Unable to update policy.')
             exceptions.handle(request, msg, redirect=redirect)
             return False

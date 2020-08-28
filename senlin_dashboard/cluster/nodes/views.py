@@ -57,10 +57,10 @@ class IndexView(tables.DataTableView):
                 paginate=True,
                 reversed_order=reversed_order,
                 filters=filters)
-        except Exception as e:
+        except Exception:
             self._prev = self._more = False
             nodes = []
-            msg = _('Unable to retrieve nodes: %s') % e
+            msg = _('Unable to retrieve nodes.')
             exceptions.handle(self.request, msg)
         return nodes
 
@@ -90,8 +90,8 @@ class DetailView(tabs.TabView):
             # Get initial node information
             node_id = self.kwargs["node_id"]
             node = senlin.node_get(self.request, node_id)
-        except Exception as e:
-            msg = _("Unable to retrieve node: %s") % e
+        except Exception:
+            msg = _("Unable to retrieve node.")
             url = reverse_lazy("horizon:cluster:nodes:index")
             exceptions.handle(self.request, msg, redirect=url)
         return node
@@ -145,8 +145,8 @@ class UpdateView(forms.ModalFormView):
                          "role": node.role,
                          "metadata": metadata}
 
-        except Exception as e:
-            msg = _("Unable to retrieve node: %s") % e
+        except Exception:
+            msg = _("Unable to retrieve node.")
             url = reverse_lazy("horizon:cluster:nodes:index")
             exceptions.handle(self.request, msg, redirect=url)
         return node_dict

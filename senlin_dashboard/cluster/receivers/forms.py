@@ -95,8 +95,8 @@ class CreateReceiverForm(forms.SelfHandlingForm):
                 _('Your receiver %s has been created successfully.') %
                 data['name'])
             return receiver
-        except Exception as e:
+        except Exception:
             redirect = reverse(INDEX_URL)
-            msg = _('Unable to create new receiver: %s') % e
+            msg = _('Unable to create new receiver.')
             exceptions.handle(request, msg, redirect=redirect)
             return False

@@ -85,10 +85,10 @@ class CreateForm(forms.SelfHandlingForm):
             msg = _('Creating node "%s" successfully') % data['name']
             messages.info(request, msg)
             return node
-        except Exception as e:
+        except Exception:
             redirect = reverse("horizon:cluster:nodes:index")
             exceptions.handle(request,
-                              _("Unable to create node: %s") % e,
+                              _("Unable to create node."),
                               redirect=redirect)
 
 
@@ -132,9 +132,9 @@ class UpdateNodeForm(forms.SelfHandlingForm):
                   ' has been accepted for processing.') %
                 data['name'])
             return node
-        except Exception as e:
+        except Exception:
             redirect = reverse("horizon:cluster:nodes:index")
             exceptions.handle(request,
-                              _("Unable to update node: %s") % e,
+                              _("Unable to update node."),
                               redirect=redirect)
             return False

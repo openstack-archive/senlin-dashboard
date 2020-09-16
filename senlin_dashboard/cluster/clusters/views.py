@@ -57,10 +57,10 @@ class IndexView(tables.DataTableView):
                 paginate=True,
                 reversed_order=reversed_order,
                 filters=filters)
-        except Exception as e:
+        except Exception:
             self._prev = self._more = False
             clusters = []
-            msg = _('Unable to retrieve clusters: %s') % e
+            msg = _('Unable to retrieve clusters.')
             exceptions.handle(self.request, msg)
         return clusters
 
@@ -91,8 +91,8 @@ class DetailView(tabs.TabView):
             cluster = senlin.cluster_get(self.request, cluster_id)
             cluster.profile_url = reverse_lazy(self.profile_url,
                                                args=[cluster.profile_id])
-        except Exception as e:
-            msg = _("Unable to retrieve cluster: %s") % e
+        except Exception:
+            msg = _("Unable to retrieve cluster.")
             url = reverse_lazy(clusters_forms.INDEX_URL)
             exceptions.handle(self.request, msg, redirect=url)
         return cluster

@@ -1,14 +1,15 @@
 # Frank Kloeker <eumel@arcor.de>, 2018. #zanata
+# Andreas Jaeger <jaegerandi@gmail.com>, 2020. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: senlin-dashboard VERSION\n"
 "Report-Msgid-Bugs-To: https://bugs.launchpad.net/openstack-i18n/\n"
-"POT-Creation-Date: 2020-09-16 08:58+0000\n"
+"POT-Creation-Date: 2020-09-27 09:27+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2018-08-24 06:33+0000\n"
-"Last-Translator: Frank Kloeker <eumel@arcor.de>\n"
+"PO-Revision-Date: 2020-10-05 06:37+0000\n"
+"Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
 "Language-Team: German\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -567,8 +568,14 @@ msgstr "Die Richtlinie konnte nicht angehängt werden."
 msgid "Unable to create cluster."
 msgstr "Der Cluster konnte nicht erstellt werden."
 
+msgid "Unable to create new policy."
+msgstr "Es konnte keine neue Richtlinie erstellt werden."
+
 msgid "Unable to create new profile"
 msgstr "Es konnte kein neues Profil erstellt werden"
+
+msgid "Unable to create new receiver."
+msgstr "Es konnte kein neuer Empfänger erstellt werden."
 
 msgid "Unable to create node."
 msgstr "Der Knoten konnte nicht erstellt werden."
@@ -611,6 +618,9 @@ msgstr "Receiver konnte nicht abgerufen werden."
 
 msgid "Unable to update node."
 msgstr "Der Knoten konnte nicht aktualisiert werden."
+
+msgid "Unable to update policy."
+msgstr "Richtlinie kann nicht aktualisiert werden."
 
 msgid "Unable to update profile"
 msgstr "Das Profil konnte nicht aktualisiert werden"

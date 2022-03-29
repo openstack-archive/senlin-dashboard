@@ -17,7 +17,7 @@ from openstack_dashboard.test import helpers as test
 from senlin_dashboard.api.rest import senlin
 
 
-class SenlinRestTestCase(test.TestCase):
+class SenlinRestTestCase(test.RestAPITestCase):
 
     #
     # Receiver

@@ -11,7 +11,7 @@
 # limitations under the License.
 
 from django.conf import settings
-from django.conf.urls import url
+from django.urls import re_path
 from django.utils.translation import ugettext_lazy as _
 
 from horizon.browsers.views import AngularIndexView
@@ -21,16 +21,17 @@ from senlin_dashboard.cluster.profiles import views as legacyViews
 if settings.ANGULAR_FEATURES.get('profiles_panel', True):
     title = _("Profiles")
     urlpatterns = [
-        url(r'^(?P<profile_id>[^/]+)/$',
-            legacyViews.DetailView.as_view(), name='detail'),
-        url('', AngularIndexView.as_view(title=title), name='index'),
+        re_path(r'^(?P<profile_id>[^/]+)/$',
+                legacyViews.DetailView.as_view(), name='detail'),
+        re_path('', AngularIndexView.as_view(title=title), name='index'),
     ]
 else:
     urlpatterns = [
-        url(r'^$', legacyViews.IndexView.as_view(), name='index'),
-        url(r'^create/$', legacyViews.CreateView.as_view(), name='create'),
-        url(r'^(?P<profile_id>[^/]+)/update/$',
-            legacyViews.UpdateView.as_view(), name='update'),
-        url(r'^(?P<profile_id>[^/]+)/$',
-            legacyViews.DetailView.as_view(), name='detail'),
+        re_path(r'^$', legacyViews.IndexView.as_view(), name='index'),
+        re_path(r'^create/$', legacyViews.CreateView.as_view(),
+                name='create'),
+        re_path(r'^(?P<profile_id>[^/]+)/update/$',
+                legacyViews.UpdateView.as_view(), name='update'),
+        re_path(r'^(?P<profile_id>[^/]+)/$',
+                legacyViews.DetailView.as_view(), name='detail'),
     ]

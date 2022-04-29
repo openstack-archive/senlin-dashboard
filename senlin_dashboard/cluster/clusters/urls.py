@@ -11,7 +11,7 @@
 # limitations under the License.
 
 from django.conf import settings
-from django.conf.urls import url
+from django.urls import re_path
 from django.utils.translation import ugettext_lazy as _
 
 from horizon.browsers.views import AngularIndexView
@@ -22,14 +22,16 @@ from senlin_dashboard.cluster.clusters import views as legacyViews
 if settings.ANGULAR_FEATURES.get('clusters_panel', True):
     title = _("Clusters")
     urlpatterns = [
-        url('', AngularIndexView.as_view(title=title), name='index'),
+        re_path('', AngularIndexView.as_view(title=title), name='index'),
     ]
 else:
     urlpatterns = [
-        url(r'^$', legacyViews.IndexView.as_view(), name='index'),
-        url(r'^create/$', legacyViews.CreateView.as_view(), name='create'),
-        url(r'^(?P<cluster_id>[^/]+)/$',
-            legacyViews.DetailView.as_view(), name='detail'),
-        url(r'^(?P<cluster_id>[^/]+)/manage_policies/$',
-            legacyViews.ManagePoliciesView.as_view(), name='manage_policies'),
+        re_path(r'^$', legacyViews.IndexView.as_view(), name='index'),
+        re_path(r'^create/$', legacyViews.CreateView.as_view(),
+                name='create'),
+        re_path(r'^(?P<cluster_id>[^/]+)/$',
+                legacyViews.DetailView.as_view(), name='detail'),
+        re_path(r'^(?P<cluster_id>[^/]+)/manage_policies/$',
+                legacyViews.ManagePoliciesView.as_view(),
+                name='manage_policies'),
     ]

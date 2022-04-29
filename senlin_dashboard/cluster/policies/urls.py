@@ -11,7 +11,7 @@
 # limitations under the License.
 
 from django.conf import settings
-from django.conf.urls import url
+from django.urls import re_path
 from django.utils.translation import ugettext_lazy as _
 
 from horizon.browsers import views
@@ -20,14 +20,15 @@ from senlin_dashboard.cluster.policies import views as legacyView
 if settings.ANGULAR_FEATURES.get('policies_panel', True):
     title = _("Policies")
     urlpatterns = [
-        url('', views.AngularIndexView.as_view(title=title), name='index'),
+        re_path('', views.AngularIndexView.as_view(title=title),
+                name='index'),
     ]
 else:
     urlpatterns = [
-        url(r'^$', legacyView.IndexView.as_view(), name='index'),
-        url(r'^create/$', legacyView.CreateView.as_view(), name='create'),
-        url(r'^(?P<policy_id>[^/]+)/$',
-            legacyView.DetailView.as_view(), name='detail'),
-        url(r'^(?P<policy_id>[^/]+)/update/$',
-            legacyView.UpdateView.as_view(), name='update'),
+        re_path(r'^$', legacyView.IndexView.as_view(), name='index'),
+        re_path(r'^create/$', legacyView.CreateView.as_view(), name='create'),
+        re_path(r'^(?P<policy_id>[^/]+)/$',
+                legacyView.DetailView.as_view(), name='detail'),
+        re_path(r'^(?P<policy_id>[^/]+)/update/$',
+                legacyView.UpdateView.as_view(), name='update'),
     ]

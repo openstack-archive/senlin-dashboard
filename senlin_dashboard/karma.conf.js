@@ -127,20 +127,12 @@ module.exports = function (config) {
 
     frameworks: ['jasmine'],
 
-    // browsers: ['Chrome'],
-    browsers: ['PhantomJS'],
-
-    phantomjsLauncher: {
-      // Have phantomjs exit if a ResourceError is encountered
-      // (useful if karma exits without killing phantom)
-      exitOnResourceError: true
-    },
+    browsers: ['Firefox'],
 
     reporters: ['progress', 'coverage', 'threshold'],
 
     plugins: [
-      'karma-chrome-launcher',
-      'karma-phantomjs-launcher',
+      'karma-firefox-launcher',
       'karma-jasmine',
       'karma-ng-html2js-preprocessor',
       'karma-coverage',

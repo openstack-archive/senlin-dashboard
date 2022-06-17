@@ -86,7 +86,7 @@
     function getNodes(params) {
       var config = params ? {params: params} : {};
       return apiService.get('/api/senlin/nodes/', config)
-        .error(function () {
+        .catch(function onError() {
           toastService.add('error', gettext('Unable to retrieve the nodes.'));
         });
     }
@@ -103,7 +103,7 @@
      */
     function getNode(id) {
       return apiService.get('/api/senlin/nodes/' + id + '/')
-        .error(function () {
+        .catch(function onError() {
           var msg = gettext('Unable to retrieve the node with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
@@ -124,7 +124,7 @@
     function createNode(params, suppressError) {
       var promise = apiService.post('/api/senlin/nodes/', params);
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to create the node with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
@@ -147,7 +147,7 @@
     function updateNode(id, params, suppressError) {
       var promise = apiService.put('/api/senlin/nodes/' + id + '/', params);
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to update the node with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
@@ -169,7 +169,7 @@
     function deleteNode(nodeId, suppressError) {
       var promise = apiService.delete('/api/senlin/nodes/' + nodeId + '/');
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to delete the node with id: %(id)s');
         toastService.add('error', interpolate(msg, { id: nodeId }, true));
       });
@@ -189,7 +189,7 @@
      */
     function getEvents(objId) {
       return apiService.get('/api/senlin/events/' + objId + '/')
-        .error(function () {
+        .catch(function onError() {
           var msg = gettext('Unable to retrieve the events with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: objId}, true));
         });
@@ -205,7 +205,7 @@
     function getReceivers(params) {
       var config = params ? {params: params} : {};
       return apiService.get('/api/senlin/receivers/', config)
-        .error(function () {
+        .catch(function onError() {
           toastService.add('error', gettext('Unable to retrieve the receivers.'));
         });
     }
@@ -222,7 +222,7 @@
      */
     function getReceiver(id) {
       return apiService.get('/api/senlin/receivers/' + id + '/')
-        .error(function () {
+        .catch(function onError() {
           var msg = gettext('Unable to retrieve the receiver with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
@@ -243,7 +243,7 @@
     function createReceiver(params, suppressError) {
       var promise = apiService.post('/api/senlin/receivers/', params);
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to create the receiver with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
@@ -265,7 +265,7 @@
     function updateReceiver(id, params, suppressError) {
       var promise = apiService.put('/api/senlin/receivers/' + id + '/', params);
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to update the receiver with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
@@ -287,7 +287,7 @@
     function deleteReceiver(receiverId, suppressError) {
       var promise = apiService.delete('/api/senlin/receivers/' + receiverId + '/');
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to delete the receiver with id: %(id)s.');
         toastService.add('error', interpolate(msg, { id: receiverId }, true));
       });
@@ -303,7 +303,7 @@
     function getProfiles(params) {
       var config = params ? {params: params} : {};
       return apiService.get('/api/senlin/profiles/', config)
-        .error(function () {
+        .catch(function onError() {
           toastService.add('error', gettext('Unable to retrieve the profiles.'));
         });
     }
@@ -315,7 +315,7 @@
      */
     function getProfile(id) {
       return apiService.get('/api/senlin/profiles/' + id + '/')
-        .error(function () {
+        .catch(function onError() {
           var msg = gettext('Unable to retrieve the profile with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
@@ -337,7 +337,7 @@
     function deleteProfile(profileId, suppressError) {
       var promise = apiService.delete('/api/senlin/profiles/' + profileId + '/');
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to delete the profile with id: %(id)s.');
         toastService.add('error', interpolate(msg, { id: profileId }, true));
       });
@@ -357,7 +357,7 @@
     function createProfile(params, suppressError) {
       var promise = apiService.post('/api/senlin/profiles/', params);
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to create the profile with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
@@ -378,7 +378,7 @@
     function updateProfile(id, params, suppressError) {
       var promise = apiService.put('/api/senlin/profiles/' + id + '/', params);
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to update the profile with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
@@ -394,7 +394,7 @@
     function getClusters(params) {
       var config = params ? {params: params} : {};
       return apiService.get('/api/senlin/clusters/', config)
-        .error(function () {
+        .catch(function onError() {
           toastService.add('error', gettext('Unable to retrieve the clusters.'));
         });
     }
@@ -406,7 +406,7 @@
      */
     function getCluster(id) {
       return apiService.get('/api/senlin/clusters/' + id + '/')
-        .error(function () {
+        .catch(function onError() {
           var msg = gettext('Unable to retrieve the cluster with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
@@ -428,7 +428,7 @@
     function createCluster(params, suppressError) {
       var promise = apiService.post('/api/senlin/clusters/', params);
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to create the cluster with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
@@ -450,7 +450,7 @@
     function updateCluster(id, params, suppressError) {
       var promise = apiService.put('/api/senlin/clusters/' + id + '/', params);
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to update the cluster with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
@@ -472,7 +472,7 @@
     function deleteCluster(clusterId, suppressError) {
       var promise = apiService.delete('/api/senlin/clusters/' + clusterId + '/');
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to delete the cluster with id: %(id)s.');
         toastService.add('error', interpolate(msg, { id: clusterId }, true));
       });
@@ -500,7 +500,7 @@
         '/api/senlin/clusters/' + id + '/scale-' + scale,
         {count: count});
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to scale-%(scale)s the cluster with name: %(name)s');
         var scaleMsg;
         if (scale === 'in') {
@@ -531,7 +531,7 @@
       var promise = apiService.put(
         '/api/senlin/clusters/' + id + '/resize', params);
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to resize the cluster with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: name }, true));
       });
@@ -544,7 +544,7 @@
      */
     function getClusterPolicies(id) {
       return apiService.get('/api/senlin/clusters/' + id + '/policy')
-        .error(function () {
+        .catch(function onError() {
           var msg = gettext('Unable to retrieve the policies of the cluster with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
@@ -565,7 +565,7 @@
      */
     function updateClusterPolicies(id, params, suppressError) {
       var promise = apiService.put('/api/senlin/clusters/' + id + '/policy' , params);
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         toastService.add('error', gettext('Unable to update policies of the cluster'));
       });
     }
@@ -580,7 +580,7 @@
     function getPolicies(params) {
       var config = params ? {params: params} : {};
       return apiService.get('/api/senlin/policies/', config)
-        .error(function () {
+        .catch(function onError() {
           toastService.add('error', gettext('Unable to retrieve the policies.'));
         });
     }
@@ -592,7 +592,7 @@
      */
     function getPolicy(id) {
       return apiService.get('/api/senlin/policies/' + id + '/')
-        .error(function () {
+        .catch(function onError() {
           var msg = gettext('Unable to retrieve the policy with id: %(id)s.');
           toastService.add('error', interpolate(msg, {id: id}, true));
         });
@@ -612,7 +612,7 @@
     function createPolicy(params, suppressError) {
       var promise = apiService.post('/api/senlin/policies/', params);
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to create the policy with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
@@ -634,7 +634,7 @@
     function updatePolicy(id, params, suppressError) {
       var promise = apiService.put('/api/senlin/policies/' + id + '/', params);
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to update the policy with name: %(name)s');
         toastService.add('error', interpolate(msg, { name: params.name }, true));
       });
@@ -656,7 +656,7 @@
     function deletePolicy(policyId, suppressError) {
       var promise = apiService.delete('/api/senlin/policies/' + policyId + '/');
 
-      return suppressError ? promise : promise.error(function() {
+      return suppressError ? promise : promise.catch(function onError() {
         var msg = gettext('Unable to delete the policy with id: %(id)s.');
         toastService.add('error', interpolate(msg, { id: policyId }, true));
       });

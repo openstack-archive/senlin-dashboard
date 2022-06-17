@@ -18,7 +18,7 @@
 
   describe('horizon.cluster.profiles.actions.create.service', function() {
 
-    var service, $scope, $q, deferred, senlin, workflow;
+    var service, $scope, $q, deferred, senlin, workflow, $httpBackend;
     var model = {
       id: 1
     };
@@ -41,8 +41,9 @@
       $provide.value('horizon.framework.widgets.form.ModalFormService', modal);
     }));
 
-    beforeEach(inject(function($injector, _$rootScope_, _$q_) {
+    beforeEach(inject(function($injector, _$rootScope_, _$q_, _$httpBackend_) {
       $q = _$q_;
+      $httpBackend = _$httpBackend_;
       $scope = _$rootScope_.$new();
       service = $injector.get('horizon.cluster.profiles.actions.create.service');
       senlin = $injector.get('horizon.app.core.openstack-service-api.senlin');
@@ -71,6 +72,7 @@
 
       expect(modal.open).toHaveBeenCalled();
 
+      $httpBackend.expectGET('/static/app/core/profiles/panel.html').respond({});
       $timeout.flush();
       $scope.$apply();
 

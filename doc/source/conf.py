@@ -49,8 +49,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'senlin-dashboard'
-copyright = u'2015, OpenStack Foundation'
+project = 'senlin-dashboard'
+copyright = '2015, OpenStack Foundation'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.

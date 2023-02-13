@@ -13,7 +13,7 @@
 import itertools
 import yaml
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 def update_pagination(entities, request_size, page_size, marker,

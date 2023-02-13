@@ -13,9 +13,9 @@
 from django.template import defaultfilters
 from django.urls import reverse
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext_lazy
 from django.utils.translation import pgettext_lazy
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext_lazy
 
 from horizon import tables
 from horizon.utils import filters
@@ -46,7 +46,7 @@ class CheckCluster(tables.BatchAction):
 
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Check Cluster",
             u"Check Clusters",
             count
@@ -54,7 +54,7 @@ class CheckCluster(tables.BatchAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Checked Cluster",
             u"Checked Clusters",
             count
@@ -69,7 +69,7 @@ class RecoverCluster(tables.BatchAction):
 
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Recover Cluster",
             u"Recover Clusters",
             count
@@ -77,7 +77,7 @@ class RecoverCluster(tables.BatchAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Recovered Cluster",
             u"Recovered Clusters",
             count
@@ -106,7 +106,7 @@ class DeleteCluster(tables.DeleteAction):
 
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Delete Cluster",
             u"Delete Clusters",
             count
@@ -114,7 +114,7 @@ class DeleteCluster(tables.DeleteAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Scheduled deletion of Cluster",
             u"Scheduled deletion of Clusters",
             count
@@ -232,7 +232,7 @@ class DetachPolicy(tables.BatchAction):
 
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Detach Policy",
             u"Detach Policies",
             count
@@ -241,7 +241,7 @@ class DetachPolicy(tables.BatchAction):
     # This action is asynchronous.
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Detaching Policy",
             u"Detaching Policies",
             count

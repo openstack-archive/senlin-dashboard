@@ -11,9 +11,9 @@
 # limitations under the License.
 
 from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ngettext_lazy
 from django.utils.translation import pgettext_lazy
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ungettext_lazy
 
 from horizon import tables
 from horizon.utils import filters
@@ -35,7 +35,7 @@ class DeleteNode(tables.DeleteAction):
 
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Delete Node",
             u"Delete Nodes",
             count
@@ -43,7 +43,7 @@ class DeleteNode(tables.DeleteAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Scheduled deletion of Node",
             u"Scheduled deletion of Nodes",
             count
@@ -72,7 +72,7 @@ class RecoverNode(tables.BatchAction):
 
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Recover Node",
             u"Recover Nodes",
             count
@@ -80,7 +80,7 @@ class RecoverNode(tables.BatchAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Recovered Node",
             u"Recovered Nodes",
             count
@@ -101,7 +101,7 @@ class CheckNode(tables.BatchAction):
 
     @staticmethod
     def action_present(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Check Node",
             u"Check Nodes",
             count
@@ -109,7 +109,7 @@ class CheckNode(tables.BatchAction):
 
     @staticmethod
     def action_past(count):
-        return ungettext_lazy(
+        return ngettext_lazy(
             u"Checked Node",
             u"Checked Nodes",
             count

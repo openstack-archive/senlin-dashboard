@@ -87,7 +87,13 @@ def senlinclient(request):
         token=request.user.token.id,
         project_id=request.user.tenant_id
     )
-    session = ks_session.Session(auth=auth)
+
+    cacert = getattr(settings, 'OPENSTACK_SSL_CACERT', None)
+    insecure = getattr(settings, 'OPENSTACK_SSL_NO_VERIFY', False)
+
+    session = ks_session.Session(auth=auth,
+                                 verify=cacert if cacert else not insecure,
+                                 user_agent=USER_AGENT)
     return senlin_client.Client(session=session,
                                 region_name=request.user.services_region)
 

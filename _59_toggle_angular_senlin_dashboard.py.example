@@ -1,7 +1,0 @@
-ANGULAR_FEATURES.update({
-    'profiles_panel': True,
-    'nodes_panel': True,
-    'clusters_panel': True,
-    'policies_panel': True,
-    'receivers_panel': True
-})
